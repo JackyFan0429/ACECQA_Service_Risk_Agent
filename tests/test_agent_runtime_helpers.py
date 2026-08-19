@@ -58,3 +58,79 @@ def test_grounding_validation_accepts_matching_tool_evidence():
         ],
     )
     validate_grounded_answer(answer, ["find_high_risk_services"])
+
+
+def test_policy_grounding_rejects_unretrieved_chunk_id():
+    from acecqa_agent.agent.runtime import ToolTraceEvent
+
+    answer = GroundedAgentAnswer(
+        answer="Example",
+        evidence=[
+            GroundedEvidence(
+                source_tool="search_policy",
+                claim="Policy claim",
+                policy_chunk_ids=["POL-fake-9999"],
+            )
+        ],
+    )
+    trace = [
+        ToolTraceEvent(
+            sequence=1,
+            event_type="tool_output",
+            tool_name="search_policy",
+            call_id="call_p1",
+            output={
+                "ok": True,
+                "tool": "search_policy",
+                "data": {"results": [{"chunk_id": "POL-real-0001"}]},
+            },
+        )
+    ]
+    try:
+        validate_grounded_answer(answer, ["search_policy"], trace=trace)
+    except AgentGroundingError as exc:
+        assert "were not retrieved" in str(exc)
+    else:
+        raise AssertionError("Expected AgentGroundingError")
+
+
+def test_policy_grounding_accepts_retrieved_chunk_and_resolves_source():
+    from acecqa_agent.agent.runtime import ToolTraceEvent, resolve_policy_sources
+
+    answer = GroundedAgentAnswer(
+        answer="Example",
+        evidence=[
+            GroundedEvidence(
+                source_tool="search_policy",
+                claim="Policy claim",
+                policy_chunk_ids=["POL-real-0001"],
+            )
+        ],
+    )
+    trace = [
+        ToolTraceEvent(
+            sequence=1,
+            event_type="tool_output",
+            tool_name="search_policy",
+            call_id="call_p1",
+            output={
+                "ok": True,
+                "tool": "search_policy",
+                "data": {
+                    "results": [
+                        {
+                            "chunk_id": "POL-real-0001",
+                            "source_title": "Official source",
+                            "source_url": "https://www.acecqa.gov.au/example",
+                            "section": "Example section",
+                            "authority_level": "official_guidance",
+                        }
+                    ]
+                },
+            },
+        )
+    ]
+    validate_grounded_answer(answer, ["search_policy"], trace=trace)
+    sources = resolve_policy_sources(answer, trace)
+    assert len(sources) == 1
+    assert sources[0].source_url == "https://www.acecqa.gov.au/example"

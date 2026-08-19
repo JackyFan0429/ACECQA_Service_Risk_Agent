@@ -40,3 +40,27 @@ For `find_high_risk_services`, v0.1 ranks by:
 4. service approval number ascending
 
 This is deliberately simple and inspectable. Scenario-specific weights can be added later as an explicit product feature rather than hidden in a prompt.
+
+## 5. Policy retrieval is a separate evidence layer in v0.3
+
+The service dataset answers what is observed in the QBUS6860-derived data. ACECQA/NQF retrieval answers what official guidance says. The model does not merge those sources into a new score.
+
+A combined regulatory-prioritisation question should therefore produce two traceable tool paths rather than one opaque LLM judgement.
+
+## 6. Curated allow-list before open web search
+
+The first policy corpus is intentionally restricted to official ACECQA pages selected for product relevance. This improves provenance, refreshability and evaluation. Open-web retrieval is not part of the Agent runtime.
+
+## 7. BM25 before embeddings
+
+The v0.3 corpus is small enough that an in-memory BM25 index is a reasonable first retrieval baseline. It adds no embedding cost or vector-store operational dependency. Semantic reranking should only be added if retrieval evals show a meaningful recall gap.
+
+## 8. Policy citations are validated application-side
+
+The LLM may reference only `chunk_id` values returned by `search_policy` in the same run. URLs and source metadata exposed to the user are resolved from tool output rather than trusted from model-generated text.
+
+## 9. Regulatory prioritisation is not enforcement
+
+The v1 risk score identifies overlapping disadvantage signals and can support prioritisation for analyst attention. It is not evidence of non-compliance and does not automatically justify a compliance notice or another enforcement tool.
+
+The Agent must also distinguish ACECQA from the state/territory regulatory authorities responsible for administering, assessing/rating and monitoring/enforcing under the NQF.

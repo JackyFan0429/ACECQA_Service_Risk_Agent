@@ -1,0 +1,191 @@
+{
+  "query": "What should a regulatory authority consider before deciding how to respond to a possible compliance issue?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Before deciding a response to a possible compliance issue, the relevant regulatory authority should consider:\n\n- **The circumstances of the individual case**.\n- **Risk to children’s safety, health and wellbeing**, including both short- and long-term risk.\n- **The provider’s or service’s compliance history**.\n- **Immediacy and seriousness** of any risk arising from the suspected breach.\n- Whether **clear corrective steps** can be specified and whether the provider can take them in an appropriate timeframe.\n- Whether the response is **proportionate** to the issue and likely to improve outcomes for children and deter recurrence.\n- The provider’s willingness and ability to comply, with responses capable of being escalated or de-escalated as circumstances warrant.\n\nA possible issue should therefore be assessed and monitored first; it does not by itself establish a breach or require a particular enforcement action. The Guide to the NQF is guidance—National Law and Regulations take precedence.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "Regulatory authorities consider case circumstances, short- and long-term risk to children, and may consider compliance history when deciding how to respond.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1090"
+        ]
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "Guidance identifies seriousness, immediacy, clear corrective steps, proportionality and deterrence as considerations for particular compliance tools.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1120",
+          "POL-guide_nqf_pdf-1114"
+        ]
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "Good regulatory practice supports graduated, responsive action that can escalate or de-escalate according to risk and willingness or ability to comply.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1299",
+          "POL-guide_nqf_pdf-1096"
+        ]
+      }
+    ],
+    "methodology": [
+      "Policy interpretation is grounded in retrieved official ACECQA Guide to the NQF passages; no service-level analytics were required."
+    ],
+    "limitations": [
+      "The Guide to the NQF is official guidance, not legal advice. The National Law and National Regulations take precedence."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_NBf7mTjR8aF9nQc4vRLyUqeh",
+      "arguments": {
+        "query": "factors regulatory authority consider response to possible compliance issue proportionality risk to children circumstances compliance history enforcement",
+        "topic": "proportionality",
+        "top_k": 6
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_NBf7mTjR8aF9nQc4vRLyUqeh",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "factors regulatory authority consider response to possible compliance issue proportionality risk to children circumstances compliance history enforcement",
+          "topic": "proportionality",
+          "corpus_chunk_count": 1395,
+          "result_count": 6,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 28.983985,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1111",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 599",
+              "excerpt": "Regulatory Authority Powers | Monitoring, compliance and enforcement 599Regulatory Authority Powers | Monitoring, compliance and enforcement When can it be used? A regulatory authority can only issue an emergency action notice if it is satisfied a service is operating in a manner that poses, or is likely to pose, an immediate risk to the safety, health or wellbeing of a child or children being educated and cared for by the service. A regulatory authority may consider the following in deciding whether an emergency action notice is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would reduce or remove the risk? • Will it be possible for the approved provider to remove or reduce the risk in less than 14 calendar days? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent? How can it be used? An emergency action notice may be given in accordance with the requirements of the National Law about serving notices (see Serving notices). The notice must set out how long the approved provider has to comply. This period cannot be more than 14 calendar days. Can it be appealed? The decision to give an emergency action notice is not a reviewable decision under the National Law. What happens after it has been issued? An approved provider must comply with an emergency action notice within the period set out in the notice. The period cannot be more than 14 calendar days. Failure to comply with an emergency action notice Specific provisions apply If the approved provider does not comply with the emergency action notice, the regulatory authority may consider taking further compliance action.",
+              "retrieval_score": 23.4749,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1120",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 604",
+              "excerpt": "604 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement Compliance notices are intended to compel approved providers to comply with their legislative obligations. This tool is particularly useful when it is appropriate to give the provider some time to take a specific action to comply with a requirement, but the regulatory authority wants to use a strong lever to make sure the provider complies. Once satisfied that this tool can be used, a regulatory authority may consider the following in deciding whether a compliance notice is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? How can it be used? A compliance notice may be issued in accordance with the requirements of the National Law about serving notices (see Serving notices). The notice must set out how long the approved provider has to comply. The period cannot be shorter than 14 calendar days. The compliance notice should be accompanied by information about the approved provider’s right to an internal review of the decision, under section 190 of the National Law (see Reviews). National Law Section 190 Can it be reviewed? A decision to give a compliance notice is subject to review under the National Law (see Reviews).",
+              "retrieval_score": 19.541851,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1114",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 600",
+              "excerpt": "given to an approved provider when the regulatory authority is satisfied that there is a systemic risk in relation to an approved provider or a related provider of an approved provider, and the direction is reasonably necessary to address that risk. A regulatory authority may consider the following in deciding whether a compliance direction is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? Requirements for which a compliance direction can be given to the approved provider Regulation Requirement 55(1) Quality improvement plan 72(1), (2) Offences in relation to giving false or misleading statements about ratings 74(1) Documenting child assessments or evaluations for delivery of educational program 75 Information about educational program to be kept available 76 Information about educational program to be given to parents 77(1) Health, hygiene and safe food practices",
+              "retrieval_score": 19.529319,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1299",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 703",
+              "excerpt": "Regulatory Authority Powers | Good regulatory practice 703Regulatory Authority Powers | Good regulatory practice account an entity’s efforts to comply. Having a set of graduated responses enables the regulatory authority to: • respond in a way that is proportionate to the risk • escalate regulatory action • de-escalate regulatory action • minimise costs associated with a response. The diagram above is adapted from a version of the regulatory compliance pyramid published in the Australian National Audit Office Better Practice Guide. The vertical arrow demonstrates the range of responses to regulation. Providers and other people with obligations under the legislation who are willing and able to respond to regulation comply most of the time. Those who are unwilling and/ or unable to respond require more persuasive deterrents and remedies. The responsive compliance pyramid model is also consistent with the principle of earned autonomy, where regulatory intervention is focussed towards those who are unwilling and/or unable to comply. Prosecutions: Bring an offence against the National Law or Regulations for decision by a court or tribunal. Statutory sanctions: Cancellations, suspensions, conditions, infringement notices, compliance notices, compliance directions, enforceable undertakings, emergency action notices, prohibition notices, direction to exclude an inappropriate person. Administrative actions: Additional monitoring, meetings, warning letters or cautions. Information and guidance: Factsheets, newsletters, FAQs, helplines, campaigns, capacity-building, practice notes and guidelines.",
+              "retrieval_score": 17.661722,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1096",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 590",
+              "excerpt": "590 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement 2. Compliance tools There are a wide range of methods and tools regulatory authorities may use when addressing non-compliance. This section sets out the tools that are available under the National Law and provides guidance on which tool to use, based on the specific circumstances. These tools should be used in context of the Good Regulatory Practice section, which sets out the objectives of the National Law and the best practice principles of regulation listed below. Best practice principles of regulation Outcomes focus Proportionality and efficiency Responsiveness and flexibility Transparency and accountability Independence Communication and engagement Mutual responsibility Consistency and predictability. Regulatory authorities: • take a responsive regulatory approach when choosing the methods used to manage non-compliance, considering all the risks • are mindful of their administrative law obligations and keep records of compliance activities (see Good Regulatory Practice). The NSW State Records Act 1998 applies to all jurisdictions for the purposes of the National Law and Regulations (section 265) • must commence proceedings within two years of becoming aware of an alleged offence (section 284). If the alleged offence is being investigated by another entity under a different Act, the two-year period to commence proceedings doesn’t apply while the other case is in progress. Once the other case is finalised, the regulatory authority has two years to commence proceedings.",
+              "retrieval_score": 17.393033,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1090",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 586",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1120",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 604",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1114",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 600",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1299",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 703",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1096",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 590",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7623,
+    "output_tokens": 490,
+    "total_tokens": 8113
+  },
+  "latency_ms": 8508.223791999626
+}

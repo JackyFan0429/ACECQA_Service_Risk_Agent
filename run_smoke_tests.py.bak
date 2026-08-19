@@ -1,0 +1,365 @@
+"""Milestone 2 behavioural smoke-test runner.
+
+Runs the 12 acceptance queries against the live Single Agent, checks deterministic
+routing/parameters where possible, applies lightweight semantic checks to boundary
+answers, and saves auditable JSON + Markdown results under evals/results/.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import sys
+import time
+from dataclasses import dataclass, asdict
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+from acecqa_agent.agent import run_copilot
+
+ROOT = Path(__file__).resolve().parent
+DEFAULT_CASES = ROOT / "evals" / "smoke_cases.json"
+DEFAULT_RESULTS_DIR = ROOT / "evals" / "results"
+
+
+@dataclass
+class CaseResult:
+    case_id: str
+    category: str
+    critical: bool
+    query: str
+    passed: bool
+    failures: list[str]
+    used_tools: list[str]
+    tool_arguments: dict[str, list[dict[str, Any]]]
+    answer: str
+    requests: int
+    total_tokens: int
+    latency_ms: float
+    raw_report_file: str | None
+
+
+def load_suite(path: Path) -> dict[str, Any]:
+    with path.open("r", encoding="utf-8") as fh:
+        suite = json.load(fh)
+    if not isinstance(suite.get("cases"), list) or not suite["cases"]:
+        raise ValueError("Smoke-test config contains no cases.")
+    return suite
+
+
+def tool_arguments_by_name(report: Any) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    for event in report.tool_trace:
+        if event.event_type != "tool_call" or not event.tool_name:
+            continue
+        arguments = event.arguments if isinstance(event.arguments, dict) else {}
+        result.setdefault(event.tool_name, []).append(arguments)
+    return result
+
+
+def check_tools(actual: list[str], expectation: dict[str, Any]) -> list[str]:
+    failures: list[str] = []
+    mode = expectation.get("mode", "exact")
+    expected = expectation.get("tools", [])
+
+    if mode == "exact":
+        if actual != expected:
+            failures.append(f"Expected tools exactly {expected}, got {actual}.")
+    elif mode == "none":
+        if actual:
+            failures.append(f"Expected no tool calls, got {actual}.")
+    elif mode == "none_or_allowed":
+        unexpected = [name for name in actual if name not in expected]
+        if unexpected:
+            failures.append(
+                f"Expected no tools or only allowed tools {expected}, got unexpected {unexpected}."
+            )
+    else:
+        failures.append(f"Unknown tool expectation mode: {mode!r}.")
+
+    return failures
+
+
+def values_equal(expected: Any, actual: Any) -> bool:
+    if isinstance(expected, str) and isinstance(actual, str):
+        return expected.casefold() == actual.casefold()
+    return expected == actual
+
+
+def check_arguments(
+    actual_by_tool: dict[str, list[dict[str, Any]]],
+    expected_by_tool: dict[str, dict[str, Any]],
+) -> list[str]:
+    failures: list[str] = []
+    for tool_name, expected_args in expected_by_tool.items():
+        calls = actual_by_tool.get(tool_name, [])
+        if not calls:
+            failures.append(f"No call found for expected tool {tool_name}.")
+            continue
+        actual = calls[0]
+        for key, expected_value in expected_args.items():
+            if key not in actual:
+                failures.append(
+                    f"{tool_name}.{key}: expected {expected_value!r}, but parameter was absent."
+                )
+                continue
+            if not values_equal(expected_value, actual[key]):
+                failures.append(
+                    f"{tool_name}.{key}: expected {expected_value!r}, got {actual[key]!r}."
+                )
+    return failures
+
+
+def check_answer(answer: str, checks: dict[str, Any]) -> list[str]:
+    failures: list[str] = []
+    text = answer.casefold()
+
+    for phrase in checks.get("must_contain_all", []):
+        if phrase.casefold() not in text:
+            failures.append(f"Answer did not contain required text: {phrase!r}.")
+
+    for group in checks.get("must_contain_any_groups", []):
+        if not any(str(phrase).casefold() in text for phrase in group):
+            failures.append(f"Answer did not contain any of the required alternatives: {group}.")
+
+    for phrase in checks.get("must_not_contain", []):
+        if phrase.casefold() in text:
+            failures.append(f"Answer contained forbidden text: {phrase!r}.")
+
+    return failures
+
+
+def find_failed_tool_outputs(report: Any) -> list[str]:
+    failures: list[str] = []
+    for event in report.tool_trace:
+        if event.event_type != "tool_output" or not isinstance(event.output, dict):
+            continue
+        if event.output.get("ok") is False:
+            failures.append(event.tool_name or "unknown")
+    return failures
+
+
+def run_case(case: dict[str, Any], model: str | None, run_dir: Path) -> CaseResult:
+    failures: list[str] = []
+    raw_file: str | None = None
+
+    print(f"\n[{case['id']}] {case['query']}")
+    print(f"  expected: {case.get('why', '')}")
+
+    try:
+        report = run_copilot(
+            case["query"],
+            model=model,
+            require_tool=bool(case.get("require_tool", True)),
+        )
+    except Exception as exc:  # deliberate: one failed case should not stop the suite
+        failures.append(f"Agent run raised {type(exc).__name__}: {exc}")
+        print(f"  FAIL: {failures[-1]}")
+        return CaseResult(
+            case_id=case["id"],
+            category=case["category"],
+            critical=bool(case.get("critical")),
+            query=case["query"],
+            passed=False,
+            failures=failures,
+            used_tools=[],
+            tool_arguments={},
+            answer="",
+            requests=0,
+            total_tokens=0,
+            latency_ms=0.0,
+            raw_report_file=None,
+        )
+
+    used_tools = list(report.used_tools)
+    args_by_tool = tool_arguments_by_name(report)
+    answer = report.answer.answer
+
+    failures.extend(check_tools(used_tools, case.get("tool_expectation", {})))
+    failures.extend(check_arguments(args_by_tool, case.get("expected_args", {})))
+    failures.extend(check_answer(answer, case.get("answer_checks", {})))
+
+    # A failed tool output is normally a test failure. M2-10 is the intentional exception:
+    # the tool itself is allowed to reject Family Day Care as out of validated scope.
+    failed_tool_outputs = find_failed_tool_outputs(report)
+    if failed_tool_outputs and case["id"] != "M2-10":
+        failures.append(f"Tool output returned ok=false for: {failed_tool_outputs}.")
+
+    raw_path = run_dir / f"{case['id']}_raw.json"
+    raw_path.write_text(report.model_dump_json(indent=2), encoding="utf-8")
+    raw_file = str(raw_path.relative_to(ROOT))
+
+    passed = not failures
+    status = "PASS" if passed else "FAIL"
+    print(f"  tools: {used_tools or 'none'}")
+    print(f"  usage: {report.usage.total_tokens} tokens; {report.latency_ms:.0f} ms")
+    print(f"  {status}")
+    for failure in failures:
+        print(f"    - {failure}")
+
+    return CaseResult(
+        case_id=case["id"],
+        category=case["category"],
+        critical=bool(case.get("critical")),
+        query=case["query"],
+        passed=passed,
+        failures=failures,
+        used_tools=used_tools,
+        tool_arguments=args_by_tool,
+        answer=answer,
+        requests=report.usage.requests,
+        total_tokens=report.usage.total_tokens,
+        latency_ms=report.latency_ms,
+        raw_report_file=raw_file,
+    )
+
+
+def write_summary(
+    suite: dict[str, Any],
+    results: list[CaseResult],
+    run_dir: Path,
+    model: str,
+) -> tuple[Path, Path, bool]:
+    passed_count = sum(result.passed for result in results)
+    critical_results = [result for result in results if result.critical]
+    critical_all_passed = all(result.passed for result in critical_results)
+    minimum = int(suite["pass_rule"].get("minimum_passed_cases", 11))
+    ready = passed_count >= minimum and critical_all_passed
+
+    total_tokens = sum(result.total_tokens for result in results)
+    total_latency_ms = sum(result.latency_ms for result in results)
+
+    payload = {
+        "suite": suite["suite"],
+        "version": suite.get("version"),
+        "model": model,
+        "passed": passed_count,
+        "total": len(results),
+        "critical_all_passed": critical_all_passed,
+        "milestone_2_ready": ready,
+        "total_tokens": total_tokens,
+        "total_latency_ms": total_latency_ms,
+        "results": [asdict(result) for result in results],
+    }
+
+    json_path = run_dir / "summary.json"
+    json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    lines = [
+        "# Milestone 2 Smoke Test Summary",
+        "",
+        f"- Model: `{model}`",
+        f"- Passed: **{passed_count}/{len(results)}**",
+        f"- Critical cases: **{'PASS' if critical_all_passed else 'FAIL'}**",
+        f"- Milestone 2 ready: **{'YES' if ready else 'NO'}**",
+        f"- Total tokens: **{total_tokens}**",
+        f"- Cumulative API latency: **{total_latency_ms / 1000:.1f}s**",
+        "",
+        "| Case | Critical | Status | Tools |",
+        "|---|---:|---|---|",
+    ]
+    for result in results:
+        lines.append(
+            f"| {result.case_id} | {'Yes' if result.critical else 'No'} | "
+            f"{'PASS' if result.passed else 'FAIL'} | {', '.join(result.used_tools) or 'none'} |"
+        )
+
+    failed = [result for result in results if not result.passed]
+    if failed:
+        lines.extend(["", "## Failures", ""])
+        for result in failed:
+            lines.append(f"### {result.case_id}")
+            for failure in result.failures:
+                lines.append(f"- {failure}")
+            lines.append("")
+
+    lines.extend(
+        [
+            "",
+            "## Acceptance rule",
+            "",
+            "Milestone 2 is considered stable when at least 11/12 cases pass and all four critical cases "
+            "(M2-03, M2-09, M2-10, M2-12) pass.",
+            "",
+            "> Boundary answer checks are intentionally lightweight string checks. Review the raw answer files "
+            "for M2-09, M2-10 and M2-12 before freezing v0.2.",
+        ]
+    )
+
+    md_path = run_dir / "summary.md"
+    md_path.write_text("\n".join(lines), encoding="utf-8")
+    return json_path, md_path, ready
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run Milestone 2 Single-Agent smoke tests")
+    parser.add_argument("--cases", default=str(DEFAULT_CASES), help="Path to smoke_cases.json")
+    parser.add_argument("--case", dest="case_ids", action="append", help="Run one case ID; repeat flag for multiple")
+    parser.add_argument("--critical-only", action="store_true", help="Run only the four critical boundary cases")
+    parser.add_argument("--model", default=None, help="Override ACECQA_AGENT_MODEL")
+    parser.add_argument("--list", action="store_true", help="List test cases without calling the API")
+    parser.add_argument("--pause", type=float, default=0.0, help="Seconds to pause between API calls")
+    args = parser.parse_args()
+
+    suite_path = Path(args.cases).expanduser().resolve()
+    suite = load_suite(suite_path)
+    cases = suite["cases"]
+
+    if args.case_ids:
+        wanted = set(args.case_ids)
+        cases = [case for case in cases if case["id"] in wanted]
+        missing = wanted - {case["id"] for case in cases}
+        if missing:
+            raise SystemExit(f"Unknown case ID(s): {', '.join(sorted(missing))}")
+
+    if args.critical_only:
+        cases = [case for case in cases if case.get("critical")]
+
+    if args.list:
+        for case in cases:
+            marker = " [CRITICAL]" if case.get("critical") else ""
+            print(f"{case['id']}{marker}: {case['query']}")
+        return
+
+    if not os.getenv("OPENAI_API_KEY"):
+        raise SystemExit("OPENAI_API_KEY is not set in this shell.")
+
+    model = args.model or os.getenv("ACECQA_AGENT_MODEL", "gpt-5.6-terra")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_dir = DEFAULT_RESULTS_DIR / timestamp
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    print("Milestone 2 Single-Agent Smoke Test")
+    print(f"Model: {model}")
+    print(f"Cases: {len(cases)}")
+    print(f"Results: {run_dir.relative_to(ROOT)}")
+
+    results: list[CaseResult] = []
+    for index, case in enumerate(cases):
+        results.append(run_case(case, args.model, run_dir))
+        if args.pause > 0 and index < len(cases) - 1:
+            time.sleep(args.pause)
+
+    json_path, md_path, ready = write_summary(suite, results, run_dir, model)
+    passed_count = sum(result.passed for result in results)
+
+    print("\n" + "=" * 64)
+    print(f"Passed: {passed_count}/{len(results)}")
+    print(f"Summary: {md_path.relative_to(ROOT)}")
+    print(f"JSON:    {json_path.relative_to(ROOT)}")
+
+    # The 11/12 readiness rule is meaningful only for the complete 12-case suite.
+    full_suite_run = len(results) == len(suite["cases"]) and not args.case_ids and not args.critical_only
+    if full_suite_run:
+        print(f"Milestone 2 ready: {'YES' if ready else 'NO'}")
+        sys.exit(0 if ready else 1)
+
+    print("Partial suite completed; no overall readiness verdict is issued.")
+    sys.exit(0 if all(result.passed for result in results) else 1)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "M3-01",
+    "critical": false,
+    "query": "What does a Working Towards NQS rating mean?",
+    "required_tools": ["search_policy"],
+    "forbidden_tools": ["find_high_risk_services", "calculate_risk_score"],
+    "answer_any": ["improvement", "areas identified", "one or more"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-02",
+    "critical": true,
+    "query": "Is ACECQA the national regulator that monitors and enforces compliance at services?",
+    "required_tools": ["search_policy"],
+    "answer_any": ["not the national regulator", "state and territory regulatory"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-03",
+    "critical": false,
+    "query": "What should a regulatory authority consider before deciding how to respond to a possible compliance issue?",
+    "required_tools": ["search_policy"],
+    "answer_any": ["proportionate", "risk to children", "compliance history", "circumstances"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-04",
+    "critical": true,
+    "query": "Find the 5 highest-risk rural Centre-Based Care services in Queensland and explain what the relevant regulatory authority should consider before deciding how to respond.",
+    "required_tools": ["find_high_risk_services", "search_policy"],
+    "answer_any": ["5", "triple-gap", "risk"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-05",
+    "critical": true,
+    "query": "How risky is service SE-40000427, and does that risk score prove the service is legally non-compliant?",
+    "required_tools": ["calculate_risk_score", "search_policy"],
+    "answer_any": ["3-gap", "3 gaps", "does not prove", "not proof", "not a finding"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-06",
+    "critical": false,
+    "query": "Can I treat the Guide to the NQF as legal advice, or what takes precedence?",
+    "required_tools": ["search_policy"],
+    "answer_any": ["not legal advice", "National Law", "National Regulations", "take precedence"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-07",
+    "critical": true,
+    "query": "A service is rated Working Towards NQS. Does that rating alone mean the service is unsafe?",
+    "required_tools": ["search_policy"],
+    "answer_any": ["does not", "not", "safe education", "areas identified for improvement"],
+    "forbidden_any": ["therefore unsafe", "proves it is unsafe"],
+    "require_policy_sources": true
+  },
+  {
+    "id": "M3-08",
+    "critical": true,
+    "query": "SE-40000427 is triple-gap. Should the regulatory authority immediately issue a compliance notice solely because of that score?",
+    "required_tools": ["calculate_risk_score", "search_policy"],
+    "answer_any": ["not", "does not", "cannot", "context", "proportionate", "risk to children", "compliance history"],
+    "forbidden_any": ["should immediately issue", "must issue a compliance notice"],
+    "require_policy_sources": true
+  }
+]

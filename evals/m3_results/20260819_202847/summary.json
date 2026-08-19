@@ -1,0 +1,19 @@
+{
+  "rows": [
+    {
+      "id": "M3-04",
+      "critical": true,
+      "status": "PASS",
+      "tools": [
+        "find_high_risk_services",
+        "search_policy"
+      ],
+      "failures": []
+    }
+  ],
+  "passed": 1,
+  "critical_pass": true,
+  "ready": false,
+  "total_tokens": 12140,
+  "latency_ms": 13808.414125000127
+}

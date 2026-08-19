@@ -1,4 +1,4 @@
-"""Single-agent runtime for ACECQA Service Risk Copilot milestone 2."""
+"""Single-agent runtime for ACECQA Service Risk Copilot milestone 3."""
 
 from __future__ import annotations
 
@@ -23,12 +23,25 @@ AgentToolName = Literal[
     "find_high_risk_services",
     "compare_transport_access",
     "analyse_transport_quartile_outcomes",
+    "search_policy",
 ]
 
 
 class GroundedEvidence(BaseModel):
     source_tool: AgentToolName
     claim: str
+    policy_chunk_ids: list[str] = Field(
+        default_factory=list,
+        description="For search_policy evidence, copy chunk_id values returned by that tool.",
+    )
+
+
+class PolicySourceCitation(BaseModel):
+    chunk_id: str
+    source_title: str
+    source_url: str
+    section: str | None = None
+    authority_level: str | None = None
 
 
 class GroundedAgentAnswer(BaseModel):
@@ -69,6 +82,7 @@ class AgentRunReport(BaseModel):
     answer: GroundedAgentAnswer
     used_tools: list[str]
     tool_trace: list[ToolTraceEvent]
+    policy_sources: list[PolicySourceCitation] = Field(default_factory=list)
     usage: AgentUsageSummary
     latency_ms: float
 
@@ -144,10 +158,55 @@ def _coerce_final_answer(value: Any) -> GroundedAgentAnswer:
     raise TypeError(f"Unsupported final output type: {type(value).__name__}")
 
 
+def _retrieved_policy_chunks(trace: list[ToolTraceEvent]) -> dict[str, dict[str, Any]]:
+    chunks: dict[str, dict[str, Any]] = {}
+    for event in trace:
+        if event.event_type != "tool_output" or event.tool_name != "search_policy":
+            continue
+        output = event.output
+        if not isinstance(output, Mapping) or output.get("ok") is not True:
+            continue
+        data = output.get("data")
+        if not isinstance(data, Mapping):
+            continue
+        results = data.get("results", [])
+        if not isinstance(results, list):
+            continue
+        for item in results:
+            if isinstance(item, Mapping) and item.get("chunk_id"):
+                chunks[str(item["chunk_id"])] = dict(item)
+    return chunks
+
+
+def resolve_policy_sources(
+    answer: GroundedAgentAnswer, trace: list[ToolTraceEvent]
+) -> list[PolicySourceCitation]:
+    retrieved = _retrieved_policy_chunks(trace)
+    seen: set[str] = set()
+    citations: list[PolicySourceCitation] = []
+    for evidence in answer.evidence:
+        for chunk_id in evidence.policy_chunk_ids:
+            if chunk_id in seen or chunk_id not in retrieved:
+                continue
+            seen.add(chunk_id)
+            item = retrieved[chunk_id]
+            citations.append(
+                PolicySourceCitation(
+                    chunk_id=chunk_id,
+                    source_title=str(item.get("source_title", "")),
+                    source_url=str(item.get("source_url", "")),
+                    section=None if item.get("section") is None else str(item.get("section")),
+                    authority_level=None if item.get("authority_level") is None else str(item.get("authority_level")),
+                )
+            )
+    return citations
+
+
 def validate_grounded_answer(
     answer: GroundedAgentAnswer,
     used_tools: list[str],
     *,
+    trace: list[ToolTraceEvent] | None = None,
     require_tool: bool = True,
 ) -> None:
     """Reject final outputs whose evidence does not match the actual tool trace."""
@@ -170,9 +229,34 @@ def validate_grounded_answer(
             + ", ".join(invalid_sources)
         )
 
+    policy_evidence = [item for item in answer.evidence if item.source_tool == "search_policy"]
+    if policy_evidence:
+        if "search_policy" not in used:
+            raise AgentGroundingError("Policy evidence was supplied without a search_policy tool call.")
+        if trace is None:
+            raise AgentGroundingError("Policy grounding validation requires the tool trace.")
+        retrieved_ids = set(_retrieved_policy_chunks(trace))
+        for item in policy_evidence:
+            if not item.policy_chunk_ids:
+                raise AgentGroundingError(
+                    "search_policy evidence must include at least one retrieved policy_chunk_id."
+                )
+            invalid_ids = sorted(set(item.policy_chunk_ids) - retrieved_ids)
+            if invalid_ids:
+                raise AgentGroundingError(
+                    "The final answer cites policy chunks that were not retrieved in this run: "
+                    + ", ".join(invalid_ids)
+                )
+
+    for item in answer.evidence:
+        if item.source_tool != "search_policy" and item.policy_chunk_ids:
+            raise AgentGroundingError(
+                f"Non-policy evidence from {item.source_tool} must not contain policy_chunk_ids."
+            )
+
 
 def build_agent(model: str | None = None):
-    """Construct the single ACECQA agent with six local deterministic tools."""
+    """Construct the single ACECQA agent with analytics plus policy retrieval tools."""
     try:
         from agents import Agent
     except ImportError as exc:  # pragma: no cover - depends on optional runtime package
@@ -227,7 +311,7 @@ def run_copilot(
             used_tools.append(event.tool_name)
 
     final_answer = _coerce_final_answer(result.final_output)
-    validate_grounded_answer(final_answer, used_tools, require_tool=require_tool)
+    validate_grounded_answer(final_answer, used_tools, trace=trace, require_tool=require_tool)
 
     sdk_usage = result.context_wrapper.usage
     return AgentRunReport(
@@ -236,6 +320,7 @@ def run_copilot(
         answer=final_answer,
         used_tools=used_tools,
         tool_trace=trace,
+        policy_sources=resolve_policy_sources(final_answer, trace),
         usage=AgentUsageSummary(
             requests=getattr(sdk_usage, "requests", 0),
             input_tokens=getattr(sdk_usage, "input_tokens", 0),

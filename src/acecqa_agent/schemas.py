@@ -149,3 +149,56 @@ class AnalyseQuartileOutcomesOutput(BaseModel):
     min_group_size: int
     caveat: str
     quartiles: list[QuartileOutcomeSummary]
+
+PolicyTopic = Literal[
+    "nqf_overview",
+    "legal_hierarchy",
+    "guide_updates",
+    "nqs",
+    "quality_areas",
+    "quality_ratings",
+    "assessment_rating",
+    "working_towards_nqs",
+    "quality_improvement",
+    "qip",
+    "significant_improvement_required",
+    "regulatory_powers",
+    "monitoring",
+    "enforcement",
+    "proportionality",
+    "risk",
+    "compliance_tools",
+    "good_regulatory_practice",
+    "enforceable_undertakings",
+    "acecqa_role",
+    "national_regulations",
+    "operational_requirements",
+]
+
+
+class PolicySearchInput(BaseModel):
+    query: str = Field(min_length=3, max_length=500)
+    topic: PolicyTopic | None = None
+    top_k: int = Field(default=5, ge=1, le=8)
+
+
+class PolicySearchResult(BaseModel):
+    chunk_id: str
+    source_id: str
+    source_title: str
+    source_url: str
+    source_kind: str
+    authority_level: str
+    section: str | None = None
+    excerpt: str
+    retrieval_score: float
+    source_retrieved_at: str | None = None
+
+
+class PolicySearchOutput(BaseModel):
+    query: str
+    topic: PolicyTopic | None = None
+    corpus_chunk_count: int
+    result_count: int
+    results: list[PolicySearchResult]
+    caveat: str

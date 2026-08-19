@@ -1,0 +1,360 @@
+{
+  "query": "Find the 5 highest-risk rural Centre-Based Care services in Queensland and explain what the relevant regulatory authority should consider before deciding how to respond.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "## Top 5 priority screens — rural Queensland Centre-Based Care\n\n| Rank | Service | Approval no. | NQS rating | Approved places | Nearest public transport |\n|---:|---|---|---|---:|---:|\n| 1 | Napranum Early Childhood Centre | SE-40000427 | Working Towards NQS | 33 | 562.4 km |\n| 2 | Northern Peninsula Area College – Bamaga Kindergarten | SE-40000624 | Working Towards NQS | 24 | 519.1 km |\n| 3 | Tagai State College – Horn Island (Narupay Ngurpay Mudh) Kindergarten | SE-40000633 | Working Towards NQS | 20 | 482.1 km |\n| 4 | Tagai State College – Moa Island (Kubin Ngurpay Lag) Kindergarten | SE-40000636 | Working Towards NQS | 12 | 445.5 km |\n| 5 | Iama Migi Kaziw Mudh | SE-40000743 | Working Towards NQS | 14 | 445.5 km |\n\nAll five are **triple-gap** services under the validated v1 screen: weak-quality flag, poor-access flag, and low-capacity flag. There are 21 matching triple-gap rural Queensland services.\n\n## Considerations before deciding a response\n\nThe relevant regulatory authority should treat this as a **review and monitoring prioritisation signal—not evidence of a breach or an automatic enforcement trigger**. Before choosing a response, it should consider:\n\n- the immediate and longer-term risk to children’s safety, health and wellbeing, and the specific circumstances at each service;\n- current evidence of compliance, any matters underlying the assessment/rating result, steps already taken to rectify them, and provider/service compliance history;\n- whether engagement, information, support, or additional monitoring is sufficient, versus whether verified non-compliance and risk warrant escalation;\n- proportionality: select the response most likely to improve outcomes for children, escalating or de-escalating as the verified facts and provider response warrant.\n\n“Working Towards NQS” means at least one quality area was rated Working Towards; it does not itself establish unsafe care, a legal breach, or the appropriate enforcement outcome. Likewise, approved places are authorised capacity, not evidence of unmet local demand.\n\nThe Guide to the NQF is official guidance rather than legal advice; the National Law and Regulations take precedence.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "The ranked top five and their triple-gap scores, ratings, authorised capacity, transport distances, ranking rule, thresholds, and 21-service match count were returned for rural Queensland Centre-Based Care.",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "State and territory regulatory authorities administer the NQF and should take proportionate action considering case circumstances, short- and long-term risk to children, and potentially compliance history.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1090",
+          "POL-guide_nqf_pdf-1299"
+        ]
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "An overall Working Towards NQS rating results where one or more quality areas are Working Towards, absent a Significant Improvement Required rating.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0722",
+          "POL-guide_nqf_pdf-0726"
+        ]
+      }
+    ],
+    "methodology": [
+      "Used the deterministic v1 high-risk ranking for Centre-Based Care: gap score descending, then public-transport distance descending, authorised places ascending, then approval number ascending.",
+      "Applied the requested Queensland, rural, Centre-Based Care filters and the default highest-risk threshold of gap score 3. The fixed national validated thresholds are transport distance above 5.329 km and authorised capacity at or below 40 places."
+    ],
+    "limitations": [
+      "The v1 screen is validated for Centre-Based Care and uses fixed national thresholds; it does not prove non-compliance, harm, or unmet demand.",
+      "Transport distance is an access proxy, and authorised places are not enrolment, utilisation, waitlist, or demand data.",
+      "Regulatory response requires current, service-specific evidence and applicable legal requirements."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services",
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_rNsDtyxmwQnmQ25eZm9mtp6i",
+      "arguments": {
+        "state": "QLD",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 5,
+        "minimum_gap_score": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_rNsDtyxmwQnmQ25eZm9mtp6i",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 21,
+          "returned_count": 5,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-40000427",
+              "service_name": "Napranum Early Childhood Centre",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 562.3926437753009,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000624",
+              "service_name": "Northern Peninsula Area College - Bamaga Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 519.1130425269504,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000633",
+              "service_name": "Tagai State College - Horn Island (Narupay Ngurpay Mudh) Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 482.07698480819806,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000636",
+              "service_name": "Tagai State College - Moa Island (Kubin Ngurpay Lag) Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 12.0,
+              "nearest_public_transport_km": 445.520176252222,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000743",
+              "service_name": "Iama Migi Kaziw Mudh",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 14.0,
+              "nearest_public_transport_km": 445.520176252222,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_FSaKoVFi75OVJTT8WXEac0Ch",
+      "arguments": {
+        "query": "regulatory authority monitoring compliance enforcement proportionate response risk to children circumstances compliance history",
+        "topic": "proportionality",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 4,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_FSaKoVFi75OVJTT8WXEac0Ch",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "regulatory authority monitoring compliance enforcement proportionate response risk to children circumstances compliance history",
+          "topic": "proportionality",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 25.089303,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1299",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 703",
+              "excerpt": "Regulatory Authority Powers | Good regulatory practice 703Regulatory Authority Powers | Good regulatory practice account an entity’s efforts to comply. Having a set of graduated responses enables the regulatory authority to: • respond in a way that is proportionate to the risk • escalate regulatory action • de-escalate regulatory action • minimise costs associated with a response. The diagram above is adapted from a version of the regulatory compliance pyramid published in the Australian National Audit Office Better Practice Guide. The vertical arrow demonstrates the range of responses to regulation. Providers and other people with obligations under the legislation who are willing and able to respond to regulation comply most of the time. Those who are unwilling and/ or unable to respond require more persuasive deterrents and remedies. The responsive compliance pyramid model is also consistent with the principle of earned autonomy, where regulatory intervention is focussed towards those who are unwilling and/or unable to comply. Prosecutions: Bring an offence against the National Law or Regulations for decision by a court or tribunal. Statutory sanctions: Cancellations, suspensions, conditions, infringement notices, compliance notices, compliance directions, enforceable undertakings, emergency action notices, prohibition notices, direction to exclude an inappropriate person. Administrative actions: Additional monitoring, meetings, warning letters or cautions. Information and guidance: Factsheets, newsletters, FAQs, helplines, campaigns, capacity-building, practice notes and guidelines.",
+              "retrieval_score": 20.641014,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1120",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 604",
+              "excerpt": "604 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement Compliance notices are intended to compel approved providers to comply with their legislative obligations. This tool is particularly useful when it is appropriate to give the provider some time to take a specific action to comply with a requirement, but the regulatory authority wants to use a strong lever to make sure the provider complies. Once satisfied that this tool can be used, a regulatory authority may consider the following in deciding whether a compliance notice is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? How can it be used? A compliance notice may be issued in accordance with the requirements of the National Law about serving notices (see Serving notices). The notice must set out how long the approved provider has to comply. The period cannot be shorter than 14 calendar days. The compliance notice should be accompanied by information about the approved provider’s right to an internal review of the decision, under section 190 of the National Law (see Reviews). National Law Section 190 Can it be reviewed? A decision to give a compliance notice is subject to review under the National Law (see Reviews).",
+              "retrieval_score": 18.005729,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1114",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 600",
+              "excerpt": "given to an approved provider when the regulatory authority is satisfied that there is a systemic risk in relation to an approved provider or a related provider of an approved provider, and the direction is reasonably necessary to address that risk. A regulatory authority may consider the following in deciding whether a compliance direction is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? Requirements for which a compliance direction can be given to the approved provider Regulation Requirement 55(1) Quality improvement plan 72(1), (2) Offences in relation to giving false or misleading statements about ratings 74(1) Documenting child assessments or evaluations for delivery of educational program 75 Information about educational program to be kept available 76 Information about educational program to be given to parents 77(1) Health, hygiene and safe food practices",
+              "retrieval_score": 17.13093,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1101",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 594",
+              "excerpt": "594 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement 2.1 Infringement notices What is an infringement notice? An infringement notice is a monetary penalty for non-compliance with specific requirements of the National Law and Regulations. An infringement penalty is 10 per cent of the maximum penalty that could be imposed on the person for that offence. Infringement offences are typically for minor offences that are clear and unambiguous. They are used to give a person an immediate minor penalty to deter future non-compliance. When can it be used? Specific provisions apply An infringement notice can only be served on a person for a contravention of the requirements set out in the table below. Once satisfied that this tool can be used, a regulatory authority may consider the following in deciding whether an infringement notice is appropriate: • Is there no serious risk to the safety, health and wellbeing of children being educated and cared for at the service? • Is the penalty proportionate to the seriousness of the offence? • Is the penalty likely to serve as a deterrent to committing the offence again? Requirements for which an infringement notice may be used Law/Regulation Requirement Person Section 36(3) Notice to parents of suspension or cancellation of provider approval Approved provider Section 68(1) Confirmation of transfer of service approval Transferring approved provider and receiving approved provider Section 69(1) Notice to parents of transfer of service approval Receiving approved provider Section 84(3) Notice to parents of suspension or cancellation of service approval Approved provider Section 161 Operate a service without a nominated supervisor Approved provider Sectio",
+              "retrieval_score": 16.635291,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_gUnPKiudlY1ndE3DthdSo8ns",
+      "arguments": {
+        "query": "Working Towards NQS rating meaning assessment rating service not meeting National Quality Standard",
+        "topic": "working_towards_nqs",
+        "top_k": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 6,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_gUnPKiudlY1ndE3DthdSo8ns",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "Working Towards NQS rating meaning assessment rating service not meeting National Quality Standard",
+          "topic": "working_towards_nqs",
+          "corpus_chunk_count": 1395,
+          "result_count": 3,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0722",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 393",
+              "excerpt": "National Quality Standard and Assessment and Rating | Assessment and rating process 393National Quality Standard and Assessment and Rating | Assessment and rating process The following three themes must be demonstrated in service practice for a standard to be rated as Exceeding NQS: Theme 1. Practice is embedded in service operations Theme 2. Practice is informed by critical reflection Theme 3. Practice is shaped by meaningful engagement with families and/or the community. See Exceeding theme guidance for more information. Determining quality area ratings After the authorised officer has assessed each standard, the quality area ratings are calculated. • If any standard within a quality area has been rated as Working Towards NQS, the rating for the quality area will be Working Towards NQS. • If all standards within a quality area are rated at least Meeting NQS, the rating for that quality area will be at least Meeting NQS. • If all standards within a quality area are rated Exceeding NQS, the rating for the quality area will be Exceeding NQS. • If all standards within a quality area are rated at least Meeting NQS, but not all standards are rated Exceeding NQS, the rating for the quality area will be Meeting NQS. Determining overall service ratings • If any quality area has been rated as Working Towards NQS, the overall service rating cannot be higher than Working Towards NQS. • If all quality areas are at least Meeting NQS and four or more quality areas are rated as Exceeding NQS, with at least two of these being quality areas 1, 5, 6, or 7, the overall rating will be Exceeding NQS. • Services rated Exceeding NQS in all seven quality areas are eligible to apply to ACECQA for the Excellent rating.",
+              "retrieval_score": 23.343831,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0726",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 396",
+              "excerpt": "396 National Quality Standard and Assessment and Rating | Assessment and rating process National Quality Standard and Assessment and Rating | Assessment and rating process Task Rating Levels Significant Improvement Required Working Towards National Quality Standard Meeting National Quality Standard Exceeding National Quality Standard 4.Determine overall rating Overall rating is Significant Improvement Required if the service is rated Significant Improvement Required for any quality area (regulation 59(2)). Overall rating is Working Towards NQS if any quality areas are rated Working Towards NQS but the service does not have a Significant Improvement Required rating for any quality area (regulation 60(2)). Overall rating is Meeting NQS if all quality areas are rated Meeting NQS and/or Exceeding NQS but the service does not satisfy the requirements of regulation 62 for an overall Exceeding NQS rating (regulation 61(2)). Overall rating is Exceeding NQS if all quality areas are rated at least Meeting NQS, and four or more quality areas are Exceeding NQS, with at least two of these being quality areas 1, 5, 6 or 7. 5. Making minor adjustments The regulatory authority may consider any information available to them about any steps taken by the education and care service to rectify any matters identified during the rating assessment. A service rating should accurately reflect service quality. Minor matters that do not seriously impact on a service’s quality may not affect the rating if they are able to be rectified quickly and easily. There may be some circumstances in which the regulatory authority gives an approved provider the opportunity to make minor adjustments prior to finalising a service’s assessment report and overall rating.",
+              "retrieval_score": 23.343764,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0721",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 392",
+              "excerpt": "ch element of the NQS. Each standard and quality area is then rated. The overall rating is calculated based on these results. Services must be rated Exceeding in all quality areas of the NQS to be eligible to apply to ACECQA for the Excellent rating. Assessing elements The authorised officer will assess each element as met or not met. Assessing standards The authorised officer will assess the evidence against each standard. • If any element under a standard is not met, the rating for that standard will be Working Towards NQS. • If all elements are met, the authorised officer will determine whether service practice for each standard represents what is expected at the Meeting level (Meeting NQS) or represents a level of quality above what is required at the Meeting level (Exceeding NQS). • Each standard will be rated at either Meeting NQS or Exceeding NQS. National Law & Regulations Section 152 Regulations 57–62",
+              "retrieval_score": 22.900722,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1090",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 586",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1299",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 703",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0722",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 393",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0726",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 396",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 4,
+    "input_tokens": 18112,
+    "output_tokens": 1048,
+    "total_tokens": 19160
+  },
+  "latency_ms": 16282.123917000717
+}

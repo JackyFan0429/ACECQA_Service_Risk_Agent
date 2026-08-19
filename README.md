@@ -1,60 +1,165 @@
 # ACECQA Service Risk Copilot
 
-A B2B decision-support AI Agent evolved from the QBUS6860 spatial/data analysis project. The design principle is simple:
+A B2B decision-support AI Agent evolved from the QBUS6860 spatial/data analysis project.
 
-> **LLM decides what analysis to run; deterministic Python tools decide the numbers.**
+> **LLM decides which evidence it needs; deterministic analytics decide the numbers; curated retrieval supplies policy context.**
 
-## Current milestone: v0.2 Single Agent MVP
+## Current milestone: v0.3 Policy-grounded Single Agent
 
-Milestone 2 connects the six validated analytics tools to a real single-agent tool-calling runtime using the OpenAI Agents SDK.
+Milestone 3 keeps the six deterministic service-analysis tools from v0.2 and adds a seventh tool, `search_policy`, backed by a curated local corpus built from official ACECQA/NQF pages.
 
 ```text
 Natural-language question
         |
         v
-ACECQA Service Risk Copilot (single LLM agent)
+Single LLM Agent
         |
-        | chooses one or more tools
-        v
-+-----------------------------------------+
-| 6 deterministic Python analytics tools |
-+-----------------------------------------+
-        |
-        v
-education_services_cleaned.csv
-17,663 service records
-        |
-        v
-structured tool output
-        |
-        v
-GroundedAgentAnswer
-+ evidence + methodology + limitations
+        +-----------------------------+
+        |                             |
+        v                             v
+6 deterministic                search_policy()
+analytics tools                local BM25 retrieval
+        |                             |
+        v                             v
+service data                    curated ACECQA/NQF corpus
+        |                             |
+        +-------------+---------------+
+                      v
+              GroundedAgentAnswer
+       data evidence + policy evidence
+       + methodology + limitations
 ```
 
-### Six tools
+## Seven tools
 
 1. `search_services` — filtering, counts and factual listing
 2. `get_service_profile` — one service's decision-relevant fields
 3. `calculate_risk_score` — one service's validated 0–3 gap score
-4. `find_high_risk_services` — deterministic regulatory priority ranking
+4. `find_high_risk_services` — deterministic regulatory-priority ranking
 5. `compare_transport_access` — aggregate transport-access comparison
 6. `analyse_transport_quartile_outcomes` — NQS/capacity outcomes across transport quartiles
+7. `search_policy` — grounded retrieval from curated official ACECQA/NQF material
 
-The original notebook remains in `notebooks/` for provenance. The analytics layer still reproduces the notebook's validated thresholds and risk logic.
+## Why policy RAG is a tool
 
-## What changed in v0.2
+The LLM is not allowed to invent policy. When a user asks what an NQS rating means, what a regulatory authority should consider, or what compliance tools exist, it must call `search_policy`. When a user asks for both a risk priority list and regulatory context, it must combine an analytics tool with `search_policy`.
 
-- OpenAI Agents SDK single-agent runtime
-- exact Pydantic schemas exposed as function tools
-- model-visible success/error envelopes for every tool call
-- structured final response (`GroundedAgentAnswer`)
-- explicit grounding rule: data questions must call a deterministic tool
-- application-level rejection of no-tool/ungrounded data runs
-- auditable tool-call trace from SDK run items
-- token-usage and latency capture for the future eval harness
-- CLI demo for natural-language queries
-- Runned smoke test for currenct agent
+Policy retrieval cannot modify the deterministic risk score or ranking.
+
+## Regulatory boundary
+
+The project uses the name ACECQA Service Risk Copilot because ACECQA is the national quality authority and the principal source used for NQF guidance. However, ACECQA is not the national regulator. State and territory regulatory authorities assess and rate services and monitor/enforce compliance under the NQF. The agent therefore uses "the relevant regulatory authority" when discussing possible regulatory response.
+
+A triple-gap score is a prioritisation signal, **not** evidence of a breach and **not** an automatic enforcement trigger.
+
+## Install
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+## 1. Build the policy corpus
+
+The repository contains an allow-list of official sources in `data/policy/sources.json`. Fetch and chunk them locally:
+
+```bash
+python scripts/ingest_policy.py
+python scripts/check_policy_corpus.py
+```
+
+This creates:
+
+```text
+data/policy/policy_chunks.jsonl
+data/policy/corpus_manifest.json
+```
+
+The generated corpus is intentionally not the source of truth forever. Refresh it before an important demo because ACECQA guidance and legislation can change.
+
+## 2. Test retrieval without an LLM
+
+```bash
+python demo_policy_search.py \
+  "What should regulators consider before deciding how to respond to a compliance issue?"
+```
+
+You should see ACECQA source URLs, section names, stable `POL-...` chunk IDs and BM25 scores.
+
+## 3. Run all offline tests
+
+```bash
+pytest -q
+```
+
+Expected for v0.3 code delivered in this milestone:
+
+```text
+19 passed
+```
+
+## 4. Run the live agent
+
+```bash
+export OPENAI_API_KEY="sk-..."
+export ACECQA_AGENT_MODEL="gpt-5.6-terra"
+```
+
+Policy-only question:
+
+```bash
+python demo_agent.py \
+  "What does a Working Towards NQS rating mean?" \
+  --show-trace
+```
+
+Two-source decision-support question:
+
+```bash
+python demo_agent.py \
+  "Find the 5 highest-risk rural Centre-Based Care services in Queensland and explain what the relevant regulatory authority should consider before deciding how to respond." \
+  --show-trace
+```
+
+The second query should call both `find_high_risk_services` and `search_policy`.
+
+## 5. Milestone 3 live smoke test
+
+List the eight cases without spending API tokens:
+
+```bash
+python run_m3_smoke_tests.py --list
+```
+
+Run one critical case first:
+
+```bash
+python run_m3_smoke_tests.py --case M3-04
+```
+
+Then run the complete suite:
+
+```bash
+python run_m3_smoke_tests.py
+```
+
+Acceptance rule: at least **7/8** pass and all five critical cases pass.
+
+## Policy grounding design
+
+`search_policy` returns structured chunks containing:
+
+- stable `chunk_id`
+- source title
+- official source URL
+- section heading
+- authority/source type
+- retrieved excerpt
+- retrieval score
+- corpus retrieval timestamp
+
+The LLM must put returned chunk IDs into structured policy evidence. The runtime checks those IDs against the actual tool output. A fabricated policy chunk ID therefore causes a grounding failure. Human-readable source titles and URLs are then resolved by application code from the tool trace instead of being trusted from model text.
 
 ## Preserved risk definition
 
@@ -65,7 +170,7 @@ For the validated Centre-Based Care risk scope:
 - low authorised capacity: approved places <= national P25
 - gap score: sum of those three binary flags (0–3)
 
-Preserved values from the supplied notebook/data:
+Preserved values from the original notebook/data:
 
 - national P75 transport threshold: ~5.329 km
 - national P25 approved places threshold: 40
@@ -74,110 +179,45 @@ Preserved values from the supplied notebook/data:
 - QLD Rural CBC services eligible for full risk analysis: 193
 - QLD Rural CBC triple-gap services: 21
 
-## Run the deterministic test suite
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
-pytest -q
-```
-
-Expected for v0.2:
-
-```text
-13 passed
-```
-
-## Run the Single Agent MVP
-
-Set an API key and optionally override the model:
-
-```bash
-export OPENAI_API_KEY="sk-..."
-export ACECQA_AGENT_MODEL="gpt-5.6-terra"
-```
-
-Then run the milestone query:
-
-```bash
-python demo_agent.py \
-  "Find the highest-risk rural Centre-Based Care services in Queensland." \
-  --show-trace
-```
-
-Or return the full machine-readable run report:
-
-```bash
-python demo_agent.py \
-  "Find the highest-risk rural Centre-Based Care services in Queensland." \
-  --json
-```
-
-A grounded run should select `find_high_risk_services`, translate Queensland to `QLD`, use `Rural` + `Centre-Based Care`, and return evidence based on the deterministic tool result rather than model arithmetic.
-
-## Reliability boundaries
-
-- Risk thresholds are fixed from the national validated Centre-Based Care sample; state filters do not silently redefine them.
-- `approved places` is authorised capacity, **not** observed demand, enrolment, utilisation, waitlists, or unmet need.
-- Association is not causation.
-- Risk model v1 is Centre-Based Care only.
-- Policy RAG is intentionally not connected yet, so the agent must not invent ACECQA/NQS policy requirements or enforcement actions.
-
 ## Repository structure
 
 ```text
 acecqa-risk-agent/
 ├── data/
-│   └── education_services_cleaned.csv
-├── notebooks/
-│   └── QBUS6860_A1.ipynb
-├── docs/
-│   ├── ARCHITECTURE.md
-│   ├── DESIGN_DECISIONS.md
-│   ├── TOOL_SCHEMAS.md
-│   ├── MILESTONE_2.md
-│   └── tool_schemas.json
+│   ├── education_services_cleaned.csv
+│   └── policy/
+│       ├── sources.json
+│       ├── policy_chunks.jsonl        # generated locally
+│       └── corpus_manifest.json       # generated locally
 ├── src/acecqa_agent/
-│   ├── config.py
-│   ├── data_repository.py
-│   ├── schemas.py
-│   ├── agent/
-│   │   ├── runtime.py
-│   │   ├── openai_tools.py
-│   │   ├── tool_adapter.py
-│   │   ├── system_prompt.py
-│   │   └── tool_registry.py
-│   └── tools/
-│       ├── common.py
-│       ├── service_search.py
-│       ├── risk_analysis.py
-│       └── comparison.py
-├── tests/
-│   ├── test_tools.py
-│   ├── test_agent_tool_adapter.py
-│   └── test_agent_runtime_helpers.py
-├── examples/
-│   ├── qld_rural_top20.json
-│   └── qld_rural_tool_envelope.json
-├── demo_tools.py
+│   ├── rag/
+│   │   └── policy_repository.py
+│   ├── tools/
+│   │   ├── service_search.py
+│   │   ├── risk_analysis.py
+│   │   ├── comparison.py
+│   │   └── policy_search.py
+│   └── agent/
+│       ├── runtime.py
+│       ├── openai_tools.py
+│       ├── tool_adapter.py
+│       └── system_prompt.py
+├── scripts/
+│   ├── ingest_policy.py
+│   └── check_policy_corpus.py
+├── evals/
+│   ├── smoke_cases.json
+│   └── m3_cases.json
+├── docs/
+│   ├── MILESTONE_2.md
+│   ├── MILESTONE_3.md
+│   ├── POLICY_CORPUS.md
+│   └── ARCHITECTURE.md
 ├── demo_agent.py
-├── .env.example
-├── pyproject.toml
-└── requirements.txt
+├── demo_policy_search.py
+└── run_m3_smoke_tests.py
 ```
 
-## Next milestone
+## Next milestone after v0.3
 
-Milestone 3 will add **policy RAG as another tool**, not replace the deterministic data layer. The target becomes:
-
-```text
-structured service evidence
-          +
-ACECQA / NQS policy evidence
-          |
-          v
-Agent recommendation with two-source grounding
-```
-
-Scenario analysis and formal evals come after that.
+Once policy retrieval and two-source grounding pass the Milestone 3 smoke test, the next product feature is **Scenario Analysis**: allow an analyst to change transport/capacity thresholds and compare how the priority population changes without altering the validated default model.

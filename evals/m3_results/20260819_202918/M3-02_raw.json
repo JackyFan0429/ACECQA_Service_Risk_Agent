@@ -1,0 +1,143 @@
+{
+  "query": "Is ACECQA the national regulator that monitors and enforces compliance at services?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. State and territory regulatory authorities administer the NQF and monitor and enforce compliance with the National Law and Regulations at services. ACECQA is the national body that guides NQF implementation and works with those authorities; it is not the service-level national regulator.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "State and territory regulatory authorities are responsible for administering the NQF, including monitoring and enforcing compliance; ACECQA guides implementation and works with regulatory authorities.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1090",
+          "POL-guide_nqf_pdf-0015"
+        ]
+      }
+    ],
+    "methodology": [
+      "Policy interpretation based on retrieved official ACECQA Guide to the NQF material."
+    ],
+    "limitations": [
+      "The Guide to the NQF is official guidance, not legal advice; the National Law and Regulations take precedence."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_G4ZziN2bBSImLneYQPJ7AX79",
+      "arguments": {
+        "query": "ACECQA role state territory regulatory authorities monitor enforce compliance services National Quality Framework",
+        "topic": "acecqa_role",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_G4ZziN2bBSImLneYQPJ7AX79",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "ACECQA role state territory regulatory authorities monitor enforce compliance services National Quality Framework",
+          "topic": "acecqa_role",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 18.50705,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1337",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 727",
+              "excerpt": "authorities. Importantly, efficient, collaborative and streamlined communication between all parties furthers the objectives of the National Law, including to ensure the safety, health and wellbeing of children attending education and care services. Information is disclosed between regulatory authorities, ACECQA and Commonwealth in accordance with the National Law for the purposes of: • promoting the objectives of the NQF • assisting authorities and other government departments to perform or exercise their functions and powers under the National Law • research or the development of national, state or territory policy with respect to education and care services • the funding of education and care services • the payment of benefits or allowances to persons using education and care services • compliance, monitoring and enforcement, including with respect to working with children laws. Other disclosure obligations The National Law requires a regulatory authority to disclose to other regulatory authorities the suspension or cancellation of a working with children check, working with children card or teacher registration of a nominated supervisor. It also allows a regulatory authority to disclose a prohibition notice issued under the National Law to the head of the government department responsible for administering the working with children law in that jurisdiction. National Law Sections 271–273",
+              "retrieval_score": 18.451526,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0015",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 6: Reviews - PDF page 11",
+              "excerpt": "Guide to the NQF | Introduction 11 Guide to the NQF | Introduction The NQF aims to raise quality and drive continuous improvement and consistency in children’s education and care services through: • the National Law and National Regulations • the National Quality Standard • an assessment and quality rating process • national approved learning frameworks • a regulatory authority in each state and territory responsible for the approval, monitoring and quality assessment of services in their state or territory • a national body – ACECQA, which guides the implementation of the NQF and works with regulatory authorities. The delivery of the NQF is guided by set objectives and guidelines to ensure consistent and effective function. The National Quality Framework National Quality Standard Assessment and rating process by the regulatory authority Education and Care Services National Regulations Education and Care Services National Law Excellent (awarded by ACECQA) Exceeding National Quality Standard Meeting National Quality Standard Working Towards National Quality Standard Significant Improvement Required QA1 Educational program and practice QA2 Children’s health and safety QA3 Physical environment QA4 Staffing arrangements QA5 Relationships with children QA6 Collaborative partnerships with families and communities QA7 Governance and leadership Approved Learning Frameworks",
+              "retrieval_score": 16.929333,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1084",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 582",
+              "excerpt": "582 Operational Requirements | Other regulatory frameworks Operational Requirements | Other regulatory frameworks Other regulatory frameworks Interactions with other regulatory frameworks Approved providers, and to a lesser degree their staff, are subject to a variety of other legislative frameworks in addition to the Education and Care Services National Law and Regulations. Regulatory authorities are only responsible for monitoring and enforcing compliance with the National Law and Regulations. Authorised officers should be aware of other regulators of the education and care sector and have a basic understanding of their role so they are clear about boundaries. There will be occasions when authorised officers identify: • non-compliance under the National Law which may also constitute non- compliance under other legislation • non-compliance with other legislation. How authorised officers respond in these situations will depend on the seriousness of the issue and arrangements between the regulators in each state or territory. In some cases, the authorised officer may warn the approved provider that they appear to be in breach of other legislation; in more serious situations, the authorised officer may notify the relevant regulator. However, authorised officers are careful in these situations not to be drawn into issues of compliance outside their responsibility and expertise. Referencing other regulatory standards There are some situations where other regulatory standards can be a useful guide to aid interpretation of the National Law and Regulations.",
+              "retrieval_score": 16.42345,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1287",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 696",
+              "excerpt": "696 Regulatory Authority Powers | Offences Regulatory Authority Powers | Offences National Law Section 263 Complaints about privacy The National Law provides individuals with a right to complain to the National Education and Care Services Privacy Commissioner (NECS Privacy Commissioner) if they feel that a regulatory authority or ACECQA has mishandled their personal information. Contact details for the NECS Privacy Commissioner are available at www.necsopic.edu.au. National Law Section 264 Complaints about freedom of information The National Law also provides individuals with a right to complain to the National Education and Care Services Freedom of Information Commissioner (NECS FOI Commissioner) if they are not satisfied with how their freedom of information request has been handled by a regulatory authority or ACECQA. Contact details for the NECS FOI Commissioner are available at www.necsopic.edu.au. National Law Section 282 Complaints about administrative actions People with complaints about the administrative actions of ACECQA and regulatory authorities may complain to the Education and Care Services Ombudsman (about ACECQA) or the state or territory ombudsman of that jurisdiction (about regulatory authorities). It is important to remember that an ombudsman will not look at the decision itself but rather the process by which the decision was reached. Contact details for each ombudsman are set out below.",
+              "retrieval_score": 15.887781,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1090",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 586",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0015",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 6: Reviews - PDF page 11",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7047,
+    "output_tokens": 236,
+    "total_tokens": 7283
+  },
+  "latency_ms": 4169.4589580001775
+}

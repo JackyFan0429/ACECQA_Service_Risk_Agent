@@ -1,4 +1,4 @@
-"""CLI demo for milestone 2: natural language -> tool calls -> grounded answer."""
+"""CLI demo for milestone 3: analytics + policy retrieval -> grounded answer."""
 
 from __future__ import annotations
 
@@ -32,7 +32,15 @@ def main() -> None:
     if report.answer.evidence:
         print("\nEvidence")
         for item in report.answer.evidence:
-            print(f"- [{item.source_tool}] {item.claim}")
+            refs = f" ({', '.join(item.policy_chunk_ids)})" if item.policy_chunk_ids else ""
+            print(f"- [{item.source_tool}] {item.claim}{refs}")
+
+    if report.policy_sources:
+        print("\nPolicy sources")
+        for source in report.policy_sources:
+            section = f" — {source.section}" if source.section else ""
+            print(f"- [{source.chunk_id}] {source.source_title}{section}")
+            print(f"  {source.source_url}")
 
     if report.answer.methodology:
         print("\nMethodology")

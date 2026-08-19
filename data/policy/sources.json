@@ -1,0 +1,101 @@
+{
+  "version": "2026-08-19",
+  "publisher": "Australian Children's Education & Care Quality Authority (ACECQA)",
+  "notes": [
+    "Milestone 3 uses only curated official ACECQA pages as retrieval sources.",
+    "The Guide to the NQF is guidance and is not legal advice; the National Law and Regulations take precedence.",
+    "Refresh this corpus before a public demo because ACECQA guidance and legislation can change."
+  ],
+  "sources": [
+    {
+      "source_id": "guide_nqf_overview",
+      "title": "Guide to the National Quality Framework",
+      "url": "https://www.acecqa.gov.au/national-quality-framework/guide-nqf",
+      "source_kind": "guide",
+      "authority_level": "official_guidance",
+      "topics": ["nqf_overview", "legal_hierarchy", "guide_updates"],
+      "keywords": ["Guide to the NQF", "National Law", "National Regulations", "legal advice", "latest version"]
+    },
+    {
+      "source_id": "nqs_standard",
+      "title": "National Quality Standard",
+      "url": "https://www.acecqa.gov.au/nqf/national-quality-standard",
+      "source_kind": "official_webpage",
+      "authority_level": "official_guidance",
+      "topics": ["nqs", "quality_areas", "quality_ratings"],
+      "keywords": ["National Quality Standard", "NQS", "seven quality areas", "quality benchmark"]
+    },
+    {
+      "source_id": "assessment_rating_process",
+      "title": "Assessment and rating process",
+      "url": "https://www.acecqa.gov.au/assessment/assessment-and-rating-process",
+      "source_kind": "official_webpage",
+      "authority_level": "official_guidance",
+      "topics": ["assessment_rating", "working_towards_nqs", "quality_ratings"],
+      "keywords": ["Working Towards NQS", "Meeting NQS", "Significant Improvement Required", "assessment and rating"]
+    },
+    {
+      "source_id": "guide_section_3",
+      "title": "Guide to the NQF — Section 3: National Quality Standard and Assessment and Rating",
+      "url": "https://www.acecqa.gov.au/national-quality-framework/guide-nqf/section-3-national-quality-standard-and-assessment-and-rating",
+      "source_kind": "guide",
+      "authority_level": "official_guidance",
+      "topics": ["assessment_rating", "nqs", "quality_improvement", "qip"],
+      "keywords": ["Quality Improvement Plan", "QIP", "assessment history", "compliance history", "authorised officers"]
+    },
+    {
+      "source_id": "rating_system",
+      "title": "Guide to the NQF — The rating system",
+      "url": "https://www.acecqa.gov.au/national-quality-framework/guide-nqf/section-3-national-quality-standard-and-assessment-and-rating/assessment-and-rating-process/3-rating-system",
+      "source_kind": "guide",
+      "authority_level": "official_guidance",
+      "topics": ["quality_ratings", "working_towards_nqs", "significant_improvement_required"],
+      "keywords": ["rating levels", "Working Towards National Quality Standard", "Significant Improvement Required"]
+    },
+    {
+      "source_id": "regulatory_authority_powers",
+      "title": "Guide to the NQF — Section 5: Regulatory Authority Powers",
+      "url": "https://www.acecqa.gov.au/national-quality-framework/guide-nqf/section-5-regulatory-authority-powers",
+      "source_kind": "guide",
+      "authority_level": "official_guidance",
+      "topics": ["regulatory_powers", "monitoring", "enforcement", "proportionality", "risk"],
+      "keywords": ["regulatory authority", "monitoring", "enforcing compliance", "proportionate", "risk to children", "compliance history"]
+    },
+    {
+      "source_id": "compliance_tools",
+      "title": "Guide to the NQF — Compliance tools",
+      "url": "https://www.acecqa.gov.au/national-quality-framework/guide-nqf/section-5-regulatory-authority-powers/2-compliance-tools",
+      "source_kind": "guide",
+      "authority_level": "official_guidance",
+      "topics": ["compliance_tools", "enforcement", "proportionality", "good_regulatory_practice"],
+      "keywords": ["compliance tools", "non-compliance", "responsive regulatory approach", "proportionality", "transparency", "consistency"]
+    },
+    {
+      "source_id": "enforceable_undertakings",
+      "title": "Guide to the NQF — Enforceable undertakings",
+      "url": "https://www.acecqa.gov.au/national-quality-framework/guide-nqf/section-5-regulatory-authority-powers/3-enforceable-undertakings",
+      "source_kind": "guide",
+      "authority_level": "official_guidance",
+      "topics": ["compliance_tools", "enforceable_undertakings", "enforcement"],
+      "keywords": ["enforceable undertaking", "contravened", "potential breach", "voluntary action", "ongoing compliance"]
+    },
+    {
+      "source_id": "regulatory_authority_functions",
+      "title": "The functions and powers of regulatory authorities",
+      "url": "https://www.acecqa.gov.au/latest-news/functions-and-powers-regulatory-authorities",
+      "source_kind": "official_webpage",
+      "authority_level": "official_guidance",
+      "topics": ["regulatory_powers", "acecqa_role", "monitoring", "enforcement"],
+      "keywords": ["ACECQA is not the national regulator", "state and territory regulatory authority", "monitoring", "enforcing compliance"]
+    },
+    {
+      "source_id": "national_regulations",
+      "title": "National Regulations",
+      "url": "https://www.acecqa.gov.au/nqf/national-law-regulations/national-regulations",
+      "source_kind": "legislation_landing",
+      "authority_level": "legislation_reference",
+      "topics": ["national_regulations", "legal_hierarchy", "operational_requirements"],
+      "keywords": ["Education and Care Services National Regulations", "National Regulations", "operational requirements", "legal obligations"]
+    }
+  ]
+}

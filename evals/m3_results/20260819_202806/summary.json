@@ -1,0 +1,18 @@
+{
+  "rows": [
+    {
+      "id": "M3-01",
+      "critical": false,
+      "status": "PASS",
+      "tools": [
+        "search_policy"
+      ],
+      "failures": []
+    }
+  ],
+  "passed": 1,
+  "critical_pass": true,
+  "ready": false,
+  "total_tokens": 7554,
+  "latency_ms": 6527.158083001268
+}

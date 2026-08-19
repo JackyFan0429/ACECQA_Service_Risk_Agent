@@ -1,0 +1,84 @@
+{
+  "rows": [
+    {
+      "id": "M3-01",
+      "critical": false,
+      "status": "PASS",
+      "tools": [
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-02",
+      "critical": true,
+      "status": "PASS",
+      "tools": [
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-03",
+      "critical": false,
+      "status": "PASS",
+      "tools": [
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-04",
+      "critical": true,
+      "status": "PASS",
+      "tools": [
+        "find_high_risk_services",
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-05",
+      "critical": true,
+      "status": "PASS",
+      "tools": [
+        "calculate_risk_score",
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-06",
+      "critical": false,
+      "status": "PASS",
+      "tools": [
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-07",
+      "critical": true,
+      "status": "PASS",
+      "tools": [
+        "search_policy"
+      ],
+      "failures": []
+    },
+    {
+      "id": "M3-08",
+      "critical": true,
+      "status": "PASS",
+      "tools": [
+        "calculate_risk_score",
+        "search_policy"
+      ],
+      "failures": []
+    }
+  ],
+  "passed": 8,
+  "critical_pass": true,
+  "ready": true,
+  "total_tokens": 77747,
+  "latency_ms": 70518.59349999722
+}

@@ -13,6 +13,7 @@ from typing import Any, Callable
 
 from pydantic import BaseModel, ValidationError
 
+from acecqa_agent.rag import PolicyCorpusMissingError
 from acecqa_agent.schemas import (
     AnalyseQuartileOutcomesInput,
     AnalyseQuartileOutcomesOutput,
@@ -23,6 +24,8 @@ from acecqa_agent.schemas import (
     FindHighRiskOutput,
     GetServiceProfileInput,
     RiskAssessment,
+    PolicySearchInput,
+    PolicySearchOutput,
     SearchServicesInput,
     SearchServicesOutput,
     ServiceProfile,
@@ -33,6 +36,7 @@ from acecqa_agent.tools import (
     compare_transport_access,
     find_high_risk_services,
     get_service_profile,
+    search_policy,
     search_services,
 )
 
@@ -112,6 +116,19 @@ TOOL_SPECS: dict[str, ToolSpec] = {
         output_model=AnalyseQuartileOutcomesOutput,
         function=analyse_transport_quartile_outcomes,
     ),
+    "search_policy": ToolSpec(
+        name="search_policy",
+        description=(
+            "Retrieve grounded passages from the curated official ACECQA/NQF policy and guidance corpus. "
+            "Use this for the meaning of NQS ratings, assessment/rating process, regulatory authority powers, "
+            "monitoring, proportionality, compliance tools, NQF obligations, or policy-grounded recommendations. "
+            "For a recommendation that combines service risk data with regulatory guidance, call the relevant "
+            "analytics tool AND search_policy. Risk flags alone do not establish a legal breach."
+        ),
+        input_model=PolicySearchInput,
+        output_model=PolicySearchOutput,
+        function=search_policy,
+    ),
 }
 
 
@@ -154,6 +171,13 @@ def invoke_registered_tool(tool_name: str, arguments: str | dict[str, Any]) -> d
             "error_type": "ValidationError",
             "message": "Tool parameters failed schema validation.",
             "details": exc.errors(include_url=False),
+        }
+    except PolicyCorpusMissingError as exc:
+        return {
+            "ok": False,
+            "tool": tool_name,
+            "error_type": type(exc).__name__,
+            "message": str(exc),
         }
     except ValueError as exc:
         return {

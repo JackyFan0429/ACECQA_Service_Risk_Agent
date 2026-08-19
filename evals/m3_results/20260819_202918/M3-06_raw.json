@@ -1,0 +1,133 @@
+{
+  "query": "Can I treat the Guide to the NQF as legal advice, or what takes precedence?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. The **Guide to the NQF is not legal advice**. It is official guidance intended to help understand NQF requirements.\n\nThe **Education and Care Services National Law** and the **Education and Care Services National Regulations** take precedence over the Guide. Also check jurisdiction-specific changes: the Guide notes additional or substituted provisions in NSW and additional requirements in Victoria.\n\nFor a binding interpretation of an obligation or a service-specific legal issue, obtain appropriate legal advice and read the applicable Law and Regulations.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "The Guide states that it is not legal advice and that the National Law and National Regulations take precedence; it also identifies NSW and Victorian jurisdiction-specific legislative variations.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0013"
+        ]
+      }
+    ],
+    "methodology": [],
+    "limitations": [
+      "This is general information drawn from official guidance, not legal advice."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_Ut5uywo3RSoIqoGDZvNwZLxy",
+      "arguments": {
+        "query": "Guide to the NQF legal advice National Law and National Regulations take precedence",
+        "topic": "legal_hierarchy",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_Ut5uywo3RSoIqoGDZvNwZLxy",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "Guide to the NQF legal advice National Law and National Regulations take precedence",
+          "topic": "legal_hierarchy",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0013",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 6: Reviews - PDF page 10",
+              "excerpt": "10 Guide to the NQF | Introduction Guide to the NQF | Introduction Introduction Purpose of guide This guide aims to support education and care service providers, authorised officers and other regulatory authority staff understand the requirements under the National Quality Framework (NQF). The guide should always be read with the Education and Care Services National Law Act 2010 (National Law) and the Education and Care Services National Regulations 2011 (National Regulations). It is not legal advice, and the National Law and Regulations take precedence over any material in this guide. Please note a number of separate, jurisdiction specific legislative changes have commenced in New South Wales and Victoria. The Children (Education and Care Services) National Law (NSW) and associated regulations as they apply in NSW have been amended by the Children (Education and Care Services National Law Application) Act 2010 (NSW) and associated regulations. This means that in NSW there are additional and substituted provisions to the National Law. To understand your obligations under the National Quality Framework in NSW, this information must be read subject to the law as it applies in NSW. NSW legislation can be accessed at Children (Education and Care Services) National Law (NSW) 2010 and Education and Care Services National Regulations (NSW) 2025. Please visit the NSW Education website to understand the key differences and how to comply. Victoria has introduced some additional requirements for compliance with the National Quality Framework. These are set out in Part 2B of the Education and Care Services National Law Act 2010. For more information about Victoria-specific provisions, visit the Victorian Early Childhood Regulatory Authority’s website.",
+              "retrieval_score": 21.266729,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 11.107694,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1081",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 580",
+              "excerpt": "580 Guide to the NQF | Introduction Guide to the NQF | Introduction National Regulations Regulations 165, 169 Visitors to family day care residences and venues An approved provider must take all reasonable steps to ensure a record of all visitors to a family day care residence or approved family day care venue is kept. A family day care educator must keep a record of all adult visitors to the educator’s residence or venue while children are being educated and cared for at the residence or venue. The record must include the signature of the visitor and the time of arrival and departure. A sample (optional) template is included at the back of this section. This template may be adapted for use by individual services, or providers might develop their own. National Regulations Regulations 166, 169 The approved provider must take all reasonable steps to make sure a child being educated and cared for is not left alone with a visitor. The family day care educator must not leave a child being educated and cared for at the residence or venue alone with a visitor. An approved provider must have policies and procedures in place to ensure children are not left alone with visitors in a family day care residence or venue. See Supervising unauthorised persons below for information about who is considered to be a visitor under the National Law. National Law Section 170 TAS Supervising unauthorised persons An approved provider and nominated supervisor (except for those in Tasmania) must ensure an unauthorised person does not remain on the education and care service premises while children are being educated and cared for, unless the person is under the direct supervision of an educator or other staff member.",
+              "retrieval_score": 11.1042,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0020",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 6: Reviews - PDF page 14",
+              "excerpt": "14 Guide to the NQF | Introduction Guide to the NQF | Introduction Best practice is expected in the provision of education and care services Inherent within the NQF is a commitment to continuous improvement and striving for best practice underpins this commitment. While the NQF does not prescribe what best practice looks like, it encourages education and care services to draw on a range of current research, theory and understandings about early and middle childhood. This can provide educators with an understanding of best and most suitable practice in the unique and changing context of their service. The National Law and National Regulations The Education and Care Services National Law Act 2010 (National Law) and the Education and Care Services National Regulations 2011 (National Regulations) apply to most long day care, family day care, kindergarten/preschool and outside school hours care services in Australia. The national law and regulations detail the operational and legal requirements for an education and care service. The National Quality Standard The National Quality Standard (NQS) is part of the National Regulations. The NQS sets a national benchmark for the quality of education and care services and includes seven quality areas that are important to outcomes for children: QA1 Educational program and practice QA2 Children’s health and safety QA3 Physical environment QA4 Staffing arrangements QA5 Relationships with children QA6 Collaborative partnerships with families and communities QA7 Governance and leadership The NQS contains two or three standards in each quality area. These standards are high-level outcome statements. Under each standard are elements that describe the outcomes that contribute to the standard being achieved.",
+              "retrieval_score": 10.134791,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0015",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 6: Reviews - PDF page 11",
+              "excerpt": "Guide to the NQF | Introduction 11 Guide to the NQF | Introduction The NQF aims to raise quality and drive continuous improvement and consistency in children’s education and care services through: • the National Law and National Regulations • the National Quality Standard • an assessment and quality rating process • national approved learning frameworks • a regulatory authority in each state and territory responsible for the approval, monitoring and quality assessment of services in their state or territory • a national body – ACECQA, which guides the implementation of the NQF and works with regulatory authorities. The delivery of the NQF is guided by set objectives and guidelines to ensure consistent and effective function. The National Quality Framework National Quality Standard Assessment and rating process by the regulatory authority Education and Care Services National Regulations Education and Care Services National Law Excellent (awarded by ACECQA) Exceeding National Quality Standard Meeting National Quality Standard Working Towards National Quality Standard Significant Improvement Required QA1 Educational program and practice QA2 Children’s health and safety QA3 Physical environment QA4 Staffing arrangements QA5 Relationships with children QA6 Collaborative partnerships with families and communities QA7 Governance and leadership Approved Learning Frameworks",
+              "retrieval_score": 9.115766,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0013",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 6: Reviews - PDF page 10",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7261,
+    "output_tokens": 239,
+    "total_tokens": 7500
+  },
+  "latency_ms": 10229.512207995867
+}

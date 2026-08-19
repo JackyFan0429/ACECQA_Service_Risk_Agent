@@ -1383,5 +1383,212 @@
       "title": "AnalyseQuartileOutcomesOutput",
       "type": "object"
     }
+  },
+  "search_policy": {
+    "description": "Retrieve grounded passages from the curated official ACECQA/NQF policy and guidance corpus. Use this for the meaning of NQS ratings, assessment/rating process, regulatory authority powers, monitoring, proportionality, compliance tools, NQF obligations, or policy-grounded recommendations. For a recommendation that combines service risk data with regulatory guidance, call the relevant analytics tool AND search_policy. Risk flags alone do not establish a legal breach.",
+    "input_schema": {
+      "properties": {
+        "query": {
+          "maxLength": 500,
+          "minLength": 3,
+          "title": "Query",
+          "type": "string"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "enum": [
+                "nqf_overview",
+                "legal_hierarchy",
+                "guide_updates",
+                "nqs",
+                "quality_areas",
+                "quality_ratings",
+                "assessment_rating",
+                "working_towards_nqs",
+                "quality_improvement",
+                "qip",
+                "significant_improvement_required",
+                "regulatory_powers",
+                "monitoring",
+                "enforcement",
+                "proportionality",
+                "risk",
+                "compliance_tools",
+                "good_regulatory_practice",
+                "enforceable_undertakings",
+                "acecqa_role",
+                "national_regulations",
+                "operational_requirements"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Topic"
+        },
+        "top_k": {
+          "default": 5,
+          "maximum": 8,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "title": "PolicySearchInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "PolicySearchResult": {
+          "properties": {
+            "chunk_id": {
+              "title": "Chunk Id",
+              "type": "string"
+            },
+            "source_id": {
+              "title": "Source Id",
+              "type": "string"
+            },
+            "source_title": {
+              "title": "Source Title",
+              "type": "string"
+            },
+            "source_url": {
+              "title": "Source Url",
+              "type": "string"
+            },
+            "source_kind": {
+              "title": "Source Kind",
+              "type": "string"
+            },
+            "authority_level": {
+              "title": "Authority Level",
+              "type": "string"
+            },
+            "section": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Section"
+            },
+            "excerpt": {
+              "title": "Excerpt",
+              "type": "string"
+            },
+            "retrieval_score": {
+              "title": "Retrieval Score",
+              "type": "number"
+            },
+            "source_retrieved_at": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Source Retrieved At"
+            }
+          },
+          "required": [
+            "chunk_id",
+            "source_id",
+            "source_title",
+            "source_url",
+            "source_kind",
+            "authority_level",
+            "excerpt",
+            "retrieval_score"
+          ],
+          "title": "PolicySearchResult",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "query": {
+          "title": "Query",
+          "type": "string"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "enum": [
+                "nqf_overview",
+                "legal_hierarchy",
+                "guide_updates",
+                "nqs",
+                "quality_areas",
+                "quality_ratings",
+                "assessment_rating",
+                "working_towards_nqs",
+                "quality_improvement",
+                "qip",
+                "significant_improvement_required",
+                "regulatory_powers",
+                "monitoring",
+                "enforcement",
+                "proportionality",
+                "risk",
+                "compliance_tools",
+                "good_regulatory_practice",
+                "enforceable_undertakings",
+                "acecqa_role",
+                "national_regulations",
+                "operational_requirements"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Topic"
+        },
+        "corpus_chunk_count": {
+          "title": "Corpus Chunk Count",
+          "type": "integer"
+        },
+        "result_count": {
+          "title": "Result Count",
+          "type": "integer"
+        },
+        "results": {
+          "items": {
+            "$ref": "#/$defs/PolicySearchResult"
+          },
+          "title": "Results",
+          "type": "array"
+        },
+        "caveat": {
+          "title": "Caveat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query",
+        "corpus_chunk_count",
+        "result_count",
+        "results",
+        "caveat"
+      ],
+      "title": "PolicySearchOutput",
+      "type": "object"
+    }
   }
 }

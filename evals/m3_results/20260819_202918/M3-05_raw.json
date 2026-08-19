@@ -1,0 +1,200 @@
+{
+  "query": "How risky is service SE-40000427, and does that risk score prove the service is legally non-compliant?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**SE-40000427 (Napranum Early Childhood Centre) scores 3/3 gaps** under the validated v1 risk screen—the highest score. It is flagged for poor transport access (nearest public transport: 562.4 km), Working Towards NQS, and low authorised capacity (33 places).\n\n**No. This score does not prove legal non-compliance.** It is a prioritisation indicator, not a finding of breach or an automatic enforcement trigger. The relevant state or territory regulatory authority would need to consider service-specific evidence, risk to children, circumstances, and compliance history before deciding on monitoring, investigation, or any compliance response.",
+    "evidence": [
+      {
+        "source_tool": "calculate_risk_score",
+        "claim": "SE-40000427 is eligible for scoring and has a 3-gap score, with poor-access, weak-quality, and low-capacity flags; it is rated Working Towards NQS and has 33 authorised places.",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "Regulatory authorities administer and enforce the NQF, and responses should be proportionate and consider case circumstances, risk to children, and potentially compliance history.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1090",
+          "POL-guide_nqf_pdf-1293",
+          "POL-guide_nqf_pdf-1301"
+        ]
+      }
+    ],
+    "methodology": [
+      "The v1 score counts three fixed flags for eligible Centre-Based Care services: poor transport access, Working Towards NQS, and low authorised capacity. SE-40000427 meets all three."
+    ],
+    "limitations": [
+      "Authorised places are capacity approval data; they do not demonstrate enrolment, waitlists, utilisation, or unmet demand.",
+      "The score is a screening/prioritisation model, not evidence of a legal contravention. The retrieved Guide material is official guidance, not legal advice; the National Law and Regulations take precedence."
+    ]
+  },
+  "used_tools": [
+    "calculate_risk_score",
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_GNVCPPLhsvFCsXLMJ45CDZTg",
+      "arguments": {
+        "service_approval_number": "SE-40000427"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_GNVCPPLhsvFCsXLMJ45CDZTg",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "calculate_risk_score",
+        "data": {
+          "service_approval_number": "SE-40000427",
+          "service_name": "Napranum Early Childhood Centre",
+          "eligible_for_risk_scoring": true,
+          "gap_score": 3,
+          "gap_label": "3 gaps",
+          "poor_access_flag": true,
+          "weak_quality_flag": true,
+          "low_capacity_flag": true,
+          "nearest_public_transport_km": 562.3926437753009,
+          "overall_rating": "Working Towards NQS",
+          "number_of_approved_places": 33.0,
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "limitations": [
+            "Approved places measure authorised capacity, not enrolment, waitlists, unmet demand, or local demand."
+          ]
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_2Pveo4U0rFg4nmislD5MkxTB",
+      "arguments": {
+        "query": "risk-based monitoring compliance enforcement regulatory authority risk to children circumstances compliance history high risk is not proof non-compliance",
+        "topic": "risk",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 4,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_2Pveo4U0rFg4nmislD5MkxTB",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "risk-based monitoring compliance enforcement regulatory authority risk to children circumstances compliance history high risk is not proof non-compliance",
+          "topic": "risk",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1301",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 704",
+              "excerpt": "704 Regulatory Authority Powers | Good regulatory practice Regulatory Authority Powers | Good regulatory practice Risk can arise: • through any part of the environment where education and care is provided to children including the physical environment, staff members and other people at the service • from an action or through a failure to act • from systemic failure, such as a provider not having adequate systems in place to control for risk. Risk Matrix Consequences Likelihood Rare Unlikely Possible Likely Almost Certain Major Moderate High High Critical Critical Significant Moderate Moderate High High Critical Moderate Low Moderate Moderate High High Minor Very low Low Moderate Moderate Moderate Insignificant Very low Very low Low Moderate Moderate Likelihood The risk matrix includes five levels of likelihood, which are described below. When thinking about likelihood, regulatory authorities should take into account factors such as history of compliance, as well as readiness, willingness and ability to comply. It is also important to consider how soon an event might occur, as this will help decide the most suitable action for responding to the risk. Likelihood Description Rare Very unlikely – the event may occur only in exceptional circumstances Unlikely Improbable – the event is not likely to occur in normal circumstances Possible Potential – the event could occur at some time Likely Probable – the event will probably occur in most circumstances Almost certain Very likely – the event is expected to occur in most circumstances Consequence The risk matrix includes five levels of consequence: insignificant, minor, moderate, significant and major. This takes into account the impact, or potential impact, of an event including its scale and duration.",
+              "retrieval_score": 25.051228,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1286",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 695",
+              "excerpt": "ious or immediate risk to the health, safety and wellbeing of a child or children and whether it alleges that the safety, health or wellbeing of a child or children may have been compromised or there may have been a contravention of the National Law. In addition, the regulatory authority should consider: • the compliance history of the approved provider • the nature of any previous complaints against the service or provider. High Where the risk assessment indicates that there is a high risk to children and a high likelihood of harm eventuating, investigation into the complaint is a priority. Regulatory authorities should also consider whether other regulatory bodies need to be notified, such as the police or a child protection agency. Medium Where the risk assessment indicates a moderate risk to children and a moderate likelihood of harm eventuating, the complaint should be investigated as soon as reasonably practicable. Low Where the risk assessment indicates a low risk or no risk to children and a low likelihood of the harm eventuating, the complaint should be investigated in the normal course of the regulatory authority’s work. See Good Regulatory Practice for more information about how to conduct a risk assessment.",
+              "retrieval_score": 25.031472,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1293",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 699",
+              "excerpt": "ory measures should match the benefits that may be achieved, by improving outcomes for children or families, or reducing risk of harm. Regulatory effort should also be focussed where it will generate the greatest benefits from the resources employed. Actions should be targeted at areas where the largest gains can be made. Regulatory authorities should prioritise effort and resources to areas where, based on the available evidence, the potential benefits and risks are more significant. 3. Responsiveness and flexibility Regulatory authorities should be responsive and flexible by: • considering the full range of options available to them • tailoring their approach to account for the circumstances of each individual case • focusing on consistency of outcome • regularly reviewing their practice and operational policy to ensure it is evidence based, remains relevant and appropriate to changes in the sector. Regulatory authorities should be responsive to the particular circumstances of each region, location and provider. Regulatory authorities may adopt different approaches to the same or similar issues, owing to, for example, the prevalence of that issue, compliance history, the particular importance of the issue or other relevant differences across jurisdictions, or within a jurisdiction.",
+              "retrieval_score": 23.792771,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0185",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 102",
+              "excerpt": "102 Applications and Approvals | Waivers and other applications Applications and Approvals | Waivers and other applications If there is a systemic risk in relation to the applicant or one of their related providers, the regulatory authority can take any of the following steps if it is reasonably necessary to address that risk: • refuse to grant a service approval, based on a related provider’s history of compliance with the National Law • amend a service approval. If any of the grounds for suspension or cancellation of service approval (under sections 70 and 77) apply and there is a systemic risk in relation to the approved provider or a related provider, the regulatory authority can also suspend or cancel a service approval if is reasonably necessary to address that risk. Waivers When considering an application for a service waiver, the regulatory authority may consider a related provider’s compliance history with the National Law, including any education and care service operated by the related provider. 5.3 Notifications An approved provider that is a body corporate must notify the regulatory authority when 50% or more of the ownership or voting rights of the approved provider are acquired (see 7.3 Reporting information to the regulatory authority). 5.4 Enforcement action Compliance notices and directions A compliance direction or compliance notice can be given to an approved provider when the regulatory authority is satisfied that there is a systemic risk in relation to an approved provider or a related provider of an approved provider, and the direction or notice is reasonably necessary to address that risk.",
+              "retrieval_score": 23.67315,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 23.561868,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1090",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 586",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1293",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 699",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1301",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 704",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 3,
+    "input_tokens": 10150,
+    "output_tokens": 479,
+    "total_tokens": 10629
+  },
+  "latency_ms": 8536.15875000105
+}

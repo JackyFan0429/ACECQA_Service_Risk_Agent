@@ -1,0 +1,16 @@
+{
+  "built_at": "2026-08-19T10:07:01.107908+00:00",
+  "ingestion_mode": "local_official_pdf",
+  "publisher": "Australian Children's Education & Care Quality Authority (ACECQA)",
+  "source_count": 1,
+  "chunk_count": 1395,
+  "sources": [
+    {
+      "source_id": "guide_nqf_pdf",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "local_filename": "guide_to_nqf_2026_07.pdf",
+      "chunk_count": 1395
+    }
+  ]
+}

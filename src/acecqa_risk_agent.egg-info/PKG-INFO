@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: acecqa-risk-agent
+Version: 0.2.0
+Summary: Single-agent decision-support copilot with deterministic ACECQA analytics tools
+Requires-Python: >=3.10
+Requires-Dist: pandas<3,>=2.2
+Requires-Dist: pydantic<3,>=2.10
+Provides-Extra: agent
+Requires-Dist: openai-agents<1,>=0.16; extra == "agent"
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8; extra == "dev"
+Requires-Dist: openai-agents<1,>=0.16; extra == "dev"

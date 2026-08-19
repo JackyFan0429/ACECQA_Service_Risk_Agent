@@ -1,36 +1,15 @@
 import json
 from pathlib import Path
 
-from acecqa_agent.schemas import (
-    AnalyseQuartileOutcomesInput,
-    AnalyseQuartileOutcomesOutput,
-    CalculateRiskInput,
-    CompareTransportAccessInput,
-    CompareTransportAccessOutput,
-    FindHighRiskInput,
-    FindHighRiskOutput,
-    GetServiceProfileInput,
-    RiskAssessment,
-    SearchServicesInput,
-    SearchServicesOutput,
-    ServiceProfile,
-)
-
-TOOLS = {
-    "search_services": (SearchServicesInput, SearchServicesOutput),
-    "get_service_profile": (GetServiceProfileInput, ServiceProfile),
-    "calculate_risk_score": (CalculateRiskInput, RiskAssessment),
-    "find_high_risk_services": (FindHighRiskInput, FindHighRiskOutput),
-    "compare_transport_access": (CompareTransportAccessInput, CompareTransportAccessOutput),
-    "analyse_transport_quartile_outcomes": (AnalyseQuartileOutcomesInput, AnalyseQuartileOutcomesOutput),
-}
+from acecqa_agent.agent.tool_adapter import TOOL_SPECS
 
 payload = {
     name: {
-        "input_schema": input_model.model_json_schema(),
-        "output_schema": output_model.model_json_schema(),
+        "description": spec.description,
+        "input_schema": spec.input_model.model_json_schema(),
+        "output_schema": spec.output_model.model_json_schema(),
     }
-    for name, (input_model, output_model) in TOOLS.items()
+    for name, spec in TOOL_SPECS.items()
 }
 
 out = Path(__file__).parent / "docs" / "tool_schemas.json"

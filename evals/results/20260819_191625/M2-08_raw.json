@@ -1,0 +1,105 @@
+{
+  "query": "How does quality vary across transport-access quartiles for Centre-Based Care services?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "For Centre-Based Care nationally, the farthest transport-access quartile (Q4) has the highest share of services rated **Below Meeting NQS**: **10.9%**, versus **7.5%** in the closest quartile (Q1). Q2 and Q3 are **8.6%** and **8.3%**, respectively.\n\nThis is an observed association: poorer transport access coincides with a higher Below Meeting rate, but does not establish that transport access causes quality outcomes.",
+    "evidence": [
+      {
+        "source_tool": "analyse_transport_quartile_outcomes",
+        "claim": "Below Meeting rates by transport-access quartile were Q1 7.5% (3,964 services), Q2 8.6% (4,005), Q3 8.3% (3,996), and Q4 10.9% (4,006)."
+      },
+      {
+        "source_tool": "analyse_transport_quartile_outcomes",
+        "claim": "Q4 also had the lowest median authorised capacity (53.5 places), compared with 60 in Q1/Q2 and 68 in Q3."
+      }
+    ],
+    "methodology": [
+      "Compared the tool-defined national transport-access quartiles for Centre-Based Care, using the proportion of services with an overall NQS rating of Below Meeting."
+    ],
+    "limitations": [
+      "This is descriptive association, not causal evidence.",
+      "Quartile analysis does not measure demand, enrolments, utilisation, waitlists, or unmet need.",
+      "Approved places are authorised capacity only."
+    ]
+  },
+  "used_tools": [
+    "analyse_transport_quartile_outcomes"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "analyse_transport_quartile_outcomes",
+      "call_id": "call_K79AvwI2MK98MYjgdFYOH47L",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "service_type": "Centre-Based Care",
+        "min_group_size": 20
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "analyse_transport_quartile_outcomes",
+      "call_id": "call_K79AvwI2MK98MYjgdFYOH47L",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "analyse_transport_quartile_outcomes",
+        "data": {
+          "filters": {
+            "state": null,
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "min_group_size": 20,
+          "caveat": "Approved places are authorised capacity only. They do not establish actual demand, enrolment, waitlists, utilisation, or unmet need.",
+          "quartiles": [
+            {
+              "transport_access_quartile": "Q1 Closest",
+              "service_count": 3964,
+              "below_meeting_rate": 0.07467204843592332,
+              "approved_places_non_missing": 3963,
+              "median_approved_places": 60.0,
+              "mean_approved_places": 68.1630078223568
+            },
+            {
+              "transport_access_quartile": "Q2",
+              "service_count": 4005,
+              "below_meeting_rate": 0.08589263420724094,
+              "approved_places_non_missing": 4004,
+              "median_approved_places": 60.0,
+              "mean_approved_places": 70.66783216783217
+            },
+            {
+              "transport_access_quartile": "Q3",
+              "service_count": 3996,
+              "below_meeting_rate": 0.08283283283283284,
+              "approved_places_non_missing": 3996,
+              "median_approved_places": 68.0,
+              "mean_approved_places": 74.2927927927928
+            },
+            {
+              "transport_access_quartile": "Q4 Farthest",
+              "service_count": 4006,
+              "below_meeting_rate": 0.10858711932101847,
+              "approved_places_non_missing": 4006,
+              "median_approved_places": 53.5,
+              "mean_approved_places": 61.13554667998003
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 4082,
+    "output_tokens": 372,
+    "total_tokens": 4454
+  },
+  "latency_ms": 5836.444458000187
+}

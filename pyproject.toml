@@ -4,12 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "acecqa-risk-agent"
-version = "0.1.0"
-description = "Deterministic analytics core for an ACECQA regulatory prioritisation AI agent"
+version = "0.2.0"
+description = "Single-agent decision-support copilot with deterministic ACECQA analytics tools"
 requires-python = ">=3.10"
 dependencies = [
   "pandas>=2.2,<3",
   "pydantic>=2.10,<3",
+]
+
+[project.optional-dependencies]
+agent = [
+  "openai-agents>=0.16,<1",
+]
+dev = [
+  "pytest>=8,<9",
+  "openai-agents>=0.16,<1",
 ]
 
 [tool.setuptools.packages.find]

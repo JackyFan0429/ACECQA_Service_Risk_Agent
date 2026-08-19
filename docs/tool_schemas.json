@@ -1,5 +1,6 @@
 {
   "search_services": {
+    "description": "Filter or count services by state, urban/rural classification, service type, or exact overall NQS rating. Use this for factual lookup/listing questions. Do NOT use it to rank regulatory risk; use find_high_risk_services for prioritisation.",
     "input_schema": {
       "properties": {
         "state": {
@@ -282,6 +283,7 @@
     }
   },
   "get_service_profile": {
+    "description": "Return decision-relevant fields for one exact service approval number, including location, NQS rating, authorised capacity, and transport distances.",
     "input_schema": {
       "properties": {
         "service_approval_number": {
@@ -491,6 +493,7 @@
     }
   },
   "calculate_risk_score": {
+    "description": "Calculate the validated v1 three-gap risk assessment for one service approval number. Returns eligibility, the 0-3 gap score, component flags, thresholds, and limitations.",
     "input_schema": {
       "properties": {
         "service_approval_number": {
@@ -671,6 +674,7 @@
     }
   },
   "find_high_risk_services": {
+    "description": "Rank Centre-Based Care services for regulatory prioritisation using the deterministic v1 risk model. Use this when the user asks which services are highest risk, should be investigated first, or requests a priority/top-k list. If no top_k is specified, use 20. For the phrase highest-risk without another threshold, use minimum_gap_score=3 (triple-gap); use 2 for a broader high-risk candidate pool.",
     "input_schema": {
       "properties": {
         "state": {
@@ -946,6 +950,7 @@
     }
   },
   "compare_transport_access": {
+    "description": "Compare aggregate public-transport access statistics across urban/rural groups, states, or service types, optionally filtered by state or service type.",
     "input_schema": {
       "properties": {
         "state": {
@@ -1155,6 +1160,7 @@
     }
   },
   "analyse_transport_quartile_outcomes": {
+    "description": "Analyse NQS quality outcomes and authorised capacity across transport-access quartiles Q1-Q4. Use this for questions about whether poorer transport access is associated with quality or capacity patterns. It does not establish unmet demand or causality.",
     "input_schema": {
       "properties": {
         "state": {

@@ -1,0 +1,369 @@
+{
+  "suite": "milestone_2_single_agent_smoke_test",
+  "version": "1.1",
+  "pass_rule": {
+    "minimum_passed_cases": 11,
+    "critical_cases_must_all_pass": true,
+    "critical_case_ids": [
+      "M2-03",
+      "M2-09",
+      "M2-10",
+      "M2-12"
+    ]
+  },
+  "cases": [
+    {
+      "id": "M2-01",
+      "category": "routing_synonym",
+      "critical": false,
+      "query": "Which rural Centre-Based Care services in Queensland should regulators look at first?",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ]
+      },
+      "expected_args": {
+        "find_high_risk_services": {
+          "state": "QLD",
+          "urban_rural": "Rural",
+          "service_type": "Centre-Based Care",
+          "top_k": 20,
+          "minimum_gap_score": 3
+        }
+      },
+      "answer_checks": {
+        "must_contain_all": [
+          "21"
+        ]
+      },
+      "why": "Tests prioritisation intent plus Queensland -> QLD mapping."
+    },
+    {
+      "id": "M2-02",
+      "category": "routing_parameters",
+      "critical": false,
+      "query": "Show me the 10 highest-risk rural Centre-Based Care services in NSW.",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ]
+      },
+      "expected_args": {
+        "find_high_risk_services": {
+          "state": "NSW",
+          "urban_rural": "Rural",
+          "service_type": "Centre-Based Care",
+          "top_k": 10,
+          "minimum_gap_score": 3
+        }
+      },
+      "answer_checks": {},
+      "why": "Tests top_k and state parameter extraction."
+    },
+    {
+      "id": "M2-03",
+      "category": "search_vs_risk_scope",
+      "critical": true,
+      "query": "How many rural Centre-Based Care services are there in Queensland?",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ]
+      },
+      "expected_args": {
+        "search_services": {
+          "state": "QLD",
+          "urban_rural": "Rural",
+          "service_type": "Centre-Based Care"
+        }
+      },
+      "answer_checks": {
+        "must_contain_all": [
+          "227"
+        ]
+      },
+      "why": "Critical: full filtered population (227) must not be confused with the stricter risk-eligible population."
+    },
+    {
+      "id": "M2-04",
+      "category": "search_filter",
+      "critical": false,
+      "query": "Show me services rated Working Towards NQS in Victoria.",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ]
+      },
+      "expected_args": {
+        "search_services": {
+          "state": "VIC",
+          "overall_rating": "Working Towards NQS"
+        }
+      },
+      "answer_checks": {},
+      "why": "Tests rating filter routing without unnecessary ranking."
+    },
+    {
+      "id": "M2-05",
+      "category": "single_service_profile",
+      "critical": false,
+      "query": "Tell me about service SE-40000427.",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "get_service_profile"
+        ]
+      },
+      "expected_args": {
+        "get_service_profile": {
+          "service_approval_number": "SE-40000427"
+        }
+      },
+      "answer_checks": {
+        "must_contain_all": [
+          "SE-40000427",
+          "Napranum"
+        ]
+      },
+      "why": "Tests direct service lookup."
+    },
+    {
+      "id": "M2-06",
+      "category": "single_service_risk",
+      "critical": false,
+      "query": "How risky is SE-40000427 according to our current model?",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "calculate_risk_score"
+        ]
+      },
+      "expected_args": {
+        "calculate_risk_score": {
+          "service_approval_number": "SE-40000427"
+        }
+      },
+      "answer_checks": {
+        "must_contain_all": [
+          "SE-40000427"
+        ],
+        "must_contain_any_groups": [
+          [
+            "3/3",
+            "gap score 3",
+            "score of 3",
+            "3 gaps",
+            "triple-gap",
+            "3-gap",
+            "3 gap"
+          ]
+        ]
+      },
+      "why": "Tests validated single-service risk scoring."
+    },
+    {
+      "id": "M2-07",
+      "category": "comparison_routing",
+      "critical": false,
+      "query": "Compare public transport access between rural and urban Centre-Based Care services.",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_transport_access"
+        ]
+      },
+      "expected_args": {
+        "compare_transport_access": {
+          "service_type": "Centre-Based Care",
+          "group_by": "urban_rural"
+        }
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "rural",
+            "urban"
+          ]
+        ]
+      },
+      "why": "Tests aggregate comparison routing."
+    },
+    {
+      "id": "M2-08",
+      "category": "quartile_routing",
+      "critical": false,
+      "query": "How does quality vary across transport-access quartiles for Centre-Based Care services?",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "analyse_transport_quartile_outcomes"
+        ]
+      },
+      "expected_args": {
+        "analyse_transport_quartile_outcomes": {
+          "service_type": "Centre-Based Care"
+        }
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "quartile",
+            "q1",
+            "q4"
+          ]
+        ]
+      },
+      "why": "Tests quartile outcome analysis routing."
+    },
+    {
+      "id": "M2-09",
+      "category": "uncertainty_capacity",
+      "critical": true,
+      "query": "Does low approved capacity mean families in this area cannot find childcare?",
+      "require_tool": false,
+      "tool_expectation": {
+        "mode": "none",
+        "tools": []
+      },
+      "expected_args": {},
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "approved places",
+            "approved capacity",
+            "authorised capacity",
+            "authorized capacity"
+          ],
+          [
+            "cannot",
+            "does not",
+            "doesn't",
+            "not enough",
+            "insufficient",
+            "cannot conclude"
+          ],
+          [
+            "unmet demand",
+            "waitlist",
+            "waiting list",
+            "utilisation",
+            "utilization",
+            "enrolment",
+            "enrollment",
+            "demand"
+          ]
+        ]
+      },
+      "why": "Critical: capacity must not be treated as proof of unmet demand. No data tool is needed for this semantic boundary."
+    },
+    {
+      "id": "M2-10",
+      "category": "unsupported_scope",
+      "critical": true,
+      "query": "Find the highest-risk Family Day Care services in Queensland.",
+      "require_tool": false,
+      "tool_expectation": {
+        "mode": "none_or_allowed",
+        "tools": [
+          "find_high_risk_services"
+        ]
+      },
+      "expected_args": {},
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "family day care"
+          ],
+          [
+            "centre-based care",
+            "centre based care"
+          ],
+          [
+            "outside",
+            "scope",
+            "validated",
+            "not validated",
+            "cannot"
+          ]
+        ]
+      },
+      "why": "Critical: the v1 risk model must not be silently applied to Family Day Care. Calling find_high_risk_services and receiving its scope error is acceptable; refusing before the call is also acceptable."
+    },
+    {
+      "id": "M2-11",
+      "category": "ambiguous_business_language",
+      "critical": false,
+      "query": "Which Queensland services are struggling the most?",
+      "require_tool": true,
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ]
+      },
+      "expected_args": {
+        "find_high_risk_services": {
+          "state": "QLD",
+          "minimum_gap_score": 3
+        }
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "risk",
+            "transport",
+            "nqs",
+            "capacity",
+            "gap"
+          ]
+        ]
+      },
+      "why": "Tests whether ambiguous 'struggling' language is operationalised using the validated risk model rather than invented as a field."
+    },
+    {
+      "id": "M2-12",
+      "category": "hallucination_waitlist",
+      "critical": true,
+      "query": "Which of these high-risk services have long waiting lists?",
+      "require_tool": false,
+      "tool_expectation": {
+        "mode": "none",
+        "tools": []
+      },
+      "expected_args": {},
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "waitlist",
+            "waiting list"
+          ],
+          [
+            "cannot",
+            "can't",
+            "not available",
+            "does not contain",
+            "doesn't contain",
+            "no data",
+            "insufficient",
+            "does not include",
+            "doesn't include",
+            "not include"
+          ]
+        ]
+      },
+      "why": "Critical: current data contain no waiting-list evidence, so the agent must not invent it."
+    }
+  ]
+}

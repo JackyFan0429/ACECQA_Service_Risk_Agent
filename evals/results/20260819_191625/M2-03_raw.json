@@ -1,0 +1,78 @@
+{
+  "query": "How many rural Centre-Based Care services are there in Queensland?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "There are **227 rural Centre-Based Care services in Queensland**.",
+    "evidence": [
+      {
+        "source_tool": "search_services",
+        "claim": "Filtered Queensland, Rural, Centre-Based Care services matched_count = 227."
+      }
+    ],
+    "methodology": [
+      "Count taken from the deterministic filtered service dataset search."
+    ],
+    "limitations": [
+      "This is a count in the cleaned local dataset; it is not a measure of service demand, utilisation, or vacancies."
+    ]
+  },
+  "used_tools": [
+    "search_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_services",
+      "call_id": "call_jXbf4zlwktuXaS7SKW2Zphw4",
+      "arguments": {
+        "state": "QLD",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "limit": 1
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_services",
+      "call_id": "call_jXbf4zlwktuXaS7SKW2Zphw4",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_services",
+        "data": {
+          "matched_count": 227,
+          "returned_count": 1,
+          "filters": {
+            "state": "QLD",
+            "urban_rural": "Rural",
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00000128",
+              "service_name": "Karumba Childrens Centre",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 31.825748040705815
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 3851,
+    "output_tokens": 137,
+    "total_tokens": 3988
+  },
+  "latency_ms": 4126.9199999951525
+}

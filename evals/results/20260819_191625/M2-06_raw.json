@@ -1,0 +1,74 @@
+{
+  "query": "How risky is SE-40000427 according to our current model?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**SE-40000427 (Napranum Early Childhood Centre) is high risk under the current v1 model:** it has the maximum **3-gap score**.\n\nIt is flagged for poor transport access (nearest public transport: 562.4 km), weak quality outcome (Working Towards NQS), and low authorised capacity (33 places).",
+    "evidence": [
+      {
+        "source_tool": "calculate_risk_score",
+        "claim": "SE-40000427 is eligible for v1 risk scoring and has a 3-gap (maximum) score, with all three component flags present."
+      }
+    ],
+    "methodology": [
+      "The v1 score counts three fixed national Centre-Based Care gaps: poor transport access, weak quality outcome, and low authorised capacity."
+    ],
+    "limitations": [
+      "The model is a prioritisation signal, not a finding of non-compliance or a causal assessment.",
+      "Approved places are authorised capacity only; they do not measure enrolment, waitlists, utilisation, or unmet demand."
+    ]
+  },
+  "used_tools": [
+    "calculate_risk_score"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_MjVSP6Dvp5ScKd1Al9wrW13E",
+      "arguments": {
+        "service_approval_number": "SE-40000427"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_MjVSP6Dvp5ScKd1Al9wrW13E",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "calculate_risk_score",
+        "data": {
+          "service_approval_number": "SE-40000427",
+          "service_name": "Napranum Early Childhood Centre",
+          "eligible_for_risk_scoring": true,
+          "gap_score": 3,
+          "gap_label": "3 gaps",
+          "poor_access_flag": true,
+          "weak_quality_flag": true,
+          "low_capacity_flag": true,
+          "nearest_public_transport_km": 562.3926437753009,
+          "overall_rating": "Working Towards NQS",
+          "number_of_approved_places": 33.0,
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "limitations": [
+            "Approved places measure authorised capacity, not enrolment, waitlists, unmet demand, or local demand."
+          ]
+        }
+      }
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 3917,
+    "output_tokens": 258,
+    "total_tokens": 4175
+  },
+  "latency_ms": 6128.810707996308
+}

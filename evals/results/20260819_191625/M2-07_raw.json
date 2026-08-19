@@ -1,0 +1,80 @@
+{
+  "query": "Compare public transport access between rural and urban Centre-Based Care services.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Rural Centre-Based Care services have substantially poorer public-transport proximity than urban services.\n\n- **Rural:** 1,025 services; median distance to nearest transport **17.10 km** (mean 44.64 km; 75th percentile 42.19 km).\n- **Urban:** 14,946 services; median distance **2.13 km** (mean 6.95 km; 75th percentile 4.55 km).\n\nThe rural median is about eight times the urban median, indicating markedly less transport access in the rural service cohort.",
+    "evidence": [
+      {
+        "source_tool": "compare_transport_access",
+        "claim": "Aggregate transport-distance statistics for rural and urban Centre-Based Care services."
+      }
+    ],
+    "methodology": [
+      "Compared service counts and nearest-public-transport distance distributions by urban/rural classification for Centre-Based Care services nationally."
+    ],
+    "limitations": [
+      "Distance to nearest transport is a proximity measure, not a measure of service frequency, reliability, affordability, travel time, or family transport needs.",
+      "This comparison is descriptive and does not establish impacts on access, enrolment, demand, or service quality."
+    ]
+  },
+  "used_tools": [
+    "compare_transport_access"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_LmTEDnFe3Lqv2trhN5ZLMrPC",
+      "arguments": {
+        "state": null,
+        "service_type": "Centre-Based Care",
+        "group_by": "urban_rural"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_LmTEDnFe3Lqv2trhN5ZLMrPC",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_transport_access",
+        "data": {
+          "group_by": "urban_rural",
+          "filters": {
+            "state": null,
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "groups": [
+            {
+              "group": "Rural",
+              "service_count": 1025,
+              "median_nearest_transport_km": 17.096440372098517,
+              "mean_nearest_transport_km": 44.64086405899331,
+              "p75_nearest_transport_km": 42.18871544935613
+            },
+            {
+              "group": "Urban",
+              "service_count": 14946,
+              "median_nearest_transport_km": 2.1310775585545603,
+              "mean_nearest_transport_km": 6.954673483290405,
+              "p75_nearest_transport_km": 4.554211880612884
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 3885,
+    "output_tokens": 271,
+    "total_tokens": 4156
+  },
+  "latency_ms": 6145.637749999878
+}

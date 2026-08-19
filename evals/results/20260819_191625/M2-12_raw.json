@@ -1,0 +1,22 @@
+{
+  "query": "Which of these high-risk services have long waiting lists?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "I don’t have the referenced list of high-risk services, and this dataset does not include waiting-list data. Please provide the service names/approval numbers (or the earlier list) and a waitlist source if you want them matched.",
+    "evidence": [],
+    "methodology": [],
+    "limitations": [
+      "Approved places are authorised capacity only; they do not indicate waitlists, utilisation, enrolment pressure, or unmet demand.",
+      "Waiting-list and demand data are outside the connected milestone-2 dataset."
+    ]
+  },
+  "used_tools": [],
+  "tool_trace": [],
+  "usage": {
+    "requests": 1,
+    "input_tokens": 1837,
+    "output_tokens": 147,
+    "total_tokens": 1984
+  },
+  "latency_ms": 3150.831749997451
+}

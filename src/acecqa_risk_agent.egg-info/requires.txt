@@ -1,0 +1,9 @@
+pandas<3,>=2.2
+pydantic<3,>=2.10
+
+[agent]
+openai-agents<1,>=0.16
+
+[dev]
+pytest<9,>=8
+openai-agents<1,>=0.16

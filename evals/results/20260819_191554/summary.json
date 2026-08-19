@@ -1,0 +1,40 @@
+{
+  "suite": "milestone_2_single_agent_smoke_test",
+  "version": "1.0",
+  "model": "gpt-5.6-terra",
+  "passed": 1,
+  "total": 1,
+  "critical_all_passed": true,
+  "milestone_2_ready": false,
+  "total_tokens": 11159,
+  "total_latency_ms": 4235.252625003341,
+  "results": [
+    {
+      "case_id": "M2-03",
+      "category": "search_vs_risk_scope",
+      "critical": true,
+      "query": "How many rural Centre-Based Care services are there in Queensland?",
+      "passed": true,
+      "failures": [],
+      "used_tools": [
+        "search_services"
+      ],
+      "tool_arguments": {
+        "search_services": [
+          {
+            "state": "QLD",
+            "urban_rural": "Rural",
+            "service_type": "Centre-Based Care",
+            "overall_rating": null,
+            "limit": 100
+          }
+        ]
+      },
+      "answer": "There are **227** rural Centre-Based Care services in Queensland in the cleaned dataset.",
+      "requests": 2,
+      "total_tokens": 11159,
+      "latency_ms": 4235.252625003341,
+      "raw_report_file": "evals/results/20260819_191554/M2-03_raw.json"
+    }
+  ]
+}

@@ -1,56 +1,56 @@
 # ACECQA Service Risk Copilot
 
-A B2B decision-support AI Agent evolved from the QBUS6860 spatial/data analysis project.
+A B2B decision-support AI Agent evolved from a QBUS6860 spatial/data analysis project.
 
-> **LLM decides which evidence it needs; deterministic analytics decide the numbers; curated retrieval supplies policy context.**
+> **The LLM decides what evidence or simulation it needs; deterministic Python decides the numbers; curated retrieval supplies policy context.**
 
-## Current milestone: v0.3 Policy-grounded Single Agent
+## Current milestone: v0.4 Scenario Analysis
 
-Milestone 3 keeps the six deterministic service-analysis tools from v0.2 and adds a seventh tool, `search_policy`, backed by a curated local corpus built from official ACECQA/NQF pages.
+v0.4 preserves the stable analytics + policy-grounded agent from Milestones 1–3 and adds deterministic what-if analysis.
 
 ```text
 Natural-language question
         |
         v
 Single LLM Agent
-        |
-        +-----------------------------+
-        |                             |
-        v                             v
-6 deterministic                search_policy()
-analytics tools                local BM25 retrieval
-        |                             |
-        v                             v
-service data                    curated ACECQA/NQF corpus
-        |                             |
-        +-------------+---------------+
-                      v
-              GroundedAgentAnswer
-       data evidence + policy evidence
-       + methodology + limitations
+   /       |        \
+  v        v         v
+Analytics Scenario   Policy RAG
+ tools     tools     search_policy
+  \        |         /
+   +-------+--------+
+           v
+  Grounded decision support
 ```
 
-## Seven tools
+## Nine tools
 
-1. `search_services` — filtering, counts and factual listing
-2. `get_service_profile` — one service's decision-relevant fields
+1. `search_services` — factual filtering, counts and listing
+2. `get_service_profile` — one service profile
 3. `calculate_risk_score` — one service's validated 0–3 gap score
-4. `find_high_risk_services` — deterministic regulatory-priority ranking
-5. `compare_transport_access` — aggregate transport-access comparison
-6. `analyse_transport_quartile_outcomes` — NQS/capacity outcomes across transport quartiles
-7. `search_policy` — grounded retrieval from curated official ACECQA/NQF material
+4. `find_high_risk_services` — deterministic priority ranking
+5. `compare_transport_access` — aggregate transport comparison
+6. `analyse_transport_quartile_outcomes` — quality/capacity across transport quartiles
+7. `simulate_risk_thresholds` — compare a proposed threshold scenario with P75/P25 baseline
+8. `compare_risk_scenarios` — deterministic A/B scenario comparison
+9. `search_policy` — grounded retrieval from official ACECQA/NQF material
 
-## Why policy RAG is a tool
+## Scenario design
 
-The LLM is not allowed to invent policy. When a user asks what an NQS rating means, what a regulatory authority should consider, or what compliance tools exist, it must call `search_policy`. When a user asks for both a risk priority list and regulatory context, it must combine an analytics tool with `search_policy`.
+The default validated model is not overwritten. Scenario tools recompute hypothetical flags on the same national valid Centre-Based Care sample.
 
-Policy retrieval cannot modify the deterministic risk score or ranking.
+**Invariant:** P80 always means the 80th percentile of the national validated Centre-Based Care risk sample. Filtering to QLD or Rural changes the impact population, not the threshold definition.
 
-## Regulatory boundary
+Current deterministic regression values:
 
-The project uses the name ACECQA Service Risk Copilot because ACECQA is the national quality authority and the principal source used for NQF guidance. However, ACECQA is not the national regulator. State and territory regulatory authorities assess and rate services and monitor/enforce compliance under the NQF. The agent therefore uses "the relevant regulatory authority" when discussing possible regulatory response.
+- baseline P75 transport / P25 capacity: **162** national triple-gap services
+- P80 / P25: **149** (`-13`)
+- P70 / P30: **196**
+- P85 / P20: **111**
+- QLD Rural baseline: **21** triple-gap among **193** risk-eligible services
+- QLD Rural P80/P25: **20**
 
-A triple-gap score is a prioritisation signal, **not** evidence of a breach and **not** an automatic enforcement trigger.
+Scenario output is sensitivity analysis. It does not prove that a threshold is optimal, causal, fair, legally appropriate, or a basis for enforcement.
 
 ## Install
 
@@ -60,164 +60,86 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
-## 1. Build the policy corpus
-
-The repository contains an allow-list of official sources in `data/policy/sources.json`. Fetch and chunk them locally:
-
-```bash
-python scripts/ingest_policy.py
-python scripts/check_policy_corpus.py
-```
-
-This creates:
-
-```text
-data/policy/policy_chunks.jsonl
-data/policy/corpus_manifest.json
-```
-
-The generated corpus is intentionally not the source of truth forever. Refresh it before an important demo because ACECQA guidance and legislation can change.
-
-## 2. Test retrieval without an LLM
-
-```bash
-python demo_policy_search.py \
-  "What should regulators consider before deciding how to respond to a compliance issue?"
-```
-
-You should see ACECQA source URLs, section names, stable `POL-...` chunk IDs and BM25 scores.
-
-## 3. Run all offline tests
+## Offline tests
 
 ```bash
 pytest -q
 ```
 
-Expected for v0.3 code delivered in this milestone:
+Expected v0.4 result:
 
 ```text
-19 passed
+25 passed
 ```
 
-## 4. Run the live agent
+## Deterministic scenario demo — no API tokens
+
+```bash
+python demo_scenario.py --transport 0.80 --capacity 0.25
+```
+
+QLD Rural:
+
+```bash
+python demo_scenario.py \
+  --transport 0.80 \
+  --capacity 0.25 \
+  --state QLD \
+  --urban-rural Rural
+```
+
+## Live Agent scenario demo
 
 ```bash
 export OPENAI_API_KEY="sk-..."
-export ACECQA_AGENT_MODEL="gpt-5.6-terra"
 ```
-
-Policy-only question:
 
 ```bash
 python demo_agent.py \
-  "What does a Working Towards NQS rating mean?" \
+  "If poor transport changes from P75 to P80 while capacity stays P25, how does the national triple-gap priority pool change?" \
   --show-trace
 ```
 
-Two-source decision-support question:
+Expected tool: `simulate_risk_thresholds`.
+
+A/B comparison:
 
 ```bash
 python demo_agent.py \
-  "Find the 5 highest-risk rural Centre-Based Care services in Queensland and explain what the relevant regulatory authority should consider before deciding how to respond." \
+  "Compare a broad triple-gap scenario at P70 transport/P30 capacity with a strict scenario at P85/P20." \
   --show-trace
 ```
 
-The second query should call both `find_high_risk_services` and `search_policy`.
+Expected tool: `compare_risk_scenarios`.
 
-## 5. Milestone 3 live smoke test
-
-List the eight cases without spending API tokens:
+## Milestone 4 smoke test
 
 ```bash
-python run_m3_smoke_tests.py --list
+python run_m4_smoke_tests.py --list
+python run_m4_smoke_tests.py --case M4-02
+python run_m4_smoke_tests.py --pause 1
 ```
 
-Run one critical case first:
+Acceptance rule: at least **7/8** pass and all critical cases M4-02, M4-04, M4-06, M4-07 and M4-08 pass.
+
+## Policy corpus
+
+Milestone 3's policy corpus remains unchanged. The recommended ingestion path is the official versioned Guide to the NQF PDF:
 
 ```bash
-python run_m3_smoke_tests.py --case M3-04
+python scripts/ingest_policy.py --pdf data/policy/raw/guide_to_nqf_2026_07.pdf
+python scripts/check_policy_corpus.py
 ```
 
-Then run the complete suite:
+The Guide is guidance, not legal advice; the National Law and Regulations take precedence. State and territory regulatory authorities, not ACECQA, monitor and enforce service compliance.
 
-```bash
-python run_m3_smoke_tests.py
-```
+## Project status
 
-Acceptance rule: at least **7/8** pass and all five critical cases pass.
+- Milestone 1 — deterministic analytics: complete
+- Milestone 2 — Single Agent: passed (11/12, critical 4/4)
+- Milestone 3 — policy-grounded Agent: passed (8/8, critical 5/5)
+- Milestone 4 — scenario analysis: code ready; live acceptance pending
+- Milestone 5 — formal 40–60 query Eval: next after v0.4 freezes
+- Milestone 6 — FastAPI + frontend + Docker: final delivery stage
 
-## Policy grounding design
-
-`search_policy` returns structured chunks containing:
-
-- stable `chunk_id`
-- source title
-- official source URL
-- section heading
-- authority/source type
-- retrieved excerpt
-- retrieval score
-- corpus retrieval timestamp
-
-The LLM must put returned chunk IDs into structured policy evidence. The runtime checks those IDs against the actual tool output. A fabricated policy chunk ID therefore causes a grounding failure. Human-readable source titles and URLs are then resolved by application code from the tool trace instead of being trusted from model text.
-
-## Preserved risk definition
-
-For the validated Centre-Based Care risk scope:
-
-- poor transport access: nearest public transport distance >= national P75
-- weak quality: overall NQS rating below Meeting NQS
-- low authorised capacity: approved places <= national P25
-- gap score: sum of those three binary flags (0–3)
-
-Preserved values from the original notebook/data:
-
-- national P75 transport threshold: ~5.329 km
-- national P25 approved places threshold: 40
-- national triple-gap services: 162
-- QLD Rural CBC records in cleaned data: 227
-- QLD Rural CBC services eligible for full risk analysis: 193
-- QLD Rural CBC triple-gap services: 21
-
-## Repository structure
-
-```text
-acecqa-risk-agent/
-├── data/
-│   ├── education_services_cleaned.csv
-│   └── policy/
-│       ├── sources.json
-│       ├── policy_chunks.jsonl        # generated locally
-│       └── corpus_manifest.json       # generated locally
-├── src/acecqa_agent/
-│   ├── rag/
-│   │   └── policy_repository.py
-│   ├── tools/
-│   │   ├── service_search.py
-│   │   ├── risk_analysis.py
-│   │   ├── comparison.py
-│   │   └── policy_search.py
-│   └── agent/
-│       ├── runtime.py
-│       ├── openai_tools.py
-│       ├── tool_adapter.py
-│       └── system_prompt.py
-├── scripts/
-│   ├── ingest_policy.py
-│   └── check_policy_corpus.py
-├── evals/
-│   ├── smoke_cases.json
-│   └── m3_cases.json
-├── docs/
-│   ├── MILESTONE_2.md
-│   ├── MILESTONE_3.md
-│   ├── POLICY_CORPUS.md
-│   └── ARCHITECTURE.md
-├── demo_agent.py
-├── demo_policy_search.py
-└── run_m3_smoke_tests.py
-```
-
-## Next milestone after v0.3
-
-Once policy retrieval and two-source grounding pass the Milestone 3 smoke test, the next product feature is **Scenario Analysis**: allow an analyst to change transport/capacity thresholds and compare how the priority population changes without altering the validated default model.
+See `docs/MILESTONE_4.md`, `docs/SCENARIO_ANALYSIS.md`, and `docs/MILESTONE_4_INSTALL.md`.

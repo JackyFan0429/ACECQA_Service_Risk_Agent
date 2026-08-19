@@ -202,3 +202,129 @@ class PolicySearchOutput(BaseModel):
     result_count: int
     results: list[PolicySearchResult]
     caveat: str
+
+# ---------------------------------------------------------------------------
+# Milestone 4: deterministic scenario analysis
+# ---------------------------------------------------------------------------
+
+class ScenarioScope(BaseModel):
+    state: StateCode | None = None
+    urban_rural: UrbanRural | None = None
+
+
+class RiskScenarioDefinition(BaseModel):
+    label: str = Field(default="Scenario", min_length=1, max_length=80)
+    transport_percentile: float = Field(
+        default=0.75,
+        ge=0.50,
+        le=0.95,
+        description="National Centre-Based Care percentile as a decimal; 0.80 means P80.",
+    )
+    capacity_percentile: float = Field(
+        default=0.25,
+        ge=0.05,
+        le=0.50,
+        description="National Centre-Based Care percentile as a decimal; 0.20 means P20.",
+    )
+    minimum_gap_score: int = Field(
+        default=3,
+        ge=2,
+        le=3,
+        description="Minimum number of overlapping gaps required for the priority pool.",
+    )
+
+
+class ScenarioThresholds(BaseModel):
+    transport_percentile: float
+    transport_cutoff_km: float
+    capacity_percentile: float
+    capacity_cutoff_places: float
+    minimum_gap_score: int
+    threshold_scope: str
+
+
+class ScenarioPoolSummary(BaseModel):
+    eligible_service_count: int
+    priority_service_count: int
+    priority_rate: float
+
+
+class ScenarioGroupImpact(BaseModel):
+    group: str
+    eligible_service_count: int
+    baseline_priority_count: int
+    scenario_priority_count: int
+    change_count: int
+    change_percent: float | None = None
+
+
+class ScenarioChangedService(BaseModel):
+    service_approval_number: str
+    service_name: str | None = None
+    state: str | None = None
+    urban_rural: str | None = None
+    overall_rating: str | None = None
+    number_of_approved_places: float | None = None
+    nearest_public_transport_km: float | None = None
+
+
+class SimulateRiskThresholdsInput(ScenarioScope):
+    transport_percentile: float = Field(default=0.80, ge=0.50, le=0.95)
+    capacity_percentile: float = Field(default=0.25, ge=0.05, le=0.50)
+    minimum_gap_score: int = Field(default=3, ge=2, le=3)
+    changed_service_limit: int = Field(default=10, ge=0, le=50)
+
+
+class SimulateRiskThresholdsOutput(BaseModel):
+    scope: ScenarioScope
+    baseline_thresholds: ScenarioThresholds
+    scenario_thresholds: ScenarioThresholds
+    baseline: ScenarioPoolSummary
+    scenario: ScenarioPoolSummary
+    change_count: int
+    change_percent: float | None = None
+    overlap_count: int
+    added_count: int
+    removed_count: int
+    added_services: list[ScenarioChangedService]
+    removed_services: list[ScenarioChangedService]
+    by_state: list[ScenarioGroupImpact]
+    by_urban_rural: list[ScenarioGroupImpact]
+    interpretation_caveat: str
+
+
+class CompareRiskScenariosInput(ScenarioScope):
+    scenario_a: RiskScenarioDefinition
+    scenario_b: RiskScenarioDefinition
+    changed_service_limit: int = Field(default=10, ge=0, le=50)
+
+
+class ScenarioComparisonSide(BaseModel):
+    label: str
+    thresholds: ScenarioThresholds
+    pool: ScenarioPoolSummary
+
+
+class ScenarioABGroupImpact(BaseModel):
+    group: str
+    eligible_service_count: int
+    scenario_a_priority_count: int
+    scenario_b_priority_count: int
+    b_minus_a_count: int
+    b_vs_a_percent_change: float | None = None
+
+
+class CompareRiskScenariosOutput(BaseModel):
+    scope: ScenarioScope
+    scenario_a: ScenarioComparisonSide
+    scenario_b: ScenarioComparisonSide
+    b_minus_a_count: int
+    b_vs_a_percent_change: float | None = None
+    overlap_count: int
+    only_a_count: int
+    only_b_count: int
+    only_a_services: list[ScenarioChangedService]
+    only_b_services: list[ScenarioChangedService]
+    by_state: list[ScenarioABGroupImpact]
+    by_urban_rural: list[ScenarioABGroupImpact]
+    interpretation_caveat: str

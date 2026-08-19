@@ -29,6 +29,10 @@ from acecqa_agent.schemas import (
     SearchServicesInput,
     SearchServicesOutput,
     ServiceProfile,
+    SimulateRiskThresholdsInput,
+    SimulateRiskThresholdsOutput,
+    CompareRiskScenariosInput,
+    CompareRiskScenariosOutput,
 )
 from acecqa_agent.tools import (
     analyse_transport_quartile_outcomes,
@@ -38,6 +42,8 @@ from acecqa_agent.tools import (
     get_service_profile,
     search_policy,
     search_services,
+    simulate_risk_thresholds,
+    compare_risk_scenarios,
 )
 
 
@@ -115,6 +121,33 @@ TOOL_SPECS: dict[str, ToolSpec] = {
         input_model=AnalyseQuartileOutcomesInput,
         output_model=AnalyseQuartileOutcomesOutput,
         function=analyse_transport_quartile_outcomes,
+    ),
+    "simulate_risk_thresholds": ToolSpec(
+        name="simulate_risk_thresholds",
+        description=(
+            "Run deterministic sensitivity analysis against the fixed v1 P75 transport / P25 capacity "
+            "baseline. Use when the user asks what happens if a percentile threshold changes. Percentiles "
+            "are decimals such as 0.80 for P80 and are always calculated from the national validated "
+            "Centre-Based Care sample; state or rural/urban filters only scope the reported impact. "
+            "Returns threshold values, priority-pool counts, changes, subgroup impacts, and services entering "
+            "or leaving the pool. Do not calculate scenario counts yourself."
+        ),
+        input_model=SimulateRiskThresholdsInput,
+        output_model=SimulateRiskThresholdsOutput,
+        function=simulate_risk_thresholds,
+    ),
+    "compare_risk_scenarios": ToolSpec(
+        name="compare_risk_scenarios",
+        description=(
+            "Compare two arbitrary deterministic Centre-Based Care risk scenarios. Use when the user gives "
+            "Scenario A versus Scenario B, broad versus strict settings, or asks which assumption set creates "
+            "a larger/smaller priority pool. Threshold percentiles are always national; subgroup filters only "
+            "scope impacts. Returns A/B counts, overlap, differences, subgroup impacts, and services unique to "
+            "each scenario."
+        ),
+        input_model=CompareRiskScenariosInput,
+        output_model=CompareRiskScenariosOutput,
+        function=compare_risk_scenarios,
     ),
     "search_policy": ToolSpec(
         name="search_policy",

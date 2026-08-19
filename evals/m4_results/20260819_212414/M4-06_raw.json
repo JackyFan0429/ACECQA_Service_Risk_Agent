@@ -1,0 +1,300 @@
+{
+  "query": "The P80 transport / P25 capacity scenario identifies fewer services than the baseline. Does that prove P80 is a better policy threshold?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. Fewer services does not prove that P80 is a better policy threshold.\n\nIn this sensitivity test, moving transport from P75 to P80 (while retaining P25 capacity and triple-gap eligibility) reduces the priority pool from 162 to 149 services—a reduction of 13 (8.0%). That shows P80 is more selective, not that it is more accurate, fair, effective, or proportionate.\n\nA threshold choice should be tested against its intended regulatory objective and evidence such as whether it identifies services warranting review, its false-positive/false-negative trade-offs, distributional impacts, available resources, and outcomes after implementation. A risk-screen result is not evidence of non-compliance or an automatic enforcement trigger.\n\nRelevant regulatory authorities should use a proportionate, context-specific approach, considering risks to children, circumstances and—where relevant—compliance history. The Guide is guidance; the National Law and Regulations take precedence.",
+    "evidence": [
+      {
+        "source_tool": "simulate_risk_thresholds",
+        "claim": "National Centre-Based Care sensitivity analysis: the P75/P25 triple-gap baseline had 162 priority services, while P80/P25 had 149; 13 services (8.0%) left the pool. The tool states that scenario results do not establish optimal policy thresholds, legal non-compliance, or an automatic enforcement basis.",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "Official Guide material says regulatory responses should be proportionate and consider each case's circumstances, risks to children and potentially compliance history; regulatory effort should focus on greatest benefit and be evidence-guided.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1090",
+          "POL-guide_nqf_pdf-1292"
+        ]
+      }
+    ],
+    "methodology": [
+      "Compared the deterministic P80 transport/P25 capacity scenario against the fixed P75/P25 baseline, with a triple-gap minimum. Percentiles are set from the national validated Centre-Based Care sample."
+    ],
+    "limitations": [
+      "This is sensitivity analysis, not policy optimisation or causal evidence.",
+      "Approved capacity and transport-distance indicators do not establish demand, service non-compliance, or enforcement need."
+    ]
+  },
+  "used_tools": [
+    "simulate_risk_thresholds",
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "simulate_risk_thresholds",
+      "call_id": "call_jzzkKdtW7sSg3Cf99R4uTQtU",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "transport_percentile": 0.8,
+        "capacity_percentile": 0.25,
+        "minimum_gap_score": 3,
+        "changed_service_limit": 0
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "simulate_risk_thresholds",
+      "call_id": "call_jzzkKdtW7sSg3Cf99R4uTQtU",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "simulate_risk_thresholds",
+        "data": {
+          "scope": {
+            "state": null,
+            "urban_rural": null
+          },
+          "baseline_thresholds": {
+            "transport_percentile": 0.75,
+            "transport_cutoff_km": 5.329340006807538,
+            "capacity_percentile": 0.25,
+            "capacity_cutoff_places": 40.0,
+            "minimum_gap_score": 3,
+            "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+          },
+          "scenario_thresholds": {
+            "transport_percentile": 0.8,
+            "transport_cutoff_km": 6.744341249608515,
+            "capacity_percentile": 0.25,
+            "capacity_cutoff_places": 40.0,
+            "minimum_gap_score": 3,
+            "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+          },
+          "baseline": {
+            "eligible_service_count": 15969,
+            "priority_service_count": 162,
+            "priority_rate": 0.01014465526958482
+          },
+          "scenario": {
+            "eligible_service_count": 15969,
+            "priority_service_count": 149,
+            "priority_rate": 0.009330577994865051
+          },
+          "change_count": -13,
+          "change_percent": -8.024691358024691,
+          "overlap_count": 149,
+          "added_count": 0,
+          "removed_count": 13,
+          "added_services": [],
+          "removed_services": [],
+          "by_state": [
+            {
+              "group": "ACT",
+              "eligible_service_count": 350,
+              "baseline_priority_count": 3,
+              "scenario_priority_count": 2,
+              "change_count": -1,
+              "change_percent": -33.33333333333333
+            },
+            {
+              "group": "NSW",
+              "eligible_service_count": 5526,
+              "baseline_priority_count": 31,
+              "scenario_priority_count": 27,
+              "change_count": -4,
+              "change_percent": -12.903225806451612
+            },
+            {
+              "group": "NT",
+              "eligible_service_count": 212,
+              "baseline_priority_count": 10,
+              "scenario_priority_count": 9,
+              "change_count": -1,
+              "change_percent": -10.0
+            },
+            {
+              "group": "QLD",
+              "eligible_service_count": 3014,
+              "baseline_priority_count": 32,
+              "scenario_priority_count": 30,
+              "change_count": -2,
+              "change_percent": -6.25
+            },
+            {
+              "group": "SA",
+              "eligible_service_count": 1207,
+              "baseline_priority_count": 35,
+              "scenario_priority_count": 31,
+              "change_count": -4,
+              "change_percent": -11.428571428571429
+            },
+            {
+              "group": "TAS",
+              "eligible_service_count": 215,
+              "baseline_priority_count": 5,
+              "scenario_priority_count": 4,
+              "change_count": -1,
+              "change_percent": -20.0
+            },
+            {
+              "group": "VIC",
+              "eligible_service_count": 4155,
+              "baseline_priority_count": 20,
+              "scenario_priority_count": 20,
+              "change_count": 0,
+              "change_percent": 0.0
+            },
+            {
+              "group": "WA",
+              "eligible_service_count": 1290,
+              "baseline_priority_count": 26,
+              "scenario_priority_count": 26,
+              "change_count": 0,
+              "change_percent": 0.0
+            }
+          ],
+          "by_urban_rural": [
+            {
+              "group": "Rural",
+              "eligible_service_count": 1025,
+              "baseline_priority_count": 72,
+              "scenario_priority_count": 70,
+              "change_count": -2,
+              "change_percent": -2.7777777777777777
+            },
+            {
+              "group": "Urban",
+              "eligible_service_count": 14944,
+              "baseline_priority_count": 90,
+              "scenario_priority_count": 79,
+              "change_count": -11,
+              "change_percent": -12.222222222222221
+            }
+          ],
+          "interpretation_caveat": "Scenario results are sensitivity analysis for a prioritisation screen. They do not show causal effects, optimal policy thresholds, unmet demand, legal non-compliance, or an automatic basis for enforcement."
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_UAt26IS4Pck1R0xxjY9tA8Dw",
+      "arguments": {
+        "query": "risk-based regulatory approach proportionality compliance history circumstances risk to children monitoring enforcement",
+        "topic": "proportionality",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 4,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_UAt26IS4Pck1R0xxjY9tA8Dw",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "risk-based regulatory approach proportionality compliance history circumstances risk to children monitoring enforcement",
+          "topic": "proportionality",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 22.723035,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1096",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 590",
+              "excerpt": "590 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement 2. Compliance tools There are a wide range of methods and tools regulatory authorities may use when addressing non-compliance. This section sets out the tools that are available under the National Law and provides guidance on which tool to use, based on the specific circumstances. These tools should be used in context of the Good Regulatory Practice section, which sets out the objectives of the National Law and the best practice principles of regulation listed below. Best practice principles of regulation Outcomes focus Proportionality and efficiency Responsiveness and flexibility Transparency and accountability Independence Communication and engagement Mutual responsibility Consistency and predictability. Regulatory authorities: • take a responsive regulatory approach when choosing the methods used to manage non-compliance, considering all the risks • are mindful of their administrative law obligations and keep records of compliance activities (see Good Regulatory Practice). The NSW State Records Act 1998 applies to all jurisdictions for the purposes of the National Law and Regulations (section 265) • must commence proceedings within two years of becoming aware of an alleged offence (section 284). If the alleged offence is being investigated by another entity under a different Act, the two-year period to commence proceedings doesn’t apply while the other case is in progress. Once the other case is finalised, the regulatory authority has two years to commence proceedings.",
+              "retrieval_score": 18.285385,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1292",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 699",
+              "excerpt": "Regulatory Authority Powers | Good regulatory practice 699Regulatory Authority Powers | Good regulatory practice Best practice regulation principles Regulatory authorities and ACECQA are guided by best practice regulation principles in the day-to-day implementation of the National Law. The nine principles below apply to all regulatory work, from education and information giving, to investigation and enforcement. 1. Outcomes focused Regulatory actions should not be seen as ends in themselves. They should promote improved quality outcomes for children and families, and further the objectives of the National Law. All activities of regulatory authorities should: • be clearly focussed on the underlying regulatory objectives • represent the course of action(s) that is likely to achieve these objectives in the most effective and efficient manner • be integrated and aligned, that is, they work towards common purposes and objectives • be flexible and innovative, achieving the best regulatory outcome in the particular circumstances of each case. Regulatory authorities should be guided by evidence and the objectives of the National Law to regularly review the effectiveness of regulatory actions. 2. Proportionality and efficiency The design and application of regulation should be proportionate to the problem or issue it is seeking to address. Proportionality involves ensuring that regulatory measures do not ‘overreach’, or extend beyond achieving an identified objective or addressing a specific problem. The scope and nature of regulatory measures should match the benefits that may be achieved, by improving outcomes for children or families, or reducing risk of harm. Regulatory effort should also be focussed where it will generate the greatest benefits from the resources employed.",
+              "retrieval_score": 13.939269,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1120",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 604",
+              "excerpt": "604 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement Compliance notices are intended to compel approved providers to comply with their legislative obligations. This tool is particularly useful when it is appropriate to give the provider some time to take a specific action to comply with a requirement, but the regulatory authority wants to use a strong lever to make sure the provider complies. Once satisfied that this tool can be used, a regulatory authority may consider the following in deciding whether a compliance notice is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? How can it be used? A compliance notice may be issued in accordance with the requirements of the National Law about serving notices (see Serving notices). The notice must set out how long the approved provider has to comply. The period cannot be shorter than 14 calendar days. The compliance notice should be accompanied by information about the approved provider’s right to an internal review of the decision, under section 190 of the National Law (see Reviews). National Law Section 190 Can it be reviewed? A decision to give a compliance notice is subject to review under the National Law (see Reviews).",
+              "retrieval_score": 12.568992,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1114",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 600",
+              "excerpt": "given to an approved provider when the regulatory authority is satisfied that there is a systemic risk in relation to an approved provider or a related provider of an approved provider, and the direction is reasonably necessary to address that risk. A regulatory authority may consider the following in deciding whether a compliance direction is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? Requirements for which a compliance direction can be given to the approved provider Regulation Requirement 55(1) Quality improvement plan 72(1), (2) Offences in relation to giving false or misleading statements about ratings 74(1) Documenting child assessments or evaluations for delivery of educational program 75 Information about educational program to be kept available 76 Information about educational program to be given to parents 77(1) Health, hygiene and safe food practices",
+              "retrieval_score": 12.417858,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1090",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 586",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1292",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 699",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 3,
+    "input_tokens": 14653,
+    "output_tokens": 562,
+    "total_tokens": 15215
+  },
+  "latency_ms": 14488.154457998462
+}

@@ -1,0 +1,108 @@
+[
+  {
+    "id": "M4-01",
+    "critical": false,
+    "query": "Use scenario analysis to simulate the current P75 transport / P25 capacity triple-gap settings against the current baseline. How many services change nationally?",
+    "required_tools": ["simulate_risk_thresholds"],
+    "answer_any": ["162", "no change", "0"],
+    "expected_outputs": [
+      {"tool": "simulate_risk_thresholds", "path": "data.baseline.priority_service_count", "equals": 162},
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario.priority_service_count", "equals": 162},
+      {"tool": "simulate_risk_thresholds", "path": "data.change_count", "equals": 0}
+    ]
+  },
+  {
+    "id": "M4-02",
+    "critical": true,
+    "query": "If poor transport changes from the current P75 definition to P80 while low capacity stays at P25, how does the national triple-gap priority pool change?",
+    "required_tools": ["simulate_risk_thresholds"],
+    "answer_any": ["149", "13", "8.0%", "8%"],
+    "expected_arguments": [
+      {"tool": "simulate_risk_thresholds", "path": "transport_percentile", "equals": 0.8},
+      {"tool": "simulate_risk_thresholds", "path": "capacity_percentile", "equals": 0.25},
+      {"tool": "simulate_risk_thresholds", "path": "minimum_gap_score", "equals": 3}
+    ],
+    "expected_outputs": [
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario.priority_service_count", "equals": 149},
+      {"tool": "simulate_risk_thresholds", "path": "data.change_count", "equals": -13},
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario_thresholds.transport_cutoff_km", "approx": 6.744341249608515, "tolerance": 0.000001}
+    ]
+  },
+  {
+    "id": "M4-03",
+    "critical": false,
+    "query": "For rural Queensland Centre-Based Care, what happens to the triple-gap priority pool if transport moves to P80 and capacity remains P25?",
+    "required_tools": ["simulate_risk_thresholds"],
+    "answer_any": ["21", "20", "one", "1"],
+    "expected_arguments": [
+      {"tool": "simulate_risk_thresholds", "path": "state", "equals": "QLD"},
+      {"tool": "simulate_risk_thresholds", "path": "urban_rural", "equals": "Rural"}
+    ],
+    "expected_outputs": [
+      {"tool": "simulate_risk_thresholds", "path": "data.baseline.eligible_service_count", "equals": 193},
+      {"tool": "simulate_risk_thresholds", "path": "data.baseline.priority_service_count", "equals": 21},
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario.priority_service_count", "equals": 20}
+    ]
+  },
+  {
+    "id": "M4-04",
+    "critical": true,
+    "query": "Compare Scenario A, a broad triple-gap screen using P70 transport / P30 capacity, with Scenario B, a strict screen using P85 transport / P20 capacity. How large is each national priority pool?",
+    "required_tools": ["compare_risk_scenarios"],
+    "answer_any": ["196", "111", "85"],
+    "expected_outputs": [
+      {"tool": "compare_risk_scenarios", "path": "data.scenario_a.pool.priority_service_count", "equals": 196},
+      {"tool": "compare_risk_scenarios", "path": "data.scenario_b.pool.priority_service_count", "equals": 111},
+      {"tool": "compare_risk_scenarios", "path": "data.b_minus_a_count", "equals": -85}
+    ]
+  },
+  {
+    "id": "M4-05",
+    "critical": false,
+    "query": "If we move only the transport threshold from P75 to P80, which states lose the most triple-gap services?",
+    "required_tools": ["simulate_risk_thresholds"],
+    "answer_any": ["NSW", "South Australia", "SA", "4"],
+    "expected_outputs": [
+      {"tool": "simulate_risk_thresholds", "path": "data.change_count", "equals": -13}
+    ]
+  },
+  {
+    "id": "M4-06",
+    "critical": true,
+    "query": "The P80 transport / P25 capacity scenario identifies fewer services than the baseline. Does that prove P80 is a better policy threshold?",
+    "required_tools": ["simulate_risk_thresholds"],
+    "answer_any": ["does not prove", "not prove", "sensitivity", "not necessarily", "cannot conclude"],
+    "forbidden_any": ["proves p80 is better", "therefore p80 is better"],
+    "expected_outputs": [
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario.priority_service_count", "equals": 149}
+    ]
+  },
+  {
+    "id": "M4-07",
+    "critical": true,
+    "query": "For rural Queensland, test P80 transport / P25 capacity. Recalculate P80 using only Queensland rural services so the threshold is local.",
+    "required_tools": ["simulate_risk_thresholds"],
+    "answer_any": ["national", "do not", "does not", "validated sample", "subgroup"],
+    "expected_arguments": [
+      {"tool": "simulate_risk_thresholds", "path": "state", "equals": "QLD"},
+      {"tool": "simulate_risk_thresholds", "path": "urban_rural", "equals": "Rural"},
+      {"tool": "simulate_risk_thresholds", "path": "transport_percentile", "equals": 0.8}
+    ],
+    "expected_outputs": [
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario_thresholds.transport_cutoff_km", "approx": 6.744341249608515, "tolerance": 0.000001},
+      {"tool": "simulate_risk_thresholds", "path": "data.scenario.priority_service_count", "equals": 20}
+    ]
+  },
+  {
+    "id": "M4-08",
+    "critical": true,
+    "query": "Compare triple-gap Scenario A at P75 transport / P25 capacity with Scenario B at P80 transport / P25 capacity. How many services leave or enter the priority pool?",
+    "required_tools": ["compare_risk_scenarios"],
+    "answer_any": ["13", "leave", "none", "0"],
+    "expected_outputs": [
+      {"tool": "compare_risk_scenarios", "path": "data.only_a_count", "equals": 13},
+      {"tool": "compare_risk_scenarios", "path": "data.only_b_count", "equals": 0},
+      {"tool": "compare_risk_scenarios", "path": "data.overlap_count", "equals": 149}
+    ]
+  }
+]

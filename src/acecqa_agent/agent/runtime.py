@@ -1,4 +1,4 @@
-"""Single-agent runtime for ACECQA Service Risk Copilot milestone 3."""
+"""Single-agent runtime for ACECQA Service Risk Copilot milestone 4."""
 
 from __future__ import annotations
 
@@ -24,6 +24,8 @@ AgentToolName = Literal[
     "compare_transport_access",
     "analyse_transport_quartile_outcomes",
     "search_policy",
+    "simulate_risk_thresholds",
+    "compare_risk_scenarios",
 ]
 
 

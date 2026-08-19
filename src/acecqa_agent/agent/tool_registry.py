@@ -1,8 +1,7 @@
-"""Single-Agent tool registry.
+"""Framework-neutral deterministic tool registry for the Single Agent.
 
-The LLM layer will be added on top of this registry. Keeping the registry framework-neutral
-means the same deterministic tools can later be exposed via OpenAI Agents SDK, LangGraph,
-or MCP without rewriting the analytics logic.
+The same business tools can later be exposed through another runtime or MCP without
+rewriting the analytics/scenario logic.
 """
 
 from acecqa_agent.tools import (
@@ -12,6 +11,8 @@ from acecqa_agent.tools import (
     find_high_risk_services,
     get_service_profile,
     search_policy,
+    simulate_risk_thresholds,
+    compare_risk_scenarios,
     search_services,
 )
 
@@ -23,4 +24,6 @@ TOOL_REGISTRY = {
     "compare_transport_access": compare_transport_access,
     "analyse_transport_quartile_outcomes": analyse_transport_quartile_outcomes,
     "search_policy": search_policy,
+    "simulate_risk_thresholds": simulate_risk_thresholds,
+    "compare_risk_scenarios": compare_risk_scenarios,
 }

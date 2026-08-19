@@ -1,4 +1,4 @@
-# Tool schemas — v0.3
+# Tool schemas — v0.4
 
 The exact machine-readable schemas are generated from Pydantic models into `docs/tool_schemas.json`.
 
@@ -71,7 +71,44 @@ Compare NQS quality outcomes and authorised capacity across national transport-a
 
 This tool does not infer demand or causality.
 
-## 7. `search_policy`
+
+## 7. `simulate_risk_thresholds`
+
+Compare one proposed percentile setting with the fixed P75/P25 baseline. Percentiles are always computed from the national validated Centre-Based Care sample.
+
+```json
+{
+  "transport_percentile": 0.80,
+  "capacity_percentile": 0.25,
+  "minimum_gap_score": 3,
+  "state": "QLD",
+  "urban_rural": "Rural",
+  "changed_service_limit": 10
+}
+```
+
+## 8. `compare_risk_scenarios`
+
+Compare two deterministic assumption sets without asking the LLM to calculate counts or differences.
+
+```json
+{
+  "scenario_a": {
+    "label": "Broad",
+    "transport_percentile": 0.70,
+    "capacity_percentile": 0.30,
+    "minimum_gap_score": 3
+  },
+  "scenario_b": {
+    "label": "Strict",
+    "transport_percentile": 0.85,
+    "capacity_percentile": 0.20,
+    "minimum_gap_score": 3
+  }
+}
+```
+
+## 9. `search_policy`
 
 Retrieve grounded passages from the locally built curated ACECQA/NQF corpus.
 

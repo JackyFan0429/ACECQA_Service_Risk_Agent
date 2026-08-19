@@ -1384,6 +1384,865 @@
       "type": "object"
     }
   },
+  "simulate_risk_thresholds": {
+    "description": "Run deterministic sensitivity analysis against the fixed v1 P75 transport / P25 capacity baseline. Use when the user asks what happens if a percentile threshold changes. Percentiles are decimals such as 0.80 for P80 and are always calculated from the national validated Centre-Based Care sample; state or rural/urban filters only scope the reported impact. Returns threshold values, priority-pool counts, changes, subgroup impacts, and services entering or leaving the pool. Do not calculate scenario counts yourself.",
+    "input_schema": {
+      "properties": {
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "urban_rural": {
+          "anyOf": [
+            {
+              "enum": [
+                "Urban",
+                "Rural"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Urban Rural"
+        },
+        "transport_percentile": {
+          "default": 0.8,
+          "maximum": 0.95,
+          "minimum": 0.5,
+          "title": "Transport Percentile",
+          "type": "number"
+        },
+        "capacity_percentile": {
+          "default": 0.25,
+          "maximum": 0.5,
+          "minimum": 0.05,
+          "title": "Capacity Percentile",
+          "type": "number"
+        },
+        "minimum_gap_score": {
+          "default": 3,
+          "maximum": 3,
+          "minimum": 2,
+          "title": "Minimum Gap Score",
+          "type": "integer"
+        },
+        "changed_service_limit": {
+          "default": 10,
+          "maximum": 50,
+          "minimum": 0,
+          "title": "Changed Service Limit",
+          "type": "integer"
+        }
+      },
+      "title": "SimulateRiskThresholdsInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "ScenarioChangedService": {
+          "properties": {
+            "service_approval_number": {
+              "title": "Service Approval Number",
+              "type": "string"
+            },
+            "service_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Name"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            },
+            "number_of_approved_places": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Number Of Approved Places"
+            },
+            "nearest_public_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Nearest Public Transport Km"
+            }
+          },
+          "required": [
+            "service_approval_number"
+          ],
+          "title": "ScenarioChangedService",
+          "type": "object"
+        },
+        "ScenarioGroupImpact": {
+          "properties": {
+            "group": {
+              "title": "Group",
+              "type": "string"
+            },
+            "eligible_service_count": {
+              "title": "Eligible Service Count",
+              "type": "integer"
+            },
+            "baseline_priority_count": {
+              "title": "Baseline Priority Count",
+              "type": "integer"
+            },
+            "scenario_priority_count": {
+              "title": "Scenario Priority Count",
+              "type": "integer"
+            },
+            "change_count": {
+              "title": "Change Count",
+              "type": "integer"
+            },
+            "change_percent": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Change Percent"
+            }
+          },
+          "required": [
+            "group",
+            "eligible_service_count",
+            "baseline_priority_count",
+            "scenario_priority_count",
+            "change_count"
+          ],
+          "title": "ScenarioGroupImpact",
+          "type": "object"
+        },
+        "ScenarioPoolSummary": {
+          "properties": {
+            "eligible_service_count": {
+              "title": "Eligible Service Count",
+              "type": "integer"
+            },
+            "priority_service_count": {
+              "title": "Priority Service Count",
+              "type": "integer"
+            },
+            "priority_rate": {
+              "title": "Priority Rate",
+              "type": "number"
+            }
+          },
+          "required": [
+            "eligible_service_count",
+            "priority_service_count",
+            "priority_rate"
+          ],
+          "title": "ScenarioPoolSummary",
+          "type": "object"
+        },
+        "ScenarioScope": {
+          "properties": {
+            "state": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACT",
+                    "NSW",
+                    "NT",
+                    "QLD",
+                    "SA",
+                    "TAS",
+                    "VIC",
+                    "WA"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Urban",
+                    "Rural"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            }
+          },
+          "title": "ScenarioScope",
+          "type": "object"
+        },
+        "ScenarioThresholds": {
+          "properties": {
+            "transport_percentile": {
+              "title": "Transport Percentile",
+              "type": "number"
+            },
+            "transport_cutoff_km": {
+              "title": "Transport Cutoff Km",
+              "type": "number"
+            },
+            "capacity_percentile": {
+              "title": "Capacity Percentile",
+              "type": "number"
+            },
+            "capacity_cutoff_places": {
+              "title": "Capacity Cutoff Places",
+              "type": "number"
+            },
+            "minimum_gap_score": {
+              "title": "Minimum Gap Score",
+              "type": "integer"
+            },
+            "threshold_scope": {
+              "title": "Threshold Scope",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transport_percentile",
+            "transport_cutoff_km",
+            "capacity_percentile",
+            "capacity_cutoff_places",
+            "minimum_gap_score",
+            "threshold_scope"
+          ],
+          "title": "ScenarioThresholds",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/ScenarioScope"
+        },
+        "baseline_thresholds": {
+          "$ref": "#/$defs/ScenarioThresholds"
+        },
+        "scenario_thresholds": {
+          "$ref": "#/$defs/ScenarioThresholds"
+        },
+        "baseline": {
+          "$ref": "#/$defs/ScenarioPoolSummary"
+        },
+        "scenario": {
+          "$ref": "#/$defs/ScenarioPoolSummary"
+        },
+        "change_count": {
+          "title": "Change Count",
+          "type": "integer"
+        },
+        "change_percent": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Change Percent"
+        },
+        "overlap_count": {
+          "title": "Overlap Count",
+          "type": "integer"
+        },
+        "added_count": {
+          "title": "Added Count",
+          "type": "integer"
+        },
+        "removed_count": {
+          "title": "Removed Count",
+          "type": "integer"
+        },
+        "added_services": {
+          "items": {
+            "$ref": "#/$defs/ScenarioChangedService"
+          },
+          "title": "Added Services",
+          "type": "array"
+        },
+        "removed_services": {
+          "items": {
+            "$ref": "#/$defs/ScenarioChangedService"
+          },
+          "title": "Removed Services",
+          "type": "array"
+        },
+        "by_state": {
+          "items": {
+            "$ref": "#/$defs/ScenarioGroupImpact"
+          },
+          "title": "By State",
+          "type": "array"
+        },
+        "by_urban_rural": {
+          "items": {
+            "$ref": "#/$defs/ScenarioGroupImpact"
+          },
+          "title": "By Urban Rural",
+          "type": "array"
+        },
+        "interpretation_caveat": {
+          "title": "Interpretation Caveat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scope",
+        "baseline_thresholds",
+        "scenario_thresholds",
+        "baseline",
+        "scenario",
+        "change_count",
+        "overlap_count",
+        "added_count",
+        "removed_count",
+        "added_services",
+        "removed_services",
+        "by_state",
+        "by_urban_rural",
+        "interpretation_caveat"
+      ],
+      "title": "SimulateRiskThresholdsOutput",
+      "type": "object"
+    }
+  },
+  "compare_risk_scenarios": {
+    "description": "Compare two arbitrary deterministic Centre-Based Care risk scenarios. Use when the user gives Scenario A versus Scenario B, broad versus strict settings, or asks which assumption set creates a larger/smaller priority pool. Threshold percentiles are always national; subgroup filters only scope impacts. Returns A/B counts, overlap, differences, subgroup impacts, and services unique to each scenario.",
+    "input_schema": {
+      "$defs": {
+        "RiskScenarioDefinition": {
+          "properties": {
+            "label": {
+              "default": "Scenario",
+              "maxLength": 80,
+              "minLength": 1,
+              "title": "Label",
+              "type": "string"
+            },
+            "transport_percentile": {
+              "default": 0.75,
+              "description": "National Centre-Based Care percentile as a decimal; 0.80 means P80.",
+              "maximum": 0.95,
+              "minimum": 0.5,
+              "title": "Transport Percentile",
+              "type": "number"
+            },
+            "capacity_percentile": {
+              "default": 0.25,
+              "description": "National Centre-Based Care percentile as a decimal; 0.20 means P20.",
+              "maximum": 0.5,
+              "minimum": 0.05,
+              "title": "Capacity Percentile",
+              "type": "number"
+            },
+            "minimum_gap_score": {
+              "default": 3,
+              "description": "Minimum number of overlapping gaps required for the priority pool.",
+              "maximum": 3,
+              "minimum": 2,
+              "title": "Minimum Gap Score",
+              "type": "integer"
+            }
+          },
+          "title": "RiskScenarioDefinition",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "urban_rural": {
+          "anyOf": [
+            {
+              "enum": [
+                "Urban",
+                "Rural"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Urban Rural"
+        },
+        "scenario_a": {
+          "$ref": "#/$defs/RiskScenarioDefinition"
+        },
+        "scenario_b": {
+          "$ref": "#/$defs/RiskScenarioDefinition"
+        },
+        "changed_service_limit": {
+          "default": 10,
+          "maximum": 50,
+          "minimum": 0,
+          "title": "Changed Service Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "scenario_a",
+        "scenario_b"
+      ],
+      "title": "CompareRiskScenariosInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "ScenarioABGroupImpact": {
+          "properties": {
+            "group": {
+              "title": "Group",
+              "type": "string"
+            },
+            "eligible_service_count": {
+              "title": "Eligible Service Count",
+              "type": "integer"
+            },
+            "scenario_a_priority_count": {
+              "title": "Scenario A Priority Count",
+              "type": "integer"
+            },
+            "scenario_b_priority_count": {
+              "title": "Scenario B Priority Count",
+              "type": "integer"
+            },
+            "b_minus_a_count": {
+              "title": "B Minus A Count",
+              "type": "integer"
+            },
+            "b_vs_a_percent_change": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "B Vs A Percent Change"
+            }
+          },
+          "required": [
+            "group",
+            "eligible_service_count",
+            "scenario_a_priority_count",
+            "scenario_b_priority_count",
+            "b_minus_a_count"
+          ],
+          "title": "ScenarioABGroupImpact",
+          "type": "object"
+        },
+        "ScenarioChangedService": {
+          "properties": {
+            "service_approval_number": {
+              "title": "Service Approval Number",
+              "type": "string"
+            },
+            "service_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Name"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            },
+            "number_of_approved_places": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Number Of Approved Places"
+            },
+            "nearest_public_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Nearest Public Transport Km"
+            }
+          },
+          "required": [
+            "service_approval_number"
+          ],
+          "title": "ScenarioChangedService",
+          "type": "object"
+        },
+        "ScenarioComparisonSide": {
+          "properties": {
+            "label": {
+              "title": "Label",
+              "type": "string"
+            },
+            "thresholds": {
+              "$ref": "#/$defs/ScenarioThresholds"
+            },
+            "pool": {
+              "$ref": "#/$defs/ScenarioPoolSummary"
+            }
+          },
+          "required": [
+            "label",
+            "thresholds",
+            "pool"
+          ],
+          "title": "ScenarioComparisonSide",
+          "type": "object"
+        },
+        "ScenarioPoolSummary": {
+          "properties": {
+            "eligible_service_count": {
+              "title": "Eligible Service Count",
+              "type": "integer"
+            },
+            "priority_service_count": {
+              "title": "Priority Service Count",
+              "type": "integer"
+            },
+            "priority_rate": {
+              "title": "Priority Rate",
+              "type": "number"
+            }
+          },
+          "required": [
+            "eligible_service_count",
+            "priority_service_count",
+            "priority_rate"
+          ],
+          "title": "ScenarioPoolSummary",
+          "type": "object"
+        },
+        "ScenarioScope": {
+          "properties": {
+            "state": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACT",
+                    "NSW",
+                    "NT",
+                    "QLD",
+                    "SA",
+                    "TAS",
+                    "VIC",
+                    "WA"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Urban",
+                    "Rural"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            }
+          },
+          "title": "ScenarioScope",
+          "type": "object"
+        },
+        "ScenarioThresholds": {
+          "properties": {
+            "transport_percentile": {
+              "title": "Transport Percentile",
+              "type": "number"
+            },
+            "transport_cutoff_km": {
+              "title": "Transport Cutoff Km",
+              "type": "number"
+            },
+            "capacity_percentile": {
+              "title": "Capacity Percentile",
+              "type": "number"
+            },
+            "capacity_cutoff_places": {
+              "title": "Capacity Cutoff Places",
+              "type": "number"
+            },
+            "minimum_gap_score": {
+              "title": "Minimum Gap Score",
+              "type": "integer"
+            },
+            "threshold_scope": {
+              "title": "Threshold Scope",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transport_percentile",
+            "transport_cutoff_km",
+            "capacity_percentile",
+            "capacity_cutoff_places",
+            "minimum_gap_score",
+            "threshold_scope"
+          ],
+          "title": "ScenarioThresholds",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/ScenarioScope"
+        },
+        "scenario_a": {
+          "$ref": "#/$defs/ScenarioComparisonSide"
+        },
+        "scenario_b": {
+          "$ref": "#/$defs/ScenarioComparisonSide"
+        },
+        "b_minus_a_count": {
+          "title": "B Minus A Count",
+          "type": "integer"
+        },
+        "b_vs_a_percent_change": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "B Vs A Percent Change"
+        },
+        "overlap_count": {
+          "title": "Overlap Count",
+          "type": "integer"
+        },
+        "only_a_count": {
+          "title": "Only A Count",
+          "type": "integer"
+        },
+        "only_b_count": {
+          "title": "Only B Count",
+          "type": "integer"
+        },
+        "only_a_services": {
+          "items": {
+            "$ref": "#/$defs/ScenarioChangedService"
+          },
+          "title": "Only A Services",
+          "type": "array"
+        },
+        "only_b_services": {
+          "items": {
+            "$ref": "#/$defs/ScenarioChangedService"
+          },
+          "title": "Only B Services",
+          "type": "array"
+        },
+        "by_state": {
+          "items": {
+            "$ref": "#/$defs/ScenarioABGroupImpact"
+          },
+          "title": "By State",
+          "type": "array"
+        },
+        "by_urban_rural": {
+          "items": {
+            "$ref": "#/$defs/ScenarioABGroupImpact"
+          },
+          "title": "By Urban Rural",
+          "type": "array"
+        },
+        "interpretation_caveat": {
+          "title": "Interpretation Caveat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scope",
+        "scenario_a",
+        "scenario_b",
+        "b_minus_a_count",
+        "overlap_count",
+        "only_a_count",
+        "only_b_count",
+        "only_a_services",
+        "only_b_services",
+        "by_state",
+        "by_urban_rural",
+        "interpretation_caveat"
+      ],
+      "title": "CompareRiskScenariosOutput",
+      "type": "object"
+    }
+  },
   "search_policy": {
     "description": "Retrieve grounded passages from the curated official ACECQA/NQF policy and guidance corpus. Use this for the meaning of NQS ratings, assessment/rating process, regulatory authority powers, monitoring, proportionality, compliance tools, NQF obligations, or policy-grounded recommendations. For a recommendation that combines service risk data with regulatory guidance, call the relevant analytics tool AND search_policy. Risk flags alone do not establish a legal breach.",
     "input_schema": {

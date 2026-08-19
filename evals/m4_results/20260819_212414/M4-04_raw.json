@@ -1,0 +1,198 @@
+{
+  "query": "Compare Scenario A, a broad triple-gap screen using P70 transport / P30 capacity, with Scenario B, a strict screen using P85 transport / P20 capacity. How large is each national priority pool?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "- **Scenario A (P70 transport / P30 capacity, triple-gap): 196 services** nationally.\n- **Scenario B (P85 transport / P20 capacity, triple-gap): 111 services** nationally.\n\nScenario B’s pool is **85 services smaller** (43.4% lower). All 111 services in Scenario B are also included in Scenario A.",
+    "evidence": [
+      {
+        "source_tool": "compare_risk_scenarios",
+        "claim": "National priority-pool counts are 196 under Scenario A and 111 under Scenario B; overlap is 111 services.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Both scenarios apply a minimum triple-gap score of 3 to the national validated Centre-Based Care sample (15,969 eligible services). Percentile cut-offs are national, not subgroup-specific."
+    ],
+    "limitations": [
+      "This is sensitivity analysis for prioritisation only; it does not establish optimal thresholds, unmet demand, non-compliance, or an enforcement basis."
+    ]
+  },
+  "used_tools": [
+    "compare_risk_scenarios"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_risk_scenarios",
+      "call_id": "call_Ydp0DjqT48KQNZXv2dEDGN0c",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "scenario_a": {
+          "label": "Scenario A — broad triple-gap",
+          "transport_percentile": 0.7,
+          "capacity_percentile": 0.3,
+          "minimum_gap_score": 3
+        },
+        "scenario_b": {
+          "label": "Scenario B — strict triple-gap",
+          "transport_percentile": 0.85,
+          "capacity_percentile": 0.2,
+          "minimum_gap_score": 3
+        },
+        "changed_service_limit": 0
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_risk_scenarios",
+      "call_id": "call_Ydp0DjqT48KQNZXv2dEDGN0c",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_risk_scenarios",
+        "data": {
+          "scope": {
+            "state": null,
+            "urban_rural": null
+          },
+          "scenario_a": {
+            "label": "Scenario A — broad triple-gap",
+            "thresholds": {
+              "transport_percentile": 0.7,
+              "transport_cutoff_km": 4.3184079875463075,
+              "capacity_percentile": 0.3,
+              "capacity_cutoff_places": 44.0,
+              "minimum_gap_score": 3,
+              "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+            },
+            "pool": {
+              "eligible_service_count": 15969,
+              "priority_service_count": 196,
+              "priority_rate": 0.01227378044962114
+            }
+          },
+          "scenario_b": {
+            "label": "Scenario B — strict triple-gap",
+            "thresholds": {
+              "transport_percentile": 0.85,
+              "transport_cutoff_km": 9.62749049798773,
+              "capacity_percentile": 0.2,
+              "capacity_cutoff_places": 35.0,
+              "minimum_gap_score": 3,
+              "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+            },
+            "pool": {
+              "eligible_service_count": 15969,
+              "priority_service_count": 111,
+              "priority_rate": 0.0069509674995303404
+            }
+          },
+          "b_minus_a_count": -85,
+          "b_vs_a_percent_change": -43.36734693877551,
+          "overlap_count": 111,
+          "only_a_count": 85,
+          "only_b_count": 0,
+          "only_a_services": [],
+          "only_b_services": [],
+          "by_state": [
+            {
+              "group": "ACT",
+              "eligible_service_count": 350,
+              "scenario_a_priority_count": 5,
+              "scenario_b_priority_count": 2,
+              "b_minus_a_count": -3,
+              "b_vs_a_percent_change": -60.0
+            },
+            {
+              "group": "NSW",
+              "eligible_service_count": 5526,
+              "scenario_a_priority_count": 39,
+              "scenario_b_priority_count": 21,
+              "b_minus_a_count": -18,
+              "b_vs_a_percent_change": -46.15384615384615
+            },
+            {
+              "group": "NT",
+              "eligible_service_count": 212,
+              "scenario_a_priority_count": 12,
+              "scenario_b_priority_count": 7,
+              "b_minus_a_count": -5,
+              "b_vs_a_percent_change": -41.66666666666667
+            },
+            {
+              "group": "QLD",
+              "eligible_service_count": 3014,
+              "scenario_a_priority_count": 39,
+              "scenario_b_priority_count": 27,
+              "b_minus_a_count": -12,
+              "b_vs_a_percent_change": -30.76923076923077
+            },
+            {
+              "group": "SA",
+              "eligible_service_count": 1207,
+              "scenario_a_priority_count": 38,
+              "scenario_b_priority_count": 20,
+              "b_minus_a_count": -18,
+              "b_vs_a_percent_change": -47.368421052631575
+            },
+            {
+              "group": "TAS",
+              "eligible_service_count": 215,
+              "scenario_a_priority_count": 6,
+              "scenario_b_priority_count": 4,
+              "b_minus_a_count": -2,
+              "b_vs_a_percent_change": -33.33333333333333
+            },
+            {
+              "group": "VIC",
+              "eligible_service_count": 4155,
+              "scenario_a_priority_count": 25,
+              "scenario_b_priority_count": 11,
+              "b_minus_a_count": -14,
+              "b_vs_a_percent_change": -56.00000000000001
+            },
+            {
+              "group": "WA",
+              "eligible_service_count": 1290,
+              "scenario_a_priority_count": 32,
+              "scenario_b_priority_count": 19,
+              "b_minus_a_count": -13,
+              "b_vs_a_percent_change": -40.625
+            }
+          ],
+          "by_urban_rural": [
+            {
+              "group": "Rural",
+              "eligible_service_count": 1025,
+              "scenario_a_priority_count": 76,
+              "scenario_b_priority_count": 60,
+              "b_minus_a_count": -16,
+              "b_vs_a_percent_change": -21.052631578947366
+            },
+            {
+              "group": "Urban",
+              "eligible_service_count": 14944,
+              "scenario_a_priority_count": 120,
+              "scenario_b_priority_count": 51,
+              "b_minus_a_count": -69,
+              "b_vs_a_percent_change": -57.49999999999999
+            }
+          ],
+          "interpretation_caveat": "Scenario results are sensitivity analysis for a prioritisation screen. They do not show causal effects, optimal policy thresholds, unmet demand, legal non-compliance, or an automatic basis for enforcement."
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8308,
+    "output_tokens": 326,
+    "total_tokens": 8634
+  },
+  "latency_ms": 6826.230916005443
+}

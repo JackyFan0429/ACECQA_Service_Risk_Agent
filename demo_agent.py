@@ -1,4 +1,4 @@
-"""CLI demo for milestone 3: analytics + policy retrieval -> grounded answer."""
+"""CLI demo for milestone 4: analytics + scenario analysis + policy retrieval -> grounded answer."""
 
 from __future__ import annotations
 

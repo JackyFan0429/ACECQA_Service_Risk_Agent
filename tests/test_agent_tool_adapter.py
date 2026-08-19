@@ -3,7 +3,7 @@ import json
 from acecqa_agent.agent.tool_adapter import TOOL_SPECS, invoke_registered_tool, invoke_registered_tool_json
 
 
-def test_seven_agent_tools_are_registered():
+def test_nine_agent_tools_are_registered():
     assert list(TOOL_SPECS) == [
         "search_services",
         "get_service_profile",
@@ -11,6 +11,8 @@ def test_seven_agent_tools_are_registered():
         "find_high_risk_services",
         "compare_transport_access",
         "analyse_transport_quartile_outcomes",
+        "simulate_risk_thresholds",
+        "compare_risk_scenarios",
         "search_policy",
     ]
 

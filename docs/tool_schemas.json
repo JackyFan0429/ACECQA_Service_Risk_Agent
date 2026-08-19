@@ -1,0 +1,1381 @@
+{
+  "search_services": {
+    "input_schema": {
+      "properties": {
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "urban_rural": {
+          "anyOf": [
+            {
+              "enum": [
+                "Urban",
+                "Rural"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Urban Rural"
+        },
+        "service_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "Centre-Based Care",
+                "Family Day Care"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Type"
+        },
+        "overall_rating": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Overall Rating"
+        },
+        "limit": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "title": "SearchServicesInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "ServiceFilters": {
+          "properties": {
+            "state": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACT",
+                    "NSW",
+                    "NT",
+                    "QLD",
+                    "SA",
+                    "TAS",
+                    "VIC",
+                    "WA"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Urban",
+                    "Rural"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "service_type": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Centre-Based Care",
+                    "Family Day Care"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Type"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            }
+          },
+          "title": "ServiceFilters",
+          "type": "object"
+        },
+        "ServiceSummary": {
+          "properties": {
+            "service_approval_number": {
+              "title": "Service Approval Number",
+              "type": "string"
+            },
+            "service_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Name"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "service_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Type"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            },
+            "number_of_approved_places": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Number Of Approved Places"
+            },
+            "nearest_public_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Nearest Public Transport Km"
+            }
+          },
+          "required": [
+            "service_approval_number"
+          ],
+          "title": "ServiceSummary",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "matched_count": {
+          "title": "Matched Count",
+          "type": "integer"
+        },
+        "returned_count": {
+          "title": "Returned Count",
+          "type": "integer"
+        },
+        "filters": {
+          "$ref": "#/$defs/ServiceFilters"
+        },
+        "services": {
+          "items": {
+            "$ref": "#/$defs/ServiceSummary"
+          },
+          "title": "Services",
+          "type": "array"
+        }
+      },
+      "required": [
+        "matched_count",
+        "returned_count",
+        "filters",
+        "services"
+      ],
+      "title": "SearchServicesOutput",
+      "type": "object"
+    }
+  },
+  "get_service_profile": {
+    "input_schema": {
+      "properties": {
+        "service_approval_number": {
+          "minLength": 1,
+          "title": "Service Approval Number",
+          "type": "string"
+        }
+      },
+      "required": [
+        "service_approval_number"
+      ],
+      "title": "GetServiceProfileInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "properties": {
+        "service_approval_number": {
+          "title": "Service Approval Number",
+          "type": "string"
+        },
+        "service_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Name"
+        },
+        "provider_legal_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Legal Name"
+        },
+        "service_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Type"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "suburb": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suburb"
+        },
+        "postcode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postcode"
+        },
+        "urban_rural": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Urban Rural"
+        },
+        "overall_rating": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Overall Rating"
+        },
+        "number_of_approved_places": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Number Of Approved Places"
+        },
+        "nearest_public_transport_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nearest Public Transport Km"
+        },
+        "distance_to_train_station_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Distance To Train Station Km"
+        },
+        "distance_to_bus_station_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Distance To Bus Station Km"
+        },
+        "longitude": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Longitude"
+        },
+        "latitude": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Latitude"
+        },
+        "valid_spatial_record": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid Spatial Record"
+        }
+      },
+      "required": [
+        "service_approval_number"
+      ],
+      "title": "ServiceProfile",
+      "type": "object"
+    }
+  },
+  "calculate_risk_score": {
+    "input_schema": {
+      "properties": {
+        "service_approval_number": {
+          "minLength": 1,
+          "title": "Service Approval Number",
+          "type": "string"
+        }
+      },
+      "required": [
+        "service_approval_number"
+      ],
+      "title": "CalculateRiskInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "RiskThresholds": {
+          "properties": {
+            "transport_p75_km": {
+              "title": "Transport P75 Km",
+              "type": "number"
+            },
+            "capacity_p25_places": {
+              "title": "Capacity P25 Places",
+              "type": "number"
+            },
+            "scope": {
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transport_p75_km",
+            "capacity_p25_places",
+            "scope"
+          ],
+          "title": "RiskThresholds",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "service_approval_number": {
+          "title": "Service Approval Number",
+          "type": "string"
+        },
+        "service_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Name"
+        },
+        "eligible_for_risk_scoring": {
+          "title": "Eligible For Risk Scoring",
+          "type": "boolean"
+        },
+        "gap_score": {
+          "anyOf": [
+            {
+              "maximum": 3,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gap Score"
+        },
+        "gap_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gap Label"
+        },
+        "poor_access_flag": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Poor Access Flag"
+        },
+        "weak_quality_flag": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weak Quality Flag"
+        },
+        "low_capacity_flag": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Low Capacity Flag"
+        },
+        "nearest_public_transport_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nearest Public Transport Km"
+        },
+        "overall_rating": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Overall Rating"
+        },
+        "number_of_approved_places": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Number Of Approved Places"
+        },
+        "thresholds": {
+          "$ref": "#/$defs/RiskThresholds"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "service_approval_number",
+        "eligible_for_risk_scoring",
+        "thresholds"
+      ],
+      "title": "RiskAssessment",
+      "type": "object"
+    }
+  },
+  "find_high_risk_services": {
+    "input_schema": {
+      "properties": {
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "urban_rural": {
+          "anyOf": [
+            {
+              "enum": [
+                "Urban",
+                "Rural"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Urban Rural"
+        },
+        "service_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "Centre-Based Care",
+                "Family Day Care"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Type"
+        },
+        "overall_rating": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Overall Rating"
+        },
+        "top_k": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        },
+        "minimum_gap_score": {
+          "default": 2,
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Minimum Gap Score",
+          "type": "integer"
+        }
+      },
+      "title": "FindHighRiskInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "RankedRiskService": {
+          "properties": {
+            "service_approval_number": {
+              "title": "Service Approval Number",
+              "type": "string"
+            },
+            "service_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Name"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "service_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Type"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            },
+            "number_of_approved_places": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Number Of Approved Places"
+            },
+            "nearest_public_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Nearest Public Transport Km"
+            },
+            "rank": {
+              "title": "Rank",
+              "type": "integer"
+            },
+            "gap_score": {
+              "title": "Gap Score",
+              "type": "integer"
+            },
+            "gap_label": {
+              "title": "Gap Label",
+              "type": "string"
+            },
+            "poor_access_flag": {
+              "title": "Poor Access Flag",
+              "type": "boolean"
+            },
+            "weak_quality_flag": {
+              "title": "Weak Quality Flag",
+              "type": "boolean"
+            },
+            "low_capacity_flag": {
+              "title": "Low Capacity Flag",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "service_approval_number",
+            "rank",
+            "gap_score",
+            "gap_label",
+            "poor_access_flag",
+            "weak_quality_flag",
+            "low_capacity_flag"
+          ],
+          "title": "RankedRiskService",
+          "type": "object"
+        },
+        "RiskThresholds": {
+          "properties": {
+            "transport_p75_km": {
+              "title": "Transport P75 Km",
+              "type": "number"
+            },
+            "capacity_p25_places": {
+              "title": "Capacity P25 Places",
+              "type": "number"
+            },
+            "scope": {
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transport_p75_km",
+            "capacity_p25_places",
+            "scope"
+          ],
+          "title": "RiskThresholds",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "matched_count": {
+          "title": "Matched Count",
+          "type": "integer"
+        },
+        "returned_count": {
+          "title": "Returned Count",
+          "type": "integer"
+        },
+        "ranking_policy": {
+          "title": "Ranking Policy",
+          "type": "string"
+        },
+        "thresholds": {
+          "$ref": "#/$defs/RiskThresholds"
+        },
+        "services": {
+          "items": {
+            "$ref": "#/$defs/RankedRiskService"
+          },
+          "title": "Services",
+          "type": "array"
+        }
+      },
+      "required": [
+        "matched_count",
+        "returned_count",
+        "ranking_policy",
+        "thresholds",
+        "services"
+      ],
+      "title": "FindHighRiskOutput",
+      "type": "object"
+    }
+  },
+  "compare_transport_access": {
+    "input_schema": {
+      "properties": {
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "service_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "Centre-Based Care",
+                "Family Day Care"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Type"
+        },
+        "group_by": {
+          "default": "urban_rural",
+          "enum": [
+            "urban_rural",
+            "state",
+            "service_type"
+          ],
+          "title": "Group By",
+          "type": "string"
+        }
+      },
+      "title": "CompareTransportAccessInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "ServiceFilters": {
+          "properties": {
+            "state": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACT",
+                    "NSW",
+                    "NT",
+                    "QLD",
+                    "SA",
+                    "TAS",
+                    "VIC",
+                    "WA"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Urban",
+                    "Rural"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "service_type": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Centre-Based Care",
+                    "Family Day Care"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Type"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            }
+          },
+          "title": "ServiceFilters",
+          "type": "object"
+        },
+        "TransportGroupSummary": {
+          "properties": {
+            "group": {
+              "title": "Group",
+              "type": "string"
+            },
+            "service_count": {
+              "title": "Service Count",
+              "type": "integer"
+            },
+            "median_nearest_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Median Nearest Transport Km"
+            },
+            "mean_nearest_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mean Nearest Transport Km"
+            },
+            "p75_nearest_transport_km": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "P75 Nearest Transport Km"
+            }
+          },
+          "required": [
+            "group",
+            "service_count"
+          ],
+          "title": "TransportGroupSummary",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "group_by": {
+          "title": "Group By",
+          "type": "string"
+        },
+        "filters": {
+          "$ref": "#/$defs/ServiceFilters"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/$defs/TransportGroupSummary"
+          },
+          "title": "Groups",
+          "type": "array"
+        }
+      },
+      "required": [
+        "group_by",
+        "filters",
+        "groups"
+      ],
+      "title": "CompareTransportAccessOutput",
+      "type": "object"
+    }
+  },
+  "analyse_transport_quartile_outcomes": {
+    "input_schema": {
+      "properties": {
+        "state": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "urban_rural": {
+          "anyOf": [
+            {
+              "enum": [
+                "Urban",
+                "Rural"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Urban Rural"
+        },
+        "service_type": {
+          "default": "Centre-Based Care",
+          "enum": [
+            "Centre-Based Care",
+            "Family Day Care"
+          ],
+          "title": "Service Type",
+          "type": "string"
+        },
+        "min_group_size": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Min Group Size",
+          "type": "integer"
+        }
+      },
+      "title": "AnalyseQuartileOutcomesInput",
+      "type": "object"
+    },
+    "output_schema": {
+      "$defs": {
+        "QuartileOutcomeSummary": {
+          "properties": {
+            "transport_access_quartile": {
+              "title": "Transport Access Quartile",
+              "type": "string"
+            },
+            "service_count": {
+              "title": "Service Count",
+              "type": "integer"
+            },
+            "below_meeting_rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Below Meeting Rate"
+            },
+            "approved_places_non_missing": {
+              "title": "Approved Places Non Missing",
+              "type": "integer"
+            },
+            "median_approved_places": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Median Approved Places"
+            },
+            "mean_approved_places": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mean Approved Places"
+            }
+          },
+          "required": [
+            "transport_access_quartile",
+            "service_count",
+            "approved_places_non_missing"
+          ],
+          "title": "QuartileOutcomeSummary",
+          "type": "object"
+        },
+        "ServiceFilters": {
+          "properties": {
+            "state": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACT",
+                    "NSW",
+                    "NT",
+                    "QLD",
+                    "SA",
+                    "TAS",
+                    "VIC",
+                    "WA"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            },
+            "urban_rural": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Urban",
+                    "Rural"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Urban Rural"
+            },
+            "service_type": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Centre-Based Care",
+                    "Family Day Care"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Service Type"
+            },
+            "overall_rating": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Overall Rating"
+            }
+          },
+          "title": "ServiceFilters",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "filters": {
+          "$ref": "#/$defs/ServiceFilters"
+        },
+        "min_group_size": {
+          "title": "Min Group Size",
+          "type": "integer"
+        },
+        "caveat": {
+          "title": "Caveat",
+          "type": "string"
+        },
+        "quartiles": {
+          "items": {
+            "$ref": "#/$defs/QuartileOutcomeSummary"
+          },
+          "title": "Quartiles",
+          "type": "array"
+        }
+      },
+      "required": [
+        "filters",
+        "min_group_size",
+        "caveat",
+        "quartiles"
+      ],
+      "title": "AnalyseQuartileOutcomesOutput",
+      "type": "object"
+    }
+  }
+}

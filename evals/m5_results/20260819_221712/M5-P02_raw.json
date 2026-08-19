@@ -1,0 +1,143 @@
+{
+  "query": "Who actually monitors and enforces NQF compliance at education and care services: ACECQA or state and territory regulatory authorities?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**State and territory regulatory authorities** monitor and enforce NQF compliance at education and care services. They administer the NQF in their jurisdictions, including compliance, monitoring and enforcement functions.\n\n**ACECQA is not the service-level regulator.** It has national-system and coordination roles, and may share information with regulatory authorities, but it does not replace their monitoring or enforcement role.\n\nThe Guide to the NQF is official guidance rather than legal advice; the National Law and Regulations take precedence.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "Regulatory authorities hold monitoring, compliance and enforcement functions, while ACECQA and jurisdictions can share information for those purposes.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1337",
+          "POL-guide_nqf_pdf-1171"
+        ]
+      }
+    ],
+    "methodology": [
+      "Retrieved official NQF guidance on monitoring, enforcement and information-sharing roles."
+    ],
+    "limitations": [
+      "This is a general NQF role distinction; particular powers and processes depend on the National Law, Regulations and the relevant jurisdiction."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_fOeOIZxOOEyp9yCzPW0btrpD",
+      "arguments": {
+        "query": "Which body monitors and enforces compliance at education and care services state territory regulatory authorities ACECQA role",
+        "topic": "monitoring",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_fOeOIZxOOEyp9yCzPW0btrpD",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "Which body monitors and enforces compliance at education and care services state territory regulatory authorities ACECQA role",
+          "topic": "monitoring",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1337",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 727",
+              "excerpt": "authorities. Importantly, efficient, collaborative and streamlined communication between all parties furthers the objectives of the National Law, including to ensure the safety, health and wellbeing of children attending education and care services. Information is disclosed between regulatory authorities, ACECQA and Commonwealth in accordance with the National Law for the purposes of: • promoting the objectives of the NQF • assisting authorities and other government departments to perform or exercise their functions and powers under the National Law • research or the development of national, state or territory policy with respect to education and care services • the funding of education and care services • the payment of benefits or allowances to persons using education and care services • compliance, monitoring and enforcement, including with respect to working with children laws. Other disclosure obligations The National Law requires a regulatory authority to disclose to other regulatory authorities the suspension or cancellation of a working with children check, working with children card or teacher registration of a nominated supervisor. It also allows a regulatory authority to disclose a prohibition notice issued under the National Law to the head of the government department responsible for administering the working with children law in that jurisdiction. National Law Sections 271–273",
+              "retrieval_score": 21.277736,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1336",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 727",
+              "excerpt": "Reviews | Privacy and Freedom of Information 727Reviews | Privacy and Freedom of Information 6.2 Review of FOI decisions and complaints about FOI If an individual disagrees with an FOI access decision, they can seek an internal review of the decision, or apply to the National Education and Care Services FOI Commissioner for review of the decision. If a person is not satisfied with the outcome of an internal review, they can also seek review by the National Education and Care Services FOI Commissioner. The National Law also provides individuals with a right to complain to the National Education and Care Services FOI Commissioner if they feel that a regulatory authority or ACECQA has mishandled a request for access to a document. If an individual is unhappy with a review by the National Education and Care Services FOI Commissioner, they may seek a further review through the appropriate administrative tribunal. 6.3 Disclosure of information Powers and principles Specific provisions apply Jurisdictions (including state and territory regulatory authorities) and ACECQA have broad powers to disclose information about an education and care service to each other and other government departments and public authorities. Importantly, efficient, collaborative and streamlined communication between all parties furthers the objectives of the National Law, including to ensure the safety, health and wellbeing of children attending education and care services.",
+              "retrieval_score": 18.906263,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1287",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 696",
+              "excerpt": "696 Regulatory Authority Powers | Offences Regulatory Authority Powers | Offences National Law Section 263 Complaints about privacy The National Law provides individuals with a right to complain to the National Education and Care Services Privacy Commissioner (NECS Privacy Commissioner) if they feel that a regulatory authority or ACECQA has mishandled their personal information. Contact details for the NECS Privacy Commissioner are available at www.necsopic.edu.au. National Law Section 264 Complaints about freedom of information The National Law also provides individuals with a right to complain to the National Education and Care Services Freedom of Information Commissioner (NECS FOI Commissioner) if they are not satisfied with how their freedom of information request has been handled by a regulatory authority or ACECQA. Contact details for the NECS FOI Commissioner are available at www.necsopic.edu.au. National Law Section 282 Complaints about administrative actions People with complaints about the administrative actions of ACECQA and regulatory authorities may complain to the Education and Care Services Ombudsman (about ACECQA) or the state or territory ombudsman of that jurisdiction (about regulatory authorities). It is important to remember that an ombudsman will not look at the decision itself but rather the process by which the decision was reached. Contact details for each ombudsman are set out below.",
+              "retrieval_score": 18.407405,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1330",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 723",
+              "excerpt": "Reviews | Reviews 723Reviews | Reviews 4. Review of the administrative process by an Ombudsman National Law & Regulations Sections 5, 282 Regulations 218–225 Relevant state and territory ombudsman legislation applies to decisions made by regulatory authorities. The Ombudsman Act 1976 (Commonwealth) as applied through the National Law applies to decisions made by ACECQA. The decision-making processes and conduct of regulatory authorities are subject to scrutiny by the relevant state or territory ombudsman and the relevant ombudsman legislation. Decisions made by ACECQA are overseen by the Education and Care Services Ombudsman. An ombudsman: • acts independently of governments and their agencies • has wide ranging powers to require agencies to furnish documents, to enter premises and to seek injunctions, and may make recommendations to government agencies following investigation of a complaint – while governments are not necessarily required to adopt the findings of an ombudsman, it is in the best interests of governments, their agencies and the broader public to implement an ombudsman’s recommendations where possible • seeks to resolve complaints about conduct and decision-making processes through a process of conciliation • has the power to conduct investigations and may investigate matters of their own volition • does not advocate for complainants or governments, but rather may be considered to advocate for best practice decision-making and conduct in government agencies • does not look at the decision itself but rather the process by which the decision was reached.",
+              "retrieval_score": 15.998672,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1171",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 630",
+              "excerpt": "630 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement National Law Section 192 Can it be reviewed? The decision to give a notice to suspend education and care by a family day care educator is a reviewable decision under the National Law. What happens after it has been issued? Disclosure Specific provisions apply An approved provider may ask the regulatory authority whether a specific family day care educator has been suspended. The regulatory authority may disclose this information about whether a family day care educator has been suspended to an approved provider or recruitment agency, subject to the Commonwealth Privacy Act 1988 as applied by the National Law and any protocol approved by ACECQA. Regulatory authorities can disclose whether a family day care educator who is employed, appointed or engaged by an approved provider has been suspended from providing education and care under section 178, on request by that approved provider, or at the regulatory authority’s discretion if it considers that the information may assist that approved provider with compliance. Regulatory authorities can disclose whether a specified person has been suspended from providing education and care to children as part of a family day care service under section 178, to a recruitment agency. A specified person is an individual who has entered into an agreement with a recruitment agency to procure education and care related work for that individual. The National Law and Regulations do not give regulatory authorities the power to publish information about suspended family day care educators.",
+              "retrieval_score": 14.236039,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1337",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 727",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1171",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 630",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9358,
+    "output_tokens": 273,
+    "total_tokens": 9631
+  },
+  "latency_ms": 6885.603707996779
+}

@@ -1,0 +1,131 @@
+{
+  "query": "For rural Queensland, use P80/P25 but calculate P80 only from Queensland rural services so the threshold reflects local conditions.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "I cannot recompute P80 within Queensland rural services: the validated model fixes percentile cut-offs using the **national Centre-Based Care risk sample**. I ran the closest valid scenario for rural Queensland using national P80/P25.\n\n- Transport P80 cut-off: **6.74 km**\n- Capacity P25 cut-off: **40 approved places**\n- Triple-gap priority pool: **20 of 193 eligible services (10.4%)**\n- Versus the national-threshold P75/P25 baseline: **down 1 service** (21 to 20)\n\nThe removed service is Wunderkids Early Learning Centres (SE-00001955). This is sensitivity analysis only, not a locally recalibrated threshold or evidence of non-compliance.",
+    "evidence": [
+      {
+        "source_tool": "simulate_risk_thresholds",
+        "claim": "For rural Queensland, the valid national-sample P80/P25 triple-gap scenario has a 6.744 km transport cut-off, 40-place capacity cut-off, and 20 priority services among 193 eligible services.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Applied the requested Queensland/Rural reporting scope, while retaining nationally calculated validated Centre-Based Care percentile thresholds as required by the model.",
+      "Compared the P80/P25 triple-gap scenario with the fixed P75/P25 triple-gap baseline."
+    ],
+    "limitations": [
+      "P80 was not recalculated from Queensland rural services; subgroup filters report impacts only.",
+      "Priority status is a screening signal, not evidence of breach, unmet demand, or an automatic enforcement basis."
+    ]
+  },
+  "used_tools": [
+    "simulate_risk_thresholds"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "simulate_risk_thresholds",
+      "call_id": "call_VfTbtTVfUQ7EXCbwuSNlKE70",
+      "arguments": {
+        "state": "QLD",
+        "urban_rural": "Rural",
+        "transport_percentile": 0.8,
+        "capacity_percentile": 0.25,
+        "minimum_gap_score": 3,
+        "changed_service_limit": 10
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "simulate_risk_thresholds",
+      "call_id": "call_VfTbtTVfUQ7EXCbwuSNlKE70",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "simulate_risk_thresholds",
+        "data": {
+          "scope": {
+            "state": "QLD",
+            "urban_rural": "Rural"
+          },
+          "baseline_thresholds": {
+            "transport_percentile": 0.75,
+            "transport_cutoff_km": 5.329340006807538,
+            "capacity_percentile": 0.25,
+            "capacity_cutoff_places": 40.0,
+            "minimum_gap_score": 3,
+            "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+          },
+          "scenario_thresholds": {
+            "transport_percentile": 0.8,
+            "transport_cutoff_km": 6.744341249608515,
+            "capacity_percentile": 0.25,
+            "capacity_cutoff_places": 40.0,
+            "minimum_gap_score": 3,
+            "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+          },
+          "baseline": {
+            "eligible_service_count": 193,
+            "priority_service_count": 21,
+            "priority_rate": 0.10880829015544041
+          },
+          "scenario": {
+            "eligible_service_count": 193,
+            "priority_service_count": 20,
+            "priority_rate": 0.10362694300518134
+          },
+          "change_count": -1,
+          "change_percent": -4.761904761904762,
+          "overlap_count": 20,
+          "added_count": 0,
+          "removed_count": 1,
+          "added_services": [],
+          "removed_services": [
+            {
+              "service_approval_number": "SE-00001955",
+              "service_name": "Wunderkids Early Learning Centres",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 5.3762509531799605
+            }
+          ],
+          "by_state": [
+            {
+              "group": "QLD",
+              "eligible_service_count": 193,
+              "baseline_priority_count": 21,
+              "scenario_priority_count": 20,
+              "change_count": -1,
+              "change_percent": -4.761904761904762
+            }
+          ],
+          "by_urban_rural": [
+            {
+              "group": "Rural",
+              "eligible_service_count": 193,
+              "baseline_priority_count": 21,
+              "scenario_priority_count": 20,
+              "change_count": -1,
+              "change_percent": -4.761904761904762
+            }
+          ],
+          "interpretation_caveat": "Scenario results are sensitivity analysis for a prioritisation screen. They do not show causal effects, optimal policy thresholds, unmet demand, legal non-compliance, or an automatic basis for enforcement."
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8179,
+    "output_tokens": 417,
+    "total_tokens": 8596
+  },
+  "latency_ms": 8398.565791998408
+}

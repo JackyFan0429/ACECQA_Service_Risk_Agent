@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "acecqa-risk-agent"
-version = "0.4.0"
-description = "Single-agent ACECQA decision-support copilot with deterministic analytics, scenario analysis, and grounded policy retrieval"
+version = "0.5.0"
+description = "Evaluated ACECQA decision-support copilot with deterministic analytics, scenarios, grounded policy retrieval, and a formal benchmark harness"
 requires-python = ">=3.10"
 dependencies = [
   "pandas>=2.2,<3",

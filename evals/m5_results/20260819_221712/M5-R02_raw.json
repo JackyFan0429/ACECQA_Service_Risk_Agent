@@ -1,0 +1,75 @@
+{
+  "query": "What is the v1 risk score for SE-40015803?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**SE-40015803 (Maingirba Early Learning Centre)** has a **v1 risk score of 3/3 (three gaps)**. It is eligible for scoring and meets all three flags: poor transport access, Working Towards NQS, and low authorised capacity.",
+    "evidence": [
+      {
+        "source_tool": "calculate_risk_score",
+        "claim": "SE-40015803 has a v1 gap score of 3, with poor-access, weak-quality, and low-capacity flags.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "v1 assigns one point for each applicable gap; thresholds are national validated Centre-Based Care P75 transport distance (5.329 km) and P25 approved places (40)."
+    ],
+    "limitations": [
+      "Approved places (24) are authorised capacity, not evidence of enrolment, waitlists, unmet demand, or local demand."
+    ]
+  },
+  "used_tools": [
+    "calculate_risk_score"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_fEJDcwfMSSGd1hORJQhqnPRk",
+      "arguments": {
+        "service_approval_number": "SE-40015803"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_fEJDcwfMSSGd1hORJQhqnPRk",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "calculate_risk_score",
+        "data": {
+          "service_approval_number": "SE-40015803",
+          "service_name": "Maingirba Early Learning Centre",
+          "eligible_for_risk_scoring": true,
+          "gap_score": 3,
+          "gap_label": "3 gaps",
+          "poor_access_flag": true,
+          "weak_quality_flag": true,
+          "low_capacity_flag": true,
+          "nearest_public_transport_km": 283.00260233944107,
+          "overall_rating": "Working Towards NQS",
+          "number_of_approved_places": 24.0,
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "limitations": [
+            "Approved places measure authorised capacity, not enrolment, waitlists, unmet demand, or local demand."
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7493,
+    "output_tokens": 213,
+    "total_tokens": 7706
+  },
+  "latency_ms": 5261.497999999847
+}

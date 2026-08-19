@@ -1,0 +1,1068 @@
+{
+  "query": "How many Queensland services have an overall rating of Exceeding NQS?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "526 Queensland services have an overall rating of **Exceeding NQS**.",
+    "evidence": [
+      {
+        "source_tool": "search_services",
+        "claim": "Filtering to Queensland services with an overall rating of Exceeding NQS returned 526 matches.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Applied filters: state = QLD; overall rating = Exceeding NQS; all service types and urban/rural locations included."
+    ],
+    "limitations": []
+  },
+  "used_tools": [
+    "search_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_services",
+      "call_id": "call_ObvSpJpgIwqJPpJJ6YXkAXN5",
+      "arguments": {
+        "state": "QLD",
+        "urban_rural": null,
+        "service_type": null,
+        "overall_rating": "Exceeding NQS",
+        "limit": 100
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_services",
+      "call_id": "call_ObvSpJpgIwqJPpJJ6YXkAXN5",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_services",
+        "data": {
+          "matched_count": 526,
+          "returned_count": 100,
+          "filters": {
+            "state": "QLD",
+            "urban_rural": null,
+            "service_type": null,
+            "overall_rating": "Exceeding NQS"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00000011",
+              "service_name": "Albert Waterways Children's Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 47.0,
+              "nearest_public_transport_km": 0.683660996386232
+            },
+            {
+              "service_approval_number": "SE-00000035",
+              "service_name": "Goodstart Early Learning Aspley",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 1.5170336495707368
+            },
+            {
+              "service_approval_number": "SE-00000037",
+              "service_name": "Tugulawa Early Education Incorporated",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 2.159075581958633
+            },
+            {
+              "service_approval_number": "SE-00000046",
+              "service_name": "Lady Gowrie Love Street Child Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 67.0,
+              "nearest_public_transport_km": 0.497023137809258
+            },
+            {
+              "service_approval_number": "SE-00000056",
+              "service_name": "Avenues Early Learning Centre - McDowall",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 2.955270732225683
+            },
+            {
+              "service_approval_number": "SE-00000081",
+              "service_name": "Sandgate Kids Early Education Nash Street",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 54.0,
+              "nearest_public_transport_km": 0.9920173963268224
+            },
+            {
+              "service_approval_number": "SE-00000100",
+              "service_name": "Kids At West End Child Care & Early Education Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 1.1959131992276546
+            },
+            {
+              "service_approval_number": "SE-00000127",
+              "service_name": "C&K Caloundra Community Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 71.0,
+              "nearest_public_transport_km": 16.21975201089013
+            },
+            {
+              "service_approval_number": "SE-00000132",
+              "service_name": "Goodstart Early Learning Emerald",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 0.8662109276574972
+            },
+            {
+              "service_approval_number": "SE-00000133",
+              "service_name": "First Steps Early Childhood Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 1.8567013107666988
+            },
+            {
+              "service_approval_number": "SE-00000134",
+              "service_name": "Stepping Stones Child Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 57.0,
+              "nearest_public_transport_km": 0.5500007747235204
+            },
+            {
+              "service_approval_number": "SE-00000135",
+              "service_name": "Little Scholars School of Early Learning - Ashmore",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 82.0,
+              "nearest_public_transport_km": 2.2104295356587027
+            },
+            {
+              "service_approval_number": "SE-00000145",
+              "service_name": "Kids On 4th",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 105.0,
+              "nearest_public_transport_km": 7.793373433680571
+            },
+            {
+              "service_approval_number": "SE-00000146",
+              "service_name": "Harbourtown Kindyland",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 64.0,
+              "nearest_public_transport_km": 4.969647577032482
+            },
+            {
+              "service_approval_number": "SE-00000150",
+              "service_name": "Bauer Street Community Children's Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 72.0,
+              "nearest_public_transport_km": 0.196360208709018
+            },
+            {
+              "service_approval_number": "SE-00000160",
+              "service_name": "BAYSIDE EARLY LEARNERS",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 80.0,
+              "nearest_public_transport_km": 2.449747980443231
+            },
+            {
+              "service_approval_number": "SE-00000173",
+              "service_name": "J.A.C.'s Learning World",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 52.0,
+              "nearest_public_transport_km": 37.04933558839649
+            },
+            {
+              "service_approval_number": "SE-00000175",
+              "service_name": "Goodstart Early Learning Browns Plains - Redgum Drive",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 6.831025825359741
+            },
+            {
+              "service_approval_number": "SE-00000176",
+              "service_name": "Rosie's Early Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 64.0,
+              "nearest_public_transport_km": 2.550946832096723
+            },
+            {
+              "service_approval_number": "SE-00000180",
+              "service_name": "Play and Learn Early Learning Centre Bismark St",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 1.3945155704769332
+            },
+            {
+              "service_approval_number": "SE-00000196",
+              "service_name": "C&K Cotton Tree Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 72.0,
+              "nearest_public_transport_km": 13.791454018218392
+            },
+            {
+              "service_approval_number": "SE-00000198",
+              "service_name": "C&K Mooloolaba Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 14.792853421150015
+            },
+            {
+              "service_approval_number": "SE-00000200",
+              "service_name": "Woombye Child Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 58.0,
+              "nearest_public_transport_km": 0.3141104767714041
+            },
+            {
+              "service_approval_number": "SE-00000210",
+              "service_name": "C&K Birralee Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 65.0,
+              "nearest_public_transport_km": 1.4385802405311152
+            },
+            {
+              "service_approval_number": "SE-00000222",
+              "service_name": "Rose Rainbow Preschool, Kindergarten and Child Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 56.0,
+              "nearest_public_transport_km": 3.059037607399877
+            },
+            {
+              "service_approval_number": "SE-00000224",
+              "service_name": "Goodstart Early Learning Capalaba - Greenup Street",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 65.0,
+              "nearest_public_transport_km": 5.688052360371598
+            },
+            {
+              "service_approval_number": "SE-00000231",
+              "service_name": "The Rockhampton Grammar School Early Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 193.0,
+              "nearest_public_transport_km": 1.1688078093741765
+            },
+            {
+              "service_approval_number": "SE-00000260",
+              "service_name": "C&K Coolum Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 53.0,
+              "nearest_public_transport_km": 13.470893888262108
+            },
+            {
+              "service_approval_number": "SE-00000262",
+              "service_name": "C&K Salisbury Community Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 48.0,
+              "nearest_public_transport_km": 1.1444640472879677
+            },
+            {
+              "service_approval_number": "SE-00000265",
+              "service_name": "C&K Bradman Street Community Long Day Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 58.0,
+              "nearest_public_transport_km": 0.8420360629633703
+            },
+            {
+              "service_approval_number": "SE-00000269",
+              "service_name": "C&K Tewantin Community Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 50.0,
+              "nearest_public_transport_km": 12.760773279279473
+            },
+            {
+              "service_approval_number": "SE-00000285",
+              "service_name": "Goodstart Early Learning Burleigh",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 82.0,
+              "nearest_public_transport_km": 2.425750584348356
+            },
+            {
+              "service_approval_number": "SE-00000295",
+              "service_name": "canopy Early Education Milton",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 0.3982244487547128
+            },
+            {
+              "service_approval_number": "SE-00000299",
+              "service_name": "Fuji International Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 122.0,
+              "nearest_public_transport_km": 2.411449706226618
+            },
+            {
+              "service_approval_number": "SE-00000304",
+              "service_name": "Wagner Road Early Childhood Centre & Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 0.2175509010475578
+            },
+            {
+              "service_approval_number": "SE-00000307",
+              "service_name": "Playschool Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 5.881861533234042
+            },
+            {
+              "service_approval_number": "SE-00000314",
+              "service_name": "Hatchlings Early Learning Centre Caboolture",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 1.3077876372295305
+            },
+            {
+              "service_approval_number": "SE-00000323",
+              "service_name": "Goodstart Early Learning Kenmore - Princeton Street",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 3.539237283155396
+            },
+            {
+              "service_approval_number": "SE-00000329",
+              "service_name": "Perfect Beginnings Montessori Children's House",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 102.0,
+              "nearest_public_transport_km": 1.925481268849988
+            },
+            {
+              "service_approval_number": "SE-00000333",
+              "service_name": "Toral Lodge Child Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 9.27117985339338
+            },
+            {
+              "service_approval_number": "SE-00000347",
+              "service_name": "Labrador Playschool Early Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 92.0,
+              "nearest_public_transport_km": 2.0531021835185457
+            },
+            {
+              "service_approval_number": "SE-00000364",
+              "service_name": "Goodstart Early Learning Fernvale",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 16.542116335187373
+            },
+            {
+              "service_approval_number": "SE-00000365",
+              "service_name": "Little Ted's Child Care Centre - Oxley",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 0.4481633423024045
+            },
+            {
+              "service_approval_number": "SE-00000366",
+              "service_name": "Avenues Early Learning Centre Jindalee",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 4.096900908646644
+            },
+            {
+              "service_approval_number": "SE-00000374",
+              "service_name": "Mother Duck Childcare and Kindergarten Lawnton",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 200.0,
+              "nearest_public_transport_km": 0.0923722011694939
+            },
+            {
+              "service_approval_number": "SE-00000376",
+              "service_name": "Benowa Early Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 140.0,
+              "nearest_public_transport_km": 2.9023455616179854
+            },
+            {
+              "service_approval_number": "SE-00000383",
+              "service_name": "Uniting Early Learning Toombul",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 0.5959148550544469
+            },
+            {
+              "service_approval_number": "SE-00000386",
+              "service_name": "Karinya Montessori Children's House",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 55.0,
+              "nearest_public_transport_km": 0.7442056909483395
+            },
+            {
+              "service_approval_number": "SE-00000390",
+              "service_name": "Goodstart Early Learning Maleny",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 11.122580162620624
+            },
+            {
+              "service_approval_number": "SE-00000397",
+              "service_name": "Mother Duck Childcare and Kindergarten Gaythorne",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 110.0,
+              "nearest_public_transport_km": 0.5899317007890245
+            },
+            {
+              "service_approval_number": "SE-00000404",
+              "service_name": "Kids World Gilston",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 116.0,
+              "nearest_public_transport_km": 6.242257230652495
+            },
+            {
+              "service_approval_number": "SE-00000406",
+              "service_name": "Bright Beginnings Child Edu-Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 114.0,
+              "nearest_public_transport_km": 3.2642394824962833
+            },
+            {
+              "service_approval_number": "SE-00000408",
+              "service_name": "Little Scholars School of Early Learning Burleigh",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 147.0,
+              "nearest_public_transport_km": 4.381350289008031
+            },
+            {
+              "service_approval_number": "SE-00000415",
+              "service_name": "Goodstart Early Learning Petrie",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 2.1329004622634367
+            },
+            {
+              "service_approval_number": "SE-00000418",
+              "service_name": "Karana Early Education Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 63.0,
+              "nearest_public_transport_km": 5.36127127864583
+            },
+            {
+              "service_approval_number": "SE-00000445",
+              "service_name": "Paradise Point Kindyland",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 6.074246463633321
+            },
+            {
+              "service_approval_number": "SE-00000468",
+              "service_name": "Goodstart Early Learning Cairns",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 73.0,
+              "nearest_public_transport_km": 2.8211630989602186
+            },
+            {
+              "service_approval_number": "SE-00000480",
+              "service_name": "Mother Duck Childcare and Kindergarten Eatons Hill",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 113.0,
+              "nearest_public_transport_km": 4.491470338810123
+            },
+            {
+              "service_approval_number": "SE-00000488",
+              "service_name": "Hot Tots Educational Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 0.4998489249950315
+            },
+            {
+              "service_approval_number": "SE-00000491",
+              "service_name": "Goodstart Early Learning Gladstone - Beak Street",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 4.2049884582565875
+            },
+            {
+              "service_approval_number": "SE-00000493",
+              "service_name": "Goodstart Early Learning Richlands 1",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 110.0,
+              "nearest_public_transport_km": 1.7368535302075314
+            },
+            {
+              "service_approval_number": "SE-00000501",
+              "service_name": "Avenues Early Learning Centre - Murarrie",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 113.0,
+              "nearest_public_transport_km": 0.747302880633393
+            },
+            {
+              "service_approval_number": "SE-00000507",
+              "service_name": "Taigum Kids Early Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 175.0,
+              "nearest_public_transport_km": 1.233303668018093
+            },
+            {
+              "service_approval_number": "SE-00000509",
+              "service_name": "Pomona Kindergarten & Early Years Learning",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 83.0,
+              "nearest_public_transport_km": 0.3869068978897044
+            },
+            {
+              "service_approval_number": "SE-00000515",
+              "service_name": "Goodstart Early Learning Morayfield 1",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 129.0,
+              "nearest_public_transport_km": 1.5229347080968487
+            },
+            {
+              "service_approval_number": "SE-00000516",
+              "service_name": "Barefoot Early Childhood",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 52.0,
+              "nearest_public_transport_km": 14.233122092317892
+            },
+            {
+              "service_approval_number": "SE-00000529",
+              "service_name": "Lowood Early Education Centre and Preschool",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 129.0,
+              "nearest_public_transport_km": 18.387921113579125
+            },
+            {
+              "service_approval_number": "SE-00000532",
+              "service_name": "Chermside Early Education Centre and Pre-School",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 2.7366532654074303
+            },
+            {
+              "service_approval_number": "SE-00000546",
+              "service_name": "Busy Bees at Fraser Coast",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 4.1199662779225115
+            },
+            {
+              "service_approval_number": "SE-00000548",
+              "service_name": "Sesame Lane Child Care Centre - Morayfield",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 1.122078568984608
+            },
+            {
+              "service_approval_number": "SE-00000555",
+              "service_name": "Goodstart Early Learning Yamanto",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 74.0,
+              "nearest_public_transport_km": 3.49588975626083
+            },
+            {
+              "service_approval_number": "SE-00000569",
+              "service_name": "Holland Park Child Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 62.0,
+              "nearest_public_transport_km": 3.504816046327633
+            },
+            {
+              "service_approval_number": "SE-00000571",
+              "service_name": "Kidz At The Beach",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 5.406267615696313
+            },
+            {
+              "service_approval_number": "SE-00000583",
+              "service_name": "Goodstart Early Learning Burleigh Waters",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 65.0,
+              "nearest_public_transport_km": 3.3137713469577115
+            },
+            {
+              "service_approval_number": "SE-00000585",
+              "service_name": "Goodstart Early Learning Nambour - Doolan Street",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 0.5442738841670864
+            },
+            {
+              "service_approval_number": "SE-00000592",
+              "service_name": "Sparrow Early Learning Tewantin",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 12.770615974761425
+            },
+            {
+              "service_approval_number": "SE-00000605",
+              "service_name": "Little Scholars School of Early Learning Deception Bay",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 0.8016014695669942
+            },
+            {
+              "service_approval_number": "SE-00000620",
+              "service_name": "Carina Heights Child Care and Development",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 1.1233590207723945
+            },
+            {
+              "service_approval_number": "SE-00000636",
+              "service_name": "Rainbow Valley Early Learning Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 115.0,
+              "nearest_public_transport_km": 1.8175063428321092
+            },
+            {
+              "service_approval_number": "SE-00000658",
+              "service_name": "Goodstart Early Learning Coopers Plains",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 1.095422354916515
+            },
+            {
+              "service_approval_number": "SE-00000682",
+              "service_name": "Barrier Reef Community Child Care Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 3.4167445971980324
+            },
+            {
+              "service_approval_number": "SE-00000696",
+              "service_name": "Goodstart Early Learning Little Mountain - Mark Road West",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 53.0,
+              "nearest_public_transport_km": 13.8333915559687
+            },
+            {
+              "service_approval_number": "SE-00000716",
+              "service_name": "Centenary Child Care & Early Education Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 225.0,
+              "nearest_public_transport_km": 2.385970421112146
+            },
+            {
+              "service_approval_number": "SE-00000729",
+              "service_name": "Brookfield Early Childhood Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 124.0,
+              "nearest_public_transport_km": 6.041998258392885
+            },
+            {
+              "service_approval_number": "SE-00000732",
+              "service_name": "The Woods Early Education Centre and Preschool",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 90.0,
+              "nearest_public_transport_km": 3.333097275548574
+            },
+            {
+              "service_approval_number": "SE-00000733",
+              "service_name": "Mother Duck Childcare and Kindergarten Carindale",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 98.0,
+              "nearest_public_transport_km": 1.3949650030709655
+            },
+            {
+              "service_approval_number": "SE-00000744",
+              "service_name": "Mother Duck Child Care and Kindergarten Bellbowrie",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 103.0,
+              "nearest_public_transport_km": 4.271138321867977
+            },
+            {
+              "service_approval_number": "SE-00000750",
+              "service_name": "Lady Ramsay Early Learning and Education Centre",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 78.0,
+              "nearest_public_transport_km": 0.5764568646980424
+            },
+            {
+              "service_approval_number": "SE-00000786",
+              "service_name": "Beenleigh Family Day Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.5645520710574666
+            },
+            {
+              "service_approval_number": "SE-00000803",
+              "service_name": "Wynnum Family Day Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.1700690790292461
+            },
+            {
+              "service_approval_number": "SE-00000815",
+              "service_name": "Uniting Family Day Care Gympie",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.4037655924474825
+            },
+            {
+              "service_approval_number": "SE-00000837",
+              "service_name": "Whitsunday Shire Family Day Care Scheme",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.5055953566194061
+            },
+            {
+              "service_approval_number": "SE-00000869",
+              "service_name": "School Plus - Ithaca Creek OSHC",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 180.0,
+              "nearest_public_transport_km": 2.390136922013986
+            },
+            {
+              "service_approval_number": "SE-00000913",
+              "service_name": "Coolum Outside School Hours Care and Vacation Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 195.0,
+              "nearest_public_transport_km": 13.221488347476267
+            },
+            {
+              "service_approval_number": "SE-00000922",
+              "service_name": "Jindalee School Age Care Program",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 250.0,
+              "nearest_public_transport_km": 4.195710514793464
+            },
+            {
+              "service_approval_number": "SE-00000947",
+              "service_name": "John Paul College Outside School Hours Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 194.0,
+              "nearest_public_transport_km": 3.700783549881262
+            },
+            {
+              "service_approval_number": "SE-00000955",
+              "service_name": "Mueller College Outside School Hours Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 120.0,
+              "nearest_public_transport_km": 2.0061270103745716
+            },
+            {
+              "service_approval_number": "SE-00000972",
+              "service_name": "Bulimba State School Outside School Hours Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 255.0,
+              "nearest_public_transport_km": 2.0813323240517225
+            },
+            {
+              "service_approval_number": "SE-00000975",
+              "service_name": "Camp Hill Outside School Hours Care",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 310.0,
+              "nearest_public_transport_km": 1.9358098125791456
+            },
+            {
+              "service_approval_number": "SE-00001022",
+              "service_name": "Buderim OSHC",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 150.0,
+              "nearest_public_transport_km": 9.11575152398254
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 14772,
+    "output_tokens": 151,
+    "total_tokens": 14923
+  },
+  "latency_ms": 4333.022250000795
+}

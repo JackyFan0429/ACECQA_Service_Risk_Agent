@@ -1,0 +1,300 @@
+{
+  "query": "Compare a broad national triple-gap scenario at P70 transport/P30 capacity with a strict one at P85 transport/P20 capacity.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "The broad scenario identifies **196** national triple-gap priority services; the strict scenario identifies **111**—**85 fewer (43.4% reduction)**.\n\n- **Broad:** P70 transport = **4.32 km**; P30 capacity = **44 places**.\n- **Strict:** P85 transport = **9.63 km**; P20 capacity = **35 places**.\n- All **111** strict-scenario services are also in the broad pool; **85** services are unique to the broad scenario.\n- The reduction is concentrated in urban services: **120 → 51** (−69), compared with rural **76 → 60** (−16).\n\nThe strict settings therefore form a nested, narrower screen focused on services meeting more extreme transport-distance and lower-capacity thresholds.",
+    "evidence": [
+      {
+        "source_tool": "compare_risk_scenarios",
+        "claim": "National broad triple-gap scenario has 196 priority services, versus 111 under the strict scenario; overlap is 111, with 85 services unique to the broad scenario.",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "compare_risk_scenarios",
+        "claim": "Broad thresholds are 4.32 km (P70 transport) and 44 places (P30 capacity); strict thresholds are 9.63 km (P85) and 35 places (P20).",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "compare_risk_scenarios",
+        "claim": "Urban priority services decline from 120 to 51 and rural services from 76 to 60 between the broad and strict scenarios.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Both scenarios retain the triple-gap requirement (minimum gap score 3). Percentile thresholds are calculated from the national validated Centre-Based Care sample (15,969 eligible services)."
+    ],
+    "limitations": [
+      "This is sensitivity analysis of a prioritisation screen, not evidence that either threshold set is optimal, fairer, or legally preferable.",
+      "A priority flag does not establish unmet demand, non-compliance, a breach, or an automatic basis for enforcement."
+    ]
+  },
+  "used_tools": [
+    "compare_risk_scenarios"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_risk_scenarios",
+      "call_id": "call_enBwAnbgOpdjwvlQQUp4VYZZ",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "scenario_a": {
+          "label": "Broad: P70 transport / P30 capacity",
+          "transport_percentile": 0.7,
+          "capacity_percentile": 0.3,
+          "minimum_gap_score": 3
+        },
+        "scenario_b": {
+          "label": "Strict: P85 transport / P20 capacity",
+          "transport_percentile": 0.85,
+          "capacity_percentile": 0.2,
+          "minimum_gap_score": 3
+        },
+        "changed_service_limit": 10
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_risk_scenarios",
+      "call_id": "call_enBwAnbgOpdjwvlQQUp4VYZZ",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_risk_scenarios",
+        "data": {
+          "scope": {
+            "state": null,
+            "urban_rural": null
+          },
+          "scenario_a": {
+            "label": "Broad: P70 transport / P30 capacity",
+            "thresholds": {
+              "transport_percentile": 0.7,
+              "transport_cutoff_km": 4.3184079875463075,
+              "capacity_percentile": 0.3,
+              "capacity_cutoff_places": 44.0,
+              "minimum_gap_score": 3,
+              "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+            },
+            "pool": {
+              "eligible_service_count": 15969,
+              "priority_service_count": 196,
+              "priority_rate": 0.01227378044962114
+            }
+          },
+          "scenario_b": {
+            "label": "Strict: P85 transport / P20 capacity",
+            "thresholds": {
+              "transport_percentile": 0.85,
+              "transport_cutoff_km": 9.62749049798773,
+              "capacity_percentile": 0.2,
+              "capacity_cutoff_places": 35.0,
+              "minimum_gap_score": 3,
+              "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+            },
+            "pool": {
+              "eligible_service_count": 15969,
+              "priority_service_count": 111,
+              "priority_rate": 0.0069509674995303404
+            }
+          },
+          "b_minus_a_count": -85,
+          "b_vs_a_percent_change": -43.36734693877551,
+          "overlap_count": 111,
+          "only_a_count": 85,
+          "only_b_count": 0,
+          "only_a_services": [
+            {
+              "service_approval_number": "SE-40011918",
+              "service_name": "Seagrass OSHC",
+              "state": "NT",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 455.6295718621907
+            },
+            {
+              "service_approval_number": "SE-00014263",
+              "service_name": "One Tree OSHC Kununurra",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 403.2254351438024
+            },
+            {
+              "service_approval_number": "SE-00014230",
+              "service_name": "One Tree Woothoo-woothoong thoon Ninggoowoong Dawang Children's Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 402.6561250283123
+            },
+            {
+              "service_approval_number": "SE-00012485",
+              "service_name": "Christmas Island Daycare Centre",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 393.633831196217
+            },
+            {
+              "service_approval_number": "SE-00002494",
+              "service_name": "Kalkaringi Preschool",
+              "state": "NT",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 36.0,
+              "nearest_public_transport_km": 359.91250416319565
+            },
+            {
+              "service_approval_number": "SE-00012447",
+              "service_name": "One Tree Bulgarra Children's Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 43.0,
+              "nearest_public_transport_km": 194.64320039444695
+            },
+            {
+              "service_approval_number": "SE-00000721",
+              "service_name": "Winton Child Care Centre \"Little Swaggies\"",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 41.0,
+              "nearest_public_transport_km": 170.90890823071734
+            },
+            {
+              "service_approval_number": "SE-00006800",
+              "service_name": "Busy Kids Child Care",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 102.47871273138858
+            },
+            {
+              "service_approval_number": "SE-00012978",
+              "service_name": "Newman Day Care Centre",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 42.0,
+              "nearest_public_transport_km": 91.17684607303008
+            },
+            {
+              "service_approval_number": "SE-40003217",
+              "service_name": "BEE ME EARLY LEARNERS",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 73.04612450336478
+            }
+          ],
+          "only_b_services": [],
+          "by_state": [
+            {
+              "group": "ACT",
+              "eligible_service_count": 350,
+              "scenario_a_priority_count": 5,
+              "scenario_b_priority_count": 2,
+              "b_minus_a_count": -3,
+              "b_vs_a_percent_change": -60.0
+            },
+            {
+              "group": "NSW",
+              "eligible_service_count": 5526,
+              "scenario_a_priority_count": 39,
+              "scenario_b_priority_count": 21,
+              "b_minus_a_count": -18,
+              "b_vs_a_percent_change": -46.15384615384615
+            },
+            {
+              "group": "NT",
+              "eligible_service_count": 212,
+              "scenario_a_priority_count": 12,
+              "scenario_b_priority_count": 7,
+              "b_minus_a_count": -5,
+              "b_vs_a_percent_change": -41.66666666666667
+            },
+            {
+              "group": "QLD",
+              "eligible_service_count": 3014,
+              "scenario_a_priority_count": 39,
+              "scenario_b_priority_count": 27,
+              "b_minus_a_count": -12,
+              "b_vs_a_percent_change": -30.76923076923077
+            },
+            {
+              "group": "SA",
+              "eligible_service_count": 1207,
+              "scenario_a_priority_count": 38,
+              "scenario_b_priority_count": 20,
+              "b_minus_a_count": -18,
+              "b_vs_a_percent_change": -47.368421052631575
+            },
+            {
+              "group": "TAS",
+              "eligible_service_count": 215,
+              "scenario_a_priority_count": 6,
+              "scenario_b_priority_count": 4,
+              "b_minus_a_count": -2,
+              "b_vs_a_percent_change": -33.33333333333333
+            },
+            {
+              "group": "VIC",
+              "eligible_service_count": 4155,
+              "scenario_a_priority_count": 25,
+              "scenario_b_priority_count": 11,
+              "b_minus_a_count": -14,
+              "b_vs_a_percent_change": -56.00000000000001
+            },
+            {
+              "group": "WA",
+              "eligible_service_count": 1290,
+              "scenario_a_priority_count": 32,
+              "scenario_b_priority_count": 19,
+              "b_minus_a_count": -13,
+              "b_vs_a_percent_change": -40.625
+            }
+          ],
+          "by_urban_rural": [
+            {
+              "group": "Rural",
+              "eligible_service_count": 1025,
+              "scenario_a_priority_count": 76,
+              "scenario_b_priority_count": 60,
+              "b_minus_a_count": -16,
+              "b_vs_a_percent_change": -21.052631578947366
+            },
+            {
+              "group": "Urban",
+              "eligible_service_count": 14944,
+              "scenario_a_priority_count": 120,
+              "scenario_b_priority_count": 51,
+              "b_minus_a_count": -69,
+              "b_vs_a_percent_change": -57.49999999999999
+            }
+          ],
+          "interpretation_caveat": "Scenario results are sensitivity analysis for a prioritisation screen. They do not show causal effects, optimal policy thresholds, unmet demand, legal non-compliance, or an automatic basis for enforcement."
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8943,
+    "output_tokens": 560,
+    "total_tokens": 9503
+  },
+  "latency_ms": 8238.716958003351
+}

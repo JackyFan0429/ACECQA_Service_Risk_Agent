@@ -1,0 +1,22 @@
+{
+  "query": "Which services in the current dataset have the longest waiting lists?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "I can’t identify services with the longest waiting lists: the current dataset/tools include authorised capacity, transport access, NQS ratings and risk indicators, but not waitlist counts or enrolment-demand data. Low authorised capacity must not be treated as evidence of a long waitlist.",
+    "evidence": [],
+    "methodology": [],
+    "limitations": [
+      "Authorised places are not waitlist, utilisation, enrolment or unmet-demand measures."
+    ]
+  },
+  "used_tools": [],
+  "tool_trace": [],
+  "policy_sources": [],
+  "usage": {
+    "requests": 1,
+    "input_tokens": 3638,
+    "output_tokens": 134,
+    "total_tokens": 3772
+  },
+  "latency_ms": 2519.2286249948665
+}

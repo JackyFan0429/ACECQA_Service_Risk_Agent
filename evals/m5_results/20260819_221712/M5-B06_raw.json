@@ -1,0 +1,135 @@
+{
+  "query": "Can the Guide to the NQF override the National Law because it is ACECQA's official guide?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. The Guide to the NQF expressly states that it is guidance, not legal advice, and that the National Law and National Regulations take precedence over anything in the Guide. Its official status does not give it authority to override legislation. Jurisdiction-specific amendments, including in NSW and Victoria, may also apply.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "The Guide says it must be read with the National Law and National Regulations, is not legal advice, and those instruments take precedence.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0013"
+        ]
+      }
+    ],
+    "methodology": [
+      "Retrieved the official Guide to the NQF material on the legal hierarchy."
+    ],
+    "limitations": [
+      "This is general information, not legal advice; applicable jurisdiction-specific legislation may alter obligations."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_468rs96KZaZXQ4XP2AdaZZNy",
+      "arguments": {
+        "query": "Guide to the NQF status guidance National Law Regulations take precedence",
+        "topic": "legal_hierarchy",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_468rs96KZaZXQ4XP2AdaZZNy",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "Guide to the NQF status guidance National Law Regulations take precedence",
+          "topic": "legal_hierarchy",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0013",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 6: Reviews - PDF page 10",
+              "excerpt": "10 Guide to the NQF | Introduction Guide to the NQF | Introduction Introduction Purpose of guide This guide aims to support education and care service providers, authorised officers and other regulatory authority staff understand the requirements under the National Quality Framework (NQF). The guide should always be read with the Education and Care Services National Law Act 2010 (National Law) and the Education and Care Services National Regulations 2011 (National Regulations). It is not legal advice, and the National Law and Regulations take precedence over any material in this guide. Please note a number of separate, jurisdiction specific legislative changes have commenced in New South Wales and Victoria. The Children (Education and Care Services) National Law (NSW) and associated regulations as they apply in NSW have been amended by the Children (Education and Care Services National Law Application) Act 2010 (NSW) and associated regulations. This means that in NSW there are additional and substituted provisions to the National Law. To understand your obligations under the National Quality Framework in NSW, this information must be read subject to the law as it applies in NSW. NSW legislation can be accessed at Children (Education and Care Services) National Law (NSW) 2010 and Education and Care Services National Regulations (NSW) 2025. Please visit the NSW Education website to understand the key differences and how to comply. Victoria has introduced some additional requirements for compliance with the National Quality Framework. These are set out in Part 2B of the Education and Care Services National Law Act 2010. For more information about Victoria-specific provisions, visit the Victorian Early Childhood Regulatory Authority’s website.",
+              "retrieval_score": 15.377143,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0956",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 512",
+              "excerpt": "been contravened or that a serious incident has occurred or is occurring while a child was or is being educated and cared for by the educator are adequately addressed. Failure to comply with these requirements is an offence with a penalty of $6,600. Ongoing management of family day care educators Approved providers must take reasonable steps to ensure that each family day care educator maintains adequate knowledge and understanding of the provision of education and care to children, and that serious incidents and complaints are adequately addressed. Good record keeping by both the educator and the approved provider can show the steps that approved providers have taken to meet these requirements. These obligations link to the National Quality Standard, in particular, Elements 7.1.2 and 7.2.3 which are about professional development and management systems. ‘Reasonable steps’ is not defined in the National Law or Regulations. Consistent with the approach taken to other guidance in this publication, the information below is guidance only. The steps that approved providers take to comply with the minimum requirements will depend on the circumstances of each case, as well as the information available to the approved provider at the time. Maintaining adequate knowledge and understanding of the National Regulations Regulation 143B",
+              "retrieval_score": 9.785515,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1081",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 580",
+              "excerpt": "580 Guide to the NQF | Introduction Guide to the NQF | Introduction National Regulations Regulations 165, 169 Visitors to family day care residences and venues An approved provider must take all reasonable steps to ensure a record of all visitors to a family day care residence or approved family day care venue is kept. A family day care educator must keep a record of all adult visitors to the educator’s residence or venue while children are being educated and cared for at the residence or venue. The record must include the signature of the visitor and the time of arrival and departure. A sample (optional) template is included at the back of this section. This template may be adapted for use by individual services, or providers might develop their own. National Regulations Regulations 166, 169 The approved provider must take all reasonable steps to make sure a child being educated and cared for is not left alone with a visitor. The family day care educator must not leave a child being educated and cared for at the residence or venue alone with a visitor. An approved provider must have policies and procedures in place to ensure children are not left alone with visitors in a family day care residence or venue. See Supervising unauthorised persons below for information about who is considered to be a visitor under the National Law. National Law Section 170 TAS Supervising unauthorised persons An approved provider and nominated supervisor (except for those in Tasmania) must ensure an unauthorised person does not remain on the education and care service premises while children are being educated and cared for, unless the person is under the direct supervision of an educator or other staff member.",
+              "retrieval_score": 9.311156,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 9.045848,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1096",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 590",
+              "excerpt": "590 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement 2. Compliance tools There are a wide range of methods and tools regulatory authorities may use when addressing non-compliance. This section sets out the tools that are available under the National Law and provides guidance on which tool to use, based on the specific circumstances. These tools should be used in context of the Good Regulatory Practice section, which sets out the objectives of the National Law and the best practice principles of regulation listed below. Best practice principles of regulation Outcomes focus Proportionality and efficiency Responsiveness and flexibility Transparency and accountability Independence Communication and engagement Mutual responsibility Consistency and predictability. Regulatory authorities: • take a responsive regulatory approach when choosing the methods used to manage non-compliance, considering all the risks • are mindful of their administrative law obligations and keep records of compliance activities (see Good Regulatory Practice). The NSW State Records Act 1998 applies to all jurisdictions for the purposes of the National Law and Regulations (section 265) • must commence proceedings within two years of becoming aware of an alleged offence (section 284). If the alleged offence is being investigated by another entity under a different Act, the two-year period to commence proceedings doesn’t apply while the other case is in progress. Once the other case is finalised, the regulatory authority has two years to commence proceedings.",
+              "retrieval_score": 8.803871,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0013",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 6: Reviews - PDF page 10",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9389,
+    "output_tokens": 209,
+    "total_tokens": 9598
+  },
+  "latency_ms": 6360.6649590001325
+}

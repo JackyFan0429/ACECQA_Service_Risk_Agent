@@ -1,0 +1,81 @@
+{
+  "query": "Compare public-transport access for rural versus urban Centre-Based Care nationally. Which group has the higher median distance?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Rural Centre-Based Care has the higher median distance to nearest public transport: **17.10 km**, versus **2.13 km** for urban services.",
+    "evidence": [
+      {
+        "source_tool": "compare_transport_access",
+        "claim": "Nationally, 1,025 rural Centre-Based Care services have a median nearest-transport distance of 17.096 km; 14,946 urban services have a median of 2.131 km.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Compared national Centre-Based Care groups by urban/rural classification using median distance to nearest public transport."
+    ],
+    "limitations": [
+      "Distance to transport is an access proxy; it does not measure service frequency, affordability, route suitability, or actual use."
+    ]
+  },
+  "used_tools": [
+    "compare_transport_access"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_xM0VprKl4Nq7Y4MTFGJuTOEm",
+      "arguments": {
+        "state": null,
+        "service_type": "Centre-Based Care",
+        "group_by": "urban_rural"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_xM0VprKl4Nq7Y4MTFGJuTOEm",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_transport_access",
+        "data": {
+          "group_by": "urban_rural",
+          "filters": {
+            "state": null,
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "groups": [
+            {
+              "group": "Rural",
+              "service_count": 1025,
+              "median_nearest_transport_km": 17.096440372098517,
+              "mean_nearest_transport_km": 44.64086405899331,
+              "p75_nearest_transport_km": 42.18871544935613
+            },
+            {
+              "group": "Urban",
+              "service_count": 14946,
+              "median_nearest_transport_km": 2.1310775585545603,
+              "mean_nearest_transport_km": 6.954673483290405,
+              "p75_nearest_transport_km": 4.554211880612884
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7503,
+    "output_tokens": 188,
+    "total_tokens": 7691
+  },
+  "latency_ms": 15655.67608299898
+}

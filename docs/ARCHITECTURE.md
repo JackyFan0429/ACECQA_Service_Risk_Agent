@@ -1,8 +1,8 @@
-# Architecture — v0.4
+# Architecture — v0.5
 
 ## Product boundary
 
-ACECQA Service Risk Copilot is a decision-support agent. The LLM orchestrates evidence; deterministic Python owns analytics and scenario arithmetic; a local policy corpus grounds regulatory context.
+ACECQA Service Risk Copilot is a decision-support Agent. The LLM orchestrates evidence; deterministic Python owns analytics and scenario arithmetic; a local policy corpus grounds regulatory context. Milestone 5 adds an evaluation plane around the frozen product rather than adding more Agent capability.
 
 ```text
                            User
@@ -29,9 +29,21 @@ ACECQA Service Risk Copilot is a decision-support agent. The LLM orchestrates ev
                                  |
                                  v
                       Decision-support answer
+                                 |
+                    +------------+-------------+
+                    |                          |
+                    v                          v
+             Live user/demo path        M5 evaluation plane
+                                             |
+                   +-------------------------+--------------------------+
+                   |          |           |          |          |      |
+                 routing   parameters   outputs    policy    boundary telemetry
+                                             |
+                                             v
+                                      evaluation report
 ```
 
-## Nine tools
+## Nine product tools
 
 ### Service / analytics
 
@@ -51,6 +63,18 @@ ACECQA Service Risk Copilot is a decision-support agent. The LLM orchestrates ev
 
 9. `search_policy`
 
+## Evaluation plane
+
+Milestone 5 adds no tenth tool. Instead:
+
+- `evals/m5_benchmark.json` defines the 50-case benchmark;
+- `acecqa_agent.evals.m5_harness` evaluates structured Agent reports;
+- `run_m5_eval.py` performs live runs and checkpoints each raw result;
+- `recheck_m5_results.py` re-scores saved runs without API calls;
+- `summary.md`, `metrics.json` and `evaluation_report.md` provide machine- and human-readable outputs.
+
+The evaluator primarily checks actual tool traces, parameters, deterministic outputs and resolved policy sources. It does not use an LLM-as-judge in v1.0.
+
 ## Scenario invariant
 
 All transport/capacity percentiles are computed from the national validated Centre-Based Care risk sample. `state` or `urban_rural` only scopes the reported impact. This makes scenario thresholds comparable across jurisdictions and prevents silent redefinition of the model.
@@ -64,6 +88,7 @@ All transport/capacity percentiles are computed from the national validated Cent
 | Deterministic scenario layer | percentile thresholds, recomputed flags, A/B comparison, membership changes |
 | Policy RAG | retrieving official policy/guidance passages |
 | Runtime | tool trace, evidence validation, policy citation resolution, usage/latency telemetry |
+| M5 evaluator | benchmark routing checks, parameter/output regression, grounding/boundary metrics, reporting |
 
 ## Reliability boundaries
 
@@ -75,3 +100,4 @@ All transport/capacity percentiles are computed from the national validated Cent
 - a threshold change does not prove causality or policy superiority
 - risk score is not a legal non-compliance finding
 - policy citations must correspond to actually retrieved chunks
+- formal benchmark performance does not imply autonomous regulatory authority

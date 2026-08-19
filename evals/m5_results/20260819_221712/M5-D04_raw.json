@@ -1,0 +1,368 @@
+{
+  "query": "How many Family Day Care services are recorded in Western Australia?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "30 Family Day Care services are recorded in Western Australia.",
+    "evidence": [
+      {
+        "source_tool": "search_services",
+        "claim": "Filtering recorded services to Western Australia and Family Day Care returned 30 matched services.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Applied a deterministic state and service-type filter."
+    ],
+    "limitations": []
+  },
+  "used_tools": [
+    "search_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_services",
+      "call_id": "call_3wVslsEQEHZbOmBmw9jozNJn",
+      "arguments": {
+        "state": "WA",
+        "urban_rural": null,
+        "service_type": "Family Day Care",
+        "overall_rating": null,
+        "limit": 100
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_services",
+      "call_id": "call_3wVslsEQEHZbOmBmw9jozNJn",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_services",
+        "data": {
+          "matched_count": 30,
+          "returned_count": 30,
+          "filters": {
+            "state": "WA",
+            "urban_rural": null,
+            "service_type": "Family Day Care",
+            "overall_rating": null
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00014066",
+              "service_name": "Elite Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.7501042354593843
+            },
+            {
+              "service_approval_number": "SE-00014078",
+              "service_name": "Hilaac Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.4203488407641998
+            },
+            {
+              "service_approval_number": "SE-00014150",
+              "service_name": "Western Star Kids Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 2.626730325084881
+            },
+            {
+              "service_approval_number": "SE-00014151",
+              "service_name": "Nature Alliance Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 20.721208440171804
+            },
+            {
+              "service_approval_number": "SE-00014152",
+              "service_name": "Community Vision Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.3289462640457455
+            },
+            {
+              "service_approval_number": "SE-00014160",
+              "service_name": "Nectar Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.81689395506856
+            },
+            {
+              "service_approval_number": "SE-00014181",
+              "service_name": "Aussie Kidz Family Day Care Service (Scheme)",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 2.589227135515196
+            },
+            {
+              "service_approval_number": "SE-00014182",
+              "service_name": "Kidz Planet Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.734318336732258
+            },
+            {
+              "service_approval_number": "SE-00014209",
+              "service_name": "YMCA Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.6944443779894983
+            },
+            {
+              "service_approval_number": "SE-00014212",
+              "service_name": "Eastern Region Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.8003083940196023
+            },
+            {
+              "service_approval_number": "SE-00014215",
+              "service_name": "Cockburn Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 4.341573209856875
+            },
+            {
+              "service_approval_number": "SE-00014225",
+              "service_name": "Wanslea Regional Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 3.1913807886947927
+            },
+            {
+              "service_approval_number": "SE-00014248",
+              "service_name": "Glory Family Day Care WA",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 3.0658777807737274
+            },
+            {
+              "service_approval_number": "SE-00014256",
+              "service_name": "Step By Step Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 5.166065977456775
+            },
+            {
+              "service_approval_number": "SE-00014301",
+              "service_name": "Children Heaven Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.0173437059946886
+            },
+            {
+              "service_approval_number": "SE-00014394",
+              "service_name": "Just For Kids Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.5441717102888617
+            },
+            {
+              "service_approval_number": "SE-00016896",
+              "service_name": "Pipsqueaks Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": null,
+              "number_of_approved_places": 16.0,
+              "nearest_public_transport_km": 4.358199509161346
+            },
+            {
+              "service_approval_number": "SE-40002440",
+              "service_name": "Dhoofo Family Day Care (WA)",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 3.5314237315362846
+            },
+            {
+              "service_approval_number": "SE-40002545",
+              "service_name": "Alpha Family Day Care Services (WA)",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.8388170526291802
+            },
+            {
+              "service_approval_number": "SE-40006953",
+              "service_name": "Connections Family Day Care Coordination Unit",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.6527922426021269
+            },
+            {
+              "service_approval_number": "SE-40007661",
+              "service_name": "EXCELL ACADEMY (WA) PTY LTD",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 2.105379028095957
+            },
+            {
+              "service_approval_number": "SE-40011050",
+              "service_name": "NURTURE CHILDCARE AND EDUCATION SERVICES",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.7105803464126523
+            },
+            {
+              "service_approval_number": "SE-40012251",
+              "service_name": "WA BRIGHT KIDS FAMILY DAY CARE",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.9360166963340184
+            },
+            {
+              "service_approval_number": "SE-40012735",
+              "service_name": "Global Village Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.0173437059946886
+            },
+            {
+              "service_approval_number": "SE-40015485",
+              "service_name": "Willi Wag Tails Family Day Care Services",
+              "state": "WA",
+              "urban_rural": "Rural",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 36.16434619936128
+            },
+            {
+              "service_approval_number": "SE-40015713",
+              "service_name": "RIGHTWAY LEARNING FAMILY DAY CARE PTY LTD",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 2.378127720388159
+            },
+            {
+              "service_approval_number": "SE-40017530",
+              "service_name": "Koolanga Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 4.082777046350973
+            },
+            {
+              "service_approval_number": "SE-40017979",
+              "service_name": "Garden Play Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 4.192744580978193
+            },
+            {
+              "service_approval_number": "SE-40019624",
+              "service_name": "Quest Family Day Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.3358417015908275
+            },
+            {
+              "service_approval_number": "SE-40025419",
+              "service_name": "White Gum Family Day Care Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.725657441248337
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9447,
+    "output_tokens": 123,
+    "total_tokens": 9570
+  },
+  "latency_ms": 4022.4716250013444
+}

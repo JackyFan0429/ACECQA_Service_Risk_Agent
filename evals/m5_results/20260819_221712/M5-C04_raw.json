@@ -1,0 +1,102 @@
+{
+  "query": "Across national Centre-Based Care transport quartiles, compare Q1 and Q4 on Below Meeting NQS rate and median approved places.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "National Centre-Based Care comparison:\n\n| Transport quartile | Below Meeting NQS rate | Median approved places |\n|---|---:|---:|\n| Q1 (closest transport access) | 7.5% | 60 |\n| Q4 (farthest transport access) | 10.9% | 53.5 |\n\nQ4’s Below Meeting rate is higher, while its median authorised capacity is lower than Q1’s. This is an association only; it does not establish that transport access causes quality or capacity differences.",
+    "evidence": [
+      {
+        "source_tool": "analyse_transport_quartile_outcomes",
+        "claim": "National Centre-Based Care Q1 had a 7.47% Below Meeting rate and median 60 approved places; Q4 had a 10.86% Below Meeting rate and median 53.5 approved places.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Compared the tool’s national Centre-Based Care transport-access quartiles; Q1 is closest and Q4 is farthest."
+    ],
+    "limitations": [
+      "Approved places are authorised capacity, not enrolment, utilisation, waitlists, demand, or unmet need.",
+      "Quartile patterns are descriptive and do not establish causation."
+    ]
+  },
+  "used_tools": [
+    "analyse_transport_quartile_outcomes"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "analyse_transport_quartile_outcomes",
+      "call_id": "call_f05vmayIJRBqvBLIb0LpSjLD",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "service_type": "Centre-Based Care",
+        "min_group_size": 20
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "analyse_transport_quartile_outcomes",
+      "call_id": "call_f05vmayIJRBqvBLIb0LpSjLD",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "analyse_transport_quartile_outcomes",
+        "data": {
+          "filters": {
+            "state": null,
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "min_group_size": 20,
+          "caveat": "Approved places are authorised capacity only. They do not establish actual demand, enrolment, waitlists, utilisation, or unmet need.",
+          "quartiles": [
+            {
+              "transport_access_quartile": "Q1 Closest",
+              "service_count": 3964,
+              "below_meeting_rate": 0.07467204843592332,
+              "approved_places_non_missing": 3963,
+              "median_approved_places": 60.0,
+              "mean_approved_places": 68.1630078223568
+            },
+            {
+              "transport_access_quartile": "Q2",
+              "service_count": 4005,
+              "below_meeting_rate": 0.08589263420724094,
+              "approved_places_non_missing": 4004,
+              "median_approved_places": 60.0,
+              "mean_approved_places": 70.66783216783217
+            },
+            {
+              "transport_access_quartile": "Q3",
+              "service_count": 3996,
+              "below_meeting_rate": 0.08283283283283284,
+              "approved_places_non_missing": 3996,
+              "median_approved_places": 68.0,
+              "mean_approved_places": 74.2927927927928
+            },
+            {
+              "transport_access_quartile": "Q4 Farthest",
+              "service_count": 4006,
+              "below_meeting_rate": 0.10858711932101847,
+              "approved_places_non_missing": 4006,
+              "median_approved_places": 53.5,
+              "mean_approved_places": 61.13554667998003
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7697,
+    "output_tokens": 313,
+    "total_tokens": 8010
+  },
+  "latency_ms": 5866.468167005223
+}

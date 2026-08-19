@@ -1,0 +1,18 @@
+{
+  "benchmark_version": "1.0",
+  "formal_full_suite": false,
+  "case_ids": [
+    "M5-D01"
+  ],
+  "models_observed": [
+    "gpt-5.6-terra"
+  ],
+  "input_usd_per_1m": null,
+  "output_usd_per_1m": null,
+  "snapshot": {
+    "benchmark_sha256": "a278f60781f8261b3dcc0c3a97e7d13a26424d06c1a01e81c84b3b15459e1b0c",
+    "service_data_sha256": "11288007f931956b98ecfae37fc497d29d7d522346f89d03c1f82cf31ad62caa",
+    "policy_corpus_sha256": "c1a9cd998073f29c3ca9a15f63abfb7544c40ef61efff0e7f002da8245f50f43",
+    "policy_manifest_sha256": "881f96c6293979c588aaeec15eab5a6da9243811b2b9a32509e57b49d6dc8e4f"
+  }
+}

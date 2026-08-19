@@ -1,0 +1,81 @@
+{
+  "query": "Within Queensland Centre-Based Care, compare rural and urban median public-transport distance.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "In Queensland Centre-Based Care, the median distance to nearest public transport is **17.09 km in rural areas** versus **2.36 km in urban areas**. Rural services therefore have a median distance about **14.73 km greater**.",
+    "evidence": [
+      {
+        "source_tool": "compare_transport_access",
+        "claim": "Queensland Centre-Based Care: rural median nearest-transport distance is 17.09 km (193 services), compared with 2.36 km for urban services (2,821 services).",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Compared tool-reported median nearest-public-transport distances by rural/urban classification, filtered to Queensland Centre-Based Care."
+    ],
+    "limitations": [
+      "These are proximity measures, not measures of service frequency, accessibility, reliability, or families’ actual transport use."
+    ]
+  },
+  "used_tools": [
+    "compare_transport_access"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_uiZUzvu6gaShGUnSrsVNg8Ax",
+      "arguments": {
+        "state": "QLD",
+        "service_type": "Centre-Based Care",
+        "group_by": "urban_rural"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_uiZUzvu6gaShGUnSrsVNg8Ax",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_transport_access",
+        "data": {
+          "group_by": "urban_rural",
+          "filters": {
+            "state": "QLD",
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "groups": [
+            {
+              "group": "Rural",
+              "service_count": 193,
+              "median_nearest_transport_km": 17.092666178832708,
+              "mean_nearest_transport_km": 77.74948562135188,
+              "p75_nearest_transport_km": 64.16350781153153
+            },
+            {
+              "group": "Urban",
+              "service_count": 2821,
+              "median_nearest_transport_km": 2.3639442460827893,
+              "mean_nearest_transport_km": 7.50225039475196,
+              "p75_nearest_transport_km": 5.156012500528858
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7503,
+    "output_tokens": 217,
+    "total_tokens": 7720
+  },
+  "latency_ms": 4696.699332998833
+}

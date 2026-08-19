@@ -1,0 +1,22 @@
+{
+  "query": "A service only has 20 approved places. Can I conclude local demand is low?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. Twenty approved places is authorised capacity, not a measure of local demand. It cannot establish low demand, waitlists, utilisation, enrolment pressure, or unmet need.",
+    "evidence": [],
+    "methodology": [],
+    "limitations": [
+      "Demand would require separate evidence, such as enrolment, utilisation, waitlist, population and local service-supply data."
+    ]
+  },
+  "used_tools": [],
+  "tool_trace": [],
+  "policy_sources": [],
+  "usage": {
+    "requests": 1,
+    "input_tokens": 3643,
+    "output_tokens": 121,
+    "total_tokens": 3764
+  },
+  "latency_ms": 3567.937540996354
+}

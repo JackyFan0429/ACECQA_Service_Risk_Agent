@@ -1,0 +1,380 @@
+{
+  "query": "Compare Scenario A P75/P25 with Scenario B P80/P30 nationally. Report both pool sizes and how many services are unique to each.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Nationally (triple-gap priority rule):\n\n- **Scenario A — P75 transport / P25 capacity:** **162** services\n- **Scenario B — P80 transport / P30 capacity:** **161** services\n- **Unique to Scenario A:** **13** services\n- **Unique to Scenario B:** **12** services\n- **In both pools:** **149** services\n\nScenario B’s pool is one service smaller. This is sensitivity analysis only, not evidence that either threshold set is preferable or that included services are non-compliant.",
+    "evidence": [
+      {
+        "source_tool": "compare_risk_scenarios",
+        "claim": "National triple-gap priority pools were 162 services for P75/P25 and 161 services for P80/P30; 13 were unique to Scenario A, 12 unique to Scenario B, and 149 overlapped.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Compared deterministic national Centre-Based Care scenarios using a minimum gap score of 3. Percentile cut-offs were calculated from the national validated sample."
+    ],
+    "limitations": [
+      "Priority-pool membership is a screening signal, not a finding of breach, non-compliance, unmet demand, or a basis for automatic enforcement."
+    ]
+  },
+  "used_tools": [
+    "compare_risk_scenarios"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_risk_scenarios",
+      "call_id": "call_51XwrRZq5XpYKAozNtREyGSL",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "scenario_a": {
+          "label": "Scenario A (P75/P25)",
+          "transport_percentile": 0.75,
+          "capacity_percentile": 0.25,
+          "minimum_gap_score": 3
+        },
+        "scenario_b": {
+          "label": "Scenario B (P80/P30)",
+          "transport_percentile": 0.8,
+          "capacity_percentile": 0.3,
+          "minimum_gap_score": 3
+        },
+        "changed_service_limit": 10
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_risk_scenarios",
+      "call_id": "call_51XwrRZq5XpYKAozNtREyGSL",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_risk_scenarios",
+        "data": {
+          "scope": {
+            "state": null,
+            "urban_rural": null
+          },
+          "scenario_a": {
+            "label": "Scenario A (P75/P25)",
+            "thresholds": {
+              "transport_percentile": 0.75,
+              "transport_cutoff_km": 5.329340006807538,
+              "capacity_percentile": 0.25,
+              "capacity_cutoff_places": 40.0,
+              "minimum_gap_score": 3,
+              "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+            },
+            "pool": {
+              "eligible_service_count": 15969,
+              "priority_service_count": 162,
+              "priority_rate": 0.01014465526958482
+            }
+          },
+          "scenario_b": {
+            "label": "Scenario B (P80/P30)",
+            "thresholds": {
+              "transport_percentile": 0.8,
+              "transport_cutoff_km": 6.744341249608515,
+              "capacity_percentile": 0.3,
+              "capacity_cutoff_places": 44.0,
+              "minimum_gap_score": 3,
+              "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+            },
+            "pool": {
+              "eligible_service_count": 15969,
+              "priority_service_count": 161,
+              "priority_rate": 0.010082033940760222
+            }
+          },
+          "b_minus_a_count": -1,
+          "b_vs_a_percent_change": -0.6172839506172839,
+          "overlap_count": 149,
+          "only_a_count": 13,
+          "only_b_count": 12,
+          "only_a_services": [
+            {
+              "service_approval_number": "SE-40023457",
+              "service_name": "Happy Haven OSHC Wandana",
+              "state": "SA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 6.736634641052059
+            },
+            {
+              "service_approval_number": "SE-40005724",
+              "service_name": "Milkwood Steiner After School Care",
+              "state": "NT",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 6.497129633332228
+            },
+            {
+              "service_approval_number": "SE-00007402",
+              "service_name": "Stepping Stones Academy",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 6.484215764184958
+            },
+            {
+              "service_approval_number": "SE-00007164",
+              "service_name": "Balgowlah Early Learning",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 36.0,
+              "nearest_public_transport_km": 6.252086757161061
+            },
+            {
+              "service_approval_number": "SE-40001173",
+              "service_name": "Mt Barker Waldorf School",
+              "state": "SA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 6.158888779844786
+            },
+            {
+              "service_approval_number": "SE-40015015",
+              "service_name": "Family House Child Care",
+              "state": "SA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 6.065263975374205
+            },
+            {
+              "service_approval_number": "SE-00008260",
+              "service_name": "Live Wires Preschool",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 27.0,
+              "nearest_public_transport_km": 6.014366192785503
+            },
+            {
+              "service_approval_number": "SE-00010161",
+              "service_name": "Happy Haven OSHC Tanunda",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 39.0,
+              "nearest_public_transport_km": 5.923308739374852
+            },
+            {
+              "service_approval_number": "SE-00006896",
+              "service_name": "Alkeringa Early Childhood Education and Care Service",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 39.0,
+              "nearest_public_transport_km": 5.893344399932955
+            },
+            {
+              "service_approval_number": "SE-00010100",
+              "service_name": "Lady Gowrie Education and Care - Youngtown Primary School OSHC",
+              "state": "TAS",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 5.821233519964547
+            }
+          ],
+          "only_b_services": [
+            {
+              "service_approval_number": "SE-00012447",
+              "service_name": "One Tree Bulgarra Children's Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 43.0,
+              "nearest_public_transport_km": 194.64320039444695
+            },
+            {
+              "service_approval_number": "SE-00000721",
+              "service_name": "Winton Child Care Centre \"Little Swaggies\"",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 41.0,
+              "nearest_public_transport_km": 170.90890823071734
+            },
+            {
+              "service_approval_number": "SE-00012978",
+              "service_name": "Newman Day Care Centre",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 42.0,
+              "nearest_public_transport_km": 91.17684607303008
+            },
+            {
+              "service_approval_number": "SE-40018572",
+              "service_name": "C&K Tara Childcare Centre",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 44.0,
+              "nearest_public_transport_km": 62.752948494949656
+            },
+            {
+              "service_approval_number": "SE-00013053",
+              "service_name": "Ready Set Grow Child Care Centre - Dongara",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 43.0,
+              "nearest_public_transport_km": 37.22625625321904
+            },
+            {
+              "service_approval_number": "SE-40021730",
+              "service_name": "Cabonne Out of School Hours Care - Molong",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 44.0,
+              "nearest_public_transport_km": 31.615518034046232
+            },
+            {
+              "service_approval_number": "SE-40006483",
+              "service_name": "Finley Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 43.0,
+              "nearest_public_transport_km": 18.213723432849676
+            },
+            {
+              "service_approval_number": "SE-00010676",
+              "service_name": "Mount Compass Area School OSHC",
+              "state": "SA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 43.0,
+              "nearest_public_transport_km": 16.78780525189272
+            },
+            {
+              "service_approval_number": "SE-40005697",
+              "service_name": "Covenant Christian School ELC",
+              "state": "ACT",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 44.0,
+              "nearest_public_transport_km": 15.90114841064652
+            },
+            {
+              "service_approval_number": "SE-40000362",
+              "service_name": "Bucasia OSHC",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 44.0,
+              "nearest_public_transport_km": 15.659044764209716
+            }
+          ],
+          "by_state": [
+            {
+              "group": "ACT",
+              "eligible_service_count": 350,
+              "scenario_a_priority_count": 3,
+              "scenario_b_priority_count": 4,
+              "b_minus_a_count": 1,
+              "b_vs_a_percent_change": 33.33333333333333
+            },
+            {
+              "group": "NSW",
+              "eligible_service_count": 5526,
+              "scenario_a_priority_count": 31,
+              "scenario_b_priority_count": 29,
+              "b_minus_a_count": -2,
+              "b_vs_a_percent_change": -6.451612903225806
+            },
+            {
+              "group": "NT",
+              "eligible_service_count": 212,
+              "scenario_a_priority_count": 10,
+              "scenario_b_priority_count": 9,
+              "b_minus_a_count": -1,
+              "b_vs_a_percent_change": -10.0
+            },
+            {
+              "group": "QLD",
+              "eligible_service_count": 3014,
+              "scenario_a_priority_count": 32,
+              "scenario_b_priority_count": 33,
+              "b_minus_a_count": 1,
+              "b_vs_a_percent_change": 3.125
+            },
+            {
+              "group": "SA",
+              "eligible_service_count": 1207,
+              "scenario_a_priority_count": 35,
+              "scenario_b_priority_count": 33,
+              "b_minus_a_count": -2,
+              "b_vs_a_percent_change": -5.714285714285714
+            },
+            {
+              "group": "TAS",
+              "eligible_service_count": 215,
+              "scenario_a_priority_count": 5,
+              "scenario_b_priority_count": 4,
+              "b_minus_a_count": -1,
+              "b_vs_a_percent_change": -20.0
+            },
+            {
+              "group": "VIC",
+              "eligible_service_count": 4155,
+              "scenario_a_priority_count": 20,
+              "scenario_b_priority_count": 20,
+              "b_minus_a_count": 0,
+              "b_vs_a_percent_change": 0.0
+            },
+            {
+              "group": "WA",
+              "eligible_service_count": 1290,
+              "scenario_a_priority_count": 26,
+              "scenario_b_priority_count": 29,
+              "b_minus_a_count": 3,
+              "b_vs_a_percent_change": 11.538461538461538
+            }
+          ],
+          "by_urban_rural": [
+            {
+              "group": "Rural",
+              "eligible_service_count": 1025,
+              "scenario_a_priority_count": 72,
+              "scenario_b_priority_count": 72,
+              "b_minus_a_count": 0,
+              "b_vs_a_percent_change": 0.0
+            },
+            {
+              "group": "Urban",
+              "eligible_service_count": 14944,
+              "scenario_a_priority_count": 90,
+              "scenario_b_priority_count": 89,
+              "b_minus_a_count": -1,
+              "b_vs_a_percent_change": -1.1111111111111112
+            }
+          ],
+          "interpretation_caveat": "Scenario results are sensitivity analysis for a prioritisation screen. They do not show causal effects, optimal policy thresholds, unmet demand, legal non-compliance, or an automatic basis for enforcement."
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9601,
+    "output_tokens": 424,
+    "total_tokens": 10025
+  },
+  "latency_ms": 6894.295999998576
+}

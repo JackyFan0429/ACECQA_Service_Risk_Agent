@@ -90,7 +90,11 @@ class AgentRunReport(BaseModel):
 
 
 class AgentGroundingError(RuntimeError):
-    pass
+    """Grounding failure that may retain the completed model run for eval diagnostics."""
+
+    def __init__(self, message: str, *, report: "AgentRunReport | None" = None):
+        super().__init__(message)
+        self.report = report
 
 
 def _field(raw: Any, name: str) -> Any:
@@ -313,10 +317,8 @@ def run_copilot(
             used_tools.append(event.tool_name)
 
     final_answer = _coerce_final_answer(result.final_output)
-    validate_grounded_answer(final_answer, used_tools, trace=trace, require_tool=require_tool)
-
     sdk_usage = result.context_wrapper.usage
-    return AgentRunReport(
+    report = AgentRunReport(
         query=query,
         model=selected_model,
         answer=final_answer,
@@ -331,3 +333,9 @@ def run_copilot(
         ),
         latency_ms=latency_ms,
     )
+    try:
+        validate_grounded_answer(final_answer, used_tools, trace=trace, require_tool=require_tool)
+    except AgentGroundingError as exc:
+        exc.report = report
+        raise
+    return report

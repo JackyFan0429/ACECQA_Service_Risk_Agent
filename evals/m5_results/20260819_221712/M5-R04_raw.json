@@ -1,0 +1,169 @@
+{
+  "query": "Show the top 10 triple-gap rural Centre-Based Care candidates in NSW. If fewer than 10 qualify, say so.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Only **6** NSW rural Centre-Based Care services qualify as triple-gap candidates (so fewer than 10):\n\n| Rank | Service | Approval no. | Transport distance | Approved places |\n|---:|---|---|---:|---:|\n| 1 | Maingirba Early Learning Centre | SE-40015803 | 283.00 km | 24 |\n| 2 | Nimmitabel Preschool | SE-00008559 | 33.66 km | 19 |\n| 3 | Active OOSH Coopernook | SE-40026162 | 22.81 km | 32 |\n| 4 | Crookwell Neighbourhood Centre - Combined OOSH | SE-40016974 | 21.70 km | 20 |\n| 5 | Mountain Before & After School Care Inc. | SE-00013300 | 20.06 km | 20 |\n| 6 | Ebenezer Public School OOSH Centre | SE-00012108 | 11.06 km | 24 |\n\nAll six are rated Working Towards NQS and meet all three v1 screen flags: poor transport access, weak-quality flag, and low authorised capacity. This is a prioritisation screen, not a finding of non-compliance.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "NSW rural Centre-Based Care has six triple-gap candidates, ranked as listed with service attributes and gap flags.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Used the deterministic v1 triple-gap ranking for rural NSW Centre-Based Care: gap score descending, then transport distance descending, authorised places ascending, and approval number ascending.",
+      "The fixed national validated-sample thresholds were transport P75 = 5.329 km and capacity P25 = 40 places."
+    ],
+    "limitations": [
+      "Risk model v1 applies to Centre-Based Care and is a prioritisation signal only; it does not establish a breach, non-compliance, safety outcome, unmet demand, or enforcement need.",
+      "Approved places are authorised capacity, not enrolment or utilisation."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_qba2SfXNWOQgpdkZn3m4TuAd",
+      "arguments": {
+        "state": "NSW",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 10,
+        "minimum_gap_score": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_qba2SfXNWOQgpdkZn3m4TuAd",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 6,
+          "returned_count": 6,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-40015803",
+              "service_name": "Maingirba Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 283.00260233944107,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00008559",
+              "service_name": "Nimmitabel Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 19.0,
+              "nearest_public_transport_km": 33.6560403652218,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40026162",
+              "service_name": "Active OOSH Coopernook",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 32.0,
+              "nearest_public_transport_km": 22.81432595493953,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40016974",
+              "service_name": "Crookwell Neighbourhood Centre - Combined OOSH",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 21.698930986099004,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00013300",
+              "service_name": "Mountain Before & After School Care Inc.",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 20.056371315835484,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00012108",
+              "service_name": "Ebenezer Public School OOSH Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 11.064578953098437,
+              "rank": 6,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8114,
+    "output_tokens": 505,
+    "total_tokens": 8619
+  },
+  "latency_ms": 7680.466375000833
+}

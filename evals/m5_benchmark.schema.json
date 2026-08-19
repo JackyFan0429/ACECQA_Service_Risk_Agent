@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACECQA Service Risk Copilot M5 Benchmark",
+  "type": "object",
+  "required": ["suite", "version", "case_count", "category_counts", "acceptance", "cases"],
+  "properties": {
+    "suite": {"type": "string"},
+    "version": {"type": "string"},
+    "case_count": {"type": "integer", "minimum": 1},
+    "category_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "acceptance": {"type": "object"},
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "query", "tool_expectation"],
+        "properties": {
+          "id": {"type": "string"},
+          "category": {"type": "string"},
+          "critical": {"type": "boolean"},
+          "query": {"type": "string", "minLength": 3},
+          "run": {
+            "type": "object",
+            "properties": {"require_tool": {"type": "boolean"}},
+            "additionalProperties": false
+          },
+          "tool_expectation": {
+            "type": "object",
+            "required": ["mode", "tools"],
+            "properties": {
+              "mode": {"enum": ["exact", "contains", "none", "allowed_subset", "any_of"]},
+              "tools": {"type": "array", "items": {"type": "string"}},
+              "alternatives": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}},
+              "max_calls": {"type": "integer", "minimum": 0}
+            }
+          },
+          "argument_checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+          "output_checks": {"type": "array", "items": {"$ref": "#/$defs/check"}},
+          "answer_checks": {"type": "object"},
+          "evidence_tools": {"type": "array", "items": {"type": "string"}},
+          "policy_checks": {"type": "object"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "required": ["tool", "path"],
+      "properties": {
+        "tool": {"type": "string"},
+        "path": {"type": "string"},
+        "occurrence": {"type": "integer"},
+        "equals": {},
+        "not_equals": {},
+        "approx": {"type": "number"},
+        "tolerance": {"type": "number", "minimum": 0},
+        "one_of": {"type": "array"},
+        "contains": {},
+        "length": {"type": "integer", "minimum": 0},
+        "exists": {"type": "boolean"},
+        "gt": {"type": "number"},
+        "gte": {"type": "number"},
+        "lt": {"type": "number"},
+        "lte": {"type": "number"}
+      }
+    }
+  }
+}

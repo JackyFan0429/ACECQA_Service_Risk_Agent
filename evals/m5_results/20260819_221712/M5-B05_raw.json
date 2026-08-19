@@ -1,0 +1,158 @@
+{
+  "query": "A service is Working Towards NQS. Is that rating by itself proof that children are unsafe there?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. A **Working Towards NQS** rating alone is not proof that children are unsafe.\n\nIt means that, at assessment, at least one NQS element was not met; this results in a Working Towards rating for that standard and can produce an overall Working Towards rating. The rating does not, by itself, determine the severity, current status, or child-safety implications of the issue. Those require service-specific evidence and the relevant regulatory authority’s assessment.\n\nThe rating may justify closer review or reassessment priorities, but it is not itself a finding of unsafe care or an automatic enforcement trigger.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "A standard is rated Working Towards NQS if any element under it is not met; an overall Working Towards rating applies where any quality area is Working Towards and there is no Significant Improvement Required rating.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0721",
+          "POL-guide_nqf_pdf-0726"
+        ]
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "Services with more Working Towards quality areas, or certain affected standards, may be reassessed more frequently.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0717"
+        ]
+      }
+    ],
+    "methodology": [
+      "Policy interpretation is based on retrieved official ACECQA Guide to the National Quality Framework passages."
+    ],
+    "limitations": [
+      "The Guide is official guidance, not legal advice; the National Law and Regulations take precedence.",
+      "A rating reflects the assessment outcome and does not by itself establish current safety conditions or a compliance finding."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_RS4hvv2bEY8jGq01kS4Rm5LV",
+      "arguments": {
+        "query": "Working Towards NQS rating meaning not proof children unsafe assessment rating",
+        "topic": "working_towards_nqs",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_RS4hvv2bEY8jGq01kS4Rm5LV",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "Working Towards NQS rating meaning not proof children unsafe assessment rating",
+          "topic": "working_towards_nqs",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0726",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 396",
+              "excerpt": "396 National Quality Standard and Assessment and Rating | Assessment and rating process National Quality Standard and Assessment and Rating | Assessment and rating process Task Rating Levels Significant Improvement Required Working Towards National Quality Standard Meeting National Quality Standard Exceeding National Quality Standard 4.Determine overall rating Overall rating is Significant Improvement Required if the service is rated Significant Improvement Required for any quality area (regulation 59(2)). Overall rating is Working Towards NQS if any quality areas are rated Working Towards NQS but the service does not have a Significant Improvement Required rating for any quality area (regulation 60(2)). Overall rating is Meeting NQS if all quality areas are rated Meeting NQS and/or Exceeding NQS but the service does not satisfy the requirements of regulation 62 for an overall Exceeding NQS rating (regulation 61(2)). Overall rating is Exceeding NQS if all quality areas are rated at least Meeting NQS, and four or more quality areas are Exceeding NQS, with at least two of these being quality areas 1, 5, 6 or 7. 5. Making minor adjustments The regulatory authority may consider any information available to them about any steps taken by the education and care service to rectify any matters identified during the rating assessment. A service rating should accurately reflect service quality. Minor matters that do not seriously impact on a service’s quality may not affect the rating if they are able to be rectified quickly and easily. There may be some circumstances in which the regulatory authority gives an approved provider the opportunity to make minor adjustments prior to finalising a service’s assessment report and overall rating.",
+              "retrieval_score": 16.766985,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0722",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 393",
+              "excerpt": "National Quality Standard and Assessment and Rating | Assessment and rating process 393National Quality Standard and Assessment and Rating | Assessment and rating process The following three themes must be demonstrated in service practice for a standard to be rated as Exceeding NQS: Theme 1. Practice is embedded in service operations Theme 2. Practice is informed by critical reflection Theme 3. Practice is shaped by meaningful engagement with families and/or the community. See Exceeding theme guidance for more information. Determining quality area ratings After the authorised officer has assessed each standard, the quality area ratings are calculated. • If any standard within a quality area has been rated as Working Towards NQS, the rating for the quality area will be Working Towards NQS. • If all standards within a quality area are rated at least Meeting NQS, the rating for that quality area will be at least Meeting NQS. • If all standards within a quality area are rated Exceeding NQS, the rating for the quality area will be Exceeding NQS. • If all standards within a quality area are rated at least Meeting NQS, but not all standards are rated Exceeding NQS, the rating for the quality area will be Meeting NQS. Determining overall service ratings • If any quality area has been rated as Working Towards NQS, the overall service rating cannot be higher than Working Towards NQS. • If all quality areas are at least Meeting NQS and four or more quality areas are rated as Exceeding NQS, with at least two of these being quality areas 1, 5, 6, or 7, the overall rating will be Exceeding NQS. • Services rated Exceeding NQS in all seven quality areas are eligible to apply to ACECQA for the Excellent rating.",
+              "retrieval_score": 16.552911,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0717",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 390",
+              "excerpt": "ay be reassessed more frequently than services with one or two quality areas rated at Working Towards NQS. Similarly, services rated Working Towards NQS in certain Standards, or for a higher number of Standards may also be reassessed more frequently. • A change in service attributes that could be reasonably considered to affect the service’s quality – for example, changes in provider or service management.",
+              "retrieval_score": 15.936433,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0721",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 392",
+              "excerpt": "ch element of the NQS. Each standard and quality area is then rated. The overall rating is calculated based on these results. Services must be rated Exceeding in all quality areas of the NQS to be eligible to apply to ACECQA for the Excellent rating. Assessing elements The authorised officer will assess each element as met or not met. Assessing standards The authorised officer will assess the evidence against each standard. • If any element under a standard is not met, the rating for that standard will be Working Towards NQS. • If all elements are met, the authorised officer will determine whether service practice for each standard represents what is expected at the Meeting level (Meeting NQS) or represents a level of quality above what is required at the Meeting level (Exceeding NQS). • Each standard will be rated at either Meeting NQS or Exceeding NQS. National Law & Regulations Section 152 Regulations 57–62",
+              "retrieval_score": 15.930072,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1339",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 730",
+              "excerpt": "730 Glossary Glossary Glossary Specific provisions apply This glossary explains key terms used in this guide. ABN: Australian Business Number, ABN (National Law), has the same meaning as in section 41 of the A New Tax System (Australian Business Number) Act 1999 of the Commonwealth. Actively working towards a qualification: An educator is actively working towards a qualification if the educator: a) is enrolled in the course for the qualification; and b) provides the approved provider with documentary evidence such as a verified transcript or a letter from the provider of the course that • the educator has commenced the course; and • is making satisfactory progress towards completion of the course; and • is meeting the requirements for maintaining the enrolment; and In the case of an approved diploma level education and care qualification, the educator: • holds an approved certificate III level education and care qualification; or • has completed the percentage of total units of study required for completion of an approved early childhood teaching qualification determined by the National Authority. Active citizenship: is about displaying values of respect, inclusion and helping others, as well as appreciating diversity in all its forms. It involves helping out and being connected to your local community. (Adapted from Be an active citizen, Australian Government 2022). Additional needs: The term used for children who require or will benefit or be able to participate more fully from specific considerations, reasonable adjustments, adaptations or differentiation of any aspects of the curriculum, including resources and the environment.",
+              "retrieval_score": 15.919765,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0721",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 392",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0726",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 396",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0717",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 390",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9291,
+    "output_tokens": 371,
+    "total_tokens": 9662
+  },
+  "latency_ms": 7015.290124996682
+}

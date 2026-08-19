@@ -1,0 +1,135 @@
+{
+  "query": "Is the Guide to the NQF legal advice? Explain what takes precedence if the Guide conflicts with the National Law or Regulations.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. The Guide to the NQF is official guidance intended to help providers, authorised officers and regulatory-authority staff understand NQF requirements; it is **not legal advice**.\n\nIf there is any inconsistency, the **Education and Care Services National Law** and the **Education and Care Services National Regulations** take precedence over the Guide. The Guide should be read with those instruments, and jurisdiction-specific changes may also apply—for example, NSW and Victoria have additional or substituted provisions.\n\nFor a legal obligation or conflict question, check the Law and Regulations as they apply in the relevant state or territory (and obtain legal advice where needed).",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "The Guide states that it is not legal advice and that the National Law and National Regulations take precedence over material in the Guide.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0013"
+        ]
+      }
+    ],
+    "methodology": [
+      "Retrieved the relevant official Guide to the NQF passage on its purpose and legal hierarchy."
+    ],
+    "limitations": [
+      "This is general information, not legal advice. State- or territory-specific legislative provisions can affect the applicable requirements."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_jfnFuEOTs3MEo3Lw73ZQqLZK",
+      "arguments": {
+        "query": "Is the Guide to the National Quality Framework legal advice National Law Regulations take precedence conflict",
+        "topic": "legal_hierarchy",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_jfnFuEOTs3MEo3Lw73ZQqLZK",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "Is the Guide to the National Quality Framework legal advice National Law Regulations take precedence conflict",
+          "topic": "legal_hierarchy",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0013",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 6: Reviews - PDF page 10",
+              "excerpt": "10 Guide to the NQF | Introduction Guide to the NQF | Introduction Introduction Purpose of guide This guide aims to support education and care service providers, authorised officers and other regulatory authority staff understand the requirements under the National Quality Framework (NQF). The guide should always be read with the Education and Care Services National Law Act 2010 (National Law) and the Education and Care Services National Regulations 2011 (National Regulations). It is not legal advice, and the National Law and Regulations take precedence over any material in this guide. Please note a number of separate, jurisdiction specific legislative changes have commenced in New South Wales and Victoria. The Children (Education and Care Services) National Law (NSW) and associated regulations as they apply in NSW have been amended by the Children (Education and Care Services National Law Application) Act 2010 (NSW) and associated regulations. This means that in NSW there are additional and substituted provisions to the National Law. To understand your obligations under the National Quality Framework in NSW, this information must be read subject to the law as it applies in NSW. NSW legislation can be accessed at Children (Education and Care Services) National Law (NSW) 2010 and Education and Care Services National Regulations (NSW) 2025. Please visit the NSW Education website to understand the key differences and how to comply. Victoria has introduced some additional requirements for compliance with the National Quality Framework. These are set out in Part 2B of the Education and Care Services National Law Act 2010. For more information about Victoria-specific provisions, visit the Victorian Early Childhood Regulatory Authority’s website.",
+              "retrieval_score": 18.270314,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0543",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 296",
+              "excerpt": "National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard Self-regulation Element 5.2.2 296 National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard ELEMENT 5.2.2 Self-regulation Each child is supported to regulate their own behaviour, respond appropriately to the behaviour of others and communicate effectively to resolve conflicts. National Law & Regulations National Law and National Regulations underpinning Element 5.2.2 Section 166 Offence to use inappropriate discipline Section 166A Offences relating to inappropriate conduct Regulation 155 Interactions with children Regulation 156 Relationships in groups What Element 5.2.2 aims to achieve Self-regulation becomes increasingly important as children move through childhood. They become more mindful of the way others interact with them, and at the same time develop understandings of how their actions affect the way others feel and behave. Educators work with young children to promote and model positive ways to relate to others. This includes role modelling, appropriate conduct and supporting children to convey and construct messages with purpose and confidence, for example when expressing needs, resolving conflict or responding to the behaviour of others. Educators actively support the inclusion of all children in play, assist children to recognise when play is unfair, and offer constructive ways to build a caring, fair and inclusive learning community. See the ACECQA Educational Leader Resource for information for educational leaders.",
+              "retrieval_score": 9.160346,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1100",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 593",
+              "excerpt": "Regulatory Authority Powers | Monitoring, compliance and enforcement 593Regulatory Authority Powers | Monitoring, compliance and enforcement Summary of compliance tools Person Compliance tools available Description Family day care educator Infringement notice A fine (penalty infringement notice) may be issued for minor breaches of the National Law or the National Regulations (section 291) Enforceable undertaking Agree to an undertaking from a person to take certain actions or refrain from certain actions to comply with the National Law and the National Regulations (section 179A–181) Direction to exclude a person from education and care service premises Direction to exclude inappropriate persons from service premises (section 171) Prosecution Bringing any offence against the National Law or the National Regulations for decision by a court or tribunal Staff member, educator or volunteer Direction requiring staff member or volunteer to complete training Require the staff member or volunteer to complete training (section 178E) Enforceable undertaking Agree to an undertaking from a person to take certain actions or refrain from certain actions to comply with the requirement not to use inappropriate discipline (section 179A–181) Prosecution Bringing an offence to use inappropriate discipline under the National Law for decision by a court or tribunal Any person in any way involved in an education and care service Prohibition notice Prohibit a person from being involved in an education and care service in any way (sections 182–188A) Prosecution Bringing any offence against the National Law or the National Regulations for decision by a court or tribunal",
+              "retrieval_score": 8.53607,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1000",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 538",
+              "excerpt": "Collaborative partnerships with families and communities Quality Area 6 538 Operational Requirements | Operational requirements Operational Requirements | Operational requirements QUALITY AREA 6 COLLABORATIVE PARTNERSHIPS WITH FAMILIES AND COMMUNITIES National Regulations Regulation 157 Access for parents A parent of a child may enter a service’s premises at any time the child is being educated and cared for by the service. The approved provider, nominated supervisor or family day care educator is not required to allow a parent to enter the service premises if: • permitting the parent’s entry would pose a risk to the safety of the children and staff of the service • permitting the parent’s entry would conflict with any duty of the provider, supervisor or educator under the National Law • they reasonably believe permitting the parent’s entry would contravene a court order. A parent includes a guardian of a child or a person who has parental responsibility for a child under a decision or order of a court. The regulatory authority may suspect an approved provider, nominated supervisor or family day care educator has failed to comply with this requirement if, for instance, they are notified of a complaint from a parent who has been refused access. In such cases, the regulatory authority may seek to establish whether entry was refused based on one of the three exceptions outlined above, by discussing the factors that informed the decision to refuse the parent entry. For example, if the approved provider, nominated supervisor or family day care educator says the parent was denied access because an aggravated violence order is in place against the parent, the authorised officer may ask to see the child’s enrolment record.",
+              "retrieval_score": 8.493236,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1113",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 600",
+              "excerpt": "600 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement 2.3 Compliance directions National Law Section 176 What is a compliance direction? A compliance direction must be in writing and requires an approved provider to take steps set out in the direction to comply with a specific provision of the National Regulations. A compliance direction can only be given to an approved provider. A compliance direction is different from a compliance notice because it can only be used for a breach of certain provisions of the National Regulations. It also carries a lower maximum penalty for non-compliance. National Regulations Schedule 3 When can it be used? Compliance directions are intended to compel approved providers to comply with straightforward legislative obligations. They are particularly useful when it is appropriate to give the provider some time to take a specific action to comply with a requirement, but the regulatory authority wants to use a strong lever to make sure the provider complies. A compliance direction can be given to the approved provider if the regulatory authority is satisfied that a service has not complied with one of the regulations set out in the table below. A compliance direction can also be given to an approved provider when the regulatory authority is satisfied that there is a systemic risk in relation to an approved provider or a related provider of an approved provider, and the direction is reasonably necessary to address that risk.",
+              "retrieval_score": 8.309372,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0013",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 6: Reviews - PDF page 10",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9531,
+    "output_tokens": 289,
+    "total_tokens": 9820
+  },
+  "latency_ms": 6258.626291994005
+}

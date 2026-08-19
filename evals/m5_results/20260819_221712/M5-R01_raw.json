@@ -1,0 +1,76 @@
+{
+  "query": "Score service SE-40000427 using the current validated risk model.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**Napranum Early Childhood Centre (SE-40000427)** scores **3/3 gaps** under the validated v1 risk model.\n\n- Poor transport access: **Yes** — nearest public transport is **562.39 km**, above the national P75 threshold of **5.33 km**.\n- Weak quality signal: **Yes** — overall rating **Working Towards NQS**.\n- Low authorised capacity: **Yes** — **33** approved places, below the national P25 threshold of **40**.\n\nThis is a prioritisation screen, not a finding of non-compliance or breach.",
+    "evidence": [
+      {
+        "source_tool": "calculate_risk_score",
+        "claim": "SE-40000427 is eligible for validated risk scoring and has a 3-gap score, with poor-access, weak-quality, and low-capacity flags.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Validated v1 model: counts three flags—transport distance above the national P75, Working Towards NQS rating, and approved places below the national P25—within the valid Centre-Based Care sample."
+    ],
+    "limitations": [
+      "Approved places are authorised capacity; they do not demonstrate enrolment pressure, waitlists, unmet demand, utilisation, or local demand.",
+      "A risk score is a deterministic prioritisation signal, not evidence of unsafe care, a legal breach, or non-compliance."
+    ]
+  },
+  "used_tools": [
+    "calculate_risk_score"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_HL4BjPAFjD9stMeRwA5kjayS",
+      "arguments": {
+        "service_approval_number": "SE-40000427"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_HL4BjPAFjD9stMeRwA5kjayS",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "calculate_risk_score",
+        "data": {
+          "service_approval_number": "SE-40000427",
+          "service_name": "Napranum Early Childhood Centre",
+          "eligible_for_risk_scoring": true,
+          "gap_score": 3,
+          "gap_label": "3 gaps",
+          "poor_access_flag": true,
+          "weak_quality_flag": true,
+          "low_capacity_flag": true,
+          "nearest_public_transport_km": 562.3926437753009,
+          "overall_rating": "Working Towards NQS",
+          "number_of_approved_places": 33.0,
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "limitations": [
+            "Approved places measure authorised capacity, not enrolment, waitlists, unmet demand, or local demand."
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7492,
+    "output_tokens": 319,
+    "total_tokens": 7811
+  },
+  "latency_ms": 6297.197541003698
+}

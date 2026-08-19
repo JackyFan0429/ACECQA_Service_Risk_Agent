@@ -1,0 +1,123 @@
+{
+  "query": "For Centre-Based Care, compare transport access across states and tell me the state with the highest median distance to public transport.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**Northern Territory** has the highest median distance to public transport for Centre-Based Care services: **6.48 km**. ACT is next at **5.63 km**.",
+    "evidence": [
+      {
+        "source_tool": "compare_transport_access",
+        "claim": "State-level Centre-Based Care transport-access comparison shows NT has the largest median nearest-public-transport distance (6.48 km), ahead of ACT (5.63 km).",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Compared the tool-reported median nearest-public-transport distance for Centre-Based Care services in each state and territory."
+    ],
+    "limitations": [
+      "This is a service-location access measure; it does not measure transport frequency, travel time, affordability, or families’ actual access."
+    ]
+  },
+  "used_tools": [
+    "compare_transport_access"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_MwuiwsSlZRdhDrlrMpUDqZrs",
+      "arguments": {
+        "state": null,
+        "service_type": "Centre-Based Care",
+        "group_by": "state"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "compare_transport_access",
+      "call_id": "call_MwuiwsSlZRdhDrlrMpUDqZrs",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "compare_transport_access",
+        "data": {
+          "group_by": "state",
+          "filters": {
+            "state": null,
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "groups": [
+            {
+              "group": "ACT",
+              "service_count": 350,
+              "median_nearest_transport_km": 5.629401294549201,
+              "mean_nearest_transport_km": 6.242933992946963,
+              "p75_nearest_transport_km": 9.758907656992097
+            },
+            {
+              "group": "NSW",
+              "service_count": 5526,
+              "median_nearest_transport_km": 1.8748776142636019,
+              "mean_nearest_transport_km": 7.3329622859466115,
+              "p75_nearest_transport_km": 4.887833332472815
+            },
+            {
+              "group": "NT",
+              "service_count": 212,
+              "median_nearest_transport_km": 6.479907670488503,
+              "mean_nearest_transport_km": 54.93074398470327,
+              "p75_nearest_transport_km": 15.432046397121463
+            },
+            {
+              "group": "QLD",
+              "service_count": 3014,
+              "median_nearest_transport_km": 2.4847574390060405,
+              "mean_nearest_transport_km": 12.00049737508832,
+              "p75_nearest_transport_km": 5.917806854849582
+            },
+            {
+              "group": "SA",
+              "service_count": 1209,
+              "median_nearest_transport_km": 3.2386787287575127,
+              "mean_nearest_transport_km": 15.27627793894297,
+              "p75_nearest_transport_km": 8.436352303483073
+            },
+            {
+              "group": "TAS",
+              "service_count": 215,
+              "median_nearest_transport_km": 4.697279654765667,
+              "mean_nearest_transport_km": 11.802856131672469,
+              "p75_nearest_transport_km": 14.640669532481382
+            },
+            {
+              "group": "VIC",
+              "service_count": 4155,
+              "median_nearest_transport_km": 2.166886814645349,
+              "mean_nearest_transport_km": 5.067529184424493,
+              "p75_nearest_transport_km": 4.259545952661133
+            },
+            {
+              "group": "WA",
+              "service_count": 1290,
+              "median_nearest_transport_km": 2.371511417642812,
+              "mean_nearest_transport_km": 13.269321225585601,
+              "p75_nearest_transport_km": 4.113215538219901
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7842,
+    "output_tokens": 188,
+    "total_tokens": 8030
+  },
+  "latency_ms": 5040.120749996277
+}

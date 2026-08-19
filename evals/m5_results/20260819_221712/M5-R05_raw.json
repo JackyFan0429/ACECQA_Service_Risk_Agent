@@ -1,0 +1,153 @@
+{
+  "query": "Which five Victorian Centre-Based Care services rank highest under the triple-gap screen?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "The five highest-ranked Victorian Centre-Based Care services under the triple-gap screen are:\n\n1. **Robinvale Out of School Hours Program** — SE-00005104\n2. **Millewa Preschool** — SE-00003426\n3. **Peekaboo Child Care Centre** — SE-00004108\n4. **Kyabram P-12 College Outside School Hours Care** — SE-00005163\n5. **Beechworth Kindergarten Inc.** — SE-00002674\n\nAll have a gap score of 3. This is a prioritisation screen, not a finding of non-compliance or a breach.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "Victorian Centre-Based Care triple-gap ranking: the five listed services rank 1–5; 20 services matched the triple-gap screen.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Ranked using the deterministic v1 triple-gap screen (minimum gap score 3), then by transport distance descending, approved places ascending, and approval number ascending.",
+      "The national validated Centre-Based Care thresholds were transport distance above 5.329 km (P75) and approved capacity at or below 40 places (P25)."
+    ],
+    "limitations": [
+      "The screen combines poor transport access, Working Towards NQS, and low authorised capacity; it does not establish unmet demand, unsafe care, or non-compliance.",
+      "Approved places are authorised capacity, not enrolment or utilisation."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_TGn70iiOOgZUkv62RInUehgZ",
+      "arguments": {
+        "state": "VIC",
+        "urban_rural": null,
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 5,
+        "minimum_gap_score": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_TGn70iiOOgZUkv62RInUehgZ",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 20,
+          "returned_count": 5,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00005104",
+              "service_name": "Robinvale Out of School Hours Program",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 72.08892191630123,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00003426",
+              "service_name": "Millewa Preschool",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 22.0,
+              "nearest_public_transport_km": 56.8628409574185,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00004108",
+              "service_name": "Peekaboo Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 49.107711376592334,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00005163",
+              "service_name": "Kyabram P-12 College Outside School Hours Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 28.891254160969492,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00002674",
+              "service_name": "Beechworth Kindergarten Inc.",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 28.057388037515448,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7970,
+    "output_tokens": 364,
+    "total_tokens": 8334
+  },
+  "latency_ms": 5947.281624998141
+}

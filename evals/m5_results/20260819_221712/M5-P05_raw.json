@@ -1,0 +1,135 @@
+{
+  "query": "Under the Guide to the NQF, what should a regulatory authority consider before deciding a compliance notice is appropriate?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Before deciding a compliance notice is appropriate, the Guide says the regulatory authority may consider:\n\n- whether it can specify clear steps that would bring the approved provider into compliance;\n- the immediacy and seriousness of any breach-related risk to children’s safety, health and wellbeing;\n- whether the action is proportionate to the seriousness of the offence; and\n- whether it is likely to deter repeat offending.\n\nA compliance notice is intended to compel compliance and is particularly useful where the provider can be given time to take a specific corrective action. The Guide is official guidance, not legal advice; the National Law and Regulations take precedence.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "The Guide lists four considerations for deciding whether a compliance notice is appropriate and describes its intended use.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1120"
+        ]
+      }
+    ],
+    "methodology": [
+      "Retrieved the relevant official Guide to the NQF passage on compliance notices."
+    ],
+    "limitations": [
+      "This is guidance material; applicable National Law and Regulations prevail."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_D9N7HhMMkwuxClHnEABwFDt4",
+      "arguments": {
+        "query": "compliance notice considerations before deciding appropriate regulatory authority Guide to the NQF",
+        "topic": "compliance_tools",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_D9N7HhMMkwuxClHnEABwFDt4",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "compliance notice considerations before deciding appropriate regulatory authority Guide to the NQF",
+          "topic": "compliance_tools",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1120",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 604",
+              "excerpt": "604 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement Compliance notices are intended to compel approved providers to comply with their legislative obligations. This tool is particularly useful when it is appropriate to give the provider some time to take a specific action to comply with a requirement, but the regulatory authority wants to use a strong lever to make sure the provider complies. Once satisfied that this tool can be used, a regulatory authority may consider the following in deciding whether a compliance notice is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? How can it be used? A compliance notice may be issued in accordance with the requirements of the National Law about serving notices (see Serving notices). The notice must set out how long the approved provider has to comply. The period cannot be shorter than 14 calendar days. The compliance notice should be accompanied by information about the approved provider’s right to an internal review of the decision, under section 190 of the National Law (see Reviews). National Law Section 190 Can it be reviewed? A decision to give a compliance notice is subject to review under the National Law (see Reviews).",
+              "retrieval_score": 14.880274,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1091",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 587",
+              "excerpt": "Regulatory Authority Powers | Regulatory Authority powers 587Regulatory Authority Powers | Monitoring, compliance and enforcement Monitoring, compliance and enforcement 1. Monitoring 1.1 What is monitoring? Monitoring is a proactive way of assessing and influencing compliance with the National Law and Regulations. Monitoring activities can provide a strong incentive for providers to comply with their regulatory obligations and to improve the quality of education and care at their services. Monitoring is a compliance tool regulatory authorities may apply to an individual person, a single service or service type as part of deciding whether further regulatory action is needed. Regulatory authorities maintain oversight of providers and their services in a variety of ways to assess and promote compliance with the National Law and Regulations. These may include physical visits, interviews, phone calls, emails, video conferences, etc. All of these forms of activity provide regulatory authorities with information about the quality of education and care provided to children, interactions with families and compliance. All types of visits may be organised at short notice or without notice and may focus on any aspect of service delivery under the NQF. The form of activity is chosen by regulators based on an assessment of risk and the purpose of the contact, and may include a compliance visit, a partial assessment and rating, a full assessment and rating, or other regulatory activities. There are several forms of monitoring activities, set out in the table below.",
+              "retrieval_score": 13.674392,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1136",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 612",
+              "excerpt": "612 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement without further notice suspend the provider or service approval or give a prohibition notice. Where a person has breached a term of an undertaking, legal action can be taken either within two (2) years of the date on which the offence is alleged to have occurred, or within six (6) months of the determination of the court or tribunal, whichever occurs last. The regulatory authority is not required to seek an order. The regulatory authority may choose to withdraw the enforceable undertaking and address the non-compliance through other statutory action, for example, an infringement notice or prosecution. The action would be based on the original breach of the National Law or Regulations, not on failure to fulfil the enforceable undertaking. Seeking orders from the relevant tribunal or court may be an expensive process, and there are no guarantees either an order can be sought in the timeframe required to address the breach, or that the tribunal or court will grant the order sought by the regulatory authority. When deciding whether or not to seek an order, the regulatory authority should take into account all options available to address the breach.",
+              "retrieval_score": 11.506005,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1142",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 615",
+              "excerpt": "Regulatory Authority Powers | Monitoring, compliance and enforcement 615Regulatory Authority Powers | Monitoring, compliance and enforcement National Law Section 184 Considering the response to a show cause notice If the regulatory authority has given a person a show cause notice and the person gives a written response in the specified timeframe, the regulatory authority must have regard to the response before deciding whether to give the person a prohibition notice. If the regulatory authority decides not to give the person a prohibition notice, it needs to notify the person in writing. The regulatory authority may accept an enforceable undertaking from a person instead of giving a prohibition notice. National Law Section 185 Content of a prohibition notice A prohibition notice given under section 182(1) must state the person is prohibited from doing any of the following: • providing education and care to children for an education and care service • being engaged as an educator, family day care educator, employee, contractor or staff member of, or being a volunteer at, an education and care service • carrying out any other activity relating to education and care services. A prohibition notice given to a person under section 182(3) must state that either: • the person is prohibited from being nominated as a nominated supervisor, or • the person may only be nominated as a nominated supervisor on the condition or conditions specified in the notice. A prohibition notice must also state the person may apply for cancellation of the notice, and how to apply for cancellation. The prohibition notice should be accompanied by information about the approved provider’s right to an external review of the decision under section 192 of the National Law (see Reviews).",
+              "retrieval_score": 11.487758,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1114",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 600",
+              "excerpt": "given to an approved provider when the regulatory authority is satisfied that there is a systemic risk in relation to an approved provider or a related provider of an approved provider, and the direction is reasonably necessary to address that risk. A regulatory authority may consider the following in deciding whether a compliance direction is appropriate: • Is it possible for the regulatory authority to set out clear steps which, if followed, would result in the approved provider complying with the regulation? • What is the immediacy and seriousness of any risk to the safety, health and wellbeing of children being educated and cared for at the service, caused by the breach? • Is the action proportionate to the seriousness of the offence? • Is the action likely to serve as a deterrent to committing the offence again? Requirements for which a compliance direction can be given to the approved provider Regulation Requirement 55(1) Quality improvement plan 72(1), (2) Offences in relation to giving false or misleading statements about ratings 74(1) Documenting child assessments or evaluations for delivery of educational program 75 Information about educational program to be kept available 76 Information about educational program to be given to parents 77(1) Health, hygiene and safe food practices",
+              "retrieval_score": 10.481847,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1120",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 604",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9408,
+    "output_tokens": 276,
+    "total_tokens": 9684
+  },
+  "latency_ms": 5348.032958005206
+}

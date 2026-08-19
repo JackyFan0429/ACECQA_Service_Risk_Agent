@@ -1,0 +1,153 @@
+{
+  "query": "List the five highest-risk Centre-Based Care services in Western Australia under the triple-gap definition.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "1. **Wyndham Child Care Centre** — SE-40007638 (Rural); 15 approved places; 405.9 km to nearest public transport.\n2. **One Tree OSHC Kununurra** — SE-00014263 (Urban); 40 places; 403.2 km.\n3. **One Tree Woothoo-woothoong thoon Ninggoowoong Dawang Children's Service** — SE-00014230 (Urban); 40 places; 402.7 km.\n4. **Christmas Island Daycare Centre** — SE-00012485 (Urban); 40 places; 393.6 km.\n5. **Kimberley Kids Outside School Hours Care** — SE-00014418 (Urban); 28 places; 354.8 km.\n\nAll five are **Working Towards NQS** and meet all three v1 gap flags. There are 26 triple-gap Centre-Based Care services in WA.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "The ranked top five WA Centre-Based Care services under the triple-gap definition, including service attributes and the 26-service matched count.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Triple-gap means gap score 3: poor transport access, weak quality flag, and low authorised capacity. Ranking is gap score descending, then transport distance descending, authorised places ascending, and approval number ascending.",
+      "Thresholds are national validated Centre-Based Care sample values: transport P75 = 5.329 km; capacity P25 = 40 places."
+    ],
+    "limitations": [
+      "This is a deterministic prioritisation screen, not evidence of a breach or non-compliance finding.",
+      "Approved places are authorised capacity and do not demonstrate demand, enrolment pressure, or waitlists."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_Quta3QE2FVeRW8DpB5J0Stzp",
+      "arguments": {
+        "state": "WA",
+        "urban_rural": null,
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 5,
+        "minimum_gap_score": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_Quta3QE2FVeRW8DpB5J0Stzp",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 26,
+          "returned_count": 5,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-40007638",
+              "service_name": "Wyndham Child Care Centre",
+              "state": "WA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 405.8809474449708,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00014263",
+              "service_name": "One Tree OSHC Kununurra",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 403.2254351438024,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00014230",
+              "service_name": "One Tree Woothoo-woothoong thoon Ninggoowoong Dawang Children's Service",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 402.6561250283123,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00012485",
+              "service_name": "Christmas Island Daycare Centre",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 393.633831196217,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00014418",
+              "service_name": "Kimberley Kids Outside School Hours Care",
+              "state": "WA",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 28.0,
+              "nearest_public_transport_km": 354.81590395018463,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7990,
+    "output_tokens": 437,
+    "total_tokens": 8427
+  },
+  "latency_ms": 6810.7432079996215
+}

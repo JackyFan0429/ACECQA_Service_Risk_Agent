@@ -1,0 +1,1068 @@
+{
+  "query": "Count rural Centre-Based Care services in New South Wales.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "There are **339** rural Centre-Based Care services in New South Wales.",
+    "evidence": [
+      {
+        "source_tool": "search_services",
+        "claim": "Filtering for NSW, Rural, and Centre-Based Care returned 339 matched services.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Count taken from the deterministic filtered service search."
+    ],
+    "limitations": []
+  },
+  "used_tools": [
+    "search_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_services",
+      "call_id": "call_8NRRHvj6wNn1SSHhKtTrDW3N",
+      "arguments": {
+        "state": "NSW",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "limit": 100
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_services",
+      "call_id": "call_8NRRHvj6wNn1SSHhKtTrDW3N",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_services",
+        "data": {
+          "matched_count": 339,
+          "returned_count": 100,
+          "filters": {
+            "state": "NSW",
+            "urban_rural": "Rural",
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00006223",
+              "service_name": "Goodstart Early Learning Anna Bay",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 49.0,
+              "nearest_public_transport_km": 33.45339704884589
+            },
+            {
+              "service_approval_number": "SE-00006299",
+              "service_name": "Goodstart Early Learning Moonee Beach",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 51.0,
+              "nearest_public_transport_km": 11.338952103032389
+            },
+            {
+              "service_approval_number": "SE-00006439",
+              "service_name": "Annabeles Long Day Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 61.0,
+              "nearest_public_transport_km": 54.428768357740026
+            },
+            {
+              "service_approval_number": "SE-00006440",
+              "service_name": "Annabelle Child Care Centre Pty Ltd",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 230.0,
+              "nearest_public_transport_km": 5.248894556897267
+            },
+            {
+              "service_approval_number": "SE-00006443",
+              "service_name": "Muddy Boots Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 48.0,
+              "nearest_public_transport_km": 4.8416278518954465
+            },
+            {
+              "service_approval_number": "SE-00006444",
+              "service_name": "Annangrove Preschool Kindergarten",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 62.0,
+              "nearest_public_transport_km": 6.2154334807397635
+            },
+            {
+              "service_approval_number": "SE-00006455",
+              "service_name": "Ardlethan Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 31.339921587829004
+            },
+            {
+              "service_approval_number": "SE-00006557",
+              "service_name": "Wilcannia Central School Barlu Kurli Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 129.03799091057024
+            },
+            {
+              "service_approval_number": "SE-00006601",
+              "service_name": "Bendemeer Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 21.18874434287775
+            },
+            {
+              "service_approval_number": "SE-00006603",
+              "service_name": "Bentley Community Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 13.246726517978072
+            },
+            {
+              "service_approval_number": "SE-00006607",
+              "service_name": "Bermagui Little Lambs Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 83.66160535298654
+            },
+            {
+              "service_approval_number": "SE-00006611",
+              "service_name": "Berrigan Children's Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 27.950395728958213
+            },
+            {
+              "service_approval_number": "SE-00006624",
+              "service_name": "Bilambil Community Pre-School & OOSH",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 70.0,
+              "nearest_public_transport_km": 13.632386458696631
+            },
+            {
+              "service_approval_number": "SE-00006629",
+              "service_name": "Billi-Lids Long Day Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 15.296235559996784
+            },
+            {
+              "service_approval_number": "SE-00006638",
+              "service_name": "Binnaway Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 19.0,
+              "nearest_public_transport_km": 104.37832800697672
+            },
+            {
+              "service_approval_number": "SE-00006671",
+              "service_name": "Busy Bees at Salt Ash",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 120.0,
+              "nearest_public_transport_km": 19.165336078648117
+            },
+            {
+              "service_approval_number": "SE-00006684",
+              "service_name": "Blue Wren Child Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 80.0,
+              "nearest_public_transport_km": 7.128989367620045
+            },
+            {
+              "service_approval_number": "SE-00006699",
+              "service_name": "Boongaiai Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 25.231940669380457
+            },
+            {
+              "service_approval_number": "SE-00006715",
+              "service_name": "Bowraville Community Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 9.106390911362398
+            },
+            {
+              "service_approval_number": "SE-00006742",
+              "service_name": "Bright Horizons Australia Childcare Tintenbar",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 56.0,
+              "nearest_public_transport_km": 6.598992836334292
+            },
+            {
+              "service_approval_number": "SE-00006757",
+              "service_name": "Bringelly Child Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 57.0,
+              "nearest_public_transport_km": 14.82316243731622
+            },
+            {
+              "service_approval_number": "SE-00006780",
+              "service_name": "Bundarra Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 67.0017637800045
+            },
+            {
+              "service_approval_number": "SE-00006782",
+              "service_name": "Bundgeam Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 32.35963893746234
+            },
+            {
+              "service_approval_number": "SE-00006789",
+              "service_name": "Burren Junction Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 82.21681089639623
+            },
+            {
+              "service_approval_number": "SE-00006790",
+              "service_name": "Burrumbuttock Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 29.2481969040879
+            },
+            {
+              "service_approval_number": "SE-00006899",
+              "service_name": "Catherine Field Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 8.134798767931755
+            },
+            {
+              "service_approval_number": "SE-00006901",
+              "service_name": "Cath's Kindy",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 49.0,
+              "nearest_public_transport_km": 6.105946697864413
+            },
+            {
+              "service_approval_number": "SE-00006907",
+              "service_name": "Cawongla Playhouse",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 9.191033887385425
+            },
+            {
+              "service_approval_number": "SE-00006957",
+              "service_name": "Clarence Town Pre-school",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 15.20881780508268
+            },
+            {
+              "service_approval_number": "SE-00006959",
+              "service_name": "Clementson Drive Early Educational Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 39.0,
+              "nearest_public_transport_km": 10.333409422953718
+            },
+            {
+              "service_approval_number": "SE-00006974",
+              "service_name": "Clunes Community Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 19.059210446208652
+            },
+            {
+              "service_approval_number": "SE-00006977",
+              "service_name": "Cobargo Pre School Inc",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 68.86792526517148
+            },
+            {
+              "service_approval_number": "SE-00006984",
+              "service_name": "Coleambally Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 54.8651378652243
+            },
+            {
+              "service_approval_number": "SE-00006996",
+              "service_name": "Comboyne Community Preschool Kindergarten",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 26.059055422419267
+            },
+            {
+              "service_approval_number": "SE-00007013",
+              "service_name": "Coolah Preschool Kindergarten Inc",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 32.0,
+              "nearest_public_transport_km": 97.5296674036117
+            },
+            {
+              "service_approval_number": "SE-00007026",
+              "service_name": "Copmanhurst Pre-school",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 20.70372850579533
+            },
+            {
+              "service_approval_number": "SE-00007034",
+              "service_name": "Country Cubs Preschool & Long Day Care",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 50.0,
+              "nearest_public_transport_km": 14.633591901235611
+            },
+            {
+              "service_approval_number": "SE-00007038",
+              "service_name": "Coutts Crossing Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 14.582514651152394
+            },
+            {
+              "service_approval_number": "SE-00007047",
+              "service_name": "Crescent Head Community Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 34.0,
+              "nearest_public_transport_km": 17.813713222594263
+            },
+            {
+              "service_approval_number": "SE-00007058",
+              "service_name": "Cubby House for Kids",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 73.0,
+              "nearest_public_transport_km": 12.864697167589872
+            },
+            {
+              "service_approval_number": "SE-00007059",
+              "service_name": "Cubby House For Kids Jubilee Street",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 12.82080438436853
+            },
+            {
+              "service_approval_number": "SE-00007062",
+              "service_name": "Cudal Community Children's Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 47.0,
+              "nearest_public_transport_km": 33.73033062731485
+            },
+            {
+              "service_approval_number": "SE-00007063",
+              "service_name": "Cuddlepie Early Childhood Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 47.0,
+              "nearest_public_transport_km": 40.4856850876076
+            },
+            {
+              "service_approval_number": "SE-00007071",
+              "service_name": "Cumnock Village Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 33.53238320372666
+            },
+            {
+              "service_approval_number": "SE-00007097",
+              "service_name": "Delegate & District Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 80.39709255151745
+            },
+            {
+              "service_approval_number": "SE-00007130",
+              "service_name": "Dunedoo Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 67.63117070995187
+            },
+            {
+              "service_approval_number": "SE-00007132",
+              "service_name": "Dunoon Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 26.920946006221087
+            },
+            {
+              "service_approval_number": "SE-00007133",
+              "service_name": "Durrumbul Community Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 14.1738002023258
+            },
+            {
+              "service_approval_number": "SE-00007143",
+              "service_name": "Early Childhood Education Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 79.0,
+              "nearest_public_transport_km": 2.1328174387235967
+            },
+            {
+              "service_approval_number": "SE-00007152",
+              "service_name": "Earth Angels Childcare Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 49.0,
+              "nearest_public_transport_km": 42.443080961914646
+            },
+            {
+              "service_approval_number": "SE-00007178",
+              "service_name": "Dooral Kenthurst Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 46.0,
+              "nearest_public_transport_km": 3.5160152326650476
+            },
+            {
+              "service_approval_number": "SE-00007188",
+              "service_name": "Ellerman Long Day Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 1.573893316915863
+            },
+            {
+              "service_approval_number": "SE-00007215",
+              "service_name": "Eungai Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 27.0,
+              "nearest_public_transport_km": 14.411893320521346
+            },
+            {
+              "service_approval_number": "SE-00007219",
+              "service_name": "Euston Pre-school",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 23.0,
+              "nearest_public_transport_km": 69.02114402378874
+            },
+            {
+              "service_approval_number": "SE-00007317",
+              "service_name": "Gainmara Birrilee Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 282.87304118401863
+            },
+            {
+              "service_approval_number": "SE-00007319",
+              "service_name": "UnitingCare Galston Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 5.5060764970769425
+            },
+            {
+              "service_approval_number": "SE-00007323",
+              "service_name": "Ganmain Pied Piper Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 14.835802602989393
+            },
+            {
+              "service_approval_number": "SE-00007328",
+              "service_name": "Gardner Farm Child Care",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 34.0,
+              "nearest_public_transport_km": 15.527890249428326
+            },
+            {
+              "service_approval_number": "SE-00007347",
+              "service_name": "Girrawong Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 50.0,
+              "nearest_public_transport_km": 40.92612311648538
+            },
+            {
+              "service_approval_number": "SE-00007358",
+              "service_name": "Glenhaven Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 63.0,
+              "nearest_public_transport_km": 4.82484324198108
+            },
+            {
+              "service_approval_number": "SE-00007362",
+              "service_name": "Glenorie Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 27.0,
+              "nearest_public_transport_km": 10.89590625739536
+            },
+            {
+              "service_approval_number": "SE-00007363",
+              "service_name": "Glenreagh Preschool Incorporated",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 32.09449388320644
+            },
+            {
+              "service_approval_number": "SE-00007372",
+              "service_name": "Goodooga Preschool Inc",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 235.87413521189615
+            },
+            {
+              "service_approval_number": "SE-00007438",
+              "service_name": "Burringbar Community Preschool Inc",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 14.101885714216856
+            },
+            {
+              "service_approval_number": "SE-00007455",
+              "service_name": "Gunning Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 35.0,
+              "nearest_public_transport_km": 0.2515176427158171
+            },
+            {
+              "service_approval_number": "SE-00007461",
+              "service_name": "Gyndarna Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 46.0,
+              "nearest_public_transport_km": 14.395805785339244
+            },
+            {
+              "service_approval_number": "SE-00007480",
+              "service_name": "Happy Hearts Academy Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 96.0,
+              "nearest_public_transport_km": 2.9966246712712303
+            },
+            {
+              "service_approval_number": "SE-00007488",
+              "service_name": "Little Sparkles Early Learning Centre and Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 3.993264587402817
+            },
+            {
+              "service_approval_number": "SE-00007500",
+              "service_name": "Hawkesbury River Child Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 56.0,
+              "nearest_public_transport_km": 6.425864245646397
+            },
+            {
+              "service_approval_number": "SE-00007521",
+              "service_name": "Henty Early Childhood Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 41.0,
+              "nearest_public_transport_km": 0.3549396827948082
+            },
+            {
+              "service_approval_number": "SE-00007595",
+              "service_name": "IDFS Ashford Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 52.15784942516735
+            },
+            {
+              "service_approval_number": "SE-00007596",
+              "service_name": "Kingstown Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 43.445399358138154
+            },
+            {
+              "service_approval_number": "SE-00007628",
+              "service_name": "Jacaranda Grove Pre School, NELSONS PLAINS",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 50.0,
+              "nearest_public_transport_km": 10.95969008146677
+            },
+            {
+              "service_approval_number": "SE-00007679",
+              "service_name": "Nabiac Early Learning",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 41.507361694052875
+            },
+            {
+              "service_approval_number": "SE-00007696",
+              "service_name": "Jumping Jellybeans Early Childhood Centre - Berry",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 28.0,
+              "nearest_public_transport_km": 9.534602975919348
+            },
+            {
+              "service_approval_number": "SE-00007712",
+              "service_name": "Ngaarrila Preschool Kalang",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 25.20478359267667
+            },
+            {
+              "service_approval_number": "SE-00007715",
+              "service_name": "Kangaroo Valley Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 14.870493854298472
+            },
+            {
+              "service_approval_number": "SE-00007719",
+              "service_name": "Kapooka Early Childhood Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 6.9336862011940745
+            },
+            {
+              "service_approval_number": "SE-00007748",
+              "service_name": "MindChamps Early Learning @ Kemps Creek",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 76.0,
+              "nearest_public_transport_km": 10.19736938137792
+            },
+            {
+              "service_approval_number": "SE-00007754",
+              "service_name": "Kendall Community Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 0.1142793050302681
+            },
+            {
+              "service_approval_number": "SE-00007757",
+              "service_name": "Kenthurst Pre-School Kindergarten",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 51.0,
+              "nearest_public_transport_km": 4.602823783043922
+            },
+            {
+              "service_approval_number": "SE-00007770",
+              "service_name": "Kiddies Hut at Diamond Beach",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 48.65299930713758
+            },
+            {
+              "service_approval_number": "SE-00007799",
+              "service_name": "Kids Haven Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 46.0,
+              "nearest_public_transport_km": 3.368227457932465
+            },
+            {
+              "service_approval_number": "SE-00008077",
+              "service_name": "Milestones Early Learning Armidale",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 90.0,
+              "nearest_public_transport_km": 18.32718943611644
+            },
+            {
+              "service_approval_number": "SE-00008109",
+              "service_name": "Lawrence Community Pre-school",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 25.072210952938256
+            },
+            {
+              "service_approval_number": "SE-00008259",
+              "service_name": "Little Yuin Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 83.31047649747275
+            },
+            {
+              "service_approval_number": "SE-00008264",
+              "service_name": "Lockhart Preschool Kindergarten",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 36.7690466253224
+            },
+            {
+              "service_approval_number": "SE-00008269",
+              "service_name": "Long Flat Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 30.06508375378475
+            },
+            {
+              "service_approval_number": "SE-00008277",
+              "service_name": "Lower Bucca Community Preschool Incorporated",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 18.28588377770334
+            },
+            {
+              "service_approval_number": "SE-00008278",
+              "service_name": "Lower Macleay Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 35.0,
+              "nearest_public_transport_km": 0.2352537994648909
+            },
+            {
+              "service_approval_number": "SE-00008281",
+              "service_name": "Luddenham Child Care Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 39.0,
+              "nearest_public_transport_km": 12.262330839380333
+            },
+            {
+              "service_approval_number": "SE-00008294",
+              "service_name": "Maclean Community Pre-school",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 13.117866056447603
+            },
+            {
+              "service_approval_number": "SE-00008323",
+              "service_name": "Maraylya Early Learning Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Exceeding NQS",
+              "number_of_approved_places": 104.0,
+              "nearest_public_transport_km": 8.731633025902278
+            },
+            {
+              "service_approval_number": "SE-00008337",
+              "service_name": "Marulan Children's Centre - Little Treasures",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 0.682591506145631
+            },
+            {
+              "service_approval_number": "SE-00008338",
+              "service_name": "Marulan Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 0.5506528084955227
+            },
+            {
+              "service_approval_number": "SE-00008351",
+              "service_name": "Mathoura Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 37.17625446749999
+            },
+            {
+              "service_approval_number": "SE-00008369",
+              "service_name": "Mendooran Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 69.89095588298612
+            },
+            {
+              "service_approval_number": "SE-00008370",
+              "service_name": "Menindee Children's Centre",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 1.246795552719958
+            },
+            {
+              "service_approval_number": "SE-00008431",
+              "service_name": "Mogo Aboriginal Pre-School",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 86.1092692954811
+            },
+            {
+              "service_approval_number": "SE-00008469",
+              "service_name": "Moulamein Preschool",
+              "state": "NSW",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 51.484705894461854
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 14522,
+    "output_tokens": 128,
+    "total_tokens": 14650
+  },
+  "latency_ms": 5164.96570900199
+}

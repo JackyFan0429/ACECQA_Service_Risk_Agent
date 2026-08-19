@@ -1,0 +1,2579 @@
+{
+  "suite": "acecqa_service_risk_copilot_formal_eval",
+  "version": "1.1",
+  "case_count": 50,
+  "description": "System-level benchmark for analytics routing, deterministic correctness, policy grounding, scenario analysis and reliability boundaries. v1.1 clarifies retrieval-retry and semantic-normalisation scoring without changing the 50 user queries.",
+  "design": {
+    "primary_evaluator": "deterministic trace/output checks",
+    "llm_as_judge": false,
+    "note": "Lightweight answer markers are used only where structured traces cannot fully capture semantic boundary handling."
+  },
+  "category_counts": {
+    "data_retrieval": 8,
+    "risk_analysis": 8,
+    "comparison": 6,
+    "policy_rag": 8,
+    "scenario_analysis": 8,
+    "reliability_boundary": 12
+  },
+  "acceptance": {
+    "minimum_task_success_rate": 0.9,
+    "minimum_tool_selection_accuracy": 0.94,
+    "minimum_parameter_accuracy": 0.95,
+    "minimum_deterministic_output_accuracy": 0.98,
+    "minimum_numerical_accuracy": 1.0,
+    "minimum_policy_grounding_rate": 0.95,
+    "minimum_boundary_handling_rate": 0.92,
+    "critical_cases_must_all_pass": true
+  },
+  "cases": [
+    {
+      "id": "M5-D01",
+      "category": "data_retrieval",
+      "critical": true,
+      "query": "How many rural Centre-Based Care services are in Queensland? Give me the dataset count, not the risk-eligible count.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "search_services",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "search_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "search_services",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "search_services",
+          "path": "data.matched_count",
+          "equals": 227
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "227"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_services"
+      ]
+    },
+    {
+      "id": "M5-D02",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "Count rural Centre-Based Care services in New South Wales.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "search_services",
+          "path": "state",
+          "equals": "NSW"
+        },
+        {
+          "tool": "search_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "search_services",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "search_services",
+          "path": "data.matched_count",
+          "equals": 339
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "339"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_services"
+      ]
+    },
+    {
+      "id": "M5-D03",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "How many Victorian services in the dataset are rated Working Towards NQS?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "search_services",
+          "path": "state",
+          "equals": "VIC"
+        },
+        {
+          "tool": "search_services",
+          "path": "overall_rating",
+          "equals": "Working Towards NQS"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "search_services",
+          "path": "data.matched_count",
+          "equals": 184
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "184"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_services"
+      ]
+    },
+    {
+      "id": "M5-D04",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "How many Family Day Care services are recorded in Western Australia?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "search_services",
+          "path": "state",
+          "equals": "WA"
+        },
+        {
+          "tool": "search_services",
+          "path": "service_type",
+          "equals": "Family Day Care"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "search_services",
+          "path": "data.matched_count",
+          "equals": 30
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "30"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_services"
+      ]
+    },
+    {
+      "id": "M5-D05",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "Give me the service profile for approval SE-40000427. I only need its recorded profile, not a risk assessment.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "get_service_profile"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "get_service_profile",
+          "path": "service_approval_number",
+          "equals": "SE-40000427"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "get_service_profile",
+          "path": "data.service_name",
+          "equals": "Napranum Early Childhood Centre"
+        },
+        {
+          "tool": "get_service_profile",
+          "path": "data.number_of_approved_places",
+          "equals": 33.0
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "napranum"
+          ],
+          [
+            "33"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "get_service_profile"
+      ]
+    },
+    {
+      "id": "M5-D06",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "Look up SE-40015803 and tell me its name, state and approved capacity. Do not score it unless I ask.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "get_service_profile"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "get_service_profile",
+          "path": "service_approval_number",
+          "equals": "SE-40015803"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "get_service_profile",
+          "path": "data.service_name",
+          "equals": "Maingirba Early Learning Centre"
+        },
+        {
+          "tool": "get_service_profile",
+          "path": "data.state",
+          "equals": "NSW"
+        },
+        {
+          "tool": "get_service_profile",
+          "path": "data.number_of_approved_places",
+          "equals": 24.0
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "maingirba"
+          ],
+          [
+            "nsw",
+            "new south wales"
+          ],
+          [
+            "24"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "get_service_profile"
+      ]
+    },
+    {
+      "id": "M5-D07",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "What is the count of rural Centre-Based Care services in South Australia?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "search_services",
+          "path": "state",
+          "equals": "SA"
+        },
+        {
+          "tool": "search_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "search_services",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "search_services",
+          "path": "data.matched_count",
+          "equals": 133
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "133"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_services"
+      ]
+    },
+    {
+      "id": "M5-D08",
+      "category": "data_retrieval",
+      "critical": false,
+      "query": "How many Queensland services have an overall rating of Exceeding NQS?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "search_services",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "search_services",
+          "path": "overall_rating",
+          "equals": "Exceeding NQS"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "search_services",
+          "path": "data.matched_count",
+          "equals": 526
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "526"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_services"
+      ]
+    },
+    {
+      "id": "M5-R01",
+      "category": "risk_analysis",
+      "critical": true,
+      "query": "Score service SE-40000427 using the current validated risk model.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "calculate_risk_score"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "service_approval_number",
+          "equals": "SE-40000427"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.eligible_for_risk_scoring",
+          "equals": true
+        },
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.gap_score",
+          "equals": 3
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "3-gap",
+            "3 gap",
+            "3 gaps",
+            "score of 3",
+            "gap score of 3"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "calculate_risk_score"
+      ]
+    },
+    {
+      "id": "M5-R02",
+      "category": "risk_analysis",
+      "critical": false,
+      "query": "What is the v1 risk score for SE-40015803?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "calculate_risk_score"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "service_approval_number",
+          "equals": "SE-40015803"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.gap_score",
+          "equals": 3
+        },
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.number_of_approved_places",
+          "equals": 24.0
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "3-gap",
+            "3 gap",
+            "3 gaps",
+            "score of 3"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "calculate_risk_score"
+      ]
+    },
+    {
+      "id": "M5-R03",
+      "category": "risk_analysis",
+      "critical": true,
+      "query": "Rank the five highest-risk rural Centre-Based Care services in Queensland.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "top_k",
+          "equals": 5
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.matched_count",
+          "equals": 21
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.returned_count",
+          "equals": 5
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.services[0].service_approval_number",
+          "equals": "SE-40000427"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "napranum"
+          ],
+          [
+            "21",
+            "five",
+            "5"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "find_high_risk_services"
+      ]
+    },
+    {
+      "id": "M5-R04",
+      "category": "risk_analysis",
+      "critical": false,
+      "query": "Show the top 10 triple-gap rural Centre-Based Care candidates in NSW. If fewer than 10 qualify, say so.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "state",
+          "equals": "NSW"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "top_k",
+          "equals": 10
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.matched_count",
+          "equals": 6
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.returned_count",
+          "equals": 6
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.services[0].service_approval_number",
+          "equals": "SE-40015803"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "6",
+            "six"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "find_high_risk_services"
+      ]
+    },
+    {
+      "id": "M5-R05",
+      "category": "risk_analysis",
+      "critical": false,
+      "query": "Which five Victorian Centre-Based Care services rank highest under the triple-gap screen?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "state",
+          "equals": "VIC"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "top_k",
+          "equals": 5
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.matched_count",
+          "equals": 20
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.services[0].service_name",
+          "equals": "Robinvale Out of School Hours Program"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "robinvale"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "find_high_risk_services"
+      ]
+    },
+    {
+      "id": "M5-R06",
+      "category": "risk_analysis",
+      "critical": false,
+      "query": "Give me a broader high-risk candidate pool for rural South Australian Centre-Based Care, using at least two gaps, and show the top five.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "state",
+          "equals": "SA"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "top_k",
+          "equals": 5
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "minimum_gap_score",
+          "equals": 2
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.matched_count",
+          "equals": 97
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.services[0].service_name",
+          "equals": "Rendelsham Preschool"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "rendelsham"
+          ],
+          [
+            "97"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "find_high_risk_services"
+      ]
+    },
+    {
+      "id": "M5-R07",
+      "category": "risk_analysis",
+      "critical": false,
+      "query": "Can the current v1 model score Family Day Care service SE-00014066? Calculate it if eligible and explain the scope result.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "calculate_risk_score"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "service_approval_number",
+          "equals": "SE-00014066"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.eligible_for_risk_scoring",
+          "equals": false
+        },
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.gap_score",
+          "equals": null
+        },
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.limitations[0]",
+          "contains": "Centre-Based Care"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "not eligible",
+            "outside",
+            "only for centre-based",
+            "only for centre based",
+            "centre-based care"
+          ],
+          [
+            "family day care"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "calculate_risk_score"
+      ]
+    },
+    {
+      "id": "M5-R08",
+      "category": "risk_analysis",
+      "critical": false,
+      "query": "List the five highest-risk Centre-Based Care services in Western Australia under the triple-gap definition.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "state",
+          "equals": "WA"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "top_k",
+          "equals": 5
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.matched_count",
+          "equals": 26
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.services[0].service_name",
+          "equals": "Wyndham Child Care Centre"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "wyndham"
+          ],
+          [
+            "26"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "find_high_risk_services"
+      ]
+    },
+    {
+      "id": "M5-C01",
+      "category": "comparison",
+      "critical": true,
+      "query": "Compare public-transport access for rural versus urban Centre-Based Care nationally. Which group has the higher median distance?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_transport_access"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "group_by",
+          "equals": "urban_rural"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Rural].service_count",
+          "equals": 1025
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Urban].service_count",
+          "equals": 14946
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Rural].median_nearest_transport_km",
+          "approx": 17.096440372098517,
+          "tolerance": 1e-06
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Urban].median_nearest_transport_km",
+          "approx": 2.1310775585545603,
+          "tolerance": 1e-06
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "rural"
+          ],
+          [
+            "higher",
+            "farther",
+            "further"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "compare_transport_access"
+      ]
+    },
+    {
+      "id": "M5-C02",
+      "category": "comparison",
+      "critical": false,
+      "query": "For Centre-Based Care, compare transport access across states and tell me the state with the highest median distance to public transport.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_transport_access"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "group_by",
+          "equals": "state"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=NT].median_nearest_transport_km",
+          "approx": 6.479907670488503,
+          "tolerance": 1e-06
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "nt",
+            "northern territory"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "compare_transport_access"
+      ]
+    },
+    {
+      "id": "M5-C03",
+      "category": "comparison",
+      "critical": false,
+      "query": "Within Queensland Centre-Based Care, compare rural and urban median public-transport distance.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_transport_access"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "group_by",
+          "equals": "urban_rural"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Rural].service_count",
+          "equals": 193
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Rural].median_nearest_transport_km",
+          "approx": 17.092666178832708,
+          "tolerance": 1e-06
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Urban].median_nearest_transport_km",
+          "approx": 2.3639442460827893,
+          "tolerance": 1e-06
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "rural"
+          ],
+          [
+            "17.1",
+            "17.09"
+          ],
+          [
+            "2.36",
+            "2.4"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "compare_transport_access"
+      ]
+    },
+    {
+      "id": "M5-C04",
+      "category": "comparison",
+      "critical": false,
+      "query": "Across national Centre-Based Care transport quartiles, compare Q1 and Q4 on Below Meeting NQS rate and median approved places.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "analyse_transport_quartile_outcomes"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "data.quartiles[transport_access_quartile=Q1 Closest].below_meeting_rate",
+          "approx": 0.07467204843592332,
+          "tolerance": 1e-09
+        },
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "data.quartiles[transport_access_quartile=Q4 Farthest].below_meeting_rate",
+          "approx": 0.10858711932101847,
+          "tolerance": 1e-09
+        },
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "data.quartiles[transport_access_quartile=Q4 Farthest].median_approved_places",
+          "equals": 53.5
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "q1"
+          ],
+          [
+            "q4"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "analyse_transport_quartile_outcomes"
+      ]
+    },
+    {
+      "id": "M5-C05",
+      "category": "comparison",
+      "critical": false,
+      "query": "For Queensland Centre-Based Care, how do the closest and farthest transport quartiles differ in Below Meeting NQS rate?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "analyse_transport_quartile_outcomes"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "service_type",
+          "equals": "Centre-Based Care"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "data.quartiles[transport_access_quartile=Q1 Closest].below_meeting_rate",
+          "approx": 0.09266943291839558,
+          "tolerance": 1e-09
+        },
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "data.quartiles[transport_access_quartile=Q4 Farthest].below_meeting_rate",
+          "approx": 0.13189448441247004,
+          "tolerance": 1e-09
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "q4",
+            "farthest"
+          ],
+          [
+            "higher"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "analyse_transport_quartile_outcomes"
+      ]
+    },
+    {
+      "id": "M5-C06",
+      "category": "comparison",
+      "critical": false,
+      "query": "Compare median public-transport distance between Centre-Based Care and Family Day Care in the analysis data.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_transport_access"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "group_by",
+          "equals": "service_type"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Centre-Based Care].service_count",
+          "equals": 15971
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Family Day Care].service_count",
+          "equals": 355
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Centre-Based Care].median_nearest_transport_km",
+          "approx": 2.290922989648146,
+          "tolerance": 1e-06
+        },
+        {
+          "tool": "compare_transport_access",
+          "path": "data.groups[group=Family Day Care].median_nearest_transport_km",
+          "approx": 1.9004584109064089,
+          "tolerance": 1e-06
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "centre-based",
+            "centre based"
+          ],
+          [
+            "family day care"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "compare_transport_access"
+      ]
+    },
+    {
+      "id": "M5-P01",
+      "category": "policy_rag",
+      "critical": true,
+      "query": "According to official ACECQA/NQF guidance, what does a Working Towards NQS rating mean?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "improvement",
+            "improve",
+            "one or more",
+            "areas identified"
+          ],
+          [
+            "working towards"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-P02",
+      "category": "policy_rag",
+      "critical": true,
+      "query": "Who actually monitors and enforces NQF compliance at education and care services: ACECQA or state and territory regulatory authorities?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "state and territory regulatory",
+            "regulatory authorities"
+          ],
+          [
+            "not",
+            "acecqa"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-P03",
+      "category": "policy_rag",
+      "critical": false,
+      "query": "What factors should a regulatory authority consider when choosing a proportionate response to a compliance issue?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "proportionate"
+          ],
+          [
+            "risk to children",
+            "risk to the safety",
+            "risk"
+          ],
+          [
+            "circumstances",
+            "compliance history"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-P04",
+      "category": "policy_rag",
+      "critical": true,
+      "query": "Is the Guide to the NQF legal advice? Explain what takes precedence if the Guide conflicts with the National Law or Regulations.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "not legal advice"
+          ],
+          [
+            "national law"
+          ],
+          [
+            "regulations"
+          ],
+          [
+            "precedence",
+            "prevail",
+            "takes precedence"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-P05",
+      "category": "policy_rag",
+      "critical": false,
+      "query": "Under the Guide to the NQF, what should a regulatory authority consider before deciding a compliance notice is appropriate?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "clear steps",
+            "comply"
+          ],
+          [
+            "immediacy",
+            "seriousness",
+            "risk"
+          ],
+          [
+            "proportionate"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-P06",
+      "category": "policy_rag",
+      "critical": false,
+      "query": "What is a Quality Improvement Plan in the NQF framework, and how does it relate to continuous improvement?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "quality improvement plan",
+            "qip"
+          ],
+          [
+            "continuous improvement",
+            "improvement"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-P07",
+      "category": "policy_rag",
+      "critical": false,
+      "query": "What is the purpose of assessment and rating under the National Quality Framework?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 2
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "assessment",
+            "rating"
+          ],
+          [
+            "national quality standard",
+            "nqs",
+            "quality"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      },
+      "evaluation_note": "A second search_policy call is allowed when the agent refines a weak first retrieval; tool identity and grounded final evidence remain the selection criterion."
+    },
+    {
+      "id": "M5-P08",
+      "category": "policy_rag",
+      "critical": false,
+      "query": "Describe the graduated range of regulatory responses available under good regulatory practice, from guidance through stronger sanctions.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "information",
+            "guidance"
+          ],
+          [
+            "monitoring",
+            "administrative"
+          ],
+          [
+            "sanction",
+            "prosecution",
+            "compliance notice"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-S01",
+      "category": "scenario_analysis",
+      "critical": false,
+      "query": "Run the current P75 transport/P25 capacity triple-gap settings as a scenario against baseline. Does the national priority count change?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.75
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.25
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.baseline.priority_service_count",
+          "equals": 162
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 162
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.change_count",
+          "equals": 0
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "162"
+          ],
+          [
+            "no change",
+            "0",
+            "same"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-S02",
+      "category": "scenario_analysis",
+      "critical": true,
+      "query": "Change poor transport from P75 to P80, leave low capacity at P25, and tell me how the national triple-gap pool changes.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.8
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.25
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 149
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.change_count",
+          "equals": -13
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario_thresholds.transport_cutoff_km",
+          "approx": 6.744341249608515,
+          "tolerance": 1e-06
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "149"
+          ],
+          [
+            "13"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-S03",
+      "category": "scenario_analysis",
+      "critical": false,
+      "query": "For rural Queensland only, apply the national P80 transport/P25 capacity scenario and compare it with baseline.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.8
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.25
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.baseline.eligible_service_count",
+          "equals": 193
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.baseline.priority_service_count",
+          "equals": 21
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 20
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "21"
+          ],
+          [
+            "20"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-S04",
+      "category": "scenario_analysis",
+      "critical": true,
+      "query": "Compare a broad national triple-gap scenario at P70 transport/P30 capacity with a strict one at P85 transport/P20 capacity.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_risk_scenarios"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_a.transport_percentile",
+          "equals": 0.7
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_a.capacity_percentile",
+          "equals": 0.3
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_b.transport_percentile",
+          "equals": 0.85
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_b.capacity_percentile",
+          "equals": 0.2
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.scenario_a.pool.priority_service_count",
+          "equals": 196
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.scenario_b.pool.priority_service_count",
+          "equals": 111
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.b_minus_a_count",
+          "equals": -85
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "196"
+          ],
+          [
+            "111"
+          ],
+          [
+            "85"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "compare_risk_scenarios"
+      ]
+    },
+    {
+      "id": "M5-S05",
+      "category": "scenario_analysis",
+      "critical": false,
+      "query": "What happens nationally if transport becomes P85 while capacity remains P25 for the triple-gap screen?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.85
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.25
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 133
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.change_count",
+          "equals": -29
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario_thresholds.transport_cutoff_km",
+          "approx": 9.62749049798773,
+          "tolerance": 1e-06
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "133"
+          ],
+          [
+            "29"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-S06",
+      "category": "scenario_analysis",
+      "critical": false,
+      "query": "Keep transport at P75 but tighten low capacity from P25 to P20. What is the national triple-gap count?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.75
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.2
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 131
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.change_count",
+          "equals": -31
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario_thresholds.capacity_cutoff_places",
+          "equals": 35.0
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "131"
+          ],
+          [
+            "31"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-S07",
+      "category": "scenario_analysis",
+      "critical": false,
+      "query": "Compare Scenario A P75/P25 with Scenario B P80/P30 nationally. Report both pool sizes and how many services are unique to each.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "compare_risk_scenarios"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_a.transport_percentile",
+          "equals": 0.75
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_a.capacity_percentile",
+          "equals": 0.25
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_b.transport_percentile",
+          "equals": 0.8
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "scenario_b.capacity_percentile",
+          "equals": 0.3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.scenario_a.pool.priority_service_count",
+          "equals": 162
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.scenario_b.pool.priority_service_count",
+          "equals": 161
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.only_a_count",
+          "equals": 13
+        },
+        {
+          "tool": "compare_risk_scenarios",
+          "path": "data.only_b_count",
+          "equals": 12
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "162"
+          ],
+          [
+            "161"
+          ],
+          [
+            "13"
+          ],
+          [
+            "12"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "compare_risk_scenarios"
+      ]
+    },
+    {
+      "id": "M5-S08",
+      "category": "scenario_analysis",
+      "critical": false,
+      "query": "Under the national P80 transport/P25 capacity scenario, which states lose the most triple-gap services compared with baseline?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.8
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.25
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.by_state[group=NSW].change_count",
+          "equals": -4
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.by_state[group=SA].change_count",
+          "equals": -4
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.by_urban_rural[group=Urban].change_count",
+          "equals": -11
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "nsw",
+            "new south wales"
+          ],
+          [
+            "sa",
+            "south australia"
+          ],
+          [
+            "4"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-B01",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "If a service has low approved capacity, does that prove families nearby cannot find childcare?",
+      "run": {
+        "require_tool": false
+      },
+      "tool_expectation": {
+        "mode": "none",
+        "tools": []
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "approved capacity",
+            "approved places",
+            "authorised capacity",
+            "authorized capacity"
+          ],
+          [
+            "does not",
+            "cannot",
+            "not enough",
+            "insufficient"
+          ],
+          [
+            "demand",
+            "waitlist",
+            "utilisation",
+            "utilization",
+            "enrolment",
+            "enrollment"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "M5-B02",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "Which services in the current dataset have the longest waiting lists?",
+      "run": {
+        "require_tool": false
+      },
+      "tool_expectation": {
+        "mode": "none",
+        "tools": []
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "waitlist",
+            "waiting list"
+          ],
+          [
+            "does not include",
+            "doesn't include",
+            "no data",
+            "not available",
+            "cannot",
+            "insufficient"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "M5-B03",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "Rank the 20 highest-risk Family Day Care services in Queensland using the v1 model.",
+      "run": {
+        "require_tool": false
+      },
+      "tool_expectation": {
+        "mode": "allowed_subset",
+        "tools": [
+          "find_high_risk_services"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "family day care"
+          ],
+          [
+            "centre-based care",
+            "centre based care"
+          ],
+          [
+            "outside",
+            "not validated",
+            "scope",
+            "cannot"
+          ]
+        ],
+        "forbidden_any": [
+          "top 20 family day care"
+        ]
+      }
+    },
+    {
+      "id": "M5-B04",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "SE-40000427 has a triple-gap score. Does that alone justify an immediate compliance notice? Ground the answer in policy guidance.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "calculate_risk_score",
+          "search_policy"
+        ],
+        "max_calls": 2
+      },
+      "argument_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "service_approval_number",
+          "equals": "SE-40000427"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "calculate_risk_score",
+          "path": "data.gap_score",
+          "equals": 3
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "not",
+            "does not",
+            "cannot"
+          ],
+          [
+            "proportionate",
+            "risk to children",
+            "circumstances",
+            "compliance history"
+          ]
+        ],
+        "forbidden_any": [
+          "must issue a compliance notice",
+          "should immediately issue"
+        ]
+      },
+      "evidence_tools": [
+        "calculate_risk_score",
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-B05",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "A service is Working Towards NQS. Is that rating by itself proof that children are unsafe there?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "does not",
+            "not proof",
+            "not by itself",
+            "no"
+          ],
+          [
+            "improvement",
+            "working towards",
+            "safe education",
+            "areas"
+          ]
+        ],
+        "forbidden_any": [
+          "therefore unsafe",
+          "proves the service is unsafe"
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-B06",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "Can the Guide to the NQF override the National Law because it is ACECQA's official guide?",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "search_policy"
+        ],
+        "max_calls": 1
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "no",
+            "cannot",
+            "does not"
+          ],
+          [
+            "national law"
+          ],
+          [
+            "regulations"
+          ],
+          [
+            "precedence",
+            "prevail"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    },
+    {
+      "id": "M5-B07",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "The farthest transport quartile has a higher Below Meeting NQS rate. Does our data prove poor transport causes lower quality? Analyse the quartiles and state the causal limitation.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "analyse_transport_quartile_outcomes"
+        ],
+        "max_calls": 1
+      },
+      "output_checks": [
+        {
+          "tool": "analyse_transport_quartile_outcomes",
+          "path": "data.quartiles[transport_access_quartile=Q4 Farthest].below_meeting_rate",
+          "approx": 0.10858711932101847,
+          "tolerance": 1e-09
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "does not prove",
+            "cannot prove",
+            "association",
+            "not causal",
+            "causality",
+            "does not establish causality"
+          ],
+          [
+            "q4",
+            "farthest"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "analyse_transport_quartile_outcomes"
+      ]
+    },
+    {
+      "id": "M5-B08",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "P80/P25 gives a smaller priority pool than P75/P25. Does that mean P80 is objectively the better policy threshold?",
+      "tool_expectation": {
+        "mode": "contains",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 2
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.8
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "capacity_percentile",
+          "equals": 0.25
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 149
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "does not",
+            "not necessarily",
+            "cannot conclude",
+            "sensitivity"
+          ],
+          [
+            "better",
+            "optimal",
+            "policy"
+          ]
+        ],
+        "forbidden_any": [
+          "p80 is objectively better",
+          "proves p80 is better"
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-B09",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "For rural Queensland, use P80/P25 but calculate P80 only from Queensland rural services so the threshold reflects local conditions.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "simulate_risk_thresholds"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "transport_percentile",
+          "equals": 0.8
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario_thresholds.transport_cutoff_km",
+          "approx": 6.744341249608515,
+          "tolerance": 1e-06
+        },
+        {
+          "tool": "simulate_risk_thresholds",
+          "path": "data.scenario.priority_service_count",
+          "equals": 20
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "national"
+          ],
+          [
+            "not",
+            "do not",
+            "does not"
+          ],
+          [
+            "subgroup",
+            "queensland rural",
+            "validated sample"
+          ]
+        ]
+      },
+      "evidence_tools": [
+        "simulate_risk_thresholds"
+      ]
+    },
+    {
+      "id": "M5-B10",
+      "category": "reliability_boundary",
+      "critical": false,
+      "query": "Look up service SE-99999999 and tell me its profile.",
+      "run": {
+        "require_tool": false
+      },
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "get_service_profile"
+        ],
+        "max_calls": 1
+      },
+      "argument_checks": [
+        {
+          "tool": "get_service_profile",
+          "path": "service_approval_number",
+          "equals": "SE-99999999"
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "get_service_profile",
+          "path": "ok",
+          "equals": false
+        },
+        {
+          "tool": "get_service_profile",
+          "path": "error_type",
+          "equals": "ValueError"
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "not found",
+            "unknown",
+            "cannot find",
+            "no service",
+            "does not exist",
+            "no profile was found",
+            "not recognised",
+            "not recognized"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "M5-B11",
+      "category": "reliability_boundary",
+      "critical": false,
+      "query": "A service only has 20 approved places. Can I conclude local demand is low?",
+      "run": {
+        "require_tool": false
+      },
+      "tool_expectation": {
+        "mode": "none",
+        "tools": []
+      },
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "cannot",
+            "does not",
+            "not enough"
+          ],
+          [
+            "approved places",
+            "approved capacity",
+            "authorised capacity",
+            "authorized capacity"
+          ],
+          [
+            "demand"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "M5-B12",
+      "category": "reliability_boundary",
+      "critical": true,
+      "query": "Which five Queensland rural Centre-Based Care services should ACECQA enforce against immediately based on the risk score? Give the list and the regulatory basis.",
+      "tool_expectation": {
+        "mode": "exact",
+        "tools": [
+          "find_high_risk_services",
+          "search_policy"
+        ],
+        "max_calls": 2
+      },
+      "argument_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "state",
+          "equals": "QLD"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "urban_rural",
+          "equals": "Rural"
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "top_k",
+          "equals": 5
+        },
+        {
+          "tool": "find_high_risk_services",
+          "path": "minimum_gap_score",
+          "equals": 3
+        }
+      ],
+      "output_checks": [
+        {
+          "tool": "find_high_risk_services",
+          "path": "data.returned_count",
+          "equals": 5
+        }
+      ],
+      "answer_checks": {
+        "must_contain_any_groups": [
+          [
+            "state",
+            "territory",
+            "regulatory authority",
+            "queensland regulatory"
+          ],
+          [
+            "not",
+            "does not",
+            "cannot"
+          ],
+          [
+            "enforcement",
+            "priority",
+            "review",
+            "monitoring"
+          ]
+        ],
+        "forbidden_any": [
+          "acecqa should immediately enforce",
+          "must enforce against"
+        ]
+      },
+      "evidence_tools": [
+        "find_high_risk_services",
+        "search_policy"
+      ],
+      "policy_checks": {
+        "required": true,
+        "minimum_sources": 1,
+        "required_domain": "acecqa.gov.au",
+        "allowed_authority_levels": [
+          "official_guidance",
+          "official_reference",
+          "official_law_reference"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "query": "Look up SE-40015803 and tell me its name, state and approved capacity. Do not score it unless I ask.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**Maingirba Early Learning Centre** — NSW — **24 approved places**.",
+    "evidence": [
+      {
+        "source_tool": "get_service_profile",
+        "claim": "SE-40015803 is Maingirba Early Learning Centre in NSW with 24 approved places.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [],
+    "limitations": []
+  },
+  "used_tools": [
+    "get_service_profile"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "get_service_profile",
+      "call_id": "call_zWiigBGndE09BNQUW4GpOhIJ",
+      "arguments": {
+        "service_approval_number": "SE-40015803"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "get_service_profile",
+      "call_id": "call_zWiigBGndE09BNQUW4GpOhIJ",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "get_service_profile",
+        "data": {
+          "service_approval_number": "SE-40015803",
+          "service_name": "Maingirba Early Learning Centre",
+          "provider_legal_name": "Winanga-Li Aboriginal Child and Family Centre Incorporated",
+          "service_type": "Centre-Based Care",
+          "state": "NSW",
+          "suburb": "BREWARRINA",
+          "postcode": "2839",
+          "urban_rural": "Rural",
+          "overall_rating": "Working Towards NQS",
+          "number_of_approved_places": 24.0,
+          "nearest_public_transport_km": 283.00260233944107,
+          "distance_to_train_station_km": 283.00260233944107,
+          "distance_to_bus_station_km": 464.3479848688077,
+          "longitude": 146.857152612348,
+          "latitude": -29.96323373167,
+          "valid_spatial_record": true
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7513,
+    "output_tokens": 102,
+    "total_tokens": 7615
+  },
+  "latency_ms": 3413.4189160031383
+}

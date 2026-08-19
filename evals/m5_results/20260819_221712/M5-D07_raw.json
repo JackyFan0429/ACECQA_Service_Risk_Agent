@@ -1,0 +1,78 @@
+{
+  "query": "What is the count of rural Centre-Based Care services in South Australia?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "There are **133** rural Centre-Based Care services in South Australia.",
+    "evidence": [
+      {
+        "source_tool": "search_services",
+        "claim": "Filtering for South Australia, Rural, and Centre-Based Care returned a matched count of 133 services.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Applied the requested state, urban/rural, and service-type filters to the cleaned service dataset."
+    ],
+    "limitations": []
+  },
+  "used_tools": [
+    "search_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_services",
+      "call_id": "call_fKv4akUPkFcbgHA1UkqmyD4X",
+      "arguments": {
+        "state": "SA",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "limit": 1
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_services",
+      "call_id": "call_fKv4akUPkFcbgHA1UkqmyD4X",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_services",
+        "data": {
+          "matched_count": 133,
+          "returned_count": 1,
+          "filters": {
+            "state": "SA",
+            "urban_rural": "Rural",
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00010126",
+              "service_name": "Allendale East Area School OSHC",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Meeting NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 159.60161004820472
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7464,
+    "output_tokens": 140,
+    "total_tokens": 7604
+  },
+  "latency_ms": 4203.396249999059
+}

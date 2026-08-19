@@ -1,0 +1,157 @@
+{
+  "query": "What is a Quality Improvement Plan in the NQF framework, and how does it relate to continuous improvement?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "A **Quality Improvement Plan (QIP)** is the service-level document through which an approved provider assesses its practices against the National Quality Standard (NQS) and the National Law and Regulations, identifies areas for improvement, and records the service philosophy.\n\nIt supports **continuous improvement** by making self-assessment an ongoing cycle: review practice and evidence, identify goals and strategies, implement changes, seek input from educators, children and families, and regularly update the QIP. The QIP is therefore a living planning tool—not a one-off compliance document—and it also informs regulatory assessment and rating.\n\nUnder the NQS, Element 7.2.1 expects an effective self-assessment and quality-improvement process. The Guide to the NQF is official guidance; the National Law and Regulations take precedence.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "A QIP must assess service practices against the NQS and National Law and Regulations, identify areas for improvement, and include a statement of philosophy; it supports self-assessment, future planning, and regulatory assessment.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0698"
+        ]
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "NQS Element 7.2.1 frames continuous improvement as an effective self-assessment and quality-improvement process, with the QIP maintained as a dynamic document to guide improvement.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0668",
+          "POL-guide_nqf_pdf-0670"
+        ]
+      }
+    ],
+    "methodology": [
+      "Retrieved relevant passages from the official ACECQA Guide to the National Quality Framework policy corpus."
+    ],
+    "limitations": [
+      "This is a summary of official guidance, not legal advice. The National Law and National Regulations take precedence."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_XV04xKJuDCuVi0BmF0lJBOOn",
+      "arguments": {
+        "query": "What is a Quality Improvement Plan and how does it support continuous improvement under the NQF?",
+        "topic": "quality_improvement",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_XV04xKJuDCuVi0BmF0lJBOOn",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "What is a Quality Improvement Plan and how does it support continuous improvement under the NQF?",
+          "topic": "quality_improvement",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0668",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 365",
+              "excerpt": "Continuous improvement Element 7.2.1 National Quality Standard and Assessment and Rating | National Quality Standard 365National Quality Standard and Assessment and Rating | National Quality Standard ELEMENT 7.2.1 Continuous improvement There is an effective self-assessment and quality improvement process in place. National Law & Regulations National Law and National Regulations underpinning Element 7.2.1 Regulation 31 Condition on service approval-quality improvement plan Regulation 55 Quality improvement plans Regulation 56 Review and revision of quality improvement plans What Element 7.2.1 aims to achieve Quality services regularly monitor and review their performance to guide planning and improve service quality. This creates a shared understanding of the principles that guide the service, and encourages continuous improvement in practice, policies and procedures. Quality services regularly update and maintain their Quality Improvement Plan as a dynamic document to guide progress towards improvement. Quality services use the Quality Improvement Plan for continuous assessment against the National Quality Standard and the approved learning frameworks, to identify new goals for the service as part of an effective cycle of improvement. Incorporating regular self-assessment and quality improvement discussions in staff meetings encourages educators and coordinators to participate in reflection on key practices, such as pedagogy and inclusion, and enables all staff members to provide input into planning for continuous quality improvement, including through flexible formats suited to school aged care services.",
+              "retrieval_score": 14.225727,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0670",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 366",
+              "excerpt": "Continuous improvement Element 7.2.1 366 National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard Assessment guide for meeting Element 7.2.1 (for all service types) Regular self-assessment Assessors may observe service practices and program delivery that match the service’s self- assessment, which is reflected in its Quality Improvement Plan. Assessors may discuss: • how the service: – aligns program delivery with quality improvement planning – collects and uses information from a range of sources as part of the process of self-assessment and planning for quality improvements – reviews current child safe practices to inform continuous improvement – uses reflections on children’s learning and development to plan, implement and evaluate programs and to support children in achieving outcomes (see Elements 1.3.1 and 1.3.2) – engages in reflective practice on inclusion in the service’s Quality Improvement Plan • how the educational leader supports educators to engage in critically reflective practice to refine strategies and to create and sustain improvements • processes for regularly updating the Quality Improvement Plan and identifying new goals and strategies for quality improvement • how the views and suggestions of educators, children and families are considered and used to inform the development and review of the service philosophy, quality improvement planning processes, including self- assessments • how the service supports the educational leader to engage with school aged care service coordinators and educators, including relief and casual educators.",
+              "retrieval_score": 13.961538,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0666",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 364",
+              "excerpt": "Leadership Standard 7.2 364 National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard • How do our performance management processes support continuous improvement? • How can we share the collective knowledge of the team and create opportunities for critical reflection and collaboration on our practice? • What do we know about the rate of, and reasons for, turnover of educators, co-ordinators and staff members at this service? • How do we create opportunities for professional learning experiences including professional conversations, coaching and mentoring, and practitioner inquiry within our service? • How can we structure our staffing arrangements to improve continuity of care for children and young people? • How does the evidence/data we collect inform our self-assessment and quality improvement processes? Do we need to collect additional or different data? • How are children, young people, their families and communities included in evaluating the quality of our service? • In what ways does our service analyse feedback, complaints, serious incidents, injuries and illness to drive continuous improvement? • How are resources allocated and targeted to support our quality improvement plan? • How do we raise awareness of inclusion amongst service staff, and support educators to promote and reduce the barriers to inclusion for all children and families? • What strategies are proving successful in building a professional learning community? How do we know they are successful? • How can we use the Assessment and Rating Instrument in our self- assessment process? • How can the guiding principles of the National Law be considered in our self-assessment process? • For school age",
+              "retrieval_score": 13.155741,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0698",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 382",
+              "excerpt": "382 National Quality Standard and Assessment and Rating | Assessment and rating process National Quality Standard and Assessment and Rating | Assessment and rating process 2. Self-assessment and quality improvement planning Ongoing self-assessment against the National Quality Standard (NQS) drives continuous improvement and is essential to providing quality outcomes for children. Under the National Regulations, the approved provider must ensure a Quality Improvement Plan (QIP) is in place for each service. The purpose of the QIP (or Self-Assessment Working Document in NSW) is to help providers self-assess their performance in delivering quality education and care, and to plan future improvements. The QIP also helps regulatory authorities with the assessment of the service. The QIP does not have to be provided in any specific format, but must include the three required components outlined below. The QIP can be uploaded to the NQA ITS or via any other jurisdictional specific submission process. The QIP is an enabler of continuous improvement and encourages self- reflection and self-assessment of quality areas. Whenever the QIP is updated, the uploaded version will need to be revised to reflect any changes because the uploaded version will be used by regulatory authorities for assessment and rating. A QIP must: • include an assessment by the approved provider of the quality of the practices of the service against the NQS and the National Law and Regulations • identify areas that the approved provider considers may require improvement • include a statement of philosophy for the service. Penalties may apply. The following section explains the three components of the QIP.",
+              "retrieval_score": 12.908563,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0691",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 378",
+              "excerpt": "Exceeding guidance for Standard 7.2 Leadership 378 National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard • How does the service support and enable all members of the service team to provide feedback on quality improvement processes and is this feedback respectfully considered? • Are change processes managed sensitively and collaboratively with key stakeholders and is the rationale for change clearly communicated? Exceeding theme 3: Practice is shaped by meaningful engagement with families and/or the community • How does leadership at the service: – reflect the unique geographical, cultural and community context of the service? – welcome, reflect and draw on the voices, priorities and strengths of the children and families at the service? • How do educators, co-ordinators and those with management responsibilities: – support families and the community to participate meaningfully in the service’s quality improvement processes, including the development and review of the Quality Improvement Plan? – support families and the community to understand the role of the educational leader in relation to their own child’s participation in the service, and regularly invite them to discuss their own goals and expectations for their child’s learning, development and wellbeing to inform the educational program? • In what ways does the service support and enable families and the community to provide feedback on quality improvement processes, and how is this feedback actively considered as part of the regular cycle of self- assessment that supports continuous quality improvement? • How does the service build and maintain community partnerships that strengthen the professional learnin",
+              "retrieval_score": 12.49135,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0698",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 382",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0668",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 365",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0670",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 366",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 9533,
+    "output_tokens": 419,
+    "total_tokens": 9952
+  },
+  "latency_ms": 7286.795791005716
+}

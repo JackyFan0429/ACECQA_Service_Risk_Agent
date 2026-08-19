@@ -2,11 +2,11 @@
 
 A B2B decision-support AI Agent evolved from a QBUS6860 spatial/data analysis project.
 
-> **The LLM decides what evidence or simulation it needs; deterministic Python decides the numbers; curated retrieval supplies policy context.**
+> **The LLM decides what evidence or simulation it needs; deterministic Python decides the numbers; curated retrieval supplies policy context; the formal evaluator checks whether the whole system behaved correctly.**
 
-## Current milestone: v0.4 Scenario Analysis
+## Current milestone: v0.5 Formal Evaluation
 
-v0.4 preserves the stable analytics + policy-grounded agent from Milestones 1–3 and adds deterministic what-if analysis.
+Milestones 1–4 are feature-frozen. v0.5 adds a reproducible **50-case system-level benchmark** and evaluation/reporting harness; it does not add new product capabilities.
 
 ```text
 Natural-language question
@@ -21,36 +21,52 @@ Analytics Scenario   Policy RAG
    +-------+--------+
            v
   Grounded decision support
+           |
+           v
+      M5 Evaluator
+   /    /    |     \
+route args numbers grounding boundaries
 ```
 
-## Nine tools
+## Nine product tools
 
-1. `search_services` — factual filtering, counts and listing
-2. `get_service_profile` — one service profile
-3. `calculate_risk_score` — one service's validated 0–3 gap score
-4. `find_high_risk_services` — deterministic priority ranking
-5. `compare_transport_access` — aggregate transport comparison
-6. `analyse_transport_quartile_outcomes` — quality/capacity across transport quartiles
-7. `simulate_risk_thresholds` — compare a proposed threshold scenario with P75/P25 baseline
-8. `compare_risk_scenarios` — deterministic A/B scenario comparison
-9. `search_policy` — grounded retrieval from official ACECQA/NQF material
+1. `search_services`
+2. `get_service_profile`
+3. `calculate_risk_score`
+4. `find_high_risk_services`
+5. `compare_transport_access`
+6. `analyse_transport_quartile_outcomes`
+7. `simulate_risk_thresholds`
+8. `compare_risk_scenarios`
+9. `search_policy`
 
-## Scenario design
+## M5 formal benchmark
 
-The default validated model is not overwritten. Scenario tools recompute hypothetical flags on the same national valid Centre-Based Care sample.
+`evals/m5_benchmark.json` contains **50 cases**:
 
-**Invariant:** P80 always means the 80th percentile of the national validated Centre-Based Care risk sample. Filtering to QLD or Rural changes the impact population, not the threshold definition.
+- 8 data retrieval
+- 8 risk analysis
+- 6 comparison
+- 8 policy RAG
+- 8 scenario analysis
+- 12 reliability/boundary
 
-Current deterministic regression values:
+The evaluator reports:
 
-- baseline P75 transport / P25 capacity: **162** national triple-gap services
-- P80 / P25: **149** (`-13`)
-- P70 / P30: **196**
-- P85 / P20: **111**
-- QLD Rural baseline: **21** triple-gap among **193** risk-eligible services
-- QLD Rural P80/P25: **20**
+- Task Success Rate
+- Tool Selection Accuracy
+- Tool Parameter Accuracy
+- Deterministic Output Accuracy
+- Numerical Accuracy
+- Evidence Grounding Accuracy
+- Policy Grounding Rate
+- Boundary Handling Rate
+- average tokens/query
+- average latency/query
+- average tool calls/query
+- optional estimated cost/query when token prices are supplied explicitly
 
-Scenario output is sensitivity analysis. It does not prove that a threshold is optimal, causal, fair, legally appropriate, or a basis for enforcement.
+v1.0 primarily evaluates structured traces and deterministic outputs. It deliberately does **not** use an LLM-as-judge.
 
 ## Install
 
@@ -60,86 +76,93 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
-## Offline tests
+## Offline regression before API use
 
 ```bash
 pytest -q
-```
-
-Expected v0.4 result:
-
-```text
-25 passed
-```
-
-## Deterministic scenario demo — no API tokens
-
-```bash
-python demo_scenario.py --transport 0.80 --capacity 0.25
-```
-
-QLD Rural:
-
-```bash
-python demo_scenario.py \
-  --transport 0.80 \
-  --capacity 0.25 \
-  --state QLD \
-  --urban-rural Rural
-```
-
-## Live Agent scenario demo
-
-```bash
-export OPENAI_API_KEY="sk-..."
-```
-
-```bash
-python demo_agent.py \
-  "If poor transport changes from P75 to P80 while capacity stays P25, how does the national triple-gap priority pool change?" \
-  --show-trace
-```
-
-Expected tool: `simulate_risk_thresholds`.
-
-A/B comparison:
-
-```bash
-python demo_agent.py \
-  "Compare a broad triple-gap scenario at P70 transport/P30 capacity with a strict scenario at P85/P20." \
-  --show-trace
-```
-
-Expected tool: `compare_risk_scenarios`.
-
-## Milestone 4 smoke test
-
-```bash
-python run_m4_smoke_tests.py --list
-python run_m4_smoke_tests.py --case M4-02
-python run_m4_smoke_tests.py --pause 1
-```
-
-Acceptance rule: at least **7/8** pass and all critical cases M4-02, M4-04, M4-06, M4-07 and M4-08 pass.
-
-## Policy corpus
-
-Milestone 3's policy corpus remains unchanged. The recommended ingestion path is the official versioned Guide to the NQF PDF:
-
-```bash
-python scripts/ingest_policy.py --pdf data/policy/raw/guide_to_nqf_2026_07.pdf
+python scripts/check_m5_benchmark.py
 python scripts/check_policy_corpus.py
 ```
 
-The Guide is guidance, not legal advice; the National Law and Regulations take precedence. State and territory regulatory authorities, not ACECQA, monitor and enforce service compliance.
+Expected v0.5 code regression:
+
+```text
+32 passed
+M5 benchmark integrity: PASS (50 cases)
+Corpus integrity: PASS
+```
+
+## Formal evaluation
+
+List the benchmark without tokens:
+
+```bash
+python run_m5_eval.py --list
+```
+
+Run one development case:
+
+```bash
+python run_m5_eval.py --case M5-D01
+```
+
+Run the full benchmark:
+
+```bash
+export OPENAI_API_KEY="sk-..."
+python run_m5_eval.py --pause 1
+```
+
+A partial run is never marked M5-ready. The full suite is evaluated against the acceptance thresholds in `evals/m5_benchmark.json`.
+
+## Resume and 0-token recheck
+
+Runs checkpoint every raw case under `evals/m5_results/<timestamp>/`.
+
+Resume:
+
+```bash
+python run_m5_eval.py --resume evals/m5_results/<timestamp> --pause 1
+```
+
+Re-score existing results without new API calls:
+
+```bash
+python recheck_m5_results.py evals/m5_results/<timestamp>
+```
+
+## Optional cost/query
+
+The project does not hard-code model prices. Supply current rates yourself when you want cost reporting:
+
+```bash
+python run_m5_eval.py \
+  --pause 1 \
+  --input-usd-per-1m <INPUT_PRICE> \
+  --output-usd-per-1m <OUTPUT_PRICE>
+```
+
+## Stable product regression values
+
+- cleaned services: **17,663**
+- v1 national CBC P75 transport: **5.329340 km**
+- v1 national CBC P25 capacity: **40 places**
+- national baseline triple-gap: **162**
+- P80/P25 scenario: **149**
+- P70/P30: **196**
+- P85/P20: **111**
+- QLD Rural CBC dataset count: **227**
+- QLD Rural risk-eligible sample: **193**
+- QLD Rural baseline triple-gap: **21**
+- local policy corpus: **1,395 chunks** from the versioned official Guide snapshot in this repo
 
 ## Project status
 
-- Milestone 1 — deterministic analytics: complete
-- Milestone 2 — Single Agent: passed (11/12, critical 4/4)
-- Milestone 3 — policy-grounded Agent: passed (8/8, critical 5/5)
-- Milestone 4 — scenario analysis: code ready; live acceptance pending
-- Milestone 5 — formal 40–60 query Eval: next after v0.4 freezes
-- Milestone 6 — FastAPI + frontend + Docker: final delivery stage
+- Milestone 1 — deterministic analytics: ✅ complete
+- Milestone 2 — Single Agent: ✅ passed (11/12, critical 4/4)
+- Milestone 3 — policy-grounded Agent: ✅ passed (8/8, critical 5/5)
+- Milestone 4 — scenario analysis: ✅ passed (8/8, critical 5/5)
+- Milestone 5 — formal 50-case evaluation: 🟡 harness ready; live benchmark pending
+- Milestone 6 — FastAPI + frontend + Docker: next after M5 freezes
 
-See `docs/MILESTONE_4.md`, `docs/SCENARIO_ANALYSIS.md`, and `docs/MILESTONE_4_INSTALL.md`.
+See `docs/MILESTONE_5.md`, `docs/EVALUATION.md`, and `docs/MILESTONE_5_INSTALL.md`.

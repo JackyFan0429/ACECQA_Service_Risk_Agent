@@ -1,0 +1,154 @@
+{
+  "query": "Rank the five highest-risk rural Centre-Based Care services in Queensland.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "| Rank | Service | Approval no. | NQS rating | Approved places | Nearest public transport |\n|---:|---|---|---|---:|---:|\n| 1 | Napranum Early Childhood Centre | SE-40000427 | Working Towards NQS | 33 | 562.39 km |\n| 2 | Northern Peninsula Area College - Bamaga Kindergarten | SE-40000624 | Working Towards NQS | 24 | 519.11 km |\n| 3 | Tagai State College - Horn Island (Narupay Ngurpay Mudh) Kindergarten | SE-40000633 | Working Towards NQS | 20 | 482.08 km |\n| 4 | Tagai State College - Moa Island (Kubin Ngurpay Lag) Kindergarten | SE-40000636 | Working Towards NQS | 12 | 445.52 km |\n| 5 | Iama Migi Kaziw Mudh | SE-40000743 | Working Towards NQS | 14 | 445.52 km |\n\nAll five have the maximum v1 gap score of 3. There are 21 rural Queensland Centre-Based Care services in this triple-gap priority pool.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "The five listed services are the highest-ranked rural Queensland Centre-Based Care services under the v1 triple-gap screen, with service attributes and rank returned by the deterministic model.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Filtered to Queensland, rural, Centre-Based Care; used the highest-risk default of gap score ≥3.",
+      "Ranking order: gap score descending, nearest public transport distance descending, approved places ascending, then approval number ascending.",
+      "The national validated sample thresholds were transport P75 = 5.329 km and capacity P25 = 40 places."
+    ],
+    "limitations": [
+      "This is a prioritisation screen, not evidence of a breach, non-compliance finding, safety outcome, or automatic enforcement trigger.",
+      "Approved places are authorised capacity; they do not establish demand, enrolment pressure, utilisation, or waitlists."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_qS2Qyp68aDmHY4p4P3F2nMGY",
+      "arguments": {
+        "state": "QLD",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 5,
+        "minimum_gap_score": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_qS2Qyp68aDmHY4p4P3F2nMGY",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 21,
+          "returned_count": 5,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-40000427",
+              "service_name": "Napranum Early Childhood Centre",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 562.3926437753009,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000624",
+              "service_name": "Northern Peninsula Area College - Bamaga Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 519.1130425269504,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000633",
+              "service_name": "Tagai State College - Horn Island (Narupay Ngurpay Mudh) Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 482.07698480819806,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000636",
+              "service_name": "Tagai State College - Moa Island (Kubin Ngurpay Lag) Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 12.0,
+              "nearest_public_transport_km": 445.520176252222,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000743",
+              "service_name": "Iama Migi Kaziw Mudh",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 14.0,
+              "nearest_public_transport_km": 445.520176252222,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8009,
+    "output_tokens": 513,
+    "total_tokens": 8522
+  },
+  "latency_ms": 7764.582792005967
+}

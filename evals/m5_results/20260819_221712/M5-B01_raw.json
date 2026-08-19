@@ -1,0 +1,24 @@
+{
+  "query": "If a service has low approved capacity, does that prove families nearby cannot find childcare?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. Low approved capacity only indicates the service is authorised for fewer places; it does **not** prove unmet local demand, waitlists, utilisation, availability at nearby services, affordability, or that families cannot find childcare.",
+    "evidence": [],
+    "methodology": [
+      "Applied the approved-capacity interpretation boundary: capacity is an authorised-places measure, not a demand or access outcome."
+    ],
+    "limitations": [
+      "No service, location, enrolment, waitlist, vacancy, or nearby-supply data was provided."
+    ]
+  },
+  "used_tools": [],
+  "tool_trace": [],
+  "policy_sources": [],
+  "usage": {
+    "requests": 1,
+    "input_tokens": 3643,
+    "output_tokens": 111,
+    "total_tokens": 3754
+  },
+  "latency_ms": 3122.2647079994204
+}

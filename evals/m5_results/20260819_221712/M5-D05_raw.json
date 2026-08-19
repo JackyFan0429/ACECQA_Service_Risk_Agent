@@ -1,0 +1,71 @@
+{
+  "query": "Give me the service profile for approval SE-40000427. I only need its recorded profile, not a risk assessment.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "**Napranum Early Childhood Centre** (SE-40000427)\n\n- Provider: Napranum Aboriginal Shire Council\n- Type: Centre-Based Care\n- Location: Napranum, QLD 4874 (Rural)\n- Overall NQS rating: Working Towards NQS\n- Approved places: 33\n- Nearest public transport: 562.39 km\n- Train station distance: 562.39 km\n- Bus station distance: 681.32 km\n- Spatial record: Valid",
+    "evidence": [
+      {
+        "source_tool": "get_service_profile",
+        "claim": "Recorded profile for SE-40000427, including provider, location, service type, NQS rating, authorised capacity and transport-distance fields.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [],
+    "limitations": [
+      "Approved places are authorised capacity; they do not indicate enrolment, utilisation, waitlists or unmet demand.",
+      "No risk assessment has been provided."
+    ]
+  },
+  "used_tools": [
+    "get_service_profile"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "get_service_profile",
+      "call_id": "call_2Ni9JTKkD8uBunCWYqNY5jst",
+      "arguments": {
+        "service_approval_number": "SE-40000427"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "get_service_profile",
+      "call_id": "call_2Ni9JTKkD8uBunCWYqNY5jst",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "get_service_profile",
+        "data": {
+          "service_approval_number": "SE-40000427",
+          "service_name": "Napranum Early Childhood Centre",
+          "provider_legal_name": "Napranum Aboriginal Shire Council",
+          "service_type": "Centre-Based Care",
+          "state": "QLD",
+          "suburb": "NAPRANUM",
+          "postcode": "4874",
+          "urban_rural": "Rural",
+          "overall_rating": "Working Towards NQS",
+          "number_of_approved_places": 33.0,
+          "nearest_public_transport_km": 562.3926437753009,
+          "distance_to_train_station_km": 562.3926437753009,
+          "distance_to_bus_station_km": 681.3196966899518,
+          "longitude": 141.886520666017,
+          "latitude": -12.682175316234,
+          "valid_spatial_record": true
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7507,
+    "output_tokens": 231,
+    "total_tokens": 7738
+  },
+  "latency_ms": 5657.8896660066675
+}

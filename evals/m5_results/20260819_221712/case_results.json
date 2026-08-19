@@ -1,0 +1,2459 @@
+[
+  {
+    "id": "M5-D01",
+    "category": "data_retrieval",
+    "critical": true,
+    "query": "How many rural Centre-Based Care services are in Queensland? Give me the dataset count, not the risk-eligible count.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7499,
+      "output_tokens": 168,
+      "total_tokens": 7667
+    },
+    "latency_ms": 5899.9746659974335,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D02",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "Count rural Centre-Based Care services in New South Wales.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 14522,
+      "output_tokens": 128,
+      "total_tokens": 14650
+    },
+    "latency_ms": 5164.96570900199,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D03",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "How many Victorian services in the dataset are rated Working Towards NQS?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 14658,
+      "output_tokens": 140,
+      "total_tokens": 14798
+    },
+    "latency_ms": 4323.312958003953,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D04",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "How many Family Day Care services are recorded in Western Australia?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9447,
+      "output_tokens": 123,
+      "total_tokens": 9570
+    },
+    "latency_ms": 4022.4716250013444,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D05",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "Give me the service profile for approval SE-40000427. I only need its recorded profile, not a risk assessment.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "get_service_profile"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7507,
+      "output_tokens": 231,
+      "total_tokens": 7738
+    },
+    "latency_ms": 5657.8896660066675,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D06",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "Look up SE-40015803 and tell me its name, state and approved capacity. Do not score it unless I ask.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "get_service_profile"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7513,
+      "output_tokens": 102,
+      "total_tokens": 7615
+    },
+    "latency_ms": 3413.4189160031383,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D07",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "What is the count of rural Centre-Based Care services in South Australia?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7464,
+      "output_tokens": 140,
+      "total_tokens": 7604
+    },
+    "latency_ms": 4203.396249999059,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-D08",
+    "category": "data_retrieval",
+    "critical": false,
+    "query": "How many Queensland services have an overall rating of Exceeding NQS?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 14772,
+      "output_tokens": 151,
+      "total_tokens": 14923
+    },
+    "latency_ms": 4333.022250000795,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R01",
+    "category": "risk_analysis",
+    "critical": true,
+    "query": "Score service SE-40000427 using the current validated risk model.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "calculate_risk_score"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7492,
+      "output_tokens": 319,
+      "total_tokens": 7811
+    },
+    "latency_ms": 6297.197541003698,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R02",
+    "category": "risk_analysis",
+    "critical": false,
+    "query": "What is the v1 risk score for SE-40015803?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "calculate_risk_score"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7493,
+      "output_tokens": 213,
+      "total_tokens": 7706
+    },
+    "latency_ms": 5261.497999999847,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R03",
+    "category": "risk_analysis",
+    "critical": true,
+    "query": "Rank the five highest-risk rural Centre-Based Care services in Queensland.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8009,
+      "output_tokens": 513,
+      "total_tokens": 8522
+    },
+    "latency_ms": 7764.582792005967,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R04",
+    "category": "risk_analysis",
+    "critical": false,
+    "query": "Show the top 10 triple-gap rural Centre-Based Care candidates in NSW. If fewer than 10 qualify, say so.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8114,
+      "output_tokens": 505,
+      "total_tokens": 8619
+    },
+    "latency_ms": 7680.466375000833,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R05",
+    "category": "risk_analysis",
+    "critical": false,
+    "query": "Which five Victorian Centre-Based Care services rank highest under the triple-gap screen?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7970,
+      "output_tokens": 364,
+      "total_tokens": 8334
+    },
+    "latency_ms": 5947.281624998141,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R06",
+    "category": "risk_analysis",
+    "critical": false,
+    "query": "Give me a broader high-risk candidate pool for rural South Australian Centre-Based Care, using at least two gaps, and show the top five.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8001,
+      "output_tokens": 514,
+      "total_tokens": 8515
+    },
+    "latency_ms": 6891.478625002492,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R07",
+    "category": "risk_analysis",
+    "critical": false,
+    "query": "Can the current v1 model score Family Day Care service SE-00014066? Calculate it if eligible and explain the scope result.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "calculate_risk_score"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7528,
+      "output_tokens": 272,
+      "total_tokens": 7800
+    },
+    "latency_ms": 5553.995791000489,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-R08",
+    "category": "risk_analysis",
+    "critical": false,
+    "query": "List the five highest-risk Centre-Based Care services in Western Australia under the triple-gap definition.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7990,
+      "output_tokens": 437,
+      "total_tokens": 8427
+    },
+    "latency_ms": 6810.7432079996215,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-C01",
+    "category": "comparison",
+    "critical": true,
+    "query": "Compare public-transport access for rural versus urban Centre-Based Care nationally. Which group has the higher median distance?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "compare_transport_access"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7503,
+      "output_tokens": 188,
+      "total_tokens": 7691
+    },
+    "latency_ms": 15655.67608299898,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-C02",
+    "category": "comparison",
+    "critical": false,
+    "query": "For Centre-Based Care, compare transport access across states and tell me the state with the highest median distance to public transport.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "compare_transport_access"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7842,
+      "output_tokens": 188,
+      "total_tokens": 8030
+    },
+    "latency_ms": 5040.120749996277,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-C03",
+    "category": "comparison",
+    "critical": false,
+    "query": "Within Queensland Centre-Based Care, compare rural and urban median public-transport distance.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "compare_transport_access"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7503,
+      "output_tokens": 217,
+      "total_tokens": 7720
+    },
+    "latency_ms": 4696.699332998833,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-C04",
+    "category": "comparison",
+    "critical": false,
+    "query": "Across national Centre-Based Care transport quartiles, compare Q1 and Q4 on Below Meeting NQS rate and median approved places.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "analyse_transport_quartile_outcomes"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7697,
+      "output_tokens": 313,
+      "total_tokens": 8010
+    },
+    "latency_ms": 5866.468167005223,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-C05",
+    "category": "comparison",
+    "critical": false,
+    "query": "For Queensland Centre-Based Care, how do the closest and farthest transport quartiles differ in Below Meeting NQS rate?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "analyse_transport_quartile_outcomes"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7704,
+      "output_tokens": 270,
+      "total_tokens": 7974
+    },
+    "latency_ms": 5244.355333001295,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-C06",
+    "category": "comparison",
+    "critical": false,
+    "query": "Compare median public-transport distance between Centre-Based Care and Family Day Care in the analysis data.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "compare_transport_access"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7505,
+      "output_tokens": 211,
+      "total_tokens": 7716
+    },
+    "latency_ms": 5538.869625001098,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P01",
+    "category": "policy_rag",
+    "critical": true,
+    "query": "According to official ACECQA/NQF guidance, what does a Working Towards NQS rating mean?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8919,
+      "output_tokens": 316,
+      "total_tokens": 9235
+    },
+    "latency_ms": 6273.15070899931,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P02",
+    "category": "policy_rag",
+    "critical": true,
+    "query": "Who actually monitors and enforces NQF compliance at education and care services: ACECQA or state and territory regulatory authorities?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9358,
+      "output_tokens": 273,
+      "total_tokens": 9631
+    },
+    "latency_ms": 6885.603707996779,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P03",
+    "category": "policy_rag",
+    "critical": false,
+    "query": "What factors should a regulatory authority consider when choosing a proportionate response to a compliance issue?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 10660,
+      "output_tokens": 533,
+      "total_tokens": 11193
+    },
+    "latency_ms": 8073.023208002269,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P04",
+    "category": "policy_rag",
+    "critical": true,
+    "query": "Is the Guide to the NQF legal advice? Explain what takes precedence if the Guide conflicts with the National Law or Regulations.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9531,
+      "output_tokens": 289,
+      "total_tokens": 9820
+    },
+    "latency_ms": 6258.626291994005,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P05",
+    "category": "policy_rag",
+    "critical": false,
+    "query": "Under the Guide to the NQF, what should a regulatory authority consider before deciding a compliance notice is appropriate?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9408,
+      "output_tokens": 276,
+      "total_tokens": 9684
+    },
+    "latency_ms": 5348.032958005206,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P06",
+    "category": "policy_rag",
+    "critical": false,
+    "query": "What is a Quality Improvement Plan in the NQF framework, and how does it relate to continuous improvement?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9533,
+      "output_tokens": 419,
+      "total_tokens": 9952
+    },
+    "latency_ms": 7286.795791005716,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-P07",
+    "category": "policy_rag",
+    "critical": false,
+    "query": "What is the purpose of assessment and rating under the National Quality Framework?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 3,
+      "input_tokens": 16972,
+      "output_tokens": 278,
+      "total_tokens": 17250
+    },
+    "latency_ms": 7410.204541003623,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 2
+  },
+  {
+    "id": "M5-P08",
+    "category": "policy_rag",
+    "critical": false,
+    "query": "Describe the graduated range of regulatory responses available under good regulatory practice, from guidance through stronger sanctions.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 10397,
+      "output_tokens": 519,
+      "total_tokens": 10916
+    },
+    "latency_ms": 16952.69770899904,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S01",
+    "category": "scenario_analysis",
+    "critical": false,
+    "query": "Run the current P75 transport/P25 capacity triple-gap settings as a scenario against baseline. Does the national priority count change?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8069,
+      "output_tokens": 272,
+      "total_tokens": 8341
+    },
+    "latency_ms": 5893.028999998933,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S02",
+    "category": "scenario_analysis",
+    "critical": true,
+    "query": "Change poor transport from P75 to P80, leave low capacity at P25, and tell me how the national triple-gap pool changes.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8763,
+      "output_tokens": 455,
+      "total_tokens": 9218
+    },
+    "latency_ms": 7007.951042003697,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S03",
+    "category": "scenario_analysis",
+    "critical": false,
+    "query": "For rural Queensland only, apply the national P80 transport/P25 capacity scenario and compare it with baseline.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7876,
+      "output_tokens": 455,
+      "total_tokens": 8331
+    },
+    "latency_ms": 7324.968541004637,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S04",
+    "category": "scenario_analysis",
+    "critical": true,
+    "query": "Compare a broad national triple-gap scenario at P70 transport/P30 capacity with a strict one at P85 transport/P20 capacity.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "compare_risk_scenarios"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8943,
+      "output_tokens": 560,
+      "total_tokens": 9503
+    },
+    "latency_ms": 8238.716958003351,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S05",
+    "category": "scenario_analysis",
+    "critical": false,
+    "query": "What happens nationally if transport becomes P85 while capacity remains P25 for the triple-gap screen?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8745,
+      "output_tokens": 507,
+      "total_tokens": 9252
+    },
+    "latency_ms": 15051.833082994563,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S06",
+    "category": "scenario_analysis",
+    "critical": false,
+    "query": "Keep transport at P75 but tighten low capacity from P25 to P20. What is the national triple-gap count?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8112,
+      "output_tokens": 242,
+      "total_tokens": 8354
+    },
+    "latency_ms": 5650.159166994854,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S07",
+    "category": "scenario_analysis",
+    "critical": false,
+    "query": "Compare Scenario A P75/P25 with Scenario B P80/P30 nationally. Report both pool sizes and how many services are unique to each.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "compare_risk_scenarios"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9601,
+      "output_tokens": 424,
+      "total_tokens": 10025
+    },
+    "latency_ms": 6894.295999998576,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-S08",
+    "category": "scenario_analysis",
+    "critical": false,
+    "query": "Under the national P80 transport/P25 capacity scenario, which states lose the most triple-gap services compared with baseline?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8751,
+      "output_tokens": 343,
+      "total_tokens": 9094
+    },
+    "latency_ms": 5903.369375002512,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B01",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "If a service has low approved capacity, does that prove families nearby cannot find childcare?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 1,
+      "input_tokens": 3643,
+      "output_tokens": 111,
+      "total_tokens": 3754
+    },
+    "latency_ms": 3122.2647079994204,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 0
+  },
+  {
+    "id": "M5-B02",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "Which services in the current dataset have the longest waiting lists?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 1,
+      "input_tokens": 3638,
+      "output_tokens": 134,
+      "total_tokens": 3772
+    },
+    "latency_ms": 2519.2286249948665,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 0
+  },
+  {
+    "id": "M5-B03",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "Rank the 20 highest-risk Family Day Care services in Queensland using the v1 model.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7455,
+      "output_tokens": 224,
+      "total_tokens": 7679
+    },
+    "latency_ms": 5625.89241599926,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B04",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "SE-40000427 has a triple-gap score. Does that alone justify an immediate compliance notice? Ground the answer in policy guidance.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "calculate_risk_score",
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 3,
+      "input_tokens": 13528,
+      "output_tokens": 598,
+      "total_tokens": 14126
+    },
+    "latency_ms": 10397.450249998656,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 2
+  },
+  {
+    "id": "M5-B05",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "A service is Working Towards NQS. Is that rating by itself proof that children are unsafe there?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9291,
+      "output_tokens": 371,
+      "total_tokens": 9662
+    },
+    "latency_ms": 7015.290124996682,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B06",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "Can the Guide to the NQF override the National Law because it is ACECQA's official guide?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 9389,
+      "output_tokens": 209,
+      "total_tokens": 9598
+    },
+    "latency_ms": 6360.6649590001325,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B07",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "The farthest transport quartile has a higher Below Meeting NQS rate. Does our data prove poor transport causes lower quality? Analyse the quartiles and state the causal limitation.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "analyse_transport_quartile_outcomes"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7720,
+      "output_tokens": 491,
+      "total_tokens": 8211
+    },
+    "latency_ms": 8658.369999997376,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B08",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "P80/P25 gives a smaller priority pool than P75/P25. Does that mean P80 is objectively the better policy threshold?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds",
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 3,
+      "input_tokens": 14702,
+      "output_tokens": 555,
+      "total_tokens": 15257
+    },
+    "latency_ms": 13842.991834004351,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 2
+  },
+  {
+    "id": "M5-B09",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "For rural Queensland, use P80/P25 but calculate P80 only from Queensland rural services so the threshold reflects local conditions.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "simulate_risk_thresholds"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 8179,
+      "output_tokens": 417,
+      "total_tokens": 8596
+    },
+    "latency_ms": 8398.565791998408,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B10",
+    "category": "reliability_boundary",
+    "critical": false,
+    "query": "Look up service SE-99999999 and tell me its profile.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "get_service_profile"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 2,
+      "input_tokens": 7349,
+      "output_tokens": 97,
+      "total_tokens": 7446
+    },
+    "latency_ms": 3978.7662500020815,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 1
+  },
+  {
+    "id": "M5-B11",
+    "category": "reliability_boundary",
+    "critical": false,
+    "query": "A service only has 20 approved places. Can I conclude local demand is low?",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 1,
+      "input_tokens": 3643,
+      "output_tokens": 121,
+      "total_tokens": 3764
+    },
+    "latency_ms": 3567.937540996354,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 0
+  },
+  {
+    "id": "M5-B12",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "Which five Queensland rural Centre-Based Care services should ACECQA enforce against immediately based on the risk score? Give the list and the regulatory basis.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "find_high_risk_services",
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 5,
+        "total_checks": 5
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 3,
+      "input_tokens": 14567,
+      "output_tokens": 806,
+      "total_tokens": 15373
+    },
+    "latency_ms": 13384.274250005546,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 2
+  }
+]

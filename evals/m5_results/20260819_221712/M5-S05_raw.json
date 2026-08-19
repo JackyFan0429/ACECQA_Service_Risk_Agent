@@ -1,0 +1,280 @@
+{
+  "query": "What happens nationally if transport becomes P85 while capacity remains P25 for the triple-gap screen?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Nationally, raising the transport threshold from P75 to **P85** (while retaining capacity at **P25** and requiring all three gaps) reduces the triple-gap priority pool from **162 to 133 services**: **29 fewer services (-17.9%)**.\n\n- Transport cutoff rises from **5.33 km** to **9.63 km**.\n- Capacity cutoff remains **40 approved places**.\n- The scenario retains all 133 services in the new pool; **29 baseline services leave** and none enter.\n- Priority rate falls from **1.01%** to **0.83%** of the 15,969 eligible Centre-Based Care services.\n- Declines are larger in urban areas (90 → 68; -24.4%) than rural areas (72 → 65; -9.7%).\n\nThis is a sensitivity result for a prioritisation screen—not evidence of causal effects, non-compliance, or an optimal regulatory threshold.",
+    "evidence": [
+      {
+        "source_tool": "simulate_risk_thresholds",
+        "claim": "At P85 transport/P25 capacity with a triple-gap requirement, the national priority pool is 133 of 15,969 eligible services, compared with 162 at the P75/P25 baseline; 29 services leave and none enter.",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "simulate_risk_thresholds",
+        "claim": "The national transport cutoff changes from 5.329 km at P75 to 9.627 km at P85, while the P25 capacity cutoff remains 40 approved places; urban and rural priority-pool changes are reported by the simulation.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Compared the deterministic P85-transport/P25-capacity triple-gap scenario against the fixed national P75/P25 baseline. Percentile cutoffs are calculated from the national validated Centre-Based Care sample."
+    ],
+    "limitations": [
+      "Approved places are authorised capacity, not a measure of demand, enrolment, utilisation, or waitlists.",
+      "Changing thresholds is sensitivity analysis; it does not establish a preferable policy setting or a basis for enforcement."
+    ]
+  },
+  "used_tools": [
+    "simulate_risk_thresholds"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "simulate_risk_thresholds",
+      "call_id": "call_TIYrfg3UU3l5ASPlZLaSYuKu",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "transport_percentile": 0.85,
+        "capacity_percentile": 0.25,
+        "minimum_gap_score": 3,
+        "changed_service_limit": 10
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "simulate_risk_thresholds",
+      "call_id": "call_TIYrfg3UU3l5ASPlZLaSYuKu",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "simulate_risk_thresholds",
+        "data": {
+          "scope": {
+            "state": null,
+            "urban_rural": null
+          },
+          "baseline_thresholds": {
+            "transport_percentile": 0.75,
+            "transport_cutoff_km": 5.329340006807538,
+            "capacity_percentile": 0.25,
+            "capacity_cutoff_places": 40.0,
+            "minimum_gap_score": 3,
+            "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+          },
+          "scenario_thresholds": {
+            "transport_percentile": 0.85,
+            "transport_cutoff_km": 9.62749049798773,
+            "capacity_percentile": 0.25,
+            "capacity_cutoff_places": 40.0,
+            "minimum_gap_score": 3,
+            "threshold_scope": "National validated Centre-Based Care risk sample with non-missing approved places; subgroup filters do not redefine percentile thresholds."
+          },
+          "baseline": {
+            "eligible_service_count": 15969,
+            "priority_service_count": 162,
+            "priority_rate": 0.01014465526958482
+          },
+          "scenario": {
+            "eligible_service_count": 15969,
+            "priority_service_count": 133,
+            "priority_rate": 0.008328636733671489
+          },
+          "change_count": -29,
+          "change_percent": -17.901234567901234,
+          "overlap_count": 133,
+          "added_count": 0,
+          "removed_count": 29,
+          "added_services": [],
+          "removed_services": [
+            {
+              "service_approval_number": "SE-00002985",
+              "service_name": "Rosswood Preschool",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 9.308754322591914
+            },
+            {
+              "service_approval_number": "SE-40018740",
+              "service_name": "Itty Innovators",
+              "state": "QLD",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 8.943760391176768
+            },
+            {
+              "service_approval_number": "SE-00014103",
+              "service_name": "Merbein P-10 College OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 8.600871097540015
+            },
+            {
+              "service_approval_number": "SE-00008106",
+              "service_name": "Laurieton Early Education Centre",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 36.0,
+              "nearest_public_transport_km": 8.517002603990077
+            },
+            {
+              "service_approval_number": "SE-40014774",
+              "service_name": "Happy Haven OSHC Quorn",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 8.466446979133288
+            },
+            {
+              "service_approval_number": "SE-00005222",
+              "service_name": "Kialla Central PS TheirCare",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 7.974793975708166
+            },
+            {
+              "service_approval_number": "SE-00011016",
+              "service_name": "TAFE SA - Tea Tree Gully Campus Child Care Centre",
+              "state": "SA",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 37.0,
+              "nearest_public_transport_km": 7.960932500989464
+            },
+            {
+              "service_approval_number": "SE-00005470",
+              "service_name": "St Mary's Primary School - OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 37.0,
+              "nearest_public_transport_km": 7.933583688336515
+            },
+            {
+              "service_approval_number": "SE-40026791",
+              "service_name": "Little Amici's OSHC",
+              "state": "NSW",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 7.850048856666399
+            },
+            {
+              "service_approval_number": "SE-00003742",
+              "service_name": "Kinder Kollege Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 35.0,
+              "nearest_public_transport_km": 7.6610486349612525
+            }
+          ],
+          "by_state": [
+            {
+              "group": "ACT",
+              "eligible_service_count": 350,
+              "baseline_priority_count": 3,
+              "scenario_priority_count": 2,
+              "change_count": -1,
+              "change_percent": -33.33333333333333
+            },
+            {
+              "group": "NSW",
+              "eligible_service_count": 5526,
+              "baseline_priority_count": 31,
+              "scenario_priority_count": 25,
+              "change_count": -6,
+              "change_percent": -19.35483870967742
+            },
+            {
+              "group": "NT",
+              "eligible_service_count": 212,
+              "baseline_priority_count": 10,
+              "scenario_priority_count": 9,
+              "change_count": -1,
+              "change_percent": -10.0
+            },
+            {
+              "group": "QLD",
+              "eligible_service_count": 3014,
+              "baseline_priority_count": 32,
+              "scenario_priority_count": 28,
+              "change_count": -4,
+              "change_percent": -12.5
+            },
+            {
+              "group": "SA",
+              "eligible_service_count": 1207,
+              "baseline_priority_count": 35,
+              "scenario_priority_count": 27,
+              "change_count": -8,
+              "change_percent": -22.857142857142858
+            },
+            {
+              "group": "TAS",
+              "eligible_service_count": 215,
+              "baseline_priority_count": 5,
+              "scenario_priority_count": 4,
+              "change_count": -1,
+              "change_percent": -20.0
+            },
+            {
+              "group": "VIC",
+              "eligible_service_count": 4155,
+              "baseline_priority_count": 20,
+              "scenario_priority_count": 14,
+              "change_count": -6,
+              "change_percent": -30.0
+            },
+            {
+              "group": "WA",
+              "eligible_service_count": 1290,
+              "baseline_priority_count": 26,
+              "scenario_priority_count": 24,
+              "change_count": -2,
+              "change_percent": -7.6923076923076925
+            }
+          ],
+          "by_urban_rural": [
+            {
+              "group": "Rural",
+              "eligible_service_count": 1025,
+              "baseline_priority_count": 72,
+              "scenario_priority_count": 65,
+              "change_count": -7,
+              "change_percent": -9.722222222222223
+            },
+            {
+              "group": "Urban",
+              "eligible_service_count": 14944,
+              "baseline_priority_count": 90,
+              "scenario_priority_count": 68,
+              "change_count": -22,
+              "change_percent": -24.444444444444443
+            }
+          ],
+          "interpretation_caveat": "Scenario results are sensitivity analysis for a prioritisation screen. They do not show causal effects, optimal policy thresholds, unmet demand, legal non-compliance, or an automatic basis for enforcement."
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8745,
+    "output_tokens": 507,
+    "total_tokens": 9252
+  },
+  "latency_ms": 15051.833082994563
+}

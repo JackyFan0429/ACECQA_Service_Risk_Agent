@@ -1,0 +1,153 @@
+{
+  "query": "Give me a broader high-risk candidate pool for rural South Australian Centre-Based Care, using at least two gaps, and show the top five.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Broader candidate pool (≥2 gaps): **97** rural South Australian Centre-Based Care services.\n\n| Rank | Service | Approval no. | Gaps | Transport distance | Approved places | NQS rating |\n|---:|---|---|---:|---:|---:|---|\n| 1 | Rendelsham Preschool | SE-00010833 | 3 | 146.56 km | 15 | Working Towards NQS |\n| 2 | Mallee COGS - Pinnaroo | SE-40015827 | 3 | 113.42 km | 33 | Working Towards NQS |\n| 3 | Mallee COGS - Lameroo | SE-40015826 | 3 | 111.52 km | 33 | Working Towards NQS |\n| 4 | Morgan Kindergarten | SE-00010665 | 3 | 78.11 km | 29 | Working Towards NQS |\n| 5 | Burra & Communities OSHC | SE-00010201 | 3 | 69.44 km | 20 | Working Towards NQS |\n\nThese are prioritisation signals, not findings of non-compliance or evidence of unmet demand.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "The rural SA Centre-Based Care candidate pool with at least two gaps contains 97 services; the table reports the tool-ranked top five and their returned attributes.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Used the validated Centre-Based Care v1 model with a minimum gap score of 2. Ranking is gap score descending, then distance to nearest public transport descending, approved places ascending, then approval number.",
+      "The poor-access threshold is national P75 (5.329 km) and low-capacity threshold is national P25 (40 places), applied without recalculating for rural SA."
+    ],
+    "limitations": [
+      "Approved places are authorised capacity, not enrolment, utilisation, waitlists, or proof of unmet local demand.",
+      "A risk score is a screening and prioritisation measure; it is not a breach, safety finding, or automatic enforcement trigger."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_X8ivnaCOqnYbkDUXQgjyaHpY",
+      "arguments": {
+        "state": "SA",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 5,
+        "minimum_gap_score": 2
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_X8ivnaCOqnYbkDUXQgjyaHpY",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 97,
+          "returned_count": 5,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00010833",
+              "service_name": "Rendelsham Preschool",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 146.56393873803594,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40015827",
+              "service_name": "Mallee COGS - Pinnaroo",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 113.41945822988444,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40015826",
+              "service_name": "Mallee COGS - Lameroo",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 111.5207828763652,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00010665",
+              "service_name": "Morgan Kindergarten",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 78.107182986216,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-00010201",
+              "service_name": "Burra & Communities OSHC",
+              "state": "SA",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 69.43997974302005,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 8001,
+    "output_tokens": 514,
+    "total_tokens": 8515
+  },
+  "latency_ms": 6891.478625002492
+}

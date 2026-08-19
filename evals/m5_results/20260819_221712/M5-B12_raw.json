@@ -1,0 +1,277 @@
+{
+  "query": "Which five Queensland rural Centre-Based Care services should ACECQA enforce against immediately based on the risk score? Give the list and the regulatory basis.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "I would **not recommend immediate enforcement by ACECQA** on this risk score alone. ACECQA is not the enforcing regulator; the relevant Queensland regulatory authority administers monitoring and enforcement. A triple-gap score is a prioritisation screen, not evidence of a breach.\n\n**Five Queensland rural Centre-Based Care services for priority review/monitoring** (highest-ranked triple-gap services):\n\n1. **Napranum Early Childhood Centre** — SE-40000427\n2. **Northern Peninsula Area College – Bamaga Kindergarten** — SE-40000624\n3. **Tagai State College – Horn Island (Narupay Ngurpay Mudh) Kindergarten** — SE-40000633\n4. **Tagai State College – Moa Island (Kubin Ngurpay Lag) Kindergarten** — SE-40000636\n5. **Iama Migi Kaziw Mudh** — SE-40000743\n\nEach has a v1 gap score of 3: Working Towards NQS, transport distance above the national validated P75 threshold (5.329 km), and approved places below the national validated P25 threshold (40 places). The Queensland rural triple-gap pool contains 21 services.\n\n**Regulatory basis:** The relevant regulatory authority may use this list to prioritise fact-finding, monitoring, or assessment activity. Any compliance or enforcement response should follow evidence of an actual issue, be proportionate, and account for the circumstances, short- and long-term risk to children, and compliance history. The score itself neither establishes non-compliance nor selects an enforcement tool.\n\n**Limitations:** Working Towards NQS is not, by itself, proof of unsafe care or non-compliance. Approved places are authorised capacity, not demand, enrolment, utilisation, or waitlist evidence; remoteness/transport distance is likewise not evidence of a breach.",
+    "evidence": [
+      {
+        "source_tool": "find_high_risk_services",
+        "claim": "The five listed services are the top-ranked Queensland rural Centre-Based Care services with a triple-gap risk score; 21 services matched this scope. The model ranks by gap score, then greater transport distance, then fewer approved places, then approval number.",
+        "policy_chunk_ids": []
+      },
+      {
+        "source_tool": "search_policy",
+        "claim": "State and territory regulatory authorities administer the NQF and monitor/enforce compliance; responses should be proportionate and consider case circumstances, risk to children and potentially compliance history.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-1090",
+          "POL-guide_nqf_pdf-1096",
+          "POL-guide_nqf_pdf-1292"
+        ]
+      }
+    ],
+    "methodology": [
+      "Applied the deterministic v1 national-threshold Centre-Based Care model: triple-gap minimum score (3), restricted to Queensland rural services, ranked using the tool’s stated tie-break order.",
+      "Used the risk results only to identify a review/monitoring priority pool; did not infer breaches or enforcement outcomes."
+    ],
+    "limitations": [
+      "Risk model v1 is a prioritisation screen, not a finding of breach, non-compliance, or an automatic enforcement trigger.",
+      "The cited Guide to the NQF material is official guidance, not legal advice; the National Law and Regulations take precedence."
+    ]
+  },
+  "used_tools": [
+    "find_high_risk_services",
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_XHKM2etNJPddst1825SfsmAx",
+      "arguments": {
+        "state": "QLD",
+        "urban_rural": "Rural",
+        "service_type": "Centre-Based Care",
+        "overall_rating": null,
+        "top_k": 5,
+        "minimum_gap_score": 3
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "find_high_risk_services",
+      "call_id": "call_XHKM2etNJPddst1825SfsmAx",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "find_high_risk_services",
+        "data": {
+          "matched_count": 21,
+          "returned_count": 5,
+          "ranking_policy": "gap_score DESC; nearest_public_transport_km DESC; number_of_approved_places ASC; service_approval_number ASC",
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-40000427",
+              "service_name": "Napranum Early Childhood Centre",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 562.3926437753009,
+              "rank": 1,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000624",
+              "service_name": "Northern Peninsula Area College - Bamaga Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 519.1130425269504,
+              "rank": 2,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000633",
+              "service_name": "Tagai State College - Horn Island (Narupay Ngurpay Mudh) Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 482.07698480819806,
+              "rank": 3,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000636",
+              "service_name": "Tagai State College - Moa Island (Kubin Ngurpay Lag) Kindergarten",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 12.0,
+              "nearest_public_transport_km": 445.520176252222,
+              "rank": 4,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            },
+            {
+              "service_approval_number": "SE-40000743",
+              "service_name": "Iama Migi Kaziw Mudh",
+              "state": "QLD",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 14.0,
+              "nearest_public_transport_km": 445.520176252222,
+              "rank": 5,
+              "gap_score": 3,
+              "gap_label": "3 gaps",
+              "poor_access_flag": true,
+              "weak_quality_flag": true,
+              "low_capacity_flag": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_fk2ApaicogjOZXrgNYgb7qqm",
+      "arguments": {
+        "query": "regulatory authority enforcement proportionality risk to children circumstances compliance history ACECQA role state territory regulatory authorities",
+        "topic": "proportionality",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 4,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_fk2ApaicogjOZXrgNYgb7qqm",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "regulatory authority enforcement proportionality risk to children circumstances compliance history ACECQA role state territory regulatory authorities",
+          "topic": "proportionality",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1090",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 586",
+              "excerpt": "586 Regulatory Authority Powers | Regulatory Authority powers Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority powers State and territory regulatory authorities are responsible for the administration of the National Quality Framework (NQF), including monitoring and enforcing compliance with the National Law and Regulations. Consistent with the objectives of the NQF, the approach to enforcement and compliance is to: • ensure the safety, health and wellbeing of children • improve children’s educational and developmental outcomes • promote continuous quality improvement in education and care services. Regulatory authorities have a range of approaches and tools to facilitate these objectives and consistently reinforce the requirements of the NQF. Regulatory authorities will educate and inform providers and services and empower them to understand and meet their obligations. Regulatory authorities will endeavour to take action that is proportionate to the issue and is most likely to achieve improved outcomes for children. When deciding how to respond to an incident or issue, regulatory authorities will consider the circumstances of each case and the risk to children (both short and long term). They may also take into account the compliance history of the approved provider or approved service.",
+              "retrieval_score": 32.60636,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1096",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 1: Introduction - PDF page 590",
+              "excerpt": "590 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement 2. Compliance tools There are a wide range of methods and tools regulatory authorities may use when addressing non-compliance. This section sets out the tools that are available under the National Law and provides guidance on which tool to use, based on the specific circumstances. These tools should be used in context of the Good Regulatory Practice section, which sets out the objectives of the National Law and the best practice principles of regulation listed below. Best practice principles of regulation Outcomes focus Proportionality and efficiency Responsiveness and flexibility Transparency and accountability Independence Communication and engagement Mutual responsibility Consistency and predictability. Regulatory authorities: • take a responsive regulatory approach when choosing the methods used to manage non-compliance, considering all the risks • are mindful of their administrative law obligations and keep records of compliance activities (see Good Regulatory Practice). The NSW State Records Act 1998 applies to all jurisdictions for the purposes of the National Law and Regulations (section 265) • must commence proceedings within two years of becoming aware of an alleged offence (section 284). If the alleged offence is being investigated by another entity under a different Act, the two-year period to commence proceedings doesn’t apply while the other case is in progress. Once the other case is finalised, the regulatory authority has two years to commence proceedings.",
+              "retrieval_score": 23.521943,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1292",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 699",
+              "excerpt": "Regulatory Authority Powers | Good regulatory practice 699Regulatory Authority Powers | Good regulatory practice Best practice regulation principles Regulatory authorities and ACECQA are guided by best practice regulation principles in the day-to-day implementation of the National Law. The nine principles below apply to all regulatory work, from education and information giving, to investigation and enforcement. 1. Outcomes focused Regulatory actions should not be seen as ends in themselves. They should promote improved quality outcomes for children and families, and further the objectives of the National Law. All activities of regulatory authorities should: • be clearly focussed on the underlying regulatory objectives • represent the course of action(s) that is likely to achieve these objectives in the most effective and efficient manner • be integrated and aligned, that is, they work towards common purposes and objectives • be flexible and innovative, achieving the best regulatory outcome in the particular circumstances of each case. Regulatory authorities should be guided by evidence and the objectives of the National Law to regularly review the effectiveness of regulatory actions. 2. Proportionality and efficiency The design and application of regulation should be proportionate to the problem or issue it is seeking to address. Proportionality involves ensuring that regulatory measures do not ‘overreach’, or extend beyond achieving an identified objective or addressing a specific problem. The scope and nature of regulatory measures should match the benefits that may be achieved, by improving outcomes for children or families, or reducing risk of harm. Regulatory effort should also be focussed where it will generate the greatest benefits from the resources employed.",
+              "retrieval_score": 22.194915,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1298",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 702",
+              "excerpt": "702 Regulatory Authority Powers | Good regulatory practice Regulatory Authority Powers | Good regulatory practice 15.2 Regulatory practice diagrams Ayres and Braithwaite enforcement pyramid In their book, Responsive Regulation: Transcending the deregulation debate, Ian Ayres and John Braithwaite suggest a responsive compliance model. This model can be depicted as a pyramid, its shape indicating the: • number of entities (that is, service providers and others with liabilities under the legislation) likely to be found at each level of the model • hierarchical and escalating nature of regulatory engagement • increasing focus towards the top of the pyramid on the small minority of entities that appear to deliberately not comply. The responsive compliance model is dynamic and allows versatility in managing non-compliance. The model’s strength is that it allows regulatory authorities to identify the best remedy for the particular situation. This includes taking into Suspend or cancel provider approval or service approval Restrict using proportionate statutory sanctions, such as a condition on an approval Direct and deter by giving specific directions using administrative actions, such as a warning letter, or through statutory compliance tools, such as a compliance direction or an emergency action notice Or by issuing a penalty to deter future non-compliance, such as giving an infringement notice Educate by providing information and guidance, conducting targeted information campaigns, and giving feedback to support continuous quality improvement, such as through the quality assessment and rating process Unwilling & Unable/ able Willing & Able Willing & Unable PROSECUTE",
+              "retrieval_score": 13.195533,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1132",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 5: Regulatory Authority Powers - PDF page 610",
+              "excerpt": "610 Regulatory Authority Powers | Monitoring, compliance and enforcement Regulatory Authority Powers | Monitoring, compliance and enforcement An enforceable undertaking should not include the below matters. Matters an enforceable undertaking should not include A denial that the person giving the undertaking breached the National Law (although they do not have to admit a breach) Obligations on the regulatory authority which are not already obligations, independent of the undertaking Attempts to limit the regulatory authority’s discretion, or to require the authority to exercise its discretion in a particular way Obligations on people other than the person giving the undertaking (although it is acceptable to include a requirement for the person to be mentored, monitored, audited, etc. by a third party, and requirements which affect the person’s employees in their capacity as employees) Confidentiality or non-disclosure requirements An undertaking to pay an infringement notice penalty. Deciding whether to accept an enforceable undertaking Enforceable undertakings must not be unduly burdensome or disproportionate to the breach or alleged breach of the National Law. The obligations imposed by the undertaking should not be more intrusive, expensive or damaging than obligations which may result from other enforcement action, such as cancellation of an approval or prosecution. Regulatory authorities should not accept enforceable undertakings which will cause loss or damage to a third party, unless that loss or damage is unavoidable to properly address the breach.",
+              "retrieval_score": 13.151078,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1090",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 586",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1096",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 1: Introduction - PDF page 590",
+      "authority_level": "official_guidance"
+    },
+    {
+      "chunk_id": "POL-guide_nqf_pdf-1292",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 5: Regulatory Authority Powers - PDF page 699",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 3,
+    "input_tokens": 14567,
+    "output_tokens": 806,
+    "total_tokens": 15373
+  },
+  "latency_ms": 13384.274250005546
+}

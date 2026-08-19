@@ -1,0 +1,50 @@
+{
+  "query": "Look up service SE-99999999 and tell me its profile.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No profile was found for service approval number **SE-99999999**. Please check the approval number and try again.",
+    "evidence": [],
+    "methodology": [
+      "Looked up the exact service approval number provided."
+    ],
+    "limitations": [
+      "The supplied approval number is not recognised in the available service dataset."
+    ]
+  },
+  "used_tools": [
+    "get_service_profile"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "get_service_profile",
+      "call_id": "call_RgBWp9ti0p4eE2FBAwkzmdBf",
+      "arguments": {
+        "service_approval_number": "SE-99999999"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "get_service_profile",
+      "call_id": "call_RgBWp9ti0p4eE2FBAwkzmdBf",
+      "arguments": null,
+      "output": {
+        "ok": false,
+        "tool": "get_service_profile",
+        "error_type": "ValueError",
+        "message": "Unknown service_approval_number: SE-99999999"
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7349,
+    "output_tokens": 97,
+    "total_tokens": 7446
+  },
+  "latency_ms": 3978.7662500020815
+}

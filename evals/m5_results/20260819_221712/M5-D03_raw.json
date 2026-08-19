@@ -1,0 +1,1068 @@
+{
+  "query": "How many Victorian services in the dataset are rated Working Towards NQS?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "184 Victorian services in the dataset are rated **Working Towards NQS**.",
+    "evidence": [
+      {
+        "source_tool": "search_services",
+        "claim": "Filtering the dataset to Victoria and an overall rating of Working Towards NQS returned 184 matched services.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Applied the state=VIC and overall_rating=Working Towards NQS dataset filters."
+    ],
+    "limitations": []
+  },
+  "used_tools": [
+    "search_services"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_services",
+      "call_id": "call_9ODyH17JacyuBfTt2mDGSFzs",
+      "arguments": {
+        "state": "VIC",
+        "urban_rural": null,
+        "service_type": null,
+        "overall_rating": "Working Towards NQS",
+        "limit": 100
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_services",
+      "call_id": "call_9ODyH17JacyuBfTt2mDGSFzs",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_services",
+        "data": {
+          "matched_count": 184,
+          "returned_count": 100,
+          "filters": {
+            "state": "VIC",
+            "urban_rural": null,
+            "service_type": null,
+            "overall_rating": "Working Towards NQS"
+          },
+          "services": [
+            {
+              "service_approval_number": "SE-00002674",
+              "service_name": "Beechworth Kindergarten Inc.",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 28.057388037515448
+            },
+            {
+              "service_approval_number": "SE-00002856",
+              "service_name": "Camberwell Kindergarten and Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 51.0,
+              "nearest_public_transport_km": 0.6211835787810568
+            },
+            {
+              "service_approval_number": "SE-00002942",
+              "service_name": "Clarendon Street Community Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 36.0,
+              "nearest_public_transport_km": 0.6759549010598653
+            },
+            {
+              "service_approval_number": "SE-00002985",
+              "service_name": "Rosswood Preschool",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 9.308754322591914
+            },
+            {
+              "service_approval_number": "SE-00002991",
+              "service_name": "Daylesford Community Child Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 79.0,
+              "nearest_public_transport_km": 1.3692177520961584
+            },
+            {
+              "service_approval_number": "SE-00003084",
+              "service_name": "Ave Maria Kindergarten",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 90.0,
+              "nearest_public_transport_km": 1.961965767676528
+            },
+            {
+              "service_approval_number": "SE-00003171",
+              "service_name": "Nagambie Kindergarten & Early Childhood Services",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 79.0,
+              "nearest_public_transport_km": 0.4467289554877431
+            },
+            {
+              "service_approval_number": "SE-00003318",
+              "service_name": "Magic Garden Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 39.0,
+              "nearest_public_transport_km": 2.193296377979436
+            },
+            {
+              "service_approval_number": "SE-00003424",
+              "service_name": "Shine Bright Mildura South Kindergarten",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 4.556139096081279
+            },
+            {
+              "service_approval_number": "SE-00003426",
+              "service_name": "Millewa Preschool",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 22.0,
+              "nearest_public_transport_km": 56.8628409574185
+            },
+            {
+              "service_approval_number": "SE-00003458",
+              "service_name": "East Beaumaris Kindergarten",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 1.8307324501240876
+            },
+            {
+              "service_approval_number": "SE-00003586",
+              "service_name": "Merrilands Uniting Early Learning",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 66.0,
+              "nearest_public_transport_km": 1.300877345401992
+            },
+            {
+              "service_approval_number": "SE-00003653",
+              "service_name": "Kimmba Bilingual Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 32.0,
+              "nearest_public_transport_km": 1.048855802554704
+            },
+            {
+              "service_approval_number": "SE-00003692",
+              "service_name": "Guthrie Street Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 80.0,
+              "nearest_public_transport_km": 1.8615958192689956
+            },
+            {
+              "service_approval_number": "SE-00003742",
+              "service_name": "Kinder Kollege Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 35.0,
+              "nearest_public_transport_km": 7.6610486349612525
+            },
+            {
+              "service_approval_number": "SE-00003810",
+              "service_name": "Songbird Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 39.0,
+              "nearest_public_transport_km": 19.422128234092146
+            },
+            {
+              "service_approval_number": "SE-00003823",
+              "service_name": "Rushworth Kindergarten & Child Care",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 0.4822542517614978
+            },
+            {
+              "service_approval_number": "SE-00003866",
+              "service_name": "Charming Cherubs Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 28.0,
+              "nearest_public_transport_km": 4.815849461100412
+            },
+            {
+              "service_approval_number": "SE-00003895",
+              "service_name": "Back to Basics Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 2.6339465571754737
+            },
+            {
+              "service_approval_number": "SE-00003923",
+              "service_name": "Future Super Stars ELC Epping",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 38.0,
+              "nearest_public_transport_km": 1.6670566048675604
+            },
+            {
+              "service_approval_number": "SE-00003958",
+              "service_name": "Teesdale Children's Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 33.0,
+              "nearest_public_transport_km": 24.24398243613625
+            },
+            {
+              "service_approval_number": "SE-00003974",
+              "service_name": "Newstead Preschool",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 25.0,
+              "nearest_public_transport_km": 12.294939173890963
+            },
+            {
+              "service_approval_number": "SE-00003998",
+              "service_name": "Hothlyn Drive Children's Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 1.316003954529112
+            },
+            {
+              "service_approval_number": "SE-00004000",
+              "service_name": "Maroondah Montessori Preschool",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 0.8808114333896778
+            },
+            {
+              "service_approval_number": "SE-00004023",
+              "service_name": "Canberra Avenue Child Care & Kinder",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 73.0,
+              "nearest_public_transport_km": 7.653613026674731
+            },
+            {
+              "service_approval_number": "SE-00004043",
+              "service_name": "Goldfields Children's Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 100.0,
+              "nearest_public_transport_km": 0.4915175109626078
+            },
+            {
+              "service_approval_number": "SE-00004051",
+              "service_name": "Thornbury Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 70.0,
+              "nearest_public_transport_km": 1.338002920706182
+            },
+            {
+              "service_approval_number": "SE-00004103",
+              "service_name": "Edenhope Early Childhood Service",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 46.0,
+              "nearest_public_transport_km": 84.58883191833529
+            },
+            {
+              "service_approval_number": "SE-00004108",
+              "service_name": "Peekaboo Child Care Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 49.107711376592334
+            },
+            {
+              "service_approval_number": "SE-00004160",
+              "service_name": "Northern Bay College",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 69.0,
+              "nearest_public_transport_km": 2.2372316726715593
+            },
+            {
+              "service_approval_number": "SE-00004236",
+              "service_name": "Greenland Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 105.0,
+              "nearest_public_transport_km": 2.1620499293943904
+            },
+            {
+              "service_approval_number": "SE-00004269",
+              "service_name": "Discovery Childcare and Education (Boronia)",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 176.0,
+              "nearest_public_transport_km": 0.4577276496254595
+            },
+            {
+              "service_approval_number": "SE-00004310",
+              "service_name": "Mary's Little Lambs Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 50.0,
+              "nearest_public_transport_km": 1.39373060899935
+            },
+            {
+              "service_approval_number": "SE-00004340",
+              "service_name": "The Learning Sanctuary Glen Iris",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 80.0,
+              "nearest_public_transport_km": 0.7508035913672259
+            },
+            {
+              "service_approval_number": "SE-00004403",
+              "service_name": "Napier Street Children's Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 120.0,
+              "nearest_public_transport_km": 3.2604456581749583
+            },
+            {
+              "service_approval_number": "SE-00004414",
+              "service_name": "Crown Kiddo Education",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 55.0,
+              "nearest_public_transport_km": 2.1815172038278914
+            },
+            {
+              "service_approval_number": "SE-00004440",
+              "service_name": "Penguin Childcare Epping",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 2.3116054316173655
+            },
+            {
+              "service_approval_number": "SE-00004468",
+              "service_name": "Little Stars Child Care & Kindergarten",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 6.036085119293712
+            },
+            {
+              "service_approval_number": "SE-00004476",
+              "service_name": "Developmental Learning Centre Rainbow - Moorabbin",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 86.0,
+              "nearest_public_transport_km": 1.217782388615806
+            },
+            {
+              "service_approval_number": "SE-00004509",
+              "service_name": "City Kindergarten",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 29.0,
+              "nearest_public_transport_km": 0.9876943260582088
+            },
+            {
+              "service_approval_number": "SE-00004511",
+              "service_name": "Penguin Childcare Caroline Springs",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 98.0,
+              "nearest_public_transport_km": 3.345247714654473
+            },
+            {
+              "service_approval_number": "SE-00004547",
+              "service_name": "Heatherhill Kindergarten",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 52.0,
+              "nearest_public_transport_km": 7.869068670040867
+            },
+            {
+              "service_approval_number": "SE-00004607",
+              "service_name": "Cubby Care Early Learning Centre Bairnsdale",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 0.6464350178140679
+            },
+            {
+              "service_approval_number": "SE-00004705",
+              "service_name": "Goodstart Early Learning Echuca",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 105.0,
+              "nearest_public_transport_km": 2.978883460998281
+            },
+            {
+              "service_approval_number": "SE-00004726",
+              "service_name": "Goodstart Early Learning Mildura - Matthew Flinders Drive",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 155.0,
+              "nearest_public_transport_km": 3.4149043998936177
+            },
+            {
+              "service_approval_number": "SE-00004805",
+              "service_name": "Marysville and District Kindergarten Association Inc",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 48.95287609707141
+            },
+            {
+              "service_approval_number": "SE-00004816",
+              "service_name": "Werribee Little Learners",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 1.31536249149809
+            },
+            {
+              "service_approval_number": "SE-00004834",
+              "service_name": "YMCA – Buln Buln Primary School OSHC",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 35.0,
+              "nearest_public_transport_km": 7.309011376293621
+            },
+            {
+              "service_approval_number": "SE-00004874",
+              "service_name": "Kelly Club OSHC Roxburgh Park Primary School",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 80.0,
+              "nearest_public_transport_km": 3.728542804392192
+            },
+            {
+              "service_approval_number": "SE-00004876",
+              "service_name": "Inspira Kids Early Learning Centre Gladstone Park",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 120.0,
+              "nearest_public_transport_km": 2.8283577437538283
+            },
+            {
+              "service_approval_number": "SE-00004888",
+              "service_name": "Little Stars Childcare & Kindergarten Melton",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 100.0,
+              "nearest_public_transport_km": 3.3547189208041153
+            },
+            {
+              "service_approval_number": "SE-00004911",
+              "service_name": "Central Goldfields Shire Family Day Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.4915175109626078
+            },
+            {
+              "service_approval_number": "SE-00004948",
+              "service_name": "Southern Grampians Shire Council Family Day Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 46.57187417964489
+            },
+            {
+              "service_approval_number": "SE-00004986",
+              "service_name": "Daylesford Family Day Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 1.3692177520961584
+            },
+            {
+              "service_approval_number": "SE-00005024",
+              "service_name": "Sacred Heart Parish School Sandringham- VillageOSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 37.0,
+              "nearest_public_transport_km": 0.3393639992334857
+            },
+            {
+              "service_approval_number": "SE-00005044",
+              "service_name": "Corangamite Shire Family Day Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 20.553110334309267
+            },
+            {
+              "service_approval_number": "SE-00005046",
+              "service_name": "YMCA Victoria – Warragul North Primary School Before & After School Program",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 70.0,
+              "nearest_public_transport_km": 1.9406958498952984
+            },
+            {
+              "service_approval_number": "SE-00005059",
+              "service_name": "Youth Leadership Victoria - St Brendan's Primary School OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 24.0,
+              "nearest_public_transport_km": 0.4293631107921357
+            },
+            {
+              "service_approval_number": "SE-00005104",
+              "service_name": "Robinvale Out of School Hours Program",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 72.08892191630123
+            },
+            {
+              "service_approval_number": "SE-00005163",
+              "service_name": "Kyabram P-12 College Outside School Hours Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 28.891254160969492
+            },
+            {
+              "service_approval_number": "SE-00005222",
+              "service_name": "Kialla Central PS TheirCare",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 7.974793975708166
+            },
+            {
+              "service_approval_number": "SE-00005230",
+              "service_name": "Camp Australia - St Kevins College Toorak OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 1.308294952675009
+            },
+            {
+              "service_approval_number": "SE-00005237",
+              "service_name": "Our Lady of the Assumption PS TheirCare",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 49.0,
+              "nearest_public_transport_km": 0.4804567953902371
+            },
+            {
+              "service_approval_number": "SE-00005255",
+              "service_name": "St Luke's Uniting Outside School Hours Care",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 5.19739910943438
+            },
+            {
+              "service_approval_number": "SE-00005360",
+              "service_name": "Kinglake West PS TheirCare",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 17.739616660494853
+            },
+            {
+              "service_approval_number": "SE-00005363",
+              "service_name": "Kinglake Primary School Combined OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 48.0,
+              "nearest_public_transport_km": 19.464803690068997
+            },
+            {
+              "service_approval_number": "SE-00005386",
+              "service_name": "Middle Kinglake Primary School Combined OSHC",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 21.41165651806616
+            },
+            {
+              "service_approval_number": "SE-00005407",
+              "service_name": "Warrnambool City Council Family Day Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Family Day Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": null,
+              "nearest_public_transport_km": 0.9876943260582088
+            },
+            {
+              "service_approval_number": "SE-00005459",
+              "service_name": "Trinity OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 85.0,
+              "nearest_public_transport_km": 4.116760105433372
+            },
+            {
+              "service_approval_number": "SE-00005465",
+              "service_name": "St Joseph's Springvale OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 7.909404925993937
+            },
+            {
+              "service_approval_number": "SE-00005468",
+              "service_name": "Camp Australia - California Gully Primary School OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 1.6604310496615813
+            },
+            {
+              "service_approval_number": "SE-00005470",
+              "service_name": "St Mary's Primary School - OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 37.0,
+              "nearest_public_transport_km": 7.933583688336515
+            },
+            {
+              "service_approval_number": "SE-00005490",
+              "service_name": "Benalla P-12 College Waller Street Campus",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 54.0,
+              "nearest_public_transport_km": 1.93153621845041
+            },
+            {
+              "service_approval_number": "SE-00005558",
+              "service_name": "Anakie Primary School Council Out of School Care",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 18.58169449538681
+            },
+            {
+              "service_approval_number": "SE-00005583",
+              "service_name": "Melbourne Grammar School, Grimwade House",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 112.0,
+              "nearest_public_transport_km": 1.381917384455228
+            },
+            {
+              "service_approval_number": "SE-00005644",
+              "service_name": "Camp Australia - Victoria Road Primary School OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 3.802766483629264
+            },
+            {
+              "service_approval_number": "SE-00005693",
+              "service_name": "BYK KIDS",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 1.8042073222192163
+            },
+            {
+              "service_approval_number": "SE-00005740",
+              "service_name": "Kelly Club OSHC Geelong East Primary",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 59.0,
+              "nearest_public_transport_km": 2.5578667191729645
+            },
+            {
+              "service_approval_number": "SE-00005757",
+              "service_name": "St Peter's PS Epping TheirCare",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 2.00390436876056
+            },
+            {
+              "service_approval_number": "SE-00005783",
+              "service_name": "Busy Bees at Port Melbourne",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 122.0,
+              "nearest_public_transport_km": 1.8885736749006317
+            },
+            {
+              "service_approval_number": "SE-00005784",
+              "service_name": "Myrniong Primary School Outside School Hours Care",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 10.672244245196236
+            },
+            {
+              "service_approval_number": "SE-00005787",
+              "service_name": "St Augustine's PS Wodonga TheirCare",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 4.638467123858245
+            },
+            {
+              "service_approval_number": "SE-00005789",
+              "service_name": "HT After Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 0.8554544119161415
+            },
+            {
+              "service_approval_number": "SE-00005839",
+              "service_name": "Moonstar Kids Academy",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 47.0,
+              "nearest_public_transport_km": 2.3011008879773502
+            },
+            {
+              "service_approval_number": "SE-00005854",
+              "service_name": "YMCA Hamilton (Gray St) OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 45.0,
+              "nearest_public_transport_km": 46.338740810442985
+            },
+            {
+              "service_approval_number": "SE-00005880",
+              "service_name": "Mandama Primary School Combined OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 75.0,
+              "nearest_public_transport_km": 2.33715901996838
+            },
+            {
+              "service_approval_number": "SE-00005889",
+              "service_name": "Our Lady of Mount Carmel-VillageOSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 0.7616119411997124
+            },
+            {
+              "service_approval_number": "SE-00005949",
+              "service_name": "Romsey Early Education Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 40.0,
+              "nearest_public_transport_km": 13.268445535877737
+            },
+            {
+              "service_approval_number": "SE-00005960",
+              "service_name": "Newlands Out of School Hours Program",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 160.0,
+              "nearest_public_transport_km": 1.5444933704642985
+            },
+            {
+              "service_approval_number": "SE-00005976",
+              "service_name": "Kelly Club OSHC Ashby Primary School",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 90.0,
+              "nearest_public_transport_km": 1.0305315285141796
+            },
+            {
+              "service_approval_number": "SE-00005977",
+              "service_name": "Wantirna Primary School OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 3.973920958672729
+            },
+            {
+              "service_approval_number": "SE-00006019",
+              "service_name": "Gilson College OSHC",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 60.0,
+              "nearest_public_transport_km": 2.5057819702787736
+            },
+            {
+              "service_approval_number": "SE-00006040",
+              "service_name": "Our Patch OSHC at St Peter Apostle Primary School",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 120.0,
+              "nearest_public_transport_km": 1.269285047938816
+            },
+            {
+              "service_approval_number": "SE-00006049",
+              "service_name": "St James School OSHC Vermont",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 90.0,
+              "nearest_public_transport_km": 2.56954290056782
+            },
+            {
+              "service_approval_number": "SE-00006060",
+              "service_name": "Morning Star Bilingual Early Learning Centre",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 32.0,
+              "nearest_public_transport_km": 2.632876721746142
+            },
+            {
+              "service_approval_number": "SE-00006111",
+              "service_name": "Ballan Outside School Hours Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 0.5400404181586388
+            },
+            {
+              "service_approval_number": "SE-00006154",
+              "service_name": "Kelly Club OSHC Anglesea Primary School",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 20.0,
+              "nearest_public_transport_km": 0.9510145438090906
+            },
+            {
+              "service_approval_number": "SE-00006174",
+              "service_name": "Cathedral College Wangaratta Outside School Hours Care",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 30.0,
+              "nearest_public_transport_km": 3.6441331449115104
+            },
+            {
+              "service_approval_number": "SE-00006208",
+              "service_name": "Guardian Childcare & Education Tullamarine",
+              "state": "VIC",
+              "urban_rural": "Urban",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 110.0,
+              "nearest_public_transport_km": 3.0331536503695897
+            },
+            {
+              "service_approval_number": "SE-00011247",
+              "service_name": "Greta Valley Primary School O.S.H.C",
+              "state": "VIC",
+              "urban_rural": "Rural",
+              "service_type": "Centre-Based Care",
+              "overall_rating": "Working Towards NQS",
+              "number_of_approved_places": 15.0,
+              "nearest_public_transport_km": 23.74525163891404
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 14658,
+    "output_tokens": 140,
+    "total_tokens": 14798
+  },
+  "latency_ms": 4323.312958003953
+}

@@ -1,0 +1,76 @@
+{
+  "query": "Can the current v1 model score Family Day Care service SE-00014066? Calculate it if eligible and explain the scope result.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. SE-00014066 (Elite Family Day Care) is not eligible for the current v1 risk score, so no gap score is calculated.\n\nIt is Family Day Care, while v1 is defined only for Centre-Based Care. In addition, approved places are missing, so its capacity-gap component cannot be assessed. Its recorded overall rating is Meeting NQS and nearest public transport distance is 1.75 km, but these do not make it eligible for v1 scoring.",
+    "evidence": [
+      {
+        "source_tool": "calculate_risk_score",
+        "claim": "SE-00014066 is Elite Family Day Care, is ineligible for v1 scoring, has no calculated gap score, is rated Meeting NQS, and has nearest public transport at 1.75 km.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "The v1 model applies only to the national validated Centre-Based Care sample with non-missing approved-place data; it uses transport, quality and capacity gap components."
+    ],
+    "limitations": [
+      "A v1 risk score is unavailable for Family Day Care services and does not establish compliance or breach findings."
+    ]
+  },
+  "used_tools": [
+    "calculate_risk_score"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_MrJ0k1oxUgQ0YGnbbywSazdJ",
+      "arguments": {
+        "service_approval_number": "SE-00014066"
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "calculate_risk_score",
+      "call_id": "call_MrJ0k1oxUgQ0YGnbbywSazdJ",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "calculate_risk_score",
+        "data": {
+          "service_approval_number": "SE-00014066",
+          "service_name": "Elite Family Day Care",
+          "eligible_for_risk_scoring": false,
+          "gap_score": null,
+          "gap_label": null,
+          "poor_access_flag": null,
+          "weak_quality_flag": null,
+          "low_capacity_flag": null,
+          "nearest_public_transport_km": 1.7501042354593843,
+          "overall_rating": "Meeting NQS",
+          "number_of_approved_places": null,
+          "thresholds": {
+            "transport_p75_km": 5.329340006807538,
+            "capacity_p25_places": 40.0,
+            "scope": "National valid Centre-Based Care analysis sample with non-missing approved places"
+          },
+          "limitations": [
+            "Risk score v1 is defined only for Centre-Based Care.",
+            "Approved places is missing, so the capacity gap cannot be assessed."
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7528,
+    "output_tokens": 272,
+    "total_tokens": 7800
+  },
+  "latency_ms": 5553.995791000489
+}

@@ -1,0 +1,225 @@
+{
+  "query": "What is the purpose of assessment and rating under the National Quality Framework?",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "Assessment and rating under the National Quality Framework assesses services against the National Quality Standard to:\n\n- promote continuous improvement in quality education and care; and\n- improve families’ knowledge of, and access to, service-quality information so they can make informed choices.\n\nState and territory regulatory authorities conduct the assessments and ratings.",
+    "evidence": [
+      {
+        "source_tool": "search_policy",
+        "claim": "The Guide to the NQF states that assessment and rating promotes continuous improvement in quality education and care and helps families make informed decisions through quality information; it also states that state and territory regulatory authorities assess and rate services.",
+        "policy_chunk_ids": [
+          "POL-guide_nqf_pdf-0694"
+        ]
+      }
+    ],
+    "methodology": [],
+    "limitations": [
+      "This is grounded in official ACECQA guidance; the National Law and National Regulations take precedence over the Guide to the NQF."
+    ]
+  },
+  "used_tools": [
+    "search_policy"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_EI48uZIkSJKrFUif2vwmD1Mu",
+      "arguments": {
+        "query": "purpose of assessment and rating under the National Quality Framework",
+        "topic": "assessment_rating",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_EI48uZIkSJKrFUif2vwmD1Mu",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "purpose of assessment and rating under the National Quality Framework",
+          "topic": "assessment_rating",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0629",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 344",
+              "excerpt": "Service philosophy and purpose Element 7.1.1 344 National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard ELEMENT 7.1.1 Service philosophy and purpose A statement of philosophy guides all aspects of the service’s operations. What Element 7.1.1 aims to achieve A written statement of philosophy outlines the purpose and principles under which the service operates. It also reflects the guiding principles of the National Quality Framework (see section 3(3) of the National Law), and the approved learning frameworks (see Element 1.1.1). A statement of philosophy serves three purposes. It: • underpins the decisions, policies and daily practices of the service • reflects a shared understanding of the role of the service among staff, children, young people, families and the community • guides educators’ pedagogy, planning and practice when delivering the educational program. When the educational leader, nominated supervisors, co-ordinators and educators contribute to the review of a philosophy statement, it is more likely to be owned by all members of the team. It encourages commitment and willingness to put it into practice.",
+              "retrieval_score": 8.349897,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1075",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 577",
+              "excerpt": "Guide to the NQF | Introduction 577 Guide to the NQF | Introduction If regulation 124(6) applies, a record of an approval granted in relation to the educator operating with more than seven children, or more than four children who are preschool age or under, due to exceptional circumstances, including:: • the nature of exceptional circumstances described in regulation 124(6) • the date on which the approval was granted • the name of the person who granted the approval • for each child educated and cared for as part of the approval, the child’s name and date of birth • the period during which the educator is approved to educate and care for more than seven children, or more than four children who are preschool age or under, at any one time, in exceptional circumstances. The full name and date of birth of other people who normally reside at the family day care residence and a record of any working with children or working with vulnerable people check for those people, including the identifying number and expiry date, and date sighted by the approved provider or nominated supervisor of the service. Evidence that each educator is adequately monitored and supported by a co- ordinator, including: • dates and times of the co-ordinator’s visits to the residence or venue or phone calls between the co-ordinator and educator for the purpose of monitoring or support • details of any correspondence or written materials provided to the educator by the co-ordinator for the purpose of monitoring or support, and the dates and times the information was provided.",
+              "retrieval_score": 7.481646,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0923",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 498",
+              "excerpt": "Staffing arrangements Quality Area 4 498 Operational Requirements | Operational requirements Operational Requirements | Operational requirements 4.2 Educator qualifications 4.2.1 Qualification requirements for centre-based services with children preschool age or under National Law Section 169 The approved provider and nominated supervisor must ensure the service is meeting the minimum qualification requirements for: • Early childhood teacher • Diploma • Certificate III 4.2.2 Early Childhood Teacher and suitably qualified person requirements Centre-based services with children who are preschool age or younger must have access to, attendance of, or employ or engage an early childhood teacher (ECT). The requirements are based on the number of children at the service. Each jurisdiction has requirements which modify these regulations. State and territory regulatory authorities provide information for their jurisdiction. For example, NSW has specific numbers of early childhood teachers that are required in centre-based services educating and caring for 25 or more children preschool age or under. These regulations do not apply if the main purpose of the centre-based service is to provide education and care to children over preschool age. To know whether the ‘main purpose’ of the service is to educate and care for children over preschool age, authorised officers may consider the following: • are the majority of children enrolled or attending over preschool age? For example 60 per cent is a persuasive factor, 70 per cent would be more persuasive whereas 51 per cent would be less so.",
+              "retrieval_score": 7.275131,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0710",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 387",
+              "excerpt": "ory authorities maintain oversight of providers and their services in a variety of ways to assess and promote compliance with the National Law and Regulations. These may include physical visits, interviews, phone calls, emails, video conference, etc. All of these forms of activity provide regulatory authorities with information about the quality of education and care provided to children and interactions with families. All types of visits may be organised at short notice or without notice, and may focus on any aspect of service delivery under the NQF. The form of activity is chosen by regulators based on an assessment of risk and the purpose of the contact, and may include a compliance visit, a partial assessment and rating, a full assessment and rating, or other regulatory activities.",
+              "retrieval_score": 7.186045,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-1076",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 577",
+              "excerpt": "or and educator for the purpose of monitoring or support • details of any correspondence or written materials provided to the educator by the co-ordinator for the purpose of monitoring or support, and the dates and times the information was provided. If the educator will be providing education and care to children in a jurisdiction with a working with children law or a working with vulnerable people law, a record of the identifying number of the check conducted or card issued under that law and the expiry date of that check or card (if applicable). *Transitional provisions apply for existing educators in some jurisdictions. Please check the legislation for commencement dates in Western Australia. For family day care co-ordinators The full name, address and date of birth of the co-ordinator The contact details of the co-ordinator The date the co-ordinator was employed or engaged by the service When applicable, the date the co-ordinator ceased to be employed or engaged by the service (for a period of 3 years following that date) If the co-ordinator is an approved provider, the number of the provider approval and the date the approval was granted Evidence of any relevant qualifications held by the co-ordinator If the co-ordinator will be providing education and care to children, evidence the co-ordinator has completed: • current approved first aid qualification • current approved anaphylaxis management training • current approved emergency asthma management training",
+              "retrieval_score": 7.135096,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "event_type": "tool_call",
+      "tool_name": "search_policy",
+      "call_id": "call_nwFGeKDM6eZkwHhRCr4vuI4W",
+      "arguments": {
+        "query": "assessment and rating process purpose promote continuous quality improvement National Quality Standard",
+        "topic": "quality_ratings",
+        "top_k": 5
+      },
+      "output": null
+    },
+    {
+      "sequence": 4,
+      "event_type": "tool_output",
+      "tool_name": "search_policy",
+      "call_id": "call_nwFGeKDM6eZkwHhRCr4vuI4W",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "search_policy",
+        "data": {
+          "query": "assessment and rating process purpose promote continuous quality improvement National Quality Standard",
+          "topic": "quality_ratings",
+          "corpus_chunk_count": 1395,
+          "result_count": 5,
+          "results": [
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0698",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 382",
+              "excerpt": "382 National Quality Standard and Assessment and Rating | Assessment and rating process National Quality Standard and Assessment and Rating | Assessment and rating process 2. Self-assessment and quality improvement planning Ongoing self-assessment against the National Quality Standard (NQS) drives continuous improvement and is essential to providing quality outcomes for children. Under the National Regulations, the approved provider must ensure a Quality Improvement Plan (QIP) is in place for each service. The purpose of the QIP (or Self-Assessment Working Document in NSW) is to help providers self-assess their performance in delivering quality education and care, and to plan future improvements. The QIP also helps regulatory authorities with the assessment of the service. The QIP does not have to be provided in any specific format, but must include the three required components outlined below. The QIP can be uploaded to the NQA ITS or via any other jurisdictional specific submission process. The QIP is an enabler of continuous improvement and encourages self- reflection and self-assessment of quality areas. Whenever the QIP is updated, the uploaded version will need to be revised to reflect any changes because the uploaded version will be used by regulatory authorities for assessment and rating. A QIP must: • include an assessment by the approved provider of the quality of the practices of the service against the NQS and the National Law and Regulations • identify areas that the approved provider considers may require improvement • include a statement of philosophy for the service. Penalties may apply. The following section explains the three components of the QIP.",
+              "retrieval_score": 15.500219,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0694",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 380",
+              "excerpt": "380 National Quality Standard and Assessment and Rating | Assessment and rating process National Quality Standard and Assessment and Rating | Assessment and rating process Assessment and rating process This chapter explains the assessment and rating process of education and care services and provides guidance on the self-assessment and quality improvement planning process. It also provides detail about how ratings are calculated and reviewed against the National Quality Standard. 1. Introduction Services are assessed and rated against the National Quality Standard (NQS) to: • promote continuous improvement in the provision of quality education and care • improve knowledge and access to information about the quality of services to help families make informed decisions about their child’s education and care. Services are assessed and rated against the NQS by the state or territory regulatory authority. The National Regulations outline the assessment and rating process for education and care services including the rating levels. See the National Quality Standard chapter for more information on the NQS. Notice of an assessment and rating visit In most cases, regulatory authorities will provide 1–5 days notice that an assessment and rating visit or conversation will occur. For some services, such as some rural and remote services and single-educator models, longer notice will be provided to enable appropriate access to the service and availability of educators. The regulatory authority may commence an assessment and rating reassessment in response to compliance issues identified at the service. Where there have been compliance issues at the service, the regulatory authority may choose to commence the assessment and rating process without notice.",
+              "retrieval_score": 14.795598,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0666",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 364",
+              "excerpt": "Leadership Standard 7.2 364 National Quality Standard and Assessment and Rating | National Quality Standard National Quality Standard and Assessment and Rating | National Quality Standard • How do our performance management processes support continuous improvement? • How can we share the collective knowledge of the team and create opportunities for critical reflection and collaboration on our practice? • What do we know about the rate of, and reasons for, turnover of educators, co-ordinators and staff members at this service? • How do we create opportunities for professional learning experiences including professional conversations, coaching and mentoring, and practitioner inquiry within our service? • How can we structure our staffing arrangements to improve continuity of care for children and young people? • How does the evidence/data we collect inform our self-assessment and quality improvement processes? Do we need to collect additional or different data? • How are children, young people, their families and communities included in evaluating the quality of our service? • In what ways does our service analyse feedback, complaints, serious incidents, injuries and illness to drive continuous improvement? • How are resources allocated and targeted to support our quality improvement plan? • How do we raise awareness of inclusion amongst service staff, and support educators to promote and reduce the barriers to inclusion for all children and families? • What strategies are proving successful in building a professional learning community? How do we know they are successful? • How can we use the Assessment and Rating Instrument in our self- assessment process? • How can the guiding principles of the National Law be considered in our self-assessment process? • For school age",
+              "retrieval_score": 14.772733,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0627",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 343",
+              "excerpt": "Governance Standard 7.1 National Quality Standard and Assessment and Rating | National Quality Standard 343National Quality Standard and Assessment and Rating | National Quality Standard • What is the process for making decisions within the service and is this process fair and equitable? • How can we improve the efficiency and effectiveness of our systems and processes? • Does our management of confidential information meet requirements? • To what extent does our statement of philosophy reflect our purpose, guide our practice and show a commitment to continuous improvement? • How and when is our statement of philosophy reviewed? • How does our Code of Conduct align with the National Quality Framework, the National Principles for Child Safe Organisations and relevant state or territory Child Safe Standards? • How do we address complaints? How is the complaints management process used to identify strategies for quality improvement? • Is our complaints management system/process effective in supporting quality improvement and empowering families to express their concerns and suggestions? • How do we ensure that leadership decisions are transparent, consistent and aligned with our philosophy and child-safe commitments? • How can we ensure that families are able to contact the appropriate person when making a complaint? • What systems are in place to ensure the service’s compliance with the National Law and Regulations? • What systems are in place to regularly check the currency and validity of working with children checks, teaching registrations, first aid qualifications, and anaphylaxis and asthma management training? • How and when are our policies and procedures reviewed? • What systems are in place to ensure policies and procedures are being used to inform practice and i",
+              "retrieval_score": 14.427196,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            },
+            {
+              "chunk_id": "POL-guide_nqf_pdf-0688",
+              "source_id": "guide_nqf_pdf",
+              "source_title": "Guide to the National Quality Framework",
+              "source_url": "https://www.acecqa.gov.au/media/38281",
+              "source_kind": "official_pdf",
+              "authority_level": "official_guidance",
+              "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 376",
+              "excerpt": "orting educators through ongoing professional development opportunities, such as coaching and mentoring, professional reading, practitioner inquiry, and collaborative research projects? • How do all members of the service team: – explain how the service’s performance evaluation process consistently supports their learning and development goals and growth as professionals, including how a tailored professional development plan provides a focus for continuous performance improvement? – discuss and demonstrate how they actively participate in the service’s ongoing self-assessment and quality improvement process, and how this process drives continuous improvement in service quality and enhances outcomes for children and families? • How does the educational leader discuss and demonstrate how they are supported by the service’s leadership team, and work collaboratively with educators to effectively lead the development of the curriculum and set high expectations for teaching and learning?",
+              "retrieval_score": 13.680186,
+              "source_retrieved_at": "2026-08-19T10:07:01.107908+00:00"
+            }
+          ],
+          "caveat": "Retrieved material is official ACECQA guidance/reference material. The Guide to the NQF is not legal advice; the National Law and Regulations take precedence."
+        }
+      }
+    }
+  ],
+  "policy_sources": [
+    {
+      "chunk_id": "POL-guide_nqf_pdf-0694",
+      "source_title": "Guide to the National Quality Framework",
+      "source_url": "https://www.acecqa.gov.au/media/38281",
+      "section": "Section 3: National Quality Standard and Assessment and Rating - PDF page 380",
+      "authority_level": "official_guidance"
+    }
+  ],
+  "usage": {
+    "requests": 3,
+    "input_tokens": 16972,
+    "output_tokens": 278,
+    "total_tokens": 17250
+  },
+  "latency_ms": 7410.204541003623
+}

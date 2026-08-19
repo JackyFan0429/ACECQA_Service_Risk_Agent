@@ -1,0 +1,61 @@
+[
+  {
+    "id": "M5-B04",
+    "category": "reliability_boundary",
+    "critical": true,
+    "query": "SE-40000427 has a triple-gap score. Does that alone justify an immediate compliance notice? Ground the answer in policy guidance.",
+    "passed": true,
+    "status": "PASS",
+    "used_tools": [
+      "calculate_risk_score",
+      "search_policy"
+    ],
+    "dimensions": {
+      "tool_selection": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "parameters": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "deterministic_output": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "numerical": {
+        "passed": true,
+        "passed_checks": 1,
+        "total_checks": 1
+      },
+      "answer_semantics": {
+        "passed": true,
+        "passed_checks": 4,
+        "total_checks": 4
+      },
+      "evidence_grounding": {
+        "passed": true,
+        "passed_checks": 2,
+        "total_checks": 2
+      },
+      "policy_grounding": {
+        "passed": true,
+        "passed_checks": 3,
+        "total_checks": 3
+      }
+    },
+    "failures": [],
+    "usage": {
+      "requests": 3,
+      "input_tokens": 13586,
+      "output_tokens": 537,
+      "total_tokens": 14123
+    },
+    "latency_ms": 10444.154959004663,
+    "model": "gpt-5.6-terra",
+    "tool_call_count": 2
+  }
+]

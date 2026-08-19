@@ -1,0 +1,158 @@
+{
+  "case_count": 50,
+  "passed_cases": 50,
+  "task_success_rate": 1.0,
+  "critical_case_count": 19,
+  "critical_cases_pass": true,
+  "boundary_passed": 12,
+  "boundary_total": 12,
+  "boundary_handling_rate": 1.0,
+  "category_results": {
+    "data_retrieval": {
+      "passed": 8,
+      "total": 8,
+      "rate": 1.0
+    },
+    "risk_analysis": {
+      "passed": 8,
+      "total": 8,
+      "rate": 1.0
+    },
+    "comparison": {
+      "passed": 6,
+      "total": 6,
+      "rate": 1.0
+    },
+    "policy_rag": {
+      "passed": 8,
+      "total": 8,
+      "rate": 1.0
+    },
+    "scenario_analysis": {
+      "passed": 8,
+      "total": 8,
+      "rate": 1.0
+    },
+    "reliability_boundary": {
+      "passed": 12,
+      "total": 12,
+      "rate": 1.0
+    }
+  },
+  "dimensions": {
+    "tool_selection": {
+      "passed_checks": 50,
+      "total_checks": 50,
+      "accuracy": 1.0
+    },
+    "parameters": {
+      "passed_checks": 84,
+      "total_checks": 84,
+      "accuracy": 1.0
+    },
+    "deterministic_output": {
+      "passed_checks": 80,
+      "total_checks": 80,
+      "accuracy": 1.0
+    },
+    "numerical": {
+      "passed_checks": 66,
+      "total_checks": 66,
+      "accuracy": 1.0
+    },
+    "answer_semantics": {
+      "passed_checks": 115,
+      "total_checks": 115,
+      "accuracy": 1.0
+    },
+    "evidence_grounding": {
+      "passed_checks": 47,
+      "total_checks": 47,
+      "accuracy": 1.0
+    },
+    "policy_grounding": {
+      "passed_checks": 36,
+      "total_checks": 36,
+      "accuracy": 1.0
+    }
+  },
+  "usage": {
+    "total_requests": 101,
+    "total_input_tokens": 448475,
+    "total_output_tokens": 16002,
+    "total_tokens": 464477,
+    "avg_tokens_per_query": 9289.54,
+    "total_latency_ms": 344592.0401200274,
+    "avg_latency_ms": 6891.840802400548,
+    "total_tool_calls": 51,
+    "avg_tool_calls_per_query": 1.02
+  },
+  "estimated_cost_usd": null,
+  "estimated_cost_per_query_usd": null,
+  "pricing": {
+    "input_usd_per_1m": null,
+    "output_usd_per_1m": null,
+    "note": "Pricing is user-supplied; the benchmark does not hard-code model prices."
+  },
+  "acceptance": {
+    "ready": true,
+    "checks": [
+      {
+        "name": "task_success_rate",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 0.9,
+        "passed": true
+      },
+      {
+        "name": "tool_selection_accuracy",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 0.94,
+        "passed": true
+      },
+      {
+        "name": "parameter_accuracy",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 0.95,
+        "passed": true
+      },
+      {
+        "name": "deterministic_output_accuracy",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 0.98,
+        "passed": true
+      },
+      {
+        "name": "numerical_accuracy",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 1.0,
+        "passed": true
+      },
+      {
+        "name": "policy_grounding_rate",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 0.95,
+        "passed": true
+      },
+      {
+        "name": "boundary_handling_rate",
+        "actual": 1.0,
+        "operator": ">=",
+        "target": 0.92,
+        "passed": true
+      },
+      {
+        "name": "critical_cases",
+        "actual": true,
+        "operator": "==",
+        "target": true,
+        "passed": true
+      }
+    ]
+  }
+}

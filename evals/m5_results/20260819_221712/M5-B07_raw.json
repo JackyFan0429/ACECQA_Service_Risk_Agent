@@ -1,0 +1,102 @@
+{
+  "query": "The farthest transport quartile has a higher Below Meeting NQS rate. Does our data prove poor transport causes lower quality? Analyse the quartiles and state the causal limitation.",
+  "model": "gpt-5.6-terra",
+  "answer": {
+    "answer": "No. The data show an **association**, not proof that poor transport access causes lower NQS quality.\n\nNational Centre-Based Care results:\n\n| Transport-access quartile | Services | Below Meeting NQS rate |\n|---|---:|---:|\n| Q1 closest | 3,964 | 7.5% |\n| Q2 | 4,005 | 8.6% |\n| Q3 | 3,996 | 8.3% |\n| Q4 farthest | 4,006 | 10.9% |\n\nQ4 has the highest Below Meeting rate—about 3.4 percentage points above Q1. It also has lower authorised capacity (median 53.5 places versus 60 in Q1).\n\n**Causal limitation:** these are observational, cross-sectional quartile comparisons. They do not control for potential confounders such as geography, remoteness, service characteristics, provider circumstances, socioeconomic context, or assessment timing. Transport access may be correlated with these factors; it cannot be identified as the cause of quality outcomes from this analysis. Approved places are authorised capacity, not evidence of demand or utilisation.",
+    "evidence": [
+      {
+        "source_tool": "analyse_transport_quartile_outcomes",
+        "claim": "Across national Centre-Based Care transport-access quartiles, Q4 Farthest had a 10.86% Below Meeting NQS rate (4,006 services), compared with 7.47% in Q1 Closest (3,964 services); reported authorised-capacity medians were 53.5 and 60 places, respectively.",
+        "policy_chunk_ids": []
+      }
+    ],
+    "methodology": [
+      "Used deterministic national Centre-Based Care quartiles of transport access and compared observed Below Meeting NQS rates and authorised-capacity summaries across Q1–Q4."
+    ],
+    "limitations": [
+      "Quartile comparisons establish association only, not causation; they do not control for confounding factors or establish temporal order.",
+      "Authorised capacity is not enrolment, utilisation, waitlists, unmet demand, or service quality."
+    ]
+  },
+  "used_tools": [
+    "analyse_transport_quartile_outcomes"
+  ],
+  "tool_trace": [
+    {
+      "sequence": 1,
+      "event_type": "tool_call",
+      "tool_name": "analyse_transport_quartile_outcomes",
+      "call_id": "call_gBaRgYjbaOs8DRmKS3zP5hhx",
+      "arguments": {
+        "state": null,
+        "urban_rural": null,
+        "service_type": "Centre-Based Care",
+        "min_group_size": 20
+      },
+      "output": null
+    },
+    {
+      "sequence": 2,
+      "event_type": "tool_output",
+      "tool_name": "analyse_transport_quartile_outcomes",
+      "call_id": "call_gBaRgYjbaOs8DRmKS3zP5hhx",
+      "arguments": null,
+      "output": {
+        "ok": true,
+        "tool": "analyse_transport_quartile_outcomes",
+        "data": {
+          "filters": {
+            "state": null,
+            "urban_rural": null,
+            "service_type": "Centre-Based Care",
+            "overall_rating": null
+          },
+          "min_group_size": 20,
+          "caveat": "Approved places are authorised capacity only. They do not establish actual demand, enrolment, waitlists, utilisation, or unmet need.",
+          "quartiles": [
+            {
+              "transport_access_quartile": "Q1 Closest",
+              "service_count": 3964,
+              "below_meeting_rate": 0.07467204843592332,
+              "approved_places_non_missing": 3963,
+              "median_approved_places": 60.0,
+              "mean_approved_places": 68.1630078223568
+            },
+            {
+              "transport_access_quartile": "Q2",
+              "service_count": 4005,
+              "below_meeting_rate": 0.08589263420724094,
+              "approved_places_non_missing": 4004,
+              "median_approved_places": 60.0,
+              "mean_approved_places": 70.66783216783217
+            },
+            {
+              "transport_access_quartile": "Q3",
+              "service_count": 3996,
+              "below_meeting_rate": 0.08283283283283284,
+              "approved_places_non_missing": 3996,
+              "median_approved_places": 68.0,
+              "mean_approved_places": 74.2927927927928
+            },
+            {
+              "transport_access_quartile": "Q4 Farthest",
+              "service_count": 4006,
+              "below_meeting_rate": 0.10858711932101847,
+              "approved_places_non_missing": 4006,
+              "median_approved_places": 53.5,
+              "mean_approved_places": 61.13554667998003
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "policy_sources": [],
+  "usage": {
+    "requests": 2,
+    "input_tokens": 7720,
+    "output_tokens": 491,
+    "total_tokens": 8211
+  },
+  "latency_ms": 8658.369999997376
+}

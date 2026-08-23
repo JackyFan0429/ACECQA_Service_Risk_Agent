@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "acecqa-risk-agent"
-version = "0.5.0"
-description = "Evaluated ACECQA decision-support copilot with deterministic analytics, scenarios, grounded policy retrieval, and a formal benchmark harness"
+version = "0.6.0"
+description = "Productised ACECQA decision-support copilot with deterministic analytics, policy retrieval, scenarios, formal evaluation, FastAPI, and a web demo"
 requires-python = ">=3.10"
 dependencies = [
   "pandas>=2.2,<3",
@@ -21,12 +21,23 @@ policy = [
   "beautifulsoup4>=4.13,<5",
   "pypdf>=5,<7",
 ]
+product = [
+  "openai-agents>=0.16,<1",
+  "requests>=2.32,<3",
+  "beautifulsoup4>=4.13,<5",
+  "pypdf>=5,<7",
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.34,<1",
+]
 dev = [
   "pytest>=8,<10",
   "openai-agents>=0.16,<1",
   "requests>=2.32,<3",
   "beautifulsoup4>=4.13,<5",
   "pypdf>=5,<7",
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.34,<1",
+  "httpx>=0.27,<1",
 ]
 
 [tool.setuptools.packages.find]

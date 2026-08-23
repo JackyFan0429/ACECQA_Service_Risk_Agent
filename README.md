@@ -1,18 +1,81 @@
 # ACECQA Service Risk Copilot
 
-A B2B decision-support AI Agent evolved from a QBUS6860 spatial/data analysis project.
+A portfolio-grade B2B decision-support AI Agent evolved from a QBUS6860 spatial/data analysis project.
 
-> **The LLM decides what evidence or simulation it needs; deterministic Python decides the numbers; curated retrieval supplies policy context; the formal evaluator checks whether the whole system behaved correctly.**
+The product helps an education-and-care policy or regulatory analyst move from a natural-language question to auditable data evidence, policy context, and scenario analysis without asking the LLM to perform critical numerical calculations itself.
 
-## Current milestone: v0.5 Formal Evaluation
+> **The LLM decides what evidence or simulation it needs; deterministic Python decides the numbers; curated retrieval supplies policy context; the runtime validates grounding; a formal benchmark checks system behaviour.**
 
-Milestones 1–4 are feature-frozen. v0.5 adds a reproducible **50-case system-level benchmark** and evaluation/reporting harness; it does not add new product capabilities.
+## Product status
+
+**v0.6 — Productised demo**
+
+- Milestone 1 — deterministic analytics: ✅ complete
+- Milestone 2 — Single Agent: ✅ passed (11/12, critical 4/4)
+- Milestone 3 — policy-grounded Agent: ✅ passed (8/8, critical 5/5)
+- Milestone 4 — scenario analysis: ✅ passed (8/8, critical 5/5)
+- Milestone 5 — formal evaluation: ✅ passed (**50/50**, critical PASS)
+- Milestone 6 — FastAPI + web demo + Docker packaging: ✅ code complete; local product regression passed
+
+## What the product can do
+
+### 1. Service discovery and profiling
+
+Ask questions such as:
+
+> How many rural Centre-Based Care services are there in Queensland?
+
+The Agent routes to deterministic filtering rather than estimating the answer in-model.
+
+### 2. Risk prioritisation
+
+> Find the five highest-risk rural Centre-Based Care services in Queensland.
+
+The current v1 screen combines three validated assignment-derived signals:
+
+- poor public-transport access
+- Below Meeting NQS quality outcome
+- low authorised capacity
+
+The score is a **prioritisation signal**, not a legal finding of non-compliance.
+
+### 3. Policy-grounded interpretation
+
+> What should the relevant regulatory authority consider before deciding how to respond?
+
+`search_policy()` retrieves from a local, versioned ACECQA Guide to the NQF snapshot. Policy claims must cite chunk IDs that were actually returned in the tool trace.
+
+### 4. Scenario analysis
+
+> What happens if poor transport changes from P75 to P80 while capacity stays at P25?
+
+The LLM does not calculate the result. Python recomputes thresholds and priority-pool membership deterministically.
+
+### 5. Reliability boundaries
+
+The Agent is explicitly tested not to infer that:
+
+- authorised capacity equals demand, utilisation, vacancies or waitlists
+- association implies causation
+- Working Towards NQS automatically means unsafe care
+- a triple-gap score establishes legal non-compliance
+- a smaller scenario pool proves a better policy
+- subgroup filters can silently redefine the national percentile thresholds
+
+## Architecture
 
 ```text
-Natural-language question
+Browser / API client
         |
         v
-Single LLM Agent
+     FastAPI
+   /    |     \
+  v     v      v
+Web   Agent   Deterministic endpoints
+UI    runtime  (service/scenario/policy)
+       |
+       v
+  Single LLM Agent
    /       |        \
   v        v         v
 Analytics Scenario   Policy RAG
@@ -23,9 +86,10 @@ Analytics Scenario   Policy RAG
   Grounded decision support
            |
            v
-      M5 Evaluator
-   /    /    |     \
-route args numbers grounding boundaries
+   Audit trace + telemetry
+           |
+           v
+  50-case M5 evaluator
 ```
 
 ## Nine product tools
@@ -40,129 +104,209 @@ route args numbers grounding boundaries
 8. `compare_risk_scenarios`
 9. `search_policy`
 
-## M5 formal benchmark
+## Formal evaluation — v1.1
 
-`evals/m5_benchmark.json` contains **50 cases**:
+The fixed 50-query benchmark is stored in `evals/m5_benchmark.json`.
 
-- 8 data retrieval
-- 8 risk analysis
-- 6 comparison
-- 8 policy RAG
-- 8 scenario analysis
-- 12 reliability/boundary
+| Metric | Result |
+|---|---:|
+| Task Success Rate | **100.0%** |
+| Tool Selection Accuracy | **100.0%** |
+| Tool Parameter Accuracy | **100.0%** |
+| Deterministic Output Accuracy | **100.0%** |
+| Numerical Accuracy | **100.0%** |
+| Evidence Grounding Accuracy | **100.0%** |
+| Policy Grounding Rate | **100.0%** |
+| Boundary Handling Rate | **100.0%** |
+| Average tokens/query | 9,290 |
+| Average latency/query | 6.89 s |
+| Average tool calls/query | 1.02 |
 
-The evaluator reports:
+Category results:
 
-- Task Success Rate
-- Tool Selection Accuracy
-- Tool Parameter Accuracy
-- Deterministic Output Accuracy
-- Numerical Accuracy
-- Evidence Grounding Accuracy
-- Policy Grounding Rate
-- Boundary Handling Rate
-- average tokens/query
-- average latency/query
-- average tool calls/query
-- optional estimated cost/query when token prices are supplied explicitly
+- data retrieval: 8/8
+- risk analysis: 8/8
+- comparison: 6/6
+- policy RAG: 8/8
+- scenario analysis: 8/8
+- reliability/boundary: 12/12
 
-v1.0 primarily evaluates structured traces and deterministic outputs. It deliberately does **not** use an LLM-as-judge.
+These results are from a fixed benchmark snapshot. They are **not** proof of regulatory validity, real-world policy optimality, or autonomous decision-making capability.
 
-## Install
+## Stable product regression values
+
+- cleaned services: **17,663**
+- national CBC P75 transport threshold: **5.329340 km**
+- national CBC P25 capacity threshold: **40 places**
+- national baseline triple-gap pool: **162**
+- P80/P25 scenario: **149**
+- P70/P30 scenario: **196**
+- P85/P20 scenario: **111**
+- QLD Rural CBC dataset count: **227**
+- QLD Rural risk-eligible sample: **193**
+- QLD Rural baseline triple-gap: **21**
+- local policy corpus: **1,395 chunks**
+
+## Local quick start
+
+Python 3.10+ is supported. Python 3.12 is used in the Docker image.
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
+
+export OPENAI_API_KEY="your-key"
+python run_api.py
 ```
 
-## Offline regression before API use
+Open:
+
+- product demo: `http://localhost:8000`
+- OpenAPI / Swagger: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc`
+- health check: `http://localhost:8000/health`
+
+The service lookup, scenario endpoint, policy retrieval, health check and system-info endpoint are deterministic and do not require an OpenAI call. `/api/chat` requires an API key.
+
+## Docker
+
+Copy the environment template:
+
+```bash
+cp .env.example .env
+# edit .env and add OPENAI_API_KEY
+```
+
+Then:
+
+```bash
+docker compose up --build
+```
+
+Open `http://localhost:8000`.
+
+The project intentionally uses one FastAPI container that also serves the lightweight frontend. This keeps the demo easy to reproduce while preserving a real HTTP API boundary.
+
+## API surface
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/health` | process health |
+| GET | `/api/system/info` | dataset, corpus, tools and evaluation snapshot |
+| POST | `/api/chat` | full Agent orchestration |
+| GET | `/api/services/{service_id}` | deterministic service profile |
+| POST | `/api/scenario` | deterministic threshold sensitivity analysis |
+| POST | `/api/policy/search` | deterministic local BM25 policy retrieval |
+
+Example:
+
+```bash
+curl -X POST http://localhost:8000/api/chat \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "message": "Find the 5 highest-risk rural Centre-Based Care services in Queensland and explain what the relevant regulatory authority should consider before deciding how to respond."
+  }'
+```
+
+## Product demo
+
+The browser demo includes:
+
+- natural-language Copilot
+- example prompt shortcuts
+- tool/evidence/policy-source panels
+- usage and latency telemetry
+- expandable tool trace
+- deterministic Scenario Lab
+- direct service lookup
+- live product/evaluation stats
+
+The frontend renders model content as text rather than injecting model-produced HTML.
+
+## Regression and integrity checks
 
 ```bash
 pytest -q
 python scripts/check_m5_benchmark.py
 python scripts/check_policy_corpus.py
+python scripts/check_m6_product.py
 ```
 
-Expected v0.5 code regression:
+Expected v0.6 regression:
 
 ```text
-32 passed
+42 passed
 M5 benchmark integrity: PASS (50 cases)
 Corpus integrity: PASS
+M6 product integrity: PASS
 ```
 
-## Formal evaluation
+## Project structure
 
-List the benchmark without tokens:
-
-```bash
-python run_m5_eval.py --list
+```text
+acecqa-risk-agent/
+├── data/
+│   ├── education_services_cleaned.csv
+│   └── policy/
+├── evals/
+│   ├── m5_benchmark.json
+│   └── m5_results/
+├── frontend/
+│   ├── index.html
+│   └── assets/
+├── src/acecqa_agent/
+│   ├── agent/
+│   ├── api/                 # M6 FastAPI product surface
+│   ├── evals/
+│   ├── rag/
+│   └── tools/
+├── tests/
+├── docs/
+├── Dockerfile
+├── docker-compose.yml
+├── run_api.py
+├── run_m5_eval.py
+└── pyproject.toml
 ```
 
-Run one development case:
+## Key design decisions
 
-```bash
-python run_m5_eval.py --case M5-D01
-```
+### Deterministic analytics first
+Critical filtering, ranking, aggregation, risk scoring and scenario calculations are Python functions with structured schemas. The model selects and explains tools rather than owning numerical logic.
 
-Run the full benchmark:
+### RAG is a tool, not the whole application
+Policy retrieval complements structured service evidence; it is not a standalone document chatbot.
 
-```bash
-export OPENAI_API_KEY="sk-..."
-python run_m5_eval.py --pause 1
-```
+### National threshold invariant
+Scenario percentiles are always calculated from the national validated Centre-Based Care risk sample. State/urban-rural filters change the reported population, not the meaning of P80 or P25.
 
-A partial run is never marked M5-ready. The full suite is evaluated against the acceptance thresholds in `evals/m5_benchmark.json`.
+### Product mode vs strict grounding
+The API defaults to product mode so legitimate no-tool boundary answers such as “the dataset has no waitlist data” can be returned. Set `strict_grounding=true` on `/api/chat` when a caller wants every accepted response to contain deterministic tool evidence.
 
-## Resume and 0-token recheck
+### Evaluation is part of the system
+M5 stores raw reports and machine-readable metrics, allowing failures to be re-scored without new API calls. The product system-info endpoint exposes the latest completed 50-case evaluation snapshot.
 
-Runs checkpoint every raw case under `evals/m5_results/<timestamp>/`.
+## Limitations
 
-Resume:
+- the risk model was derived for this portfolio/academic dataset and is not a production regulatory model
+- the v1 risk score is scoped to Centre-Based Care
+- policy retrieval uses a versioned Guide snapshot and can become stale until the corpus is refreshed
+- authorised capacity does not measure demand, enrolment, utilisation, vacancies or waiting lists
+- BM25 retrieval is intentionally simple and auditable; semantic reranking may improve recall in a larger corpus
+- the frontend is designed for portfolio demonstration, not multi-user production operation
+- there is no authentication, persistence or role-based access control in v0.6
 
-```bash
-python run_m5_eval.py --resume evals/m5_results/<timestamp> --pause 1
-```
+## Portfolio framing
 
-Re-score existing results without new API calls:
+**AI PM:** problem definition → analyst workflow → task-oriented Agent → scenario exploration → trust boundaries → measurable evaluation.
 
-```bash
-python recheck_m5_results.py evals/m5_results/<timestamp>
-```
+**FDE:** data contracts → deterministic tools → LLM orchestration → grounded RAG → scenario engine → tracing/evals → HTTP API → containerised delivery.
 
-## Optional cost/query
+## Documentation
 
-The project does not hard-code model prices. Supply current rates yourself when you want cost reporting:
-
-```bash
-python run_m5_eval.py \
-  --pause 1 \
-  --input-usd-per-1m <INPUT_PRICE> \
-  --output-usd-per-1m <OUTPUT_PRICE>
-```
-
-## Stable product regression values
-
-- cleaned services: **17,663**
-- v1 national CBC P75 transport: **5.329340 km**
-- v1 national CBC P25 capacity: **40 places**
-- national baseline triple-gap: **162**
-- P80/P25 scenario: **149**
-- P70/P30: **196**
-- P85/P20: **111**
-- QLD Rural CBC dataset count: **227**
-- QLD Rural risk-eligible sample: **193**
-- QLD Rural baseline triple-gap: **21**
-- local policy corpus: **1,395 chunks** from the versioned official Guide snapshot in this repo
-
-## Project status
-
-- Milestone 1 — deterministic analytics: ✅ complete
-- Milestone 2 — Single Agent: ✅ passed (11/12, critical 4/4)
-- Milestone 3 — policy-grounded Agent: ✅ passed (8/8, critical 5/5)
-- Milestone 4 — scenario analysis: ✅ passed (8/8, critical 5/5)
-- Milestone 5 — formal 50-case evaluation: 🟡 harness ready; live benchmark pending
-- Milestone 6 — FastAPI + frontend + Docker: next after M5 freezes
-
-See `docs/MILESTONE_5.md`, `docs/EVALUATION.md`, and `docs/MILESTONE_5_INSTALL.md`.
+- `docs/ARCHITECTURE.md`
+- `docs/EVALUATION.md`
+- `docs/MILESTONE_6.md`
+- `docs/DEPLOYMENT.md`
+- `docs/DESIGN_DECISIONS.md`

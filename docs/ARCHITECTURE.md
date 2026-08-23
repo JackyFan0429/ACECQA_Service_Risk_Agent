@@ -1,46 +1,52 @@
-# Architecture — v0.5
+# Architecture — v0.6
 
 ## Product boundary
 
-ACECQA Service Risk Copilot is a decision-support Agent. The LLM orchestrates evidence; deterministic Python owns analytics and scenario arithmetic; a local policy corpus grounds regulatory context. Milestone 5 adds an evaluation plane around the frozen product rather than adding more Agent capability.
+ACECQA Service Risk Copilot is a decision-support Agent. The LLM orchestrates evidence; deterministic Python owns analytics and scenario arithmetic; a local policy corpus grounds regulatory context; the runtime validates evidence; M5 evaluates system behaviour; M6 exposes the same evaluated core through an HTTP product surface.
 
 ```text
-                           User
-                            |
-                            v
-                     Single LLM Agent
-                            |
-          +-----------------+------------------+
-          |                 |                  |
-          v                 v                  v
-  Analytics tools    Scenario tools      search_policy
-      (6)                (2)                (1)
-          |                 |                  |
-          +--------+--------+                  |
-                   v                           v
-        17,663 cleaned services        ACECQA/NQF corpus
-                   |                           |
-                   +-------------+-------------+
-                                 v
-                         Structured evidence
+                              Browser
                                  |
                                  v
-                        Grounding validator
+                         FastAPI product API
+                       /         |          \
+                      v          v           v
+               Static web UI  /api/chat  deterministic APIs
                                  |
                                  v
-                      Decision-support answer
+                          Single LLM Agent
                                  |
-                    +------------+-------------+
-                    |                          |
-                    v                          v
-             Live user/demo path        M5 evaluation plane
-                                             |
-                   +-------------------------+--------------------------+
-                   |          |           |          |          |      |
-                 routing   parameters   outputs    policy    boundary telemetry
-                                             |
-                                             v
-                                      evaluation report
+            +--------------------+--------------------+
+            |                    |                    |
+            v                    v                    v
+     Analytics tools      Scenario tools        search_policy
+          (6)                  (2)                  (1)
+            |                    |                    |
+            +----------+---------+                    |
+                       v                              v
+            17,663 cleaned services          ACECQA/NQF corpus
+                       |                              |
+                       +---------------+--------------+
+                                       v
+                               Structured evidence
+                                       |
+                                       v
+                              Grounding validator
+                                       |
+                                       v
+                            Decision-support answer
+                                       |
+                         +-------------+-------------+
+                         |                           |
+                         v                           v
+                 Product telemetry            M5 evaluation plane
+                                                    |
+                          +-------------------------+----------------------+
+                          |          |          |         |        |      |
+                        routing    params     outputs   policy   boundary usage
+                                                    |
+                                                    v
+                                           evaluation report
 ```
 
 ## Nine product tools
@@ -63,41 +69,49 @@ ACECQA Service Risk Copilot is a decision-support Agent. The LLM orchestrates ev
 
 9. `search_policy`
 
+## M6 product surface
+
+FastAPI adds no new decision logic. It adapts the frozen Agent/tool layer into:
+
+- `/api/chat` — Agent orchestration
+- `/api/services/{id}` — direct deterministic service lookup
+- `/api/scenario` — direct deterministic scenario execution
+- `/api/policy/search` — direct deterministic policy retrieval
+- `/api/system/info` — reproducibility/evaluation metadata
+- `/health` — process health
+
+The frontend uses these HTTP endpoints and is served by the same process.
+
 ## Evaluation plane
 
-Milestone 5 adds no tenth tool. Instead:
-
-- `evals/m5_benchmark.json` defines the 50-case benchmark;
-- `acecqa_agent.evals.m5_harness` evaluates structured Agent reports;
-- `run_m5_eval.py` performs live runs and checkpoints each raw result;
-- `recheck_m5_results.py` re-scores saved runs without API calls;
-- `summary.md`, `metrics.json` and `evaluation_report.md` provide machine- and human-readable outputs.
-
-The evaluator primarily checks actual tool traces, parameters, deterministic outputs and resolved policy sources. It does not use an LLM-as-judge in v1.0.
+`evals/m5_benchmark.json` defines the fixed 50-case benchmark. The completed v1.1 snapshot in this repository passed 50/50. The evaluator checks tool traces, parameters, deterministic outputs, policy sources and reliability boundaries; it does not use an LLM-as-judge.
 
 ## Scenario invariant
 
-All transport/capacity percentiles are computed from the national validated Centre-Based Care risk sample. `state` or `urban_rural` only scopes the reported impact. This makes scenario thresholds comparable across jurisdictions and prevents silent redefinition of the model.
+All transport/capacity percentiles are computed from the national validated Centre-Based Care risk sample. `state` or `urban_rural` only scopes the reported impact. This prevents silent subgroup redefinition and makes scenarios comparable.
 
 ## Responsibility split
 
 | Layer | Owns |
 |---|---|
+| Web UI | user interaction and evidence display |
+| FastAPI | HTTP contracts, errors, product metadata |
 | LLM | intent parsing, tool selection, parameter mapping, explanation |
 | Deterministic analytics | filtering, scoring, ranking, aggregations |
-| Deterministic scenario layer | percentile thresholds, recomputed flags, A/B comparison, membership changes |
-| Policy RAG | retrieving official policy/guidance passages |
-| Runtime | tool trace, evidence validation, policy citation resolution, usage/latency telemetry |
-| M5 evaluator | benchmark routing checks, parameter/output regression, grounding/boundary metrics, reporting |
+| Scenario layer | percentile thresholds, recomputed flags, A/B comparison |
+| Policy RAG | local BM25 retrieval over official material |
+| Runtime | trace, evidence validation, policy citation resolution, telemetry |
+| M5 evaluator | benchmark routing/parameter/output/grounding/boundary metrics |
+| Docker | reproducible single-container delivery |
 
 ## Reliability boundaries
 
-- full dataset counts and risk-eligible counts are distinct
-- risk model is Centre-Based Care only
+- dataset counts and risk-eligible counts are distinct
+- risk model v1 is Centre-Based Care only
 - approved capacity is not demand
 - association is not causation
 - scenario sensitivity is not policy optimisation
-- a threshold change does not prove causality or policy superiority
 - risk score is not a legal non-compliance finding
-- policy citations must correspond to actually retrieved chunks
-- formal benchmark performance does not imply autonomous regulatory authority
+- policy citations must correspond to retrieved chunks
+- formal benchmark performance does not imply regulatory validity
+- product-mode no-tool responses are visibly labelled as boundary/interpretation responses

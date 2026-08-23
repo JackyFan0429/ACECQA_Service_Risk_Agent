@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACECQA Service Risk Copilot</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div>
+        <div class="eyebrow">AI decision support · education & care regulation</div>
+        <h1>ACECQA Service Risk Copilot</h1>
+        <p class="lede">Natural-language regulatory analysis backed by deterministic service analytics, scenario simulation, and official policy retrieval.</p>
+      </div>
+      <div class="status-card">
+        <div class="status-row"><span class="dot"></span><span id="api-status">Connecting…</span></div>
+        <div class="status-meta" id="model-label">Model: —</div>
+      </div>
+    </header>
+
+    <section class="stats" id="stats">
+      <div class="stat"><span class="stat-value" id="stat-services">—</span><span class="stat-label">Service records</span></div>
+      <div class="stat"><span class="stat-value" id="stat-policy">—</span><span class="stat-label">Policy chunks</span></div>
+      <div class="stat"><span class="stat-value" id="stat-tools">—</span><span class="stat-label">Deterministic tools</span></div>
+      <div class="stat"><span class="stat-value" id="stat-eval">—</span><span class="stat-label">Formal eval</span></div>
+    </section>
+
+    <main class="grid">
+      <section class="panel primary-panel">
+        <div class="panel-heading">
+          <div>
+            <div class="eyebrow">Copilot</div>
+            <h2>Ask a regulatory question</h2>
+          </div>
+          <label class="toggle"><input id="strict-grounding" type="checkbox" /><span>Strict tool grounding</span></label>
+        </div>
+
+        <div class="prompt-chips">
+          <button data-prompt="Find the 5 highest-risk rural Centre-Based Care services in Queensland and explain what the relevant regulatory authority should consider before deciding how to respond.">Priority + policy</button>
+          <button data-prompt="If poor transport changes from P75 to P80 while capacity stays P25, how does the national triple-gap priority pool change?">Scenario</button>
+          <button data-prompt="What does a Working Towards NQS rating mean?">Policy</button>
+          <button data-prompt="Does low approved capacity mean families in this area cannot find childcare?">Boundary</button>
+        </div>
+
+        <textarea id="prompt" rows="6" placeholder="Ask about service risk, transport access, NQS ratings, regulatory guidance, or threshold scenarios…"></textarea>
+        <div class="actions">
+          <button class="btn primary" id="analyse-btn">Analyse</button>
+          <button class="btn ghost" id="clear-btn">Clear</button>
+          <span class="helper">The LLM orchestrates; Python computes the numbers.</span>
+        </div>
+
+        <div id="chat-error" class="notice error hidden"></div>
+        <div id="chat-loading" class="loading hidden"><span></span>Running agent and tools…</div>
+
+        <div id="answer-area" class="result hidden">
+          <div class="result-header">
+            <h3>Answer</h3>
+            <div id="grounding-badge" class="badge"></div>
+          </div>
+          <div id="answer" class="answer-text"></div>
+
+          <div id="tools-section" class="result-section hidden">
+            <h4>Tools used</h4>
+            <div id="tools" class="tool-badges"></div>
+          </div>
+
+          <div id="evidence-section" class="result-section hidden">
+            <h4>Evidence</h4>
+            <div id="evidence" class="cards"></div>
+          </div>
+
+          <div id="policy-section" class="result-section hidden">
+            <h4>Policy sources</h4>
+            <div id="policy-sources" class="cards"></div>
+          </div>
+
+          <div class="two-col">
+            <div id="method-section" class="result-section hidden"><h4>Methodology</h4><ul id="methodology"></ul></div>
+            <div id="limits-section" class="result-section hidden"><h4>Limitations</h4><ul id="limitations"></ul></div>
+          </div>
+
+          <div id="telemetry" class="telemetry"></div>
+          <details id="trace-details"><summary>Tool trace</summary><pre id="tool-trace"></pre></details>
+        </div>
+      </section>
+
+      <aside class="side-stack">
+        <section class="panel">
+          <div class="eyebrow">Scenario lab</div>
+          <h2>Sensitivity analysis</h2>
+          <p class="muted">Change national percentile thresholds and inspect how the priority pool moves. Subgroup filters never redefine the national thresholds.</p>
+          <div class="form-grid">
+            <label>Transport percentile
+              <select id="scenario-transport">
+                <option value="0.70">P70</option>
+                <option value="0.75">P75</option>
+                <option value="0.80" selected>P80</option>
+                <option value="0.85">P85</option>
+                <option value="0.90">P90</option>
+              </select>
+            </label>
+            <label>Capacity percentile
+              <select id="scenario-capacity">
+                <option value="0.15">P15</option>
+                <option value="0.20">P20</option>
+                <option value="0.25" selected>P25</option>
+                <option value="0.30">P30</option>
+                <option value="0.35">P35</option>
+              </select>
+            </label>
+            <label>State
+              <select id="scenario-state"><option value="">National</option><option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option><option>WA</option><option>TAS</option><option>NT</option><option>ACT</option></select>
+            </label>
+            <label>Area
+              <select id="scenario-area"><option value="">All</option><option>Urban</option><option>Rural</option></select>
+            </label>
+          </div>
+          <button class="btn secondary full" id="scenario-btn">Run deterministic scenario</button>
+          <div id="scenario-error" class="notice error hidden"></div>
+          <div id="scenario-result" class="scenario-result hidden"></div>
+        </section>
+
+        <section class="panel">
+          <div class="eyebrow">Service lookup</div>
+          <h2>Inspect one service</h2>
+          <div class="inline-form">
+            <input id="service-id" value="SE-40000427" placeholder="SE-40000427" />
+            <button class="btn secondary" id="service-btn">Lookup</button>
+          </div>
+          <div id="service-error" class="notice error hidden"></div>
+          <div id="service-result" class="service-result hidden"></div>
+        </section>
+
+        <section class="panel subtle">
+          <div class="eyebrow">Reliability design</div>
+          <ul class="check-list">
+            <li>Deterministic analytics for numerical decisions</li>
+            <li>Versioned official policy corpus</li>
+            <li>Policy chunk citation validation</li>
+            <li>Scenario thresholds computed nationally</li>
+            <li>50-case formal benchmark snapshot</li>
+          </ul>
+          <a class="docs-link" href="/docs" target="_blank" rel="noreferrer">Open API docs ↗</a>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      Decision-support prototype. Risk scores are prioritisation signals, not findings of non-compliance or enforcement recommendations.
+    </footer>
+  </div>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

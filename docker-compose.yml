@@ -1,0 +1,9 @@
+services:
+  acecqa-copilot:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ACECQA_AGENT_MODEL: ${ACECQA_AGENT_MODEL:-gpt-5.6-terra}
+    restart: unless-stopped

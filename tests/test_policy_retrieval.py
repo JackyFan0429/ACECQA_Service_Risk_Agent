@@ -29,3 +29,16 @@ def test_policy_repository_exposes_traceable_metadata():
     assert result["chunk_id"].startswith("POL-")
     assert result["source_url"].startswith("https://www.acecqa.gov.au/")
     assert result["source_retrieved_at"]
+
+
+def test_default_policy_corpus_path_uses_shared_project_root(monkeypatch, tmp_path):
+    # Regression guard for Docker/non-editable installs: policy retrieval must not
+    # infer the repository root from policy_repository.__file__ under site-packages.
+    import acecqa_agent.rag.policy_repository as policy_repository
+
+    monkeypatch.delenv("ACECQA_POLICY_CORPUS_PATH", raising=False)
+    monkeypatch.setattr(policy_repository, "PROJECT_ROOT", tmp_path)
+
+    assert policy_repository._default_corpus_path() == (
+        tmp_path / "data" / "policy" / "policy_chunks.jsonl"
+    )

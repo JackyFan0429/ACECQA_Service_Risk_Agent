@@ -1,6 +1,12 @@
+import os
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+# In local editable installs, the package lives under <repo>/src/acecqa_agent.
+# In a Docker/non-editable wheel install, __file__ lives under site-packages,
+# so the repository root must be supplied explicitly.
+PROJECT_ROOT = Path(
+    os.getenv("ACECQA_PROJECT_ROOT", str(Path(__file__).resolve().parents[2]))
+).expanduser().resolve()
 DEFAULT_DATA_PATH = PROJECT_ROOT / "data" / "education_services_cleaned.csv"
 
 ANALYSIS_SERVICE_TYPES = ("Centre-Based Care", "Family Day Care")

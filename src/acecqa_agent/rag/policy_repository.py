@@ -16,6 +16,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
 
+from acecqa_agent.config import PROJECT_ROOT
+
 TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z0-9]+)?")
 STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "before", "by", "can", "do", "does",
@@ -32,8 +34,10 @@ def _default_corpus_path() -> Path:
     override = os.getenv("ACECQA_POLICY_CORPUS_PATH")
     if override:
         return Path(override).expanduser().resolve()
-    # src/acecqa_agent/rag/policy_repository.py -> repo root is parents[3]
-    return Path(__file__).resolve().parents[3] / "data" / "policy" / "policy_chunks.jsonl"
+    # Use the same project-root contract as the rest of the application.
+    # In Docker/non-editable installs, __file__ lives under site-packages, while
+    # ACECQA_PROJECT_ROOT points at the copied application root (normally /app).
+    return PROJECT_ROOT / "data" / "policy" / "policy_chunks.jsonl"
 
 
 def _tokens(text: str) -> list[str]:

@@ -1,4 +1,4 @@
-# Deployment Guide — v0.6
+# Deployment Guide
 
 ## Local development
 

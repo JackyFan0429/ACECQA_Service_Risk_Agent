@@ -1,4 +1,4 @@
-# Architecture — v0.6
+# Architecture
 
 ## Product boundary
 

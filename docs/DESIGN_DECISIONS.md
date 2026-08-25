@@ -1,4 +1,4 @@
-# Design decisions — v0.1
+# Design Decisions
 
 ## 1. Retrieval scope and risk scope are separate
 

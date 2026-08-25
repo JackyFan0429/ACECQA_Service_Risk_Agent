@@ -1,4 +1,4 @@
-# Tool schemas — v0.4
+# Tool Schemas
 
 The exact machine-readable schemas are generated from Pydantic models into `docs/tool_schemas.json`.
 

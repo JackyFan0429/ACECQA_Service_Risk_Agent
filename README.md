@@ -17,15 +17,21 @@
 
 > **Independent portfolio / academic project. Not affiliated with or endorsed by ACECQA.** The system is decision support only: its risk screen is not a legal finding, enforcement recommendation, or production regulatory model.
 
-## Why this project exists
+## Product demo
+
+<p align="center">
+  <img src="docs/assets/product-demo.png" alt="ACECQA Service Risk Copilot product interface" width="100%" />
+</p>
+
+<p align="center"><sub>Docker-verified product interface showing a tool-grounded risk/policy response, deterministic scenario analysis, and structured service lookup.</sub></p>
+
+> **LLM orchestrates. Python computes. Policy retrieval grounds. Evaluation verifies.**
+
+## Problem and approach
 
 A policy or regulatory analyst may need to combine structured service data, spatial access indicators, quality outcomes, policy guidance, and “what-if” threshold analysis. A general-purpose chatbot can explain concepts, but it should not be trusted to silently calculate operational risk scores or invent evidence.
 
-This project turns that workflow into an auditable AI system:
-
-> **The LLM decides what evidence or simulation it needs; deterministic Python decides the numbers; curated retrieval supplies policy context; the runtime validates grounding; a formal benchmark checks system behaviour.**
-
-The project evolved from a QBUS6860 spatial/data analysis assignment into a containerised B2B decision-support product with a web UI, HTTP API, deterministic analytics, policy RAG, scenario analysis, telemetry, and formal evaluation.
+The system separates orchestration from numerical authority: deterministic Python tools calculate results, curated retrieval supplies policy context, the runtime validates grounding, and the formal benchmark checks system behaviour.
 
 ## At a glance
 
@@ -40,7 +46,7 @@ The project evolved from a QBUS6860 spatial/data analysis assignment into a cont
 | Product surface | FastAPI + lightweight browser UI + OpenAPI docs |
 | Deployment | Single-container Docker Compose deployment, verified end to end |
 
-## Product demo flows
+## Core workflows
 
 The browser demo supports four useful workflows without exposing internal implementation details to the user.
 
@@ -291,7 +297,7 @@ python scripts/check_policy_corpus.py
 python scripts/check_m6_product.py
 ```
 
-Current frozen M6 baseline:
+Current verified baseline:
 
 ```text
 43 passed
@@ -323,11 +329,9 @@ More detail: [Design Decisions](docs/DESIGN_DECISIONS.md).
 - The frontend is a portfolio demo, not a multi-user production application.
 - There is no authentication, persistence, RBAC, production observability stack or managed secrets layer.
 
-## Portfolio framing
+## Project origin
 
-**AI Product Management:** problem framing → analyst workflow → task-oriented agent → scenario exploration → trust boundaries → measurable evaluation → deployed demo.
-
-**Forward-Deployed / AI Engineering:** data contracts → deterministic tools → LLM orchestration → grounded RAG → scenario engine → tracing/evals → FastAPI → containerised delivery.
+This project started from a QBUS6860 spatial/data analysis assignment. The coursework provided the initial analytical problem and data foundation; the agent architecture, deterministic tool layer, policy RAG, scenario engine, grounding validator, formal evaluator, FastAPI/web UI, Docker packaging and CI were built independently afterward as portfolio work.
 
 ## Documentation
 
